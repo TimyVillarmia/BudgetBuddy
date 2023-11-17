@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BudgetBuddy.Models
 {
-    public class Account : IAccount
+    public class Account
     {
         private int id;
         private string name;
@@ -42,6 +42,21 @@ namespace BudgetBuddy.Models
         [Required(ErrorMessage = "Password is required")]
         [StringLength(8, ErrorMessage = "Password must be greater than 8")]
         public string Password { get { return password; } set { password = value; } }
+
+        public void ForgotPassword(Account acount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Login(Account acount)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Register(Account acount)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
