@@ -19,7 +19,7 @@ namespace BudgetBuddy
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            SignIn signin = new SignIn();
+            
 
         }
     }
