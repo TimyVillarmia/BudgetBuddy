@@ -84,6 +84,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Presenters\UserControls\Carousel.resx">
+      <DependentUpon>Carousel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Presenters\UserControls\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
