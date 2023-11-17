@@ -8,19 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BudgetBuddy
+namespace BudgetBuddy.Presenters.UserControls
 {
-    public partial class MainForm : Form
+    public partial class SignIn : UserControl
     {
-        public MainForm()
+        public SignIn()
         {
             InitializeComponent();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            SignIn signin = new SignIn();
-
         }
     }
 }
