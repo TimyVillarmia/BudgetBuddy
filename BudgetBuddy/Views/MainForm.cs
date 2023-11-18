@@ -18,17 +18,23 @@ namespace BudgetBuddy
             InitializeComponent();
         }
 
+        public SignIn SignIn { get; set; }
+        public SignUp SignUp { get; set; }
         private void MainForm_Load(object sender, EventArgs e)
         {
-            SignIn signin = new SignIn();
-            signin.Dock = DockStyle.Fill;
+            SignIn = new SignIn(this);
+            SignIn.Dock = DockStyle.Fill;
+
+            SignUp = new SignUp(this);
+            SignUp.Dock = DockStyle.Fill;
 
             Carousel carousel = new Carousel();
             carousel.Dock = DockStyle.Fill;
 
-            // (usercontrol, col, row)
-            MainFormPanel.Controls.Add(carousel, 0, 0);
-            MainFormPanel.Controls.Add(signin, 1,0);
+            
+            MainFormLeftPanel.Controls.Add(carousel);
+            MainFormRightPanel.Controls.Add(SignIn);
+            MainFormRightPanel.Controls.Add(SignUp);
 
 
         }

@@ -10,19 +10,18 @@ using System.Windows.Forms;
 
 namespace BudgetBuddy.Presenters.UserControls
 {
-    public partial class SignIn : UserControl
+    public partial class SignUp : UserControl
     {
         public MainForm MainForm;
-
-        public SignIn(MainForm form)
+        public SignUp(MainForm form)
         {
             InitializeComponent();
             MainForm = form;
         }
 
-        private void SignupLbl_Click(object sender, EventArgs e)
+        private void SignInLbl_Click(object sender, EventArgs e)
         {
-            MainForm.SignUp.BringToFront();
+            MainForm.SignIn.BringToFront();
         }
     }
 }
