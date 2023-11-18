@@ -8,5 +8,6 @@ namespace BudgetBuddy.Repositories
 {
     abstract class BaseRepository
     {
+        
     }
 }

@@ -8,5 +8,9 @@ namespace BudgetBuddy.Repositories
 {
     internal class AccountRepository
     {
+        private void GetContacts()
+        {
+            
+        }
     }
 }
