@@ -8,7 +8,7 @@ namespace BudgetBuddy.Models
 {
     public interface IAccountRepository
     {
-        void Login(Account account);
+        void CreateAccount(Account account);
 
     }
 }
