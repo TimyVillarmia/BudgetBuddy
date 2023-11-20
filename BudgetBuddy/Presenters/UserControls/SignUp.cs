@@ -23,5 +23,7 @@ namespace BudgetBuddy.Presenters.UserControls
         {
             MainForm.SignIn.BringToFront();
         }
+
+
     }
 }
