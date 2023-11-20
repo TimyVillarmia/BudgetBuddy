@@ -73,15 +73,15 @@
     <Compile Include="Presenters\UserControls\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presenters\UserControls\SignUp.cs">
+    <Compile Include="Views\ISignUpView.cs" />
+    <Compile Include="Views\UserControls\SignUp.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Presenters\UserControls\SignUp.Designer.cs">
+    <Compile Include="Views\UserControls\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
-    <Compile Include="Views\IAccountView.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,7 +96,7 @@
     <EmbeddedResource Include="Presenters\UserControls\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presenters\UserControls\SignUp.resx">
+    <EmbeddedResource Include="Views\UserControls\SignUp.resx">
       <DependentUpon>SignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
