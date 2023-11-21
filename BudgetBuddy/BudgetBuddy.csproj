@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Design" />
@@ -54,23 +55,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BudgetBuddy.designer.cs">
+    <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BudgetBuddy.dbml</DependentUpon>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\IAccountRepository.cs" />
+    <Compile Include="Presenters\SignInPresenter.cs" />
+    <Compile Include="Presenters\SignUpPresenter.cs" />
     <Compile Include="Presenters\UserControls\Carousel.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Presenters\UserControls\Carousel.Designer.cs">
       <DependentUpon>Carousel.cs</DependentUpon>
     </Compile>
-    <Compile Include="Presenters\UserControls\SignIn.cs">
+    <Compile Include="Views\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ISignInView.cs" />
+    <Compile Include="Views\UserControls\SignIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Presenters\UserControls\SignIn.Designer.cs">
+    <Compile Include="Views\UserControls\SignIn.Designer.cs">
       <DependentUpon>SignIn.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ISignUpView.cs" />
@@ -80,8 +90,8 @@
     <Compile Include="Views\UserControls\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Repositories\AccountRepository.cs" />
-    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="_Repositories\AccountRepository.cs" />
+    <Compile Include="_Repositories\BaseRepository.cs" />
     <Compile Include="Views\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,7 +103,7 @@
     <EmbeddedResource Include="Presenters\UserControls\Carousel.resx">
       <DependentUpon>Carousel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Presenters\UserControls\SignIn.resx">
+    <EmbeddedResource Include="Views\UserControls\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\SignUp.resx">
@@ -112,13 +122,13 @@
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BudgetBuddy.dbml">
+    <None Include="DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>BudgetBuddy.designer.cs</LastGenOutput>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="BudgetBuddy.dbml.layout">
-      <DependentUpon>BudgetBuddy.dbml</DependentUpon>
+    <None Include="DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -140,5 +150,6 @@
   <ItemGroup>
     <None Include="Resources\logo.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

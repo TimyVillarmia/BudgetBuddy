@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BudgetBuddy.Repositories
 {
-    internal class AccountRepository
+    public abstract class BaseRepository
     {
-        private void GetContacts()
-        {
-            
-        }
+        protected DataClasses1DataContext db;
     }
 }

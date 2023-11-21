@@ -1,8 +1,13 @@
-﻿using System;
+﻿using BudgetBuddy.Models;
+using BudgetBuddy.Presenters.UserControls;
+using BudgetBuddy.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BudgetBuddy.Repositories;
+using BudgetBuddy.Presenters;
 
 namespace BudgetBuddy
 {

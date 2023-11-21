@@ -11,9 +11,10 @@ namespace BudgetBuddy.Models
     public class Account
     {
         private int id;
-        private string name;
+        private string firstName;
+        private string lastName;
         private string email;
-        private string password;
+        private string password;    
 
         [DisplayName("Account Id")]
         public int Id
@@ -22,14 +23,25 @@ namespace BudgetBuddy.Models
             set { id = value; }
         }
 
-        [DisplayName("Fullname")]
+        [DisplayName("First name")]
         [DataType(DataType.Text)]
-        [Required(ErrorMessage = "Name is required")]
-        public string Fullname
+        [Required(ErrorMessage = "First Name is required")]
+        public string FirstName
         {
-            get { return name; }
-            set { name = value; }
+            get { return firstName; }
+            set { firstName = value; }
         }
+
+
+        [DisplayName("Last name")]
+        [DataType(DataType.Text)]
+        [Required(ErrorMessage = "First Name is required")]
+        public string LastName
+        {
+            get { return lastName; }
+            set { lastName = value; }
+        }
+
 
         [DisplayName("Email Address")]
         [DataType(DataType.EmailAddress)]
@@ -43,20 +55,6 @@ namespace BudgetBuddy.Models
         [StringLength(8, ErrorMessage = "Password must be greater than 8")]
         public string Password { get { return password; } set { password = value; } }
 
-        public void ForgotPassword(Account acount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Login(Account acount)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Register(Account acount)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
 

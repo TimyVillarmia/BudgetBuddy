@@ -18,6 +18,21 @@ namespace BudgetBuddy.Presenters.UserControls
         {
             InitializeComponent();
             MainForm = form;
+            AssociateAndRaiseViewEvents();
+        }
+        
+        public SignUp()
+        {
+
+        }
+
+        private void AssociateAndRaiseViewEvents()
+        {
+            CreateAccountBtn.Click += delegate
+            {
+                CreateAccountEvent?.Invoke(this, EventArgs.Empty);
+
+            };
         }
 
         public string FirstName { get => FirstNameTxtBox.Text; set => FirstNameTxtBox.Text = value; }
@@ -25,7 +40,7 @@ namespace BudgetBuddy.Presenters.UserControls
         public string Email { get => EmailTxtBox.Text; set => EmailTxtBox.Text = value; }
         public string Password { get => PasswordTxtBox.Text; set => PasswordTxtBox.Text = value; }
 
-        public event EventHandler CreateAccount;
+        public event EventHandler CreateAccountEvent;
 
         private void SignInLbl_Click(object sender, EventArgs e)
         {

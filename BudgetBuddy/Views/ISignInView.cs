@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace BudgetBuddy.Views
 {
-    public interface ISignUpView
+    public interface ISignInView
     {
-        string FirstName { get; set; }
-        string LastName { get; set; }
-        string Email { get; set; }
+        string Email { get; set; }  
         string Password { get; set; }
+        bool isSuccessful { get; set; }
+        string test { get; set; }
 
-        event EventHandler CreateAccountEvent;
+        event EventHandler LoginAccountEvent;
+
     }
 }
