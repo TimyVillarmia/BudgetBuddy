@@ -113,7 +113,6 @@
             this.SignInBtn.Size = new System.Drawing.Size(400, 45);
             this.SignInBtn.TabIndex = 3;
             this.SignInBtn.Text = "Sign in";
-            this.SignInBtn.Click += new System.EventHandler(this.SignInBtn_Click);
             // 
             // label2
             // 

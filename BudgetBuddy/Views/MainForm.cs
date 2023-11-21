@@ -18,7 +18,7 @@ namespace BudgetBuddy
     public partial class MainForm : Form
     {
 
-
+        // constructor
         public MainForm()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace BudgetBuddy
         }
 
 
-
+        // Singleton pattern (only 1 instance of each user control throughout the system)
         public SignIn SignIn { get; set; }
         public SignUp SignUp { get; set; }
 
@@ -42,25 +42,22 @@ namespace BudgetBuddy
             // Declare a new SignIn instance 
             SignIn = new SignIn(this);
             SignIn.Dock = DockStyle.Fill; // style
+            SignUp = new SignUp(this);
+            SignUp.Dock = DockStyle.Fill; // style
+            Carousel carousel = new Carousel();
+            carousel.Dock = DockStyle.Fill;  // style
 
             // Declare a signInView interface instance.
             ISignInView signInView = SignIn;
 
-            //inject accountRepository, signInView
+            //Dependency Injection
             new SignInPresenter(accountRepository, signInView);
 
 
 
-            // create a new SignIn instance 
-            SignUp = new SignUp(this);
-            SignUp.Dock = DockStyle.Fill;
-
-            Carousel carousel = new Carousel();
-            carousel.Dock = DockStyle.Fill;
-
-
-            MainFormLeftPanel.Controls.Add(carousel);
-            MainFormRightPanel.Controls.Add(SignIn);
+            // inserting usercontrols in the panel
+            MainFormLeftPanel.Controls.Add(carousel); //left
+            MainFormRightPanel.Controls.Add(SignIn); //right
             MainFormRightPanel.Controls.Add(SignUp);
 
 

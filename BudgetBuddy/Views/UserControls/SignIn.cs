@@ -17,10 +17,12 @@ namespace BudgetBuddy.Presenters.UserControls
 {
     public partial class SignIn : UserControl, ISignInView
     {
+        // fields
         public MainForm MainForm;
         private string _message;
         private bool _isSuccessful;
 
+        // constructor
         public SignIn(MainForm form)
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace BudgetBuddy.Presenters.UserControls
             
         }
 
-
+        // constructor overloading
         public SignIn()
         {
 
@@ -38,12 +40,13 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void AssociateAndRaiseViewEvents()
         {
-
+            // subscribing events using lambda expression and delagate
+            // subscibe SignInBtn.Click event to delagate LoginAccountEvent
             SignInBtn.Click += delegate
             {
+                // invoking the event
                 LoginAccountEvent?.Invoke(this, EventArgs.Empty);
-                MessageBox.Show($"{isSuccessful}");
-                MessageBox.Show($"{test}");
+
                 if (isSuccessful)
                 {
                     ParentForm.Hide();
@@ -59,6 +62,8 @@ namespace BudgetBuddy.Presenters.UserControls
             };
 
         }
+
+        // implement interface
         public string Email 
         { 
             get { return EmailTxtBox.Text; }
@@ -75,32 +80,20 @@ namespace BudgetBuddy.Presenters.UserControls
             set { _isSuccessful = value;  }
         }
 
-        public string test
-        {
-            get; set;
-        }
 
+
+        // events
         public event EventHandler LoginAccountEvent;
 
 
+        // methods
         private void SignupLbl_Click(object sender, EventArgs e)
         {
+            
             MainForm.SignUp.BringToFront();
         }
-
-        //Singleton pattern (Open a single form instance)
    
 
-        private void SignInBtn_Click(object sender, EventArgs e)
-        {
-            //DataClasses1DataContext db = new DataClasses1DataContext();
-            //var login = from acc in db.Accounts
-            //            where acc.email == EmailTxtBox.Text &&
-            //            acc.password == EmailTxtBox.Text
-            //            select acc;
 
-            //MessageBox.Show($"{login.Count()}");
-
-        }
     }
 }

@@ -12,8 +12,11 @@ namespace BudgetBuddy.Presenters
 {
     public class SignInPresenter
     {
+        // fields Dependency Injection
         private IAccountRepository _accountRepository;
         private ISignInView _view;
+
+        // constructor
         public SignInPresenter(IAccountRepository accountRepository, ISignInView view)
         {
             _accountRepository = accountRepository;
@@ -23,26 +26,29 @@ namespace BudgetBuddy.Presenters
             
         }
 
+        // constructor overloading
         public SignInPresenter()
         {
 
         }
 
 
-
+        // methods
         private void LoginAccount(object sender, EventArgs e)
         {
             try
             {
+                // mapping account class
                 var loginAccount = new Models.Account();
                 loginAccount.Email = _view.Email;
                 loginAccount.Password = _view.Password;
-                _view.test = _view.Email;
 
 
-
+                // querying from AccontRepository
+                // returns an integer 
                 if (_accountRepository.LoginAccount(loginAccount) == 1)
                 {
+                    
                     _view.isSuccessful = true;
                    
                 }

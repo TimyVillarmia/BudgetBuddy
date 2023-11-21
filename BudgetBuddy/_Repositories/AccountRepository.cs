@@ -14,19 +14,20 @@ namespace BudgetBuddy.Repositories
 {
     public class AccountRepository : BaseRepository, IAccountRepository
     {
+        //fields
         protected DataClasses1DataContext _db;
 
-
+        // constructor
         public AccountRepository(DataClasses1DataContext db) 
         { 
             _db = db;
         }
 
 
-
+        // methods
         public void CreateAccount(Models.Account account)
         {
-     
+            // insert code here
         }
 
 
@@ -44,6 +45,7 @@ namespace BudgetBuddy.Repositories
 
         public void UpdateAccount(Models.Account account)
         {
+            // insert code here
 
         }
 

@@ -64,10 +64,10 @@
     <Compile Include="Models\IAccountRepository.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Presenters\SignUpPresenter.cs" />
-    <Compile Include="Presenters\UserControls\Carousel.cs">
+    <Compile Include="Views\UserControls\Carousel.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Presenters\UserControls\Carousel.Designer.cs">
+    <Compile Include="Views\UserControls\Carousel.Designer.cs">
       <DependentUpon>Carousel.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Dashboard.cs">
@@ -77,6 +77,12 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ISignInView.cs" />
+    <Compile Include="Views\UserControls\Recovery.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\Recovery.Designer.cs">
+      <DependentUpon>Recovery.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\SignIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -100,7 +106,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Presenters\UserControls\Carousel.resx">
+    <EmbeddedResource Include="Views\UserControls\Carousel.resx">
       <DependentUpon>Carousel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\SignIn.resx">
