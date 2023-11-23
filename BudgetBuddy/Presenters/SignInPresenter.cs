@@ -13,8 +13,8 @@ namespace BudgetBuddy.Presenters
     public class SignInPresenter
     {
         // fields Dependency Injection
-        private IAccountRepository _accountRepository;
-        private ISignInView _view;
+        private readonly IAccountRepository _accountRepository;
+        private readonly ISignInView _view;
 
         // constructor
         public SignInPresenter(IAccountRepository accountRepository, ISignInView view)
@@ -39,9 +39,11 @@ namespace BudgetBuddy.Presenters
             try
             {
                 // mapping account class
-                var loginAccount = new Models.Account();
-                loginAccount.Email = _view.Email;
-                loginAccount.Password = _view.Password;
+                var loginAccount = new Models.Account
+                {
+                    Email = _view.Email,
+                    Password = _view.Password
+                };
 
 
                 // querying from AccontRepository
@@ -60,7 +62,7 @@ namespace BudgetBuddy.Presenters
 
 
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 return;
             }

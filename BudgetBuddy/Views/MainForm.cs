@@ -40,12 +40,18 @@ namespace BudgetBuddy
             IAccountRepository accountRepository = new AccountRepository(db);
 
             // Declare a new SignIn instance 
-            SignIn = new SignIn(this);
-            SignIn.Dock = DockStyle.Fill; // style
-            SignUp = new SignUp(this);
-            SignUp.Dock = DockStyle.Fill; // style
-            Carousel carousel = new Carousel();
-            carousel.Dock = DockStyle.Fill;  // style
+            SignIn = new SignIn(this)
+            {
+                Dock = DockStyle.Fill // style
+            };
+            SignUp = new SignUp(this)
+            {
+                Dock = DockStyle.Fill // style
+            };
+            Pagination pagination = new Pagination
+            {
+                Dock = DockStyle.Fill  // style
+            };
 
             // Declare a signInView interface instance.
             ISignInView signInView = SignIn;
@@ -56,7 +62,7 @@ namespace BudgetBuddy
 
 
             // inserting usercontrols in the panel
-            MainFormLeftPanel.Controls.Add(carousel); //left
+            MainFormLeftPanel.Controls.Add(pagination); //left
             MainFormRightPanel.Controls.Add(SignIn); //right
             MainFormRightPanel.Controls.Add(SignUp);
 

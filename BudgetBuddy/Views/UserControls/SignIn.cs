@@ -10,8 +10,7 @@ using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+
 
 namespace BudgetBuddy.Presenters.UserControls
 {
@@ -19,7 +18,7 @@ namespace BudgetBuddy.Presenters.UserControls
     {
         // fields
         public MainForm MainForm;
-        private string _message;
+        private readonly string _message;
         private bool _isSuccessful;
 
         // constructor
@@ -92,7 +91,6 @@ namespace BudgetBuddy.Presenters.UserControls
             
             MainForm.SignUp.BringToFront();
         }
-   
 
 
     }

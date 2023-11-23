@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace BudgetBuddy.Presenters.UserControls
+namespace BudgetBuddy.Resources
 {
-    public partial class Carousel : UserControl
+    public partial class Page1 : UserControl
     {
-        public Carousel()
+        public Page1()
         {
             InitializeComponent();
         }
