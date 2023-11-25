@@ -10,24 +10,11 @@ using System.Windows.Forms;
 
 namespace BudgetBuddy.Views.UserControls
 {
-    public partial class Recovery : UserControl
+    public partial class Confirmation : UserControl
     {
-        public MainForm MainForm;
-
-        public Recovery(MainForm form)
+        public Confirmation()
         {
             InitializeComponent();
-            MainForm = form;
-        }
-
-        public Recovery()
-        {
-
-        }
-
-        private void SignupLbl_Click(object sender, EventArgs e)
-        {
-            MainForm.signUp.BringToFront();
         }
     }
 }

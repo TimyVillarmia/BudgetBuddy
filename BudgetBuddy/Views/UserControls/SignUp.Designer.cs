@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -46,17 +47,18 @@
             this.guna2ToggleSwitch2 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.label7 = new System.Windows.Forms.Label();
             this.RetypePassTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Inter", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.label2.Location = new System.Drawing.Point(63, 160);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(292, 25);
+            this.label2.Size = new System.Drawing.Size(285, 25);
             this.label2.TabIndex = 6;
             this.label2.Text = "Start Your Financial Journey";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,11 +66,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Inter", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.label1.Location = new System.Drawing.Point(58, 185);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(513, 116);
+            this.label1.Size = new System.Drawing.Size(473, 110);
             this.label1.TabIndex = 5;
             this.label1.Text = "Start Budgeting with\r\na New Account";
             // 
@@ -95,7 +97,7 @@
             this.CreateAccountBtn.Location = new System.Drawing.Point(69, 637);
             this.CreateAccountBtn.Name = "CreateAccountBtn";
             this.CreateAccountBtn.Size = new System.Drawing.Size(502, 45);
-            this.CreateAccountBtn.TabIndex = 17;
+            this.CreateAccountBtn.TabIndex = 6;
             this.CreateAccountBtn.Text = "Create account";
             // 
             // SignInLbl
@@ -144,7 +146,7 @@
             this.FirstNameTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.FirstNameTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.FirstNameTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.FirstNameTxtBox.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FirstNameTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FirstNameTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.FirstNameTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.FirstNameTxtBox.Location = new System.Drawing.Point(68, 345);
@@ -154,7 +156,7 @@
             this.FirstNameTxtBox.PlaceholderText = "";
             this.FirstNameTxtBox.SelectedText = "";
             this.FirstNameTxtBox.Size = new System.Drawing.Size(250, 36);
-            this.FirstNameTxtBox.TabIndex = 25;
+            this.FirstNameTxtBox.TabIndex = 1;
             // 
             // LastNameTxtBox
             // 
@@ -165,7 +167,7 @@
             this.LastNameTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.LastNameTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.LastNameTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.LastNameTxtBox.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastNameTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LastNameTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.LastNameTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.LastNameTxtBox.Location = new System.Drawing.Point(326, 345);
@@ -175,7 +177,7 @@
             this.LastNameTxtBox.PlaceholderText = "";
             this.LastNameTxtBox.SelectedText = "";
             this.LastNameTxtBox.Size = new System.Drawing.Size(245, 36);
-            this.LastNameTxtBox.TabIndex = 26;
+            this.LastNameTxtBox.TabIndex = 2;
             // 
             // label4
             // 
@@ -191,11 +193,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(92)))));
             this.label5.Location = new System.Drawing.Point(64, 394);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 19);
+            this.label5.Size = new System.Drawing.Size(48, 20);
             this.label5.TabIndex = 29;
             this.label5.Text = "Email";
             // 
@@ -208,7 +210,7 @@
             this.EmailTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.EmailTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.EmailTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.EmailTxtBox.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.EmailTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.EmailTxtBox.Location = new System.Drawing.Point(68, 417);
@@ -218,7 +220,7 @@
             this.EmailTxtBox.PlaceholderText = "";
             this.EmailTxtBox.SelectedText = "";
             this.EmailTxtBox.Size = new System.Drawing.Size(503, 36);
-            this.EmailTxtBox.TabIndex = 28;
+            this.EmailTxtBox.TabIndex = 3;
             // 
             // guna2ToggleSwitch1
             // 
@@ -238,11 +240,11 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(92)))));
             this.label6.Location = new System.Drawing.Point(65, 468);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 19);
+            this.label6.Size = new System.Drawing.Size(78, 20);
             this.label6.TabIndex = 31;
             this.label6.Text = "Password";
             // 
@@ -255,7 +257,7 @@
             this.PasswordTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.PasswordTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.PasswordTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.PasswordTxtBox.Font = new System.Drawing.Font("Inter", 12F);
+            this.PasswordTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.PasswordTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.PasswordTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.PasswordTxtBox.Location = new System.Drawing.Point(69, 491);
@@ -265,7 +267,7 @@
             this.PasswordTxtBox.PlaceholderText = "";
             this.PasswordTxtBox.SelectedText = "";
             this.PasswordTxtBox.Size = new System.Drawing.Size(502, 36);
-            this.PasswordTxtBox.TabIndex = 30;
+            this.PasswordTxtBox.TabIndex = 4;
             // 
             // guna2ToggleSwitch2
             // 
@@ -285,11 +287,11 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(92)))));
             this.label7.Location = new System.Drawing.Point(65, 548);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(141, 19);
+            this.label7.Size = new System.Drawing.Size(133, 20);
             this.label7.TabIndex = 34;
             this.label7.Text = "Retype Password";
             // 
@@ -302,7 +304,7 @@
             this.RetypePassTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.RetypePassTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.RetypePassTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.RetypePassTxtBox.Font = new System.Drawing.Font("Inter", 12F);
+            this.RetypePassTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.RetypePassTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.RetypePassTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.RetypePassTxtBox.Location = new System.Drawing.Point(69, 571);
@@ -312,7 +314,13 @@
             this.RetypePassTxtBox.PlaceholderText = "";
             this.RetypePassTxtBox.SelectedText = "";
             this.RetypePassTxtBox.Size = new System.Drawing.Size(502, 36);
-            this.RetypePassTxtBox.TabIndex = 33;
+            this.RetypePassTxtBox.TabIndex = 5;
+            // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
             // 
             // SignUp
             // 
@@ -364,5 +372,6 @@
         private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch2;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2TextBox RetypePassTxtBox;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

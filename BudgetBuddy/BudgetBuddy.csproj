@@ -101,6 +101,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.IO.FileSystem.AccessControl, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.FileSystem.AccessControl.5.0.0\lib\net461\System.IO.FileSystem.AccessControl.dll</HintPath>
     </Reference>
@@ -125,7 +126,6 @@
     <Reference Include="System.Reflection.Context" />
     <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
-      <Private>True</Private>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Runtime.Caching" />
@@ -211,7 +211,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
@@ -243,6 +242,12 @@
     </Compile>
     <Compile Include="Resources\Page3.Designer.cs">
       <DependentUpon>Page3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\Confirmation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\Confirmation.Designer.cs">
+      <DependentUpon>Confirmation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\Pagination.cs">
       <SubType>UserControl</SubType>
@@ -295,8 +300,14 @@
     <EmbeddedResource Include="Resources\Page3.resx">
       <DependentUpon>Page3.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\Confirmation.resx">
+      <DependentUpon>Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Pagination.resx">
       <DependentUpon>Pagination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\Recovery.resx">
+      <DependentUpon>Recovery.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>

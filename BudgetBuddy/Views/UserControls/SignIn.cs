@@ -89,9 +89,12 @@ namespace BudgetBuddy.Presenters.UserControls
         private void SignupLbl_Click(object sender, EventArgs e)
         {
             
-            MainForm.SignUp.BringToFront();
+            MainForm.signUp.BringToFront();
         }
 
-
+        private void RecoveryLbl_Click(object sender, EventArgs e)
+        {
+            MainForm.recovery.BringToFront();
+        }
     }
 }

@@ -12,6 +12,7 @@ using BudgetBuddy.Presenters;
 using BudgetBuddy.Presenters.UserControls;
 using BudgetBuddy.Repositories;
 using BudgetBuddy.Views;
+using BudgetBuddy.Views.UserControls;
 
 namespace BudgetBuddy
 {
@@ -28,8 +29,9 @@ namespace BudgetBuddy
 
 
         // Singleton pattern (only 1 instance of each user control throughout the system)
-        public SignIn SignIn { get; set; }
-        public SignUp SignUp { get; set; }
+        public SignIn signIn { get; set; }
+        public SignUp signUp { get; set; }
+        public Recovery recovery { get; set; }
 
 
 
@@ -40,21 +42,28 @@ namespace BudgetBuddy
             IAccountRepository accountRepository = new AccountRepository(db);
 
             // Declare a new SignIn instance 
-            SignIn = new SignIn(this)
+            signIn = new SignIn(this)
             {
                 Dock = DockStyle.Fill // style
             };
-            SignUp = new SignUp(this)
+            signUp = new SignUp(this)
             {
                 Dock = DockStyle.Fill // style
             };
-            Pagination pagination = new Pagination
+            recovery = new Recovery(this)
+            {
+                Dock = DockStyle.Fill
+            };
+
+            Pagination pagination= new Pagination()
             {
                 Dock = DockStyle.Fill  // style
             };
 
+        
+
             // Declare a signInView interface instance.
-            ISignInView signInView = SignIn;
+            ISignInView signInView = signIn;
 
             //Dependency Injection
             new SignInPresenter(accountRepository, signInView);
@@ -63,8 +72,9 @@ namespace BudgetBuddy
 
             // inserting usercontrols in the panel
             MainFormLeftPanel.Controls.Add(pagination); //left
-            MainFormRightPanel.Controls.Add(SignIn); //right
-            MainFormRightPanel.Controls.Add(SignUp);
+            MainFormRightPanel.Controls.Add(signIn); //right
+            MainFormRightPanel.Controls.Add(signUp);
+            MainFormRightPanel.Controls.Add(recovery);
 
 
         }

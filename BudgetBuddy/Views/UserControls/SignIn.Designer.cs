@@ -49,11 +49,11 @@
             // HeadlineLbl
             // 
             this.HeadlineLbl.AutoSize = true;
-            this.HeadlineLbl.Font = new System.Drawing.Font("Inter", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HeadlineLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HeadlineLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.HeadlineLbl.Location = new System.Drawing.Point(109, 189);
             this.HeadlineLbl.Name = "HeadlineLbl";
-            this.HeadlineLbl.Size = new System.Drawing.Size(363, 174);
+            this.HeadlineLbl.Size = new System.Drawing.Size(356, 165);
             this.HeadlineLbl.TabIndex = 0;
             this.HeadlineLbl.Text = "Sign In to \r\nYour Personal \r\nFinance Hub";
             // 
@@ -66,7 +66,7 @@
             this.EmailTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.EmailTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.EmailTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.EmailTxtBox.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.EmailTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.EmailTxtBox.Location = new System.Drawing.Point(119, 425);
@@ -87,7 +87,7 @@
             this.PasswordTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.PasswordTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.PasswordTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.PasswordTxtBox.Font = new System.Drawing.Font("Inter", 12F);
+            this.PasswordTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.PasswordTxtBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.PasswordTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.PasswordTxtBox.Location = new System.Drawing.Point(119, 518);
@@ -116,7 +116,7 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Inter", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
             this.label2.Location = new System.Drawing.Point(0, 164);
             this.label2.Name = "label2";
@@ -128,22 +128,22 @@
             // EmailLbl
             // 
             this.EmailLbl.AutoSize = true;
-            this.EmailLbl.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EmailLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(92)))));
             this.EmailLbl.Location = new System.Drawing.Point(115, 402);
             this.EmailLbl.Name = "EmailLbl";
-            this.EmailLbl.Size = new System.Drawing.Size(50, 19);
+            this.EmailLbl.Size = new System.Drawing.Size(48, 20);
             this.EmailLbl.TabIndex = 7;
             this.EmailLbl.Text = "Email";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Inter", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(82)))), ((int)(((byte)(92)))));
             this.label4.Location = new System.Drawing.Point(115, 495);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 19);
+            this.label4.Size = new System.Drawing.Size(78, 20);
             this.label4.TabIndex = 8;
             this.label4.Text = "Password";
             // 
@@ -157,6 +157,7 @@
             this.RecoveryLbl.Size = new System.Drawing.Size(116, 16);
             this.RecoveryLbl.TabIndex = 9;
             this.RecoveryLbl.Text = "Forgot Password?";
+            this.RecoveryLbl.Click += new System.EventHandler(this.RecoveryLbl_Click);
             // 
             // label6
             // 
