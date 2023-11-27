@@ -38,13 +38,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.RecoveryLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.SignupLbl = new System.Windows.Forms.Label();
             this.guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.emailErrorLbl = new System.Windows.Forms.Label();
-            this.passErrorLbl = new System.Windows.Forms.Label();
+            this.SignupLbl = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +77,7 @@
             this.EmailTxtBox.SelectedText = "";
             this.EmailTxtBox.Size = new System.Drawing.Size(400, 36);
             this.EmailTxtBox.TabIndex = 1;
+            this.EmailTxtBox.TextChanged += new System.EventHandler(this.EmailTxtBox_TextChanged);
             // 
             // PasswordTxtBox
             // 
@@ -100,6 +99,7 @@
             this.PasswordTxtBox.SelectedText = "";
             this.PasswordTxtBox.Size = new System.Drawing.Size(400, 36);
             this.PasswordTxtBox.TabIndex = 2;
+            this.PasswordTxtBox.TextChanged += new System.EventHandler(this.EmailTxtBox_TextChanged);
             // 
             // SignInBtn
             // 
@@ -172,18 +172,6 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Don’t have an account? ";
             // 
-            // SignupLbl
-            // 
-            this.SignupLbl.AutoSize = true;
-            this.SignupLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignupLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
-            this.SignupLbl.Location = new System.Drawing.Point(367, 700);
-            this.SignupLbl.Name = "SignupLbl";
-            this.SignupLbl.Size = new System.Drawing.Size(63, 20);
-            this.SignupLbl.TabIndex = 11;
-            this.SignupLbl.Text = "Sign up";
-            this.SignupLbl.Click += new System.EventHandler(this.SignupLbl_Click);
-            // 
             // guna2ToggleSwitch1
             // 
             this.guna2ToggleSwitch1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
@@ -224,35 +212,27 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // emailErrorLbl
+            // SignupLbl
             // 
-            this.emailErrorLbl.AutoSize = true;
-            this.emailErrorLbl.ForeColor = System.Drawing.Color.Red;
-            this.emailErrorLbl.Location = new System.Drawing.Point(116, 465);
-            this.emailErrorLbl.Name = "emailErrorLbl";
-            this.emailErrorLbl.Size = new System.Drawing.Size(35, 13);
-            this.emailErrorLbl.TabIndex = 22;
-            this.emailErrorLbl.Text = "label1";
-            // 
-            // passErrorLbl
-            // 
-            this.passErrorLbl.AutoSize = true;
-            this.passErrorLbl.ForeColor = System.Drawing.Color.Red;
-            this.passErrorLbl.Location = new System.Drawing.Point(116, 561);
-            this.passErrorLbl.Name = "passErrorLbl";
-            this.passErrorLbl.Size = new System.Drawing.Size(35, 13);
-            this.passErrorLbl.TabIndex = 23;
-            this.passErrorLbl.Text = "label1";
+            this.SignupLbl.AutoSize = true;
+            this.SignupLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.SignupLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.SignupLbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.SignupLbl.Location = new System.Drawing.Point(365, 700);
+            this.SignupLbl.Name = "SignupLbl";
+            this.SignupLbl.Size = new System.Drawing.Size(63, 20);
+            this.SignupLbl.TabIndex = 33;
+            this.SignupLbl.TabStop = true;
+            this.SignupLbl.Text = "Sign up";
+            this.SignupLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignupLbl_LinkClicked);
             // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.passErrorLbl);
-            this.Controls.Add(this.emailErrorLbl);
+            this.Controls.Add(this.SignupLbl);
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.guna2ToggleSwitch1);
-            this.Controls.Add(this.SignupLbl);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.RecoveryLbl);
             this.Controls.Add(this.label4);
@@ -282,12 +262,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label RecoveryLbl;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label SignupLbl;
         private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private System.Windows.Forms.Label passErrorLbl;
-        private System.Windows.Forms.Label emailErrorLbl;
+        private System.Windows.Forms.LinkLabel SignupLbl;
     }
 }

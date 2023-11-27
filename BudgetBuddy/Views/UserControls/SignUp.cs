@@ -42,11 +42,10 @@ namespace BudgetBuddy.Presenters.UserControls
 
         public event EventHandler CreateAccountEvent;
 
-        private void SignInLbl_Click(object sender, EventArgs e)
+        private void SignInLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MainForm.SignIn.BringToFront();
+
         }
-
-
     }
 }

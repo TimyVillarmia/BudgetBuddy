@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.HeadlineLbl = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.label1 = new System.Windows.Forms.Label();
             this.placeholder = new System.Windows.Forms.Label();
             this.firstDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2ContextMenuStrip1 = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
             this.secondDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
             this.thirdDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
             this.fourthDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
             this.fifthDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
             this.sixthDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
-            this.ResendLbl = new System.Windows.Forms.Label();
             this.CancelBtn = new Guna.UI2.WinForms.Guna2Button();
             this.ConfirmBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.ResendLbl = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -131,20 +131,6 @@
             this.firstDigitOTP.Size = new System.Drawing.Size(75, 75);
             this.firstDigitOTP.TabIndex = 22;
             this.firstDigitOTP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // guna2ContextMenuStrip1
-            // 
-            this.guna2ContextMenuStrip1.Name = "guna2ContextMenuStrip1";
-            this.guna2ContextMenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.ColorTable = null;
-            this.guna2ContextMenuStrip1.RenderStyle.RoundedEdges = true;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.guna2ContextMenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.guna2ContextMenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.guna2ContextMenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.guna2ContextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // secondDigitOTP
             // 
@@ -261,17 +247,6 @@
             this.sixthDigitOTP.TabIndex = 28;
             this.sixthDigitOTP.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ResendLbl
-            // 
-            this.ResendLbl.AutoSize = true;
-            this.ResendLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ResendLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
-            this.ResendLbl.Location = new System.Drawing.Point(441, 551);
-            this.ResendLbl.Name = "ResendLbl";
-            this.ResendLbl.Size = new System.Drawing.Size(107, 20);
-            this.ResendLbl.TabIndex = 29;
-            this.ResendLbl.Text = "Resend Code";
-            // 
             // CancelBtn
             // 
             this.CancelBtn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(9)))));
@@ -289,6 +264,7 @@
             this.CancelBtn.Size = new System.Drawing.Size(230, 45);
             this.CancelBtn.TabIndex = 30;
             this.CancelBtn.Text = "Cancel";
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // ConfirmBtn
             // 
@@ -307,13 +283,33 @@
             this.ConfirmBtn.Text = "Confirm";
             this.ConfirmBtn.Click += new System.EventHandler(this.ConfirmBtn_Click);
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // ResendLbl
+            // 
+            this.ResendLbl.AutoSize = true;
+            this.ResendLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.ResendLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.ResendLbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.ResendLbl.Location = new System.Drawing.Point(441, 529);
+            this.ResendLbl.Name = "ResendLbl";
+            this.ResendLbl.Size = new System.Drawing.Size(107, 20);
+            this.ResendLbl.TabIndex = 32;
+            this.ResendLbl.TabStop = true;
+            this.ResendLbl.Text = "Resend Code";
+            this.ResendLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ResendLbl_LinkClicked);
+            // 
             // Confirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ResendLbl);
             this.Controls.Add(this.ConfirmBtn);
             this.Controls.Add(this.CancelBtn);
-            this.Controls.Add(this.ResendLbl);
             this.Controls.Add(this.sixthDigitOTP);
             this.Controls.Add(this.fifthDigitOTP);
             this.Controls.Add(this.fourthDigitOTP);
@@ -338,18 +334,17 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label HeadlineLbl;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label placeholder;
         private Guna.UI2.WinForms.Guna2TextBox firstDigitOTP;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip guna2ContextMenuStrip1;
         private Guna.UI2.WinForms.Guna2TextBox secondDigitOTP;
         private Guna.UI2.WinForms.Guna2TextBox thirdDigitOTP;
         private Guna.UI2.WinForms.Guna2TextBox fourthDigitOTP;
         private Guna.UI2.WinForms.Guna2TextBox fifthDigitOTP;
         private Guna.UI2.WinForms.Guna2TextBox sixthDigitOTP;
-        private System.Windows.Forms.Label ResendLbl;
         private Guna.UI2.WinForms.Guna2Button CancelBtn;
         private Guna.UI2.WinForms.Guna2Button ConfirmBtn;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private System.Windows.Forms.LinkLabel ResendLbl;
     }
 }

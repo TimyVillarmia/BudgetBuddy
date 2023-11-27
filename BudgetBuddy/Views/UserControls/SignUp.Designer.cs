@@ -33,7 +33,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CreateAccountBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.SignInLbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.FirstNameTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
@@ -48,6 +47,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.RetypePassTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.SignInLbl = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,18 +99,6 @@
             this.CreateAccountBtn.Size = new System.Drawing.Size(502, 45);
             this.CreateAccountBtn.TabIndex = 6;
             this.CreateAccountBtn.Text = "Create account";
-            // 
-            // SignInLbl
-            // 
-            this.SignInLbl.AutoSize = true;
-            this.SignInLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignInLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
-            this.SignInLbl.Location = new System.Drawing.Point(380, 708);
-            this.SignInLbl.Name = "SignInLbl";
-            this.SignInLbl.Size = new System.Drawing.Size(59, 20);
-            this.SignInLbl.TabIndex = 19;
-            this.SignInLbl.Text = "Sign In";
-            this.SignInLbl.Click += new System.EventHandler(this.SignInLbl_Click);
             // 
             // label8
             // 
@@ -322,10 +310,25 @@
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
+            // SignInLbl
+            // 
+            this.SignInLbl.AutoSize = true;
+            this.SignInLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.SignInLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.SignInLbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.SignInLbl.Location = new System.Drawing.Point(381, 708);
+            this.SignInLbl.Name = "SignInLbl";
+            this.SignInLbl.Size = new System.Drawing.Size(59, 20);
+            this.SignInLbl.TabIndex = 36;
+            this.SignInLbl.TabStop = true;
+            this.SignInLbl.Text = "Sign In";
+            this.SignInLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignInLbl_LinkClicked);
+            // 
             // SignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SignInLbl);
             this.Controls.Add(this.guna2ToggleSwitch2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.RetypePassTxtBox);
@@ -338,7 +341,6 @@
             this.Controls.Add(this.LastNameTxtBox);
             this.Controls.Add(this.FirstNameTxtBox);
             this.Controls.Add(this.guna2PictureBox1);
-            this.Controls.Add(this.SignInLbl);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.CreateAccountBtn);
             this.Controls.Add(this.label3);
@@ -358,7 +360,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Button CreateAccountBtn;
-        private System.Windows.Forms.Label SignInLbl;
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2TextBox FirstNameTxtBox;
@@ -373,5 +374,6 @@
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2TextBox RetypePassTxtBox;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private System.Windows.Forms.LinkLabel SignInLbl;
     }
 }

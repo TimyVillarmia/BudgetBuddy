@@ -31,8 +31,7 @@ namespace BudgetBuddy.Presenters.UserControls
             InitializeComponent();
             MainForm = form;
             AssociateAndRaiseViewEvents();
-            emailErrorLbl.Visible = false;
-            passErrorLbl.Visible = false;
+
             
         }
 
@@ -61,6 +60,9 @@ namespace BudgetBuddy.Presenters.UserControls
                 else
                 {
                     MessageBox.Show("Incorrect Email or Password");
+                    EmailTxtBox.BorderColor = Color.Red;
+                    PasswordTxtBox.BorderColor = Color.Red;
+
                 }
             };
 
@@ -89,16 +91,22 @@ namespace BudgetBuddy.Presenters.UserControls
 
 
         // methods
-        private void SignupLbl_Click(object sender, EventArgs e)
-        {
-            
-            MainForm.SignUp.BringToFront();
-        }
 
         private void RecoveryLbl_Click(object sender, EventArgs e)
         {
             MainForm.Recovery.BringToFront();
         }
 
+        private void EmailTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            EmailTxtBox.BorderColor = Color.FromArgb(213, 218, 223);
+            PasswordTxtBox.BorderColor = Color.FromArgb(213, 218, 223);
+        }
+
+        private void SignupLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MainForm.SignUp.BringToFront();
+
+        }
     }
 }

@@ -39,7 +39,6 @@ namespace BudgetBuddy.Views.UserControls
             InitializeComponent();
             MainForm = form;
             AssociateAndRaiseViewEvents();
-            errorLbl.Visible = false;
 
         }
 
@@ -60,9 +59,8 @@ namespace BudgetBuddy.Views.UserControls
                 }
                 else
                 {
-                    errorLbl.Visible = true;
+                    MessageBox.Show("Enter a valid Email");
                     EmailTxtBox.BorderColor = Color.Red;
-                    errorLbl.Text = "Email is not registred";
                 }
             };
         }
@@ -75,11 +73,17 @@ namespace BudgetBuddy.Views.UserControls
 
         private void SignupLbl_Click(object sender, EventArgs e)
         {
-            MainForm.SignUp.BringToFront();
         }
 
+        private void EmailTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            EmailTxtBox.BorderColor = Color.FromArgb(213, 218, 223);
 
+        }
 
-
+        private void SignupLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MainForm.SignUp.BringToFront();
+        }
     }
 }

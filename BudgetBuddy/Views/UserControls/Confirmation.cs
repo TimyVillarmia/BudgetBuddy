@@ -13,10 +13,14 @@ namespace BudgetBuddy.Views.UserControls
 {
     public partial class Confirmation : UserControl
     {
-        public Confirmation()
+        public MainForm MainForm;
+
+        public Confirmation(MainForm form)
         {
             InitializeComponent();
             placeholder.Text = Session.CurrentUser;
+            MainForm = form;
+
         }
 
         private void ConfirmBtn_Click(object sender, EventArgs e)
@@ -41,6 +45,18 @@ namespace BudgetBuddy.Views.UserControls
                 MessageBox.Show($"{Session.isSuccesful}");
 
             }
+        }
+
+        private void CancelBtn_Click(object sender, EventArgs e)
+        {
+            MainForm.SignIn.BringToFront();
+        }
+
+
+        private void ResendLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Session.SendOTP(Session.CurrentUser);
+
         }
     }
 }

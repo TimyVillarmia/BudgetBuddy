@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.HeadlineLbl = new System.Windows.Forms.Label();
             this.EmailLbl = new System.Windows.Forms.Label();
             this.EmailTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.SignupLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.OTPBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.errorLbl = new System.Windows.Forms.Label();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.SignupLbl = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,18 +94,7 @@
             this.EmailTxtBox.SelectedText = "";
             this.EmailTxtBox.Size = new System.Drawing.Size(400, 36);
             this.EmailTxtBox.TabIndex = 1;
-            // 
-            // SignupLbl
-            // 
-            this.SignupLbl.AutoSize = true;
-            this.SignupLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignupLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
-            this.SignupLbl.Location = new System.Drawing.Point(367, 560);
-            this.SignupLbl.Name = "SignupLbl";
-            this.SignupLbl.Size = new System.Drawing.Size(63, 20);
-            this.SignupLbl.TabIndex = 3;
-            this.SignupLbl.Text = "Sign up";
-            this.SignupLbl.Click += new System.EventHandler(this.SignupLbl_Click);
+            this.EmailTxtBox.TextChanged += new System.EventHandler(this.EmailTxtBox_TextChanged);
             // 
             // label6
             // 
@@ -146,21 +136,30 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
-            // errorLbl
+            // guna2DragControl1
             // 
-            this.errorLbl.AutoSize = true;
-            this.errorLbl.ForeColor = System.Drawing.Color.Red;
-            this.errorLbl.Location = new System.Drawing.Point(116, 465);
-            this.errorLbl.Name = "errorLbl";
-            this.errorLbl.Size = new System.Drawing.Size(35, 13);
-            this.errorLbl.TabIndex = 21;
-            this.errorLbl.Text = "label1";
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
+            // SignupLbl
+            // 
+            this.SignupLbl.AutoSize = true;
+            this.SignupLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.SignupLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.SignupLbl.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(49)))), ((int)(((byte)(112)))));
+            this.SignupLbl.Location = new System.Drawing.Point(366, 560);
+            this.SignupLbl.Name = "SignupLbl";
+            this.SignupLbl.Size = new System.Drawing.Size(63, 20);
+            this.SignupLbl.TabIndex = 33;
+            this.SignupLbl.TabStop = true;
+            this.SignupLbl.Text = "Sign up";
+            this.SignupLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignupLbl_LinkClicked);
             // 
             // Recovery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.errorLbl);
             this.Controls.Add(this.SignupLbl);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.OTPBtn);
@@ -184,9 +183,9 @@
         private System.Windows.Forms.Label HeadlineLbl;
         private System.Windows.Forms.Label EmailLbl;
         private Guna.UI2.WinForms.Guna2TextBox EmailTxtBox;
-        private System.Windows.Forms.Label SignupLbl;
         private System.Windows.Forms.Label label6;
         private Guna.UI2.WinForms.Guna2Button OTPBtn;
-        private System.Windows.Forms.Label errorLbl;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private System.Windows.Forms.LinkLabel SignupLbl;
     }
 }

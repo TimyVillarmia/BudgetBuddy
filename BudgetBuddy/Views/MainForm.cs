@@ -60,7 +60,7 @@ namespace BudgetBuddy
             {
                 Dock = DockStyle.Fill  // style
             };
-            Confirmation  = new Confirmation()
+            Confirmation  = new Confirmation(this)
             {
                 Dock = DockStyle.Fill  // style
             };
