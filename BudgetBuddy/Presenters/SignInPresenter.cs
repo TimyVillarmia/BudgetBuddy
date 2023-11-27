@@ -54,12 +54,12 @@ namespace BudgetBuddy.Presenters
                 {
                     
                     _view.isSuccessful = false;
-                    _view.CurrentUser = string.Empty;
+                    Session.CurrentUser = string.Empty;
                 }
                 else
                 {
                     _view.isSuccessful = true;
-                    _view.CurrentUser = _accountRepository.LoginAccount(loginAccount);
+                    Session.CurrentUser = _accountRepository.LoginAccount(loginAccount);
 
                 }
 

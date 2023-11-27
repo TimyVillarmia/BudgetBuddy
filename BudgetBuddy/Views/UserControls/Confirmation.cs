@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetBuddy.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,31 @@ namespace BudgetBuddy.Views.UserControls
         public Confirmation()
         {
             InitializeComponent();
+            placeholder.Text = Session.CurrentUser;
+        }
+
+        private void ConfirmBtn_Click(object sender, EventArgs e)
+        {
+            var OTP = firstDigitOTP.Text + secondDigitOTP.Text + thirdDigitOTP.Text + fourthDigitOTP.Text + fifthDigitOTP.Text + sixthDigitOTP.Text;
+
+            if(OTP == Session.OTP)
+            {
+                Session.isSuccesful = true;
+
+                if (Session.isSuccesful)
+                {
+                    ParentForm.Hide();
+                    Dashboard dashboard = new Dashboard();
+                    dashboard.ShowDialog();
+                    ParentForm.Close();
+                }
+            }
+            else
+            {
+                Session.isSuccesful = false;
+                MessageBox.Show($"{Session.isSuccesful}");
+
+            }
         }
     }
 }

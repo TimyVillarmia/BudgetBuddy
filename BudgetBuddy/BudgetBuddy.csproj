@@ -242,6 +242,7 @@
     </Compile>
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\IAccountRepository.cs" />
+    <Compile Include="Models\Session.cs" />
     <Compile Include="Presenters\Common\ModelDataValidation.cs" />
     <Compile Include="Presenters\RecoveryPresenter.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
@@ -321,6 +322,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Page3.resx">
       <DependentUpon>Page3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Confirmation.resx">
       <DependentUpon>Confirmation.cs</DependentUpon>

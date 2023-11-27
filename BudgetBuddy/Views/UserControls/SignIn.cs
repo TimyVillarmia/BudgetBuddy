@@ -21,7 +21,6 @@ namespace BudgetBuddy.Presenters.UserControls
         public MainForm MainForm;
         private readonly string _message;
         private bool _isSuccessful;
-        private string _currentUser;
 
         // events
         public event EventHandler LoginAccountEvent;
@@ -55,15 +54,13 @@ namespace BudgetBuddy.Presenters.UserControls
 
                 if (isSuccessful)
                 {
-                    ParentForm.Hide();
-                    Dashboard dashboard = new Dashboard();
-                    dashboard.ShowDialog();
-                    ParentForm.Close();
-
+                    
+                    Session.SendOTP(EmailTxtBox.Text);
+                    MainForm.Confirmation.BringToFront();
                 }
                 else
                 {
-                    MessageBox.Show("Error!");
+                    MessageBox.Show("Incorrect Email or Password");
                 }
             };
 
@@ -84,11 +81,6 @@ namespace BudgetBuddy.Presenters.UserControls
         {
             get { return _isSuccessful; }
             set { _isSuccessful = value;  }
-        }
-        public string CurrentUser
-        {
-            get { return _currentUser; }
-            set { _currentUser = value; }
         }
 
 

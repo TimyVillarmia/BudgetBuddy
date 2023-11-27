@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetBuddy.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace BudgetBuddy.Views
         public Dashboard()
         {
             InitializeComponent();
+            test.Text = Session.CurrentUser;
         }
     }
 }

@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MimeKit;  
 using MailKit.Net.Smtp;
+using BudgetBuddy.Models;
 
 namespace BudgetBuddy.Views.UserControls
 {
     public partial class Recovery : UserControl, IRecoveryView
     {
         public MainForm MainForm;
-        private protected string _OTP;
         private bool _isSuccessful;
 
         public event EventHandler RecoverAccountEvent;
@@ -25,11 +25,6 @@ namespace BudgetBuddy.Views.UserControls
         {
             get { return EmailTxtBox.Text; }
             set { EmailTxtBox.Text = value; }
-        }
-        public string OTP
-        {
-            get { return _OTP; }
-            set { _OTP = value; }
         }
 
         public bool isSuccessful
@@ -59,8 +54,8 @@ namespace BudgetBuddy.Views.UserControls
 
                 if (isSuccessful)
                 {
-                    _OTP = GenerateOTP();
-                    MessageBox.Show(_OTP);
+                    Session.SendOTP(EmailTxtBox.Text);
+                    MessageBox.Show(Session.OTP);
                     MainForm.Confirmation.BringToFront();
                 }
                 else
@@ -85,21 +80,6 @@ namespace BudgetBuddy.Views.UserControls
 
 
 
-        //method for generating OTP
-        public string GenerateOTP()
-        {
-            string otp_char = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            _OTP = "";
-            Random rnd = new Random();
 
-            for (int i = 0; i < 6; i++)
-            {
-
-                var random_char = otp_char[rnd.Next(1, otp_char.Length)];
-                _OTP += random_char;
-
-            }
-            return _OTP;
-        }
     }
 }
