@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq.Mapping;
 using System.Drawing;
 using System.Linq;
 using System.Management.Instrumentation;
@@ -20,6 +21,10 @@ namespace BudgetBuddy.Presenters.UserControls
         public MainForm MainForm;
         private readonly string _message;
         private bool _isSuccessful;
+        private string _currentUser;
+
+        // events
+        public event EventHandler LoginAccountEvent;
 
         // constructor
         public SignIn(MainForm form)
@@ -27,6 +32,8 @@ namespace BudgetBuddy.Presenters.UserControls
             InitializeComponent();
             MainForm = form;
             AssociateAndRaiseViewEvents();
+            emailErrorLbl.Visible = false;
+            passErrorLbl.Visible = false;
             
         }
 
@@ -78,23 +85,28 @@ namespace BudgetBuddy.Presenters.UserControls
             get { return _isSuccessful; }
             set { _isSuccessful = value;  }
         }
+        public string CurrentUser
+        {
+            get { return _currentUser; }
+            set { _currentUser = value; }
+        }
 
 
 
-        // events
-        public event EventHandler LoginAccountEvent;
+
 
 
         // methods
         private void SignupLbl_Click(object sender, EventArgs e)
         {
             
-            MainForm.signUp.BringToFront();
+            MainForm.SignUp.BringToFront();
         }
 
         private void RecoveryLbl_Click(object sender, EventArgs e)
         {
-            MainForm.recovery.BringToFront();
+            MainForm.Recovery.BringToFront();
         }
+
     }
 }

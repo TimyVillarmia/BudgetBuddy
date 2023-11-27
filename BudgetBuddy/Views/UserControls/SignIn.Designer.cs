@@ -43,6 +43,8 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.emailErrorLbl = new System.Windows.Forms.Label();
+            this.passErrorLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -222,10 +224,32 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
+            // emailErrorLbl
+            // 
+            this.emailErrorLbl.AutoSize = true;
+            this.emailErrorLbl.ForeColor = System.Drawing.Color.Red;
+            this.emailErrorLbl.Location = new System.Drawing.Point(116, 465);
+            this.emailErrorLbl.Name = "emailErrorLbl";
+            this.emailErrorLbl.Size = new System.Drawing.Size(35, 13);
+            this.emailErrorLbl.TabIndex = 22;
+            this.emailErrorLbl.Text = "label1";
+            // 
+            // passErrorLbl
+            // 
+            this.passErrorLbl.AutoSize = true;
+            this.passErrorLbl.ForeColor = System.Drawing.Color.Red;
+            this.passErrorLbl.Location = new System.Drawing.Point(116, 561);
+            this.passErrorLbl.Name = "passErrorLbl";
+            this.passErrorLbl.Size = new System.Drawing.Size(35, 13);
+            this.passErrorLbl.TabIndex = 23;
+            this.passErrorLbl.Text = "label1";
+            // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.passErrorLbl);
+            this.Controls.Add(this.emailErrorLbl);
             this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.guna2ToggleSwitch1);
             this.Controls.Add(this.SignupLbl);
@@ -263,5 +287,7 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private System.Windows.Forms.Label passErrorLbl;
+        private System.Windows.Forms.Label emailErrorLbl;
     }
 }

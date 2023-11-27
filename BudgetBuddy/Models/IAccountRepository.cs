@@ -10,8 +10,7 @@ namespace BudgetBuddy.Models
     {
         void CreateAccount(Account account);
         void UpdateAccount(Account account);
-        int LoginAccount(Account acount);
-        IQueryable GetAll();
-
+        string LoginAccount(Account acount);
+        int RecoverAccount(Models.Account account);
     }
 }

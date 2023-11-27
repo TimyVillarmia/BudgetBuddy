@@ -21,6 +21,7 @@ namespace BudgetBuddy.Presenters
         {
             _accountRepository = accountRepository;
             _view = view;
+            // subscribe the view's event to the presenter's event
             _view.LoginAccountEvent += LoginAccount;
 
             
@@ -36,27 +37,29 @@ namespace BudgetBuddy.Presenters
         // methods
         private void LoginAccount(object sender, EventArgs e)
         {
+            // mapping account class
+            var loginAccount = new Models.Account
+            {
+                Email = _view.Email,
+                Password = _view.Password
+            };
+
             try
             {
-                // mapping account class
-                var loginAccount = new Models.Account
-                {
-                    Email = _view.Email,
-                    Password = _view.Password
-                };
-
+           
 
                 // querying from AccontRepository
                 // returns an integer 
-                if (_accountRepository.LoginAccount(loginAccount) == 1)
+                if (_accountRepository.LoginAccount(loginAccount) == null)
                 {
                     
-                    _view.isSuccessful = true;
-                   
+                    _view.isSuccessful = false;
+                    _view.CurrentUser = string.Empty;
                 }
                 else
                 {
-                    _view.isSuccessful = false;
+                    _view.isSuccessful = true;
+                    _view.CurrentUser = _accountRepository.LoginAccount(loginAccount);
 
                 }
 

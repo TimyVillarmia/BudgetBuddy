@@ -17,7 +17,7 @@ namespace BudgetBuddy.Presenters.UserControls
         {
             InitializeComponent();
         }
-        private RadioButton selectedrb;
+        //private RadioButton selectedrb;
         public Page1 page1;
         public Page2 page2;
         public Page3 page3;
@@ -43,9 +43,9 @@ namespace BudgetBuddy.Presenters.UserControls
             IndicatorGroupBox.Controls.Add(this.PaginationIndicator2);
             IndicatorGroupBox.Controls.Add(this.PaginationIndicator3);
 
-            this.PaginationIndicator1.CheckedChanged += new EventHandler(radioButton_CheckedChange);
-            this.PaginationIndicator2.CheckedChanged += new EventHandler(radioButton_CheckedChange);            this.PaginationIndicator1.CheckedChanged += new EventHandler(radioButton_CheckedChange);
-            this.PaginationIndicator3.CheckedChanged += new EventHandler(radioButton_CheckedChange);
+            this.PaginationIndicator1.CheckedChanged += new EventHandler(RadioButton_CheckedChange);
+            this.PaginationIndicator2.CheckedChanged += new EventHandler(RadioButton_CheckedChange);            this.PaginationIndicator1.CheckedChanged += new EventHandler(RadioButton_CheckedChange);
+            this.PaginationIndicator3.CheckedChanged += new EventHandler(RadioButton_CheckedChange);
 
 
 
@@ -58,7 +58,7 @@ namespace BudgetBuddy.Presenters.UserControls
 
         }
 
-        private void radioButton_CheckedChange(object sender, EventArgs e)
+        private void RadioButton_CheckedChange(object sender, EventArgs e)
         {
 
             if (PaginationIndicator1.Checked)

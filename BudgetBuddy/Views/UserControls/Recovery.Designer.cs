@@ -34,8 +34,9 @@
             this.EmailTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.SignupLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.SignInBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.OTPBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.errorLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,20 +117,20 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Don’t have an account? ";
             // 
-            // SignInBtn
+            // OTPBtn
             // 
-            this.SignInBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.SignInBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.SignInBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.SignInBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SignInBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(9)))));
-            this.SignInBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SignInBtn.ForeColor = System.Drawing.Color.White;
-            this.SignInBtn.Location = new System.Drawing.Point(119, 489);
-            this.SignInBtn.Name = "SignInBtn";
-            this.SignInBtn.Size = new System.Drawing.Size(400, 45);
-            this.SignInBtn.TabIndex = 2;
-            this.SignInBtn.Text = "Send Verification Code";
+            this.OTPBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.OTPBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.OTPBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.OTPBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.OTPBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(9)))));
+            this.OTPBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OTPBtn.ForeColor = System.Drawing.Color.White;
+            this.OTPBtn.Location = new System.Drawing.Point(119, 489);
+            this.OTPBtn.Name = "OTPBtn";
+            this.OTPBtn.Size = new System.Drawing.Size(400, 45);
+            this.OTPBtn.TabIndex = 2;
+            this.OTPBtn.Text = "Send Verification Code";
             // 
             // guna2PictureBox1
             // 
@@ -145,13 +146,24 @@
             this.guna2PictureBox1.TabStop = false;
             this.guna2PictureBox1.UseTransparentBackground = true;
             // 
+            // errorLbl
+            // 
+            this.errorLbl.AutoSize = true;
+            this.errorLbl.ForeColor = System.Drawing.Color.Red;
+            this.errorLbl.Location = new System.Drawing.Point(116, 465);
+            this.errorLbl.Name = "errorLbl";
+            this.errorLbl.Size = new System.Drawing.Size(35, 13);
+            this.errorLbl.TabIndex = 21;
+            this.errorLbl.Text = "label1";
+            // 
             // Recovery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.errorLbl);
             this.Controls.Add(this.SignupLbl);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.SignInBtn);
+            this.Controls.Add(this.OTPBtn);
             this.Controls.Add(this.EmailLbl);
             this.Controls.Add(this.EmailTxtBox);
             this.Controls.Add(this.label2);
@@ -174,6 +186,7 @@
         private Guna.UI2.WinForms.Guna2TextBox EmailTxtBox;
         private System.Windows.Forms.Label SignupLbl;
         private System.Windows.Forms.Label label6;
-        private Guna.UI2.WinForms.Guna2Button SignInBtn;
+        private Guna.UI2.WinForms.Guna2Button OTPBtn;
+        private System.Windows.Forms.Label errorLbl;
     }
 }

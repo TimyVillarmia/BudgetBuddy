@@ -44,7 +44,7 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void SignInLbl_Click(object sender, EventArgs e)
         {
-            MainForm.signIn.BringToFront();
+            MainForm.SignIn.BringToFront();
         }
 
 

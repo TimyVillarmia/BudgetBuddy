@@ -31,14 +31,26 @@ namespace BudgetBuddy.Repositories
         }
 
 
-        public int LoginAccount(Models.Account account)
+        public string LoginAccount(Models.Account account)
         {
             
             var login = from acc in _db.Accounts
                         where acc.email == account.Email &&
                         acc.password == account.Password
-                        select acc;
+                        select acc.email;
             
+            
+            return login.FirstOrDefault();
+        }
+
+        public int RecoverAccount(Models.Account account)
+        {
+
+            var login = from acc in _db.Accounts
+                        where acc.email == account.Email
+                        select acc.email;
+
+
             return login.Count();
         }
 
@@ -49,14 +61,7 @@ namespace BudgetBuddy.Repositories
 
         }
 
-        public IQueryable GetAll()
-        {
 
-            var result = from account in _db.Accounts select account;
-
-
-            return result;
-        }
 
 
     }

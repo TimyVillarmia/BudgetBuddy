@@ -21,14 +21,10 @@ namespace BudgetBuddy.Presenters
             this._view = view;
 
             this._view.CreateAccountEvent += CreateAccount;
-            LoadAllAccountList();
 
         }
 
-        private void LoadAllAccountList()
-        {
-            _accountsList = _accountRepository.GetAll();
-        }
+
 
 
         private void CreateAccount(object sender, EventArgs e)

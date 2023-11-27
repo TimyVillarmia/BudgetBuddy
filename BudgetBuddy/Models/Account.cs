@@ -14,7 +14,7 @@ namespace BudgetBuddy.Models
         private string firstName;
         private string lastName;
         private string email;
-        private string password;    
+        private string password;
 
         [DisplayName("Account Id")]
         public int Id
@@ -46,7 +46,7 @@ namespace BudgetBuddy.Models
         [DisplayName("Email Address")]
         [DataType(DataType.EmailAddress)]
         [Required(ErrorMessage = "Email address is required")]
-        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Your Email is not valid.")]
+        [RegularExpression(@"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$", ErrorMessage = "Enter a valid Email.")]
         public string Email { get { return email; } set { email = value; } }
 
         [DisplayName("Password")]

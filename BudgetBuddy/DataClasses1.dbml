@@ -1,12 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BudgetBuddy" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-CCUR4CG;Initial Catalog=BudgetBuddy;Integrated Security=True" SettingsObjectName="BudgetBuddy.Properties.Settings" SettingsPropertyName="BudgetBuddyConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Accounts" Member="Accounts">
+  <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="email" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="first_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="last_name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="password" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
+      <Association Name="Account_AccountDetail" Member="AccountDetails" ThisKey="id" OtherKey="account_id" Type="AccountDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountDetail" Member="AccountDetails">
+    <Type Name="AccountDetail">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
+      <Column Name="account_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Account_AccountDetail" Member="Account" ThisKey="account_id" OtherKey="id" Type="Account" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
