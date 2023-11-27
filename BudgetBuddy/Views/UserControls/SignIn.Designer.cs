@@ -99,7 +99,7 @@
             this.PasswordTxtBox.SelectedText = "";
             this.PasswordTxtBox.Size = new System.Drawing.Size(400, 36);
             this.PasswordTxtBox.TabIndex = 2;
-            this.PasswordTxtBox.TextChanged += new System.EventHandler(this.EmailTxtBox_TextChanged);
+            this.PasswordTxtBox.TextChanged += new System.EventHandler(this.PasswordTxtBox_TextChanged);
             // 
             // SignInBtn
             // 

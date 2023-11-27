@@ -33,7 +33,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.HeadlineLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.placeholder = new System.Windows.Forms.Label();
             this.firstDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
             this.secondDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
             this.thirdDigitOTP = new Guna.UI2.WinForms.Guna2TextBox();
@@ -44,6 +43,7 @@
             this.ConfirmBtn = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.ResendLbl = new System.Windows.Forms.LinkLabel();
+            this.emailPlaceHolder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,18 +96,6 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "An email with a verification code was just sent to ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // placeholder
-            // 
-            this.placeholder.AutoSize = true;
-            this.placeholder.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeholder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
-            this.placeholder.Location = new System.Drawing.Point(63, 382);
-            this.placeholder.Name = "placeholder";
-            this.placeholder.Size = new System.Drawing.Size(124, 25);
-            this.placeholder.TabIndex = 21;
-            this.placeholder.Text = "placeholder";
-            this.placeholder.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // firstDigitOTP
             // 
@@ -303,10 +291,22 @@
             this.ResendLbl.Text = "Resend Code";
             this.ResendLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ResendLbl_LinkClicked);
             // 
+            // emailPlaceHolder
+            // 
+            this.emailPlaceHolder.AutoSize = true;
+            this.emailPlaceHolder.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailPlaceHolder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
+            this.emailPlaceHolder.Location = new System.Drawing.Point(63, 382);
+            this.emailPlaceHolder.Name = "emailPlaceHolder";
+            this.emailPlaceHolder.Size = new System.Drawing.Size(124, 25);
+            this.emailPlaceHolder.TabIndex = 33;
+            this.emailPlaceHolder.Text = "placeholder";
+            // 
             // Confirmation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.emailPlaceHolder);
             this.Controls.Add(this.ResendLbl);
             this.Controls.Add(this.ConfirmBtn);
             this.Controls.Add(this.CancelBtn);
@@ -316,13 +316,13 @@
             this.Controls.Add(this.thirdDigitOTP);
             this.Controls.Add(this.secondDigitOTP);
             this.Controls.Add(this.firstDigitOTP);
-            this.Controls.Add(this.placeholder);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.HeadlineLbl);
             this.Controls.Add(this.guna2PictureBox1);
             this.Name = "Confirmation";
             this.Size = new System.Drawing.Size(640, 800);
+            this.Enter += new System.EventHandler(this.Confirmation_Enter);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -335,7 +335,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label HeadlineLbl;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label placeholder;
         private Guna.UI2.WinForms.Guna2TextBox firstDigitOTP;
         private Guna.UI2.WinForms.Guna2TextBox secondDigitOTP;
         private Guna.UI2.WinForms.Guna2TextBox thirdDigitOTP;
@@ -346,5 +345,6 @@
         private Guna.UI2.WinForms.Guna2Button ConfirmBtn;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private System.Windows.Forms.LinkLabel ResendLbl;
+        private System.Windows.Forms.Label emailPlaceHolder;
     }
 }

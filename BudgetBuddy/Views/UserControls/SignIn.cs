@@ -19,7 +19,6 @@ namespace BudgetBuddy.Presenters.UserControls
     {
         // fields
         public MainForm MainForm;
-        private readonly string _message;
         private bool _isSuccessful;
 
         // events
@@ -55,7 +54,15 @@ namespace BudgetBuddy.Presenters.UserControls
                 {
                     
                     Session.SendOTP(EmailTxtBox.Text);
+                    Session.CurrentUser = EmailTxtBox.Text;
                     MainForm.Confirmation.BringToFront();
+                    MainForm.Confirmation.Focus();
+                    EmailTxtBox.Clear();
+                    PasswordTxtBox.Clear();
+
+
+
+
                 }
                 else
                 {
@@ -100,12 +107,17 @@ namespace BudgetBuddy.Presenters.UserControls
         private void EmailTxtBox_TextChanged(object sender, EventArgs e)
         {
             EmailTxtBox.BorderColor = Color.FromArgb(213, 218, 223);
-            PasswordTxtBox.BorderColor = Color.FromArgb(213, 218, 223);
         }
 
         private void SignupLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MainForm.SignUp.BringToFront();
+
+        }
+
+        private void PasswordTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            PasswordTxtBox.BorderColor = Color.FromArgb(213, 218, 223);
 
         }
     }

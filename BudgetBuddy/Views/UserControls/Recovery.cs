@@ -56,7 +56,8 @@ namespace BudgetBuddy.Views.UserControls
                     Session.SendOTP(EmailTxtBox.Text);
                     MessageBox.Show(Session.OTP);
                     MainForm.Confirmation.BringToFront();
-                }
+                    EmailTxtBox.Clear();
+                    }
                 else
                 {
                     MessageBox.Show("Enter a valid Email");

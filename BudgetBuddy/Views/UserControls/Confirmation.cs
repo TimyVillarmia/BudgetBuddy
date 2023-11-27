@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -14,20 +15,29 @@ namespace BudgetBuddy.Views.UserControls
     public partial class Confirmation : UserControl
     {
         public MainForm MainForm;
+        
+
 
         public Confirmation(MainForm form)
         {
+
             InitializeComponent();
-            placeholder.Text = Session.CurrentUser;
             MainForm = form;
 
         }
 
+        public Confirmation()
+        {
+
+        }
+
+
+
         private void ConfirmBtn_Click(object sender, EventArgs e)
         {
             var OTP = firstDigitOTP.Text + secondDigitOTP.Text + thirdDigitOTP.Text + fourthDigitOTP.Text + fifthDigitOTP.Text + sixthDigitOTP.Text;
-
-            if(OTP == Session.OTP)
+            emailPlaceHolder.Text = Session.CurrentUser;
+            if (OTP == Session.OTP)
             {
                 Session.isSuccesful = true;
 
@@ -57,6 +67,11 @@ namespace BudgetBuddy.Views.UserControls
         {
             Session.SendOTP(Session.CurrentUser);
 
+        }
+
+        private void Confirmation_Enter(object sender, EventArgs e)
+        {
+            emailPlaceHolder.Text = Session.CurrentUser;
         }
     }
 }

@@ -37,6 +37,7 @@ namespace BudgetBuddy.Presenters
         // methods
         private void LoginAccount(object sender, EventArgs e)
         {
+            
             // mapping account class
             var loginAccount = new Models.Account
             {

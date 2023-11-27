@@ -13,7 +13,6 @@ namespace BudgetBuddy.Presenters
     {
         private IAccountRepository _accountRepository;
         private ISignUpView _view;
-        private IQueryable _accountsList;
 
         public SignUpPresenter(IAccountRepository accountRepository, ISignUpView view)
         {
