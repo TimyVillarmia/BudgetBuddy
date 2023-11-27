@@ -50,7 +50,6 @@ namespace BudgetBuddy.Repositories
                         where acc.email == account.Email
                         select acc.email;
 
-
             return login.Count();
         }
 
@@ -58,6 +57,7 @@ namespace BudgetBuddy.Repositories
         public void UpdateAccount(Models.Account account)
         {
             // insert code here
+            // update password
 
         }
 
