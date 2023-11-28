@@ -101,7 +101,7 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void RecoveryLbl_Click(object sender, EventArgs e)
         {
-            MainForm.Recovery.BringToFront();
+            MainForm.Recovery1.BringToFront();
         }
 
         private void EmailTxtBox_TextChanged(object sender, EventArgs e)
@@ -112,12 +112,28 @@ namespace BudgetBuddy.Presenters.UserControls
         private void SignupLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             MainForm.SignUp.BringToFront();
+            
 
         }
 
         private void PasswordTxtBox_TextChanged(object sender, EventArgs e)
         {
             PasswordTxtBox.BorderColor = Color.FromArgb(213, 218, 223);
+
+        }
+
+        private void PasswordState_CheckedChanged(object sender, EventArgs e)
+        {
+            if (PasswordState.Checked)
+            {
+                PasswordTxtBox.PasswordChar = '\0';
+
+            }
+            else
+            {
+                PasswordTxtBox.PasswordChar = '*';
+
+            }
 
         }
     }

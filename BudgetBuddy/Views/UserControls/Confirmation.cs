@@ -43,10 +43,21 @@ namespace BudgetBuddy.Views.UserControls
 
                 if (Session.isSuccesful)
                 {
-                    ParentForm.Hide();
-                    Dashboard dashboard = new Dashboard();
-                    dashboard.ShowDialog();
-                    ParentForm.Close();
+                    //check if the previous usercontrol is from Recovery then proceed to next step
+                    if (MainForm.fromRecovery)
+                    {
+                        MainForm.Recovery2.BringToFront();
+                        MainForm.Recovery2.Focus();
+                    }
+                    else
+                    {
+                        // otherwise, proceed to mainform
+                        ParentForm.Hide();
+                        Dashboard dashboard = new Dashboard();
+                        dashboard.ShowDialog();
+                        ParentForm.Close();
+                    }
+
                 }
             }
             else

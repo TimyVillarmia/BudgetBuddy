@@ -265,7 +265,8 @@
     <Compile Include="Resources\Page3.Designer.cs">
       <DependentUpon>Page3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\IRecoveryView.cs" />
+    <Compile Include="Views\IRecovery1View.cs" />
+    <Compile Include="Views\IRecovery2View.cs" />
     <Compile Include="Views\UserControls\Confirmation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -285,11 +286,11 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ISignInView.cs" />
-    <Compile Include="Views\UserControls\Recovery.cs">
+    <Compile Include="Views\UserControls\Recovery1.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\Recovery.Designer.cs">
-      <DependentUpon>Recovery.cs</DependentUpon>
+    <Compile Include="Views\UserControls\Recovery1.Designer.cs">
+      <DependentUpon>Recovery1.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\SignIn.cs">
       <SubType>UserControl</SubType>
@@ -303,6 +304,12 @@
     </Compile>
     <Compile Include="Views\UserControls\SignUp.Designer.cs">
       <DependentUpon>SignUp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\Recovery2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\Recovery2.Designer.cs">
+      <DependentUpon>Recovery2.cs</DependentUpon>
     </Compile>
     <Compile Include="_Repositories\AccountRepository.cs" />
     <Compile Include="_Repositories\BaseRepository.cs" />
@@ -332,8 +339,8 @@
     <EmbeddedResource Include="Views\UserControls\Pagination.resx">
       <DependentUpon>Pagination.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\Recovery.resx">
-      <DependentUpon>Recovery.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UserControls\Recovery1.resx">
+      <DependentUpon>Recovery1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\SignIn.resx">
       <DependentUpon>SignIn.cs</DependentUpon>
@@ -353,6 +360,9 @@
     </Compile>
     <EmbeddedResource Include="Views\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\Recovery2.resx">
+      <DependentUpon>Recovery2.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="BudgetBuddy.bak" />
     <None Include="DataClasses1.dbml">
@@ -391,6 +401,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Illustration2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Show.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />

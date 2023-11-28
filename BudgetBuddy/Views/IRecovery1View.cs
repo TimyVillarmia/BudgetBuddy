@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetBuddy.Views
 {
-    public interface IRecoveryView
+    public interface IRecovery1View
     {
         string Email { get; set; }
         bool isSuccessful { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace BudgetBuddy.Views.UserControls
 {
-    partial class Recovery
+    partial class Recovery1
     {
         /// <summary> 
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.SignupLbl = new System.Windows.Forms.LinkLabel();
+            this.ErrorLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@
             this.label2.Size = new System.Drawing.Size(190, 25);
             this.label2.TabIndex = 16;
             this.label2.Text = "Account Recovery";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // HeadlineLbl
             // 
@@ -156,10 +157,21 @@
             this.SignupLbl.Text = "Sign up";
             this.SignupLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignupLbl_LinkClicked);
             // 
+            // ErrorLbl
+            // 
+            this.ErrorLbl.AutoSize = true;
+            this.ErrorLbl.ForeColor = System.Drawing.Color.Red;
+            this.ErrorLbl.Location = new System.Drawing.Point(121, 465);
+            this.ErrorLbl.Name = "ErrorLbl";
+            this.ErrorLbl.Size = new System.Drawing.Size(35, 13);
+            this.ErrorLbl.TabIndex = 34;
+            this.ErrorLbl.Text = "label1";
+            // 
             // Recovery
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.ErrorLbl);
             this.Controls.Add(this.SignupLbl);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.OTPBtn);
@@ -187,5 +199,6 @@
         private Guna.UI2.WinForms.Guna2Button OTPBtn;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private System.Windows.Forms.LinkLabel SignupLbl;
+        private System.Windows.Forms.Label ErrorLbl;
     }
 }

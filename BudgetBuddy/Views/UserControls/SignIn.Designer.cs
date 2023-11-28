@@ -38,11 +38,10 @@
             this.label4 = new System.Windows.Forms.Label();
             this.RecoveryLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.guna2ToggleSwitch1 = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2DragControl2 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.SignupLbl = new System.Windows.Forms.LinkLabel();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.PasswordState = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,7 +93,7 @@
             this.PasswordTxtBox.Location = new System.Drawing.Point(119, 518);
             this.PasswordTxtBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PasswordTxtBox.Name = "PasswordTxtBox";
-            this.PasswordTxtBox.PasswordChar = '\0';
+            this.PasswordTxtBox.PasswordChar = '*';
             this.PasswordTxtBox.PlaceholderText = "";
             this.PasswordTxtBox.SelectedText = "";
             this.PasswordTxtBox.Size = new System.Drawing.Size(400, 36);
@@ -172,45 +171,11 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Don’t have an account? ";
             // 
-            // guna2ToggleSwitch1
-            // 
-            this.guna2ToggleSwitch1.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ToggleSwitch1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2ToggleSwitch1.CheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.CheckedState.InnerColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.Location = new System.Drawing.Point(476, 527);
-            this.guna2ToggleSwitch1.Name = "guna2ToggleSwitch1";
-            this.guna2ToggleSwitch1.Size = new System.Drawing.Size(35, 20);
-            this.guna2ToggleSwitch1.TabIndex = 12;
-            this.guna2ToggleSwitch1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2ToggleSwitch1.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2ToggleSwitch1.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
-            this.guna2ToggleSwitch1.UncheckedState.InnerColor = System.Drawing.Color.White;
-            // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
-            // 
-            // guna2DragControl2
-            // 
-            this.guna2DragControl2.DockIndicatorTransparencyValue = 0.6D;
-            this.guna2DragControl2.TargetControl = this;
-            this.guna2DragControl2.UseTransparentDrag = true;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = global::BudgetBuddy.Properties.Resources.logo;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 56);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(640, 68);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.guna2PictureBox1.TabIndex = 13;
-            this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.UseTransparentBackground = true;
             // 
             // SignupLbl
             // 
@@ -226,13 +191,49 @@
             this.SignupLbl.Text = "Sign up";
             this.SignupLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignupLbl_LinkClicked);
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = global::BudgetBuddy.Properties.Resources.logo;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(0, 56);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(640, 68);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.guna2PictureBox1.TabIndex = 13;
+            this.guna2PictureBox1.TabStop = false;
+            this.guna2PictureBox1.UseTransparentBackground = true;
+            // 
+            // PasswordState
+            // 
+            this.PasswordState.BackColor = System.Drawing.Color.White;
+            this.PasswordState.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.ToogleButton;
+            this.PasswordState.CheckedState.FillColor = System.Drawing.Color.White;
+            this.PasswordState.CheckedState.Image = global::BudgetBuddy.Properties.Resources.Show;
+            this.PasswordState.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.PasswordState.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.PasswordState.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.PasswordState.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.PasswordState.FillColor = System.Drawing.Color.Transparent;
+            this.PasswordState.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.PasswordState.ForeColor = System.Drawing.Color.White;
+            this.PasswordState.Image = global::BudgetBuddy.Properties.Resources.Hide;
+            this.PasswordState.ImageSize = new System.Drawing.Size(25, 25);
+            this.PasswordState.Location = new System.Drawing.Point(489, 524);
+            this.PasswordState.Name = "PasswordState";
+            this.PasswordState.PressedColor = System.Drawing.Color.Transparent;
+            this.PasswordState.Size = new System.Drawing.Size(25, 25);
+            this.PasswordState.TabIndex = 35;
+            this.PasswordState.CheckedChanged += new System.EventHandler(this.PasswordState_CheckedChanged);
+            // 
             // SignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.PasswordState);
             this.Controls.Add(this.SignupLbl);
             this.Controls.Add(this.guna2PictureBox1);
-            this.Controls.Add(this.guna2ToggleSwitch1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.RecoveryLbl);
             this.Controls.Add(this.label4);
@@ -262,10 +263,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label RecoveryLbl;
         private System.Windows.Forms.Label label6;
-        private Guna.UI2.WinForms.Guna2ToggleSwitch guna2ToggleSwitch1;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl2;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.LinkLabel SignupLbl;
+        private Guna.UI2.WinForms.Guna2Button PasswordState;
     }
 }

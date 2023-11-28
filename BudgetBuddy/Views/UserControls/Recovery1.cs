@@ -14,7 +14,7 @@ using BudgetBuddy.Models;
 
 namespace BudgetBuddy.Views.UserControls
 {
-    public partial class Recovery : UserControl, IRecoveryView
+    public partial class Recovery1 : UserControl, IRecovery1View
     {
         public MainForm MainForm;
         private bool _isSuccessful;
@@ -34,10 +34,11 @@ namespace BudgetBuddy.Views.UserControls
         }
 
         // constructor
-        public Recovery(MainForm form)
+        public Recovery1(MainForm form)
         {
             InitializeComponent();
             MainForm = form;
+            ErrorLbl.Visible = false;
             AssociateAndRaiseViewEvents();
 
         }
@@ -54,20 +55,23 @@ namespace BudgetBuddy.Views.UserControls
                 if (isSuccessful)
                 {
                     Session.SendOTP(EmailTxtBox.Text);
-                    MessageBox.Show(Session.OTP);
+                    Session.CurrentUser = EmailTxtBox.Text;
+                    MainForm.fromRecovery = true;
                     MainForm.Confirmation.BringToFront();
+                    MainForm.Confirmation.Focus();
                     EmailTxtBox.Clear();
                     }
                 else
                 {
-                    MessageBox.Show("Enter a valid Email");
+                    ErrorLbl.Visible = true;
+                    ErrorLbl.Text = "There are no BuddyBuddy Accounts associated with this email address.";
                     EmailTxtBox.BorderColor = Color.Red;
                 }
             };
         }
 
         // constructor overloading
-        public Recovery()
+        public Recovery1()
         {
 
         }

@@ -31,9 +31,10 @@ namespace BudgetBuddy
         // Singleton pattern (only 1 instance of each user control throughout the system)
         public SignIn SignIn { get; set; }
         public SignUp SignUp { get; set; }
-        public Recovery Recovery { get; set; }
+        public Recovery1 Recovery1 { get; set; }
+        public Recovery2 Recovery2 { get; set; }
         public Confirmation Confirmation { get; set; }
-
+        public bool fromRecovery { get; set; } = false;
 
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -51,7 +52,11 @@ namespace BudgetBuddy
             {
                 Dock = DockStyle.Fill // style
             };
-            Recovery = new Recovery(this)
+            Recovery1 = new Recovery1(this)
+            {
+                Dock = DockStyle.Fill
+            };
+            Recovery2 = new Recovery2(this)
             {
                 Dock = DockStyle.Fill
             };
@@ -70,12 +75,14 @@ namespace BudgetBuddy
             // Declare a signInView interface instance.
             ISignInView signInView = SignIn;
             ISignUpView signUpView = SignUp;
-            IRecoveryView recoveryView = Recovery;
+            IRecovery1View recovery1View = Recovery1;
+            IRecovery2View recovery2View = Recovery2;
+
 
             //Dependency Injection
             new SignInPresenter(accountRepository, signInView);
             new SignUpPresenter(accountRepository, signUpView);
-            new RecoveryPresenter(accountRepository, recoveryView);
+            new RecoveryPresenter(accountRepository, recovery1View, recovery2View);
 
 
 
@@ -83,8 +90,10 @@ namespace BudgetBuddy
             MainFormLeftPanel.Controls.Add(pagination); //left
             MainFormRightPanel.Controls.Add(SignIn); //right
             MainFormRightPanel.Controls.Add(SignUp);
-            MainFormRightPanel.Controls.Add(Recovery);
+            MainFormRightPanel.Controls.Add(Recovery1);
+            MainFormRightPanel.Controls.Add(Recovery2);
             MainFormRightPanel.Controls.Add(Confirmation);
+
 
 
         }

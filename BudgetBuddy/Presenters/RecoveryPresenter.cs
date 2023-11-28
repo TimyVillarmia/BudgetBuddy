@@ -12,39 +12,71 @@ namespace BudgetBuddy.Presenters
     {
         // fields Dependency Injection
         private readonly IAccountRepository _accountRepository;
-        private readonly IRecoveryView _view;
+        private readonly IRecovery1View _view1;
+        private readonly IRecovery2View _view2;
 
         // constructor
-        public RecoveryPresenter(IAccountRepository accountRepository, IRecoveryView view)
+        public RecoveryPresenter(IAccountRepository accountRepository, IRecovery1View view1, IRecovery2View view2)
         {
             _accountRepository = accountRepository;
-            _view = view;
+            _view1 = view1;
+            _view2 = view2;
             // subscribe the view's event to the presenter's event
-            _view.RecoverAccountEvent += RecoverAccount;
+            _view1.RecoverAccountEvent += CheckAccount;
+            _view2.UpdatePasswordEvent += UpdatePassword;
 
 
         }
 
-        private void RecoverAccount(object sender, EventArgs e)
+        private void UpdatePassword(object sender, EventArgs e)
         {
-            // mapping account class
-            var recoverAccount = new Models.Account
+            var updateAccount = new Models.Account
             {
-                Email = _view.Email,
+                Email = _view1.Email,
+                Password = _view2.Password
             };
 
             try
             {
                 // querying from AccontRepository
                 // returns an integer 
-                if (_accountRepository.RecoverAccount(recoverAccount) == 0)
+                if (_accountRepository.RecoverAccount(updateAccount) == true)
                 {
 
-                    _view.isSuccessful = false;
+                    _view2.isSuccessful = true;
                 }
                 else
                 {
-                    _view.isSuccessful = true;
+                    _view2.isSuccessful = false;
+
+                }
+            }
+            catch(Exception)
+            {
+                return;
+            }
+        }
+
+        private void CheckAccount(object sender, EventArgs e)
+        {
+            // mapping account class
+            var recoverAccount = new Models.Account
+            {
+                Email = _view1.Email,
+            };
+
+            try
+            {
+                // querying from AccontRepository
+                // check if account exist before proceeding to account recovery
+                if (_accountRepository.doesAccountExist(recoverAccount) == false)
+                {
+
+                    _view1.isSuccessful = false;
+                }
+                else
+                {
+                    _view1.isSuccessful = true;
 
                 }
 

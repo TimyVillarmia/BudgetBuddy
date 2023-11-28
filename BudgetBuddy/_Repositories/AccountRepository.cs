@@ -43,22 +43,25 @@ namespace BudgetBuddy.Repositories
             return login.FirstOrDefault();
         }
 
-        public int RecoverAccount(Models.Account account)
+        public bool RecoverAccount(Models.Account account)
         {
+            //insert recover account linq code
+            // return true if account recovery is success
+            // otherwise, false
+            return true;
 
+        }
+
+
+        public bool doesAccountExist(Models.Account account)
+        {
             var login = from acc in _db.Accounts
                         where acc.email == account.Email
                         select acc.email;
 
-            return login.Count();
-        }
+            bool result = (login.Count() == 0) ? false : true;
 
-
-        public void UpdateAccount(Models.Account account)
-        {
-            // insert code here
-            // update password
-
+            return result;
         }
 
 
