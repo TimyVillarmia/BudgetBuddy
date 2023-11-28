@@ -11,7 +11,7 @@ namespace BudgetBuddy.Models
     {
         void CreateAccount(Account account);
         bool doesAccountExist(Account account);
-        string LoginAccount(Account acount);
+        bool LoginAccount(Account acount);
         bool RecoverAccount(Models.Account account);
     }
 }

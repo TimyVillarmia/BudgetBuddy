@@ -31,21 +31,26 @@ namespace BudgetBuddy.Repositories
         }
 
 
-        public string LoginAccount(Models.Account account)
+        public bool LoginAccount(Models.Account account)
         {
-            
+            //insert login account linq code
+            // check if the email and password matches from database
+            // return true if login is success
+            // otherwise, false
             var login = from acc in _db.Accounts
                         where acc.email == account.Email &&
                         acc.password == account.Password
                         select acc.email;
-            
-            
-            return login.FirstOrDefault();
+
+            bool result = (login.Count() == 0) ? false : true;
+
+            return result;
         }
 
         public bool RecoverAccount(Models.Account account)
         {
             //insert recover account linq code
+            // update the password from the database
             // return true if account recovery is success
             // otherwise, false
             return true;
@@ -55,6 +60,10 @@ namespace BudgetBuddy.Repositories
 
         public bool doesAccountExist(Models.Account account)
         {
+            //insert check account exist linq code
+            // check if email exist or not from the database
+            // return true if account exists
+            // otherwise, false
             var login = from acc in _db.Accounts
                         where acc.email == account.Email
                         select acc.email;

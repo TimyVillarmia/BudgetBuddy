@@ -51,16 +51,14 @@ namespace BudgetBuddy.Presenters
 
                 // querying from AccontRepository
                 // returns an integer 
-                if (_accountRepository.LoginAccount(loginAccount) == null)
+                if (_accountRepository.LoginAccount(loginAccount) == true)
                 {
-                    
-                    _view.isSuccessful = false;
-                    Session.CurrentUser = string.Empty;
+                    _view.isSuccessful = true;
+
                 }
                 else
                 {
-                    _view.isSuccessful = true;
-                    Session.CurrentUser = _accountRepository.LoginAccount(loginAccount);
+                    _view.isSuccessful = false;
 
                 }
 
