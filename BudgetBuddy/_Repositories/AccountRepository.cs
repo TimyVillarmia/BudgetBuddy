@@ -1,13 +1,6 @@
-﻿using BudgetBuddy.Models;
-using BudgetBuddy.Views;
-using System;
-using System.Collections.Generic;
-using System.Data.Linq;
+﻿using BudgetBuddy._Repositories;
+using BudgetBuddy.Models;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
 namespace BudgetBuddy.Repositories
@@ -25,29 +18,62 @@ namespace BudgetBuddy.Repositories
 
 
         // methods
-        public void CreateAccount(Models.Account account)
+        public bool CreateAccount(user account)
         {
-            // insert code here
+            //insert create account linq code
+            // check if the email is already exist in the database
+            // if email is doesn't exist proceed to create account and return true
+            // otherwise, false
+            account.password_salt = Encryption.Salt();
+            account.password_hash = Encryption.Hash(account.password_hash, account.password_salt);
+
+            // check first if account exist
+            if (!doesAccountExist(account))
+            {
+                _db.users.InsertOnSubmit(account);
+                _db.SubmitChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+       
         }
 
 
-        public bool LoginAccount(Models.Account account)
+        public bool LoginAccount(user account)
         {
             //insert login account linq code
-            // check if the email and password matches from database
-            // return true if login is success
-            // otherwise, false
-            var login = from acc in _db.Accounts
-                        where acc.email == account.Email &&
-                        acc.password == account.Password
-                        select acc.email;
 
-            bool result = (login.Count() == 0) ? false : true;
+            var login = (from acc in _db.users
+                         where acc.email == account.email
+                         select acc).Single();
 
-            return result;
+            //Compare the hash of the given password with the hash from the database.
+            //If they match, the password is correct. Otherwise, the password is incorrect.
+            if (account.password_hash == Encryption.Hash(login.password_hash, login.password_salt))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            //if (login.password_hash == Encryption.Hash(account.password_hash, login.password_salt))
+            //{
+            //    return true;
+            //}
+            //else
+            //{
+            //    return false;
+            //}
+
+
         }
 
-        public bool RecoverAccount(Models.Account account)
+        public bool RecoverAccount(user account)
         {
             //insert recover account linq code
             // update the password from the database
@@ -58,19 +84,17 @@ namespace BudgetBuddy.Repositories
         }
 
 
-        public bool doesAccountExist(Models.Account account)
+        public bool doesAccountExist(user account)
         {
             //insert check account exist linq code
             // check if email exist or not from the database
+            var login = from acc in _db.users
+                        where acc.email == account.email
+                        select acc;
+
             // return true if account exists
             // otherwise, false
-            var login = from acc in _db.Accounts
-                        where acc.email == account.Email
-                        select acc.email;
-
-            bool result = (login.Count() == 0) ? false : true;
-
-            return result;
+            return login.Any();
         }
 
 

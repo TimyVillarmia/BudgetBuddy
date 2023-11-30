@@ -41,6 +41,7 @@
             this.PasswordState = new Guna.UI2.WinForms.Guna2Button();
             this.ErrorLbl = new System.Windows.Forms.Label();
             this.Error1Lbl = new System.Windows.Forms.Label();
+            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,10 +229,22 @@
             this.Error1Lbl.TabIndex = 46;
             this.Error1Lbl.Text = "label1";
             // 
+            // guna2ControlBox1
+            // 
+            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.guna2ControlBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.guna2ControlBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2ControlBox1.IconColor = System.Drawing.Color.Black;
+            this.guna2ControlBox1.Location = new System.Drawing.Point(592, 3);
+            this.guna2ControlBox1.Name = "guna2ControlBox1";
+            this.guna2ControlBox1.Size = new System.Drawing.Size(45, 29);
+            this.guna2ControlBox1.TabIndex = 50;
+            // 
             // Recovery2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.guna2ControlBox1);
             this.Controls.Add(this.Error1Lbl);
             this.Controls.Add(this.ErrorLbl);
             this.Controls.Add(this.PasswordState);
@@ -269,5 +282,6 @@
         private Guna.UI2.WinForms.Guna2Button PasswordState;
         private System.Windows.Forms.Label ErrorLbl;
         private System.Windows.Forms.Label Error1Lbl;
+        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
     }
 }

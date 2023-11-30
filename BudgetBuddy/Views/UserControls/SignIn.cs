@@ -50,19 +50,17 @@ namespace BudgetBuddy.Presenters.UserControls
                 // invoking the event
                 LoginAccountEvent?.Invoke(this, EventArgs.Empty);
 
+                //after the LoginAccountEvent += LoginAccount from the SignInPresenter
                 if (isSuccessful)
                 {
                     
                     Session.SendOTP(EmailTxtBox.Text);
                     Session.CurrentUser = EmailTxtBox.Text;
+                    MainForm.States = MainForm.states.Login;
                     MainForm.Confirmation.BringToFront();
                     MainForm.Confirmation.Focus();
                     EmailTxtBox.Clear();
                     PasswordTxtBox.Clear();
-
-
-
-
                 }
                 else
                 {

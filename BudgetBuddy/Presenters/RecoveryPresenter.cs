@@ -30,10 +30,10 @@ namespace BudgetBuddy.Presenters
 
         private void UpdatePassword(object sender, EventArgs e)
         {
-            var updateAccount = new Models.Account
+            var updateAccount = new user
             {
-                Email = _view1.Email,
-                Password = _view2.Password
+                email = _view1.Email,
+                password_hash = _view2.Password
             };
 
             try
@@ -60,23 +60,23 @@ namespace BudgetBuddy.Presenters
         private void CheckAccount(object sender, EventArgs e)
         {
             // mapping account class
-            var recoverAccount = new Models.Account
+            var recoverAccount = new user
             {
-                Email = _view1.Email,
+                email = _view1.Email,
             };
 
             try
             {
                 // querying from AccontRepository
                 // check if account exist before proceeding to account recovery
-                if (_accountRepository.doesAccountExist(recoverAccount) == false)
+                if (_accountRepository.doesAccountExist(recoverAccount))
                 {
 
-                    _view1.isSuccessful = false;
+                    _view1.isSuccessful = true;
                 }
                 else
                 {
-                    _view1.isSuccessful = true;
+                    _view1.isSuccessful = false;
 
                 }
 

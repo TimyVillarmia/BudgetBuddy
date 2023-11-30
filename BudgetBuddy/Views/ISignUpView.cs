@@ -12,6 +12,7 @@ namespace BudgetBuddy.Views
         string LastName { get; set; }
         string Email { get; set; }
         string Password { get; set; }
+        bool isSuccessful { get; set; }
 
         event EventHandler CreateAccountEvent;
     }

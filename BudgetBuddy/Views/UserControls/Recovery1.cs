@@ -56,7 +56,7 @@ namespace BudgetBuddy.Views.UserControls
                 {
                     Session.SendOTP(EmailTxtBox.Text);
                     Session.CurrentUser = EmailTxtBox.Text;
-                    MainForm.fromRecovery = true;
+                    MainForm.States = MainForm.states.Recovery;
                     MainForm.Confirmation.BringToFront();
                     MainForm.Confirmation.Focus();
                     EmailTxtBox.Clear();

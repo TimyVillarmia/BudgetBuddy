@@ -40,18 +40,17 @@ namespace BudgetBuddy.Presenters
         {
             
             // mapping account class
-            var loginAccount = new Models.Account
+            var loginAccount = new user
             {
-                Email = _view.Email,
-                Password = _view.Password
+                email = _view.Email,
+                password_hash = _view.Password
             };
 
             try
             {
 
                 // querying from AccontRepository
-                // returns an integer 
-                if (_accountRepository.LoginAccount(loginAccount) == true)
+                if (_accountRepository.LoginAccount(loginAccount))
                 {
                     _view.isSuccessful = true;
 

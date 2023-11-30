@@ -37,33 +37,47 @@ namespace BudgetBuddy.Views.UserControls
         {
             var OTP = firstDigitOTP.Text + secondDigitOTP.Text + thirdDigitOTP.Text + fourthDigitOTP.Text + fifthDigitOTP.Text + sixthDigitOTP.Text;
             emailPlaceHolder.Text = Session.CurrentUser;
-            if (OTP == Session.OTP)
+            if (OTP == Models.Session.OTP)
             {
-                Session.isSuccesful = true;
+                Models.Session.isSuccesful = true;
 
-                if (Session.isSuccesful)
+                if (Models.Session.isSuccesful)
                 {
-                    //check if the previous usercontrol is from Recovery then proceed to next step
-                    if (MainForm.fromRecovery)
+                    // acts as a routing
+                    // after otp is confirm
+                    //route to the next state/user controls
+                    switch (MainForm.States)
                     {
-                        MainForm.Recovery2.BringToFront();
-                        MainForm.Recovery2.Focus();
+
+                        case MainForm.states.Login:
+                            // Login -> Confirmation -> Dashboard
+                            ParentForm.Hide();
+                            Dashboard dashboard = new Dashboard();
+                            dashboard.ShowDialog();
+                            ParentForm.Close();
+                            break;
+
+                        case MainForm.states.SignUp:
+                            // SignUp -> Confirmation -> SignIn
+                            MainForm.SignIn.BringToFront();
+                            MainForm.SignIn.Focus();
+                            break;
+
+                        case MainForm.states.Recovery:
+                            // Recovery1(Email) -> Confirmation -> Recovery2(Update Password)
+                            MainForm.Recovery2.BringToFront();
+                            MainForm.Recovery2.Focus();
+                            break;
                     }
-                    else
-                    {
-                        // otherwise, proceed to mainform
-                        ParentForm.Hide();
-                        Dashboard dashboard = new Dashboard();
-                        dashboard.ShowDialog();
-                        ParentForm.Close();
-                    }
+
 
                 }
             }
             else
             {
-                Session.isSuccesful = false;
-                MessageBox.Show($"{Session.isSuccesful}");
+                Models.Session.isSuccesful = false;
+                MessageBox.Show("Incorrect OTP");
+
 
             }
         }

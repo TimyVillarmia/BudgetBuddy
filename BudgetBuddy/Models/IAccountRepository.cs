@@ -9,9 +9,9 @@ namespace BudgetBuddy.Models
 {
     public interface IAccountRepository
     {
-        void CreateAccount(Account account);
-        bool doesAccountExist(Account account);
-        bool LoginAccount(Account acount);
-        bool RecoverAccount(Models.Account account);
+        bool CreateAccount(user account);
+        bool doesAccountExist(user account);
+        bool LoginAccount(user account);
+        bool RecoverAccount(user account);
     }
 }

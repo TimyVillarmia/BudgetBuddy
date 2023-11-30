@@ -34,7 +34,13 @@ namespace BudgetBuddy
         public Recovery1 Recovery1 { get; set; }
         public Recovery2 Recovery2 { get; set; }
         public Confirmation Confirmation { get; set; }
-        public bool fromRecovery { get; set; } = false;
+        public enum states
+        {
+            Login, // 0
+            SignUp, // 1
+            Recovery // 2
+        }
+        public states States { get; set; }
 
 
         private void MainForm_Load(object sender, EventArgs e)

@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using BudgetBuddy.Models;
 using BudgetBuddy.Views;
+using BudgetBuddy._Repositories;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace BudgetBuddy.Presenters
 {
@@ -28,21 +31,33 @@ namespace BudgetBuddy.Presenters
 
         private void CreateAccount(object sender, EventArgs e)
         {
-            var newAccount = new Models.Account
+
+
+            var newAccount = new user
             {
-                FirstName = _view.FirstName,
-                LastName = _view.LastName,
-                Email = _view.Email,
-                Password = _view.Password,
+                email = _view.Email,
+                first_name = _view.FirstName,
+                last_name = _view.LastName,
+                password_hash = _view.Password
+                
             };
 
             try
             {
-                _accountRepository.CreateAccount(newAccount);
+
+                if (_accountRepository.CreateAccount(newAccount))
+                {
+                    _view.isSuccessful = true;
+
+                }
+                else 
+                {
+                    _view.isSuccessful = false;
+                }
             }
-            catch   
+            catch(Exception ex)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show($"{ex}");
             }
 
             

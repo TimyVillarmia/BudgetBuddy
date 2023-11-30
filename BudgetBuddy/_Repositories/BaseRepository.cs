@@ -4,6 +4,7 @@ using System.Linq;
 using System.Data.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BudgetBuddy.Models;
 
 namespace BudgetBuddy.Repositories
 {
