@@ -1,7 +1,8 @@
 ﻿using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
+using System;
 using System.Linq;
-
+using System.Windows.Forms;
 
 namespace BudgetBuddy.Repositories
 {
@@ -53,7 +54,7 @@ namespace BudgetBuddy.Repositories
 
             //Compare the hash of the given password with the hash from the database.
             //If they match, the password is correct. Otherwise, the password is incorrect.
-            if (account.password_hash == Encryption.Hash(login.password_hash, login.password_salt))
+            if (login.password_hash == Encryption.Hash(account.password_hash, login.password_salt))
             {
                 return true;
             }
@@ -79,10 +80,24 @@ namespace BudgetBuddy.Repositories
             // update the password from the database
             // return true if account recovery is success
             // otherwise, false
-            var recover = (from acc in _db.users
-                           where account.email == account.email select acc).First();
-                           _db.SubmitChanges();
-            return true;
+            try
+            {
+                var recover = (from acc in _db.users
+                               where account.email == account.email
+                               select acc).First();
+
+
+                recover.password_hash = Encryption.Hash(account.password_hash, recover.password_salt);
+
+                _db.SubmitChanges();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
 
         }
 

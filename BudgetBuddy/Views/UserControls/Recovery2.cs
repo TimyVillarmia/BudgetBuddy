@@ -14,7 +14,6 @@ namespace BudgetBuddy.Views.UserControls
     {
         public MainForm MainForm;
         private bool _isSuccessful;
-        private protected string _password;
         public event EventHandler UpdatePasswordEvent;
 
         public Recovery2(MainForm mainForm)
@@ -36,31 +35,34 @@ namespace BudgetBuddy.Views.UserControls
                 if (newPasswordTxtBox.Text == RnewPasswordTxtBox.Text)
                 {
                     UpdatePasswordEvent?.Invoke(this, EventArgs.Empty);
-                    
+
+                    if (isSuccessful)
+                    {
+                        MainForm.SignIn.BringToFront();
+                        MainForm.SignIn.Focus();
+                        newPasswordTxtBox.Clear();
+                        RnewPasswordTxtBox.Clear();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something went wrong!");
+                    }
+
+
                 }
                 else
                 {
                     MessageBox.Show("Password is not Matched");
                 }
 
-                if (isSuccessful)
-                {
-                    MainForm.SignIn.BringToFront();
-                    MainForm.SignIn.Focus();
-                    newPasswordTxtBox.Clear();
-                    RnewPasswordTxtBox.Clear();
-                }
-                else
-                {
-                    MessageBox.Show("Something went wrong!");
-                }
+
             };
         }
 
         public string Password
         {
-            get { return _password; }
-            set { _password = value; }
+            get { return RnewPasswordTxtBox.Text; }
+            set { RnewPasswordTxtBox.Text = value; }
         }
         public bool isSuccessful
         {
@@ -80,6 +82,8 @@ namespace BudgetBuddy.Views.UserControls
             {
                 newPasswordTxtBox.BorderColor = Color.Green;
                 RnewPasswordTxtBox.BorderColor = Color.Green;
+                ErrorLbl.Visible = false;
+                Error1Lbl.Visible = false;
 
             }
             else
@@ -100,6 +104,8 @@ namespace BudgetBuddy.Views.UserControls
             {
                 newPasswordTxtBox.BorderColor = Color.Green;
                 RnewPasswordTxtBox.BorderColor = Color.Green;
+                ErrorLbl.Visible = false;
+                Error1Lbl.Visible = false;
             }
             else
             {

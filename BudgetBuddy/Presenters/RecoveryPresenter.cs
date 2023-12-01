@@ -40,7 +40,7 @@ namespace BudgetBuddy.Presenters
             {
                 // querying from AccontRepository
                 // returns an integer 
-                if (_accountRepository.RecoverAccount(updateAccount) == true)
+                if (_accountRepository.RecoverAccount(updateAccount))
                 {
 
                     _view2.isSuccessful = true;
