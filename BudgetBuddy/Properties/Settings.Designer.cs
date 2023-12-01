@@ -26,10 +26,21 @@ namespace BudgetBuddy.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CCUR4CG;Initial Catalog=BudgetBuddy;Integrated Security=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAB1-PC5;Initial Catalog=BudgetBuddy;Integrated Security=True")]
         public string BudgetBuddyConnectionString {
             get {
                 return ((string)(this["BudgetBuddyConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAB1-PC5\\LAB1PC5;Initial Catalog=BudgetBuddy;Integrated Security=True" +
+            "")]
+        public string BudgetBuddyConnectionString1 {
+            get {
+                return ((string)(this["BudgetBuddyConnectionString1"]));
             }
         }
     }

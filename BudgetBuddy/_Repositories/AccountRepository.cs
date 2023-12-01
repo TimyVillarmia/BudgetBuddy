@@ -79,6 +79,9 @@ namespace BudgetBuddy.Repositories
             // update the password from the database
             // return true if account recovery is success
             // otherwise, false
+            var recover = (from acc in _db.users
+                           where account.email == account.email select acc).First();
+                           _db.SubmitChanges();
             return true;
 
         }

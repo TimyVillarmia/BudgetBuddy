@@ -30,8 +30,18 @@ namespace BudgetBuddy.Views.UserControls
         private void AssociateAndRaiseViewEvents()
         {
             RecoverBtn.Click += delegate 
-            { 
-                UpdatePasswordEvent?.Invoke(this, EventArgs.Empty);
+            {
+
+
+                if (newPasswordTxtBox.Text == RnewPasswordTxtBox.Text)
+                {
+                    UpdatePasswordEvent?.Invoke(this, EventArgs.Empty);
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Password is not Matched");
+                }
 
                 if (isSuccessful)
                 {
