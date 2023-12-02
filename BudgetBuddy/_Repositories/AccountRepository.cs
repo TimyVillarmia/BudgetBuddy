@@ -101,8 +101,8 @@ namespace BudgetBuddy.Repositories
 
                 HashSalt hashSalt = GenerateSaltedHash(account.password_hash);
 
-                account.password_salt = hashSalt.Salt;
-                account.password_hash = hashSalt.Hash;
+                recover.password_salt = hashSalt.Salt;
+                recover.password_hash = hashSalt.Hash;
 
                 _db.SubmitChanges();
 
