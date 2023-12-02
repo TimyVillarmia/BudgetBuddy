@@ -18,5 +18,7 @@ namespace BudgetBuddy.Views
             InitializeComponent();
             test.Text = Session.CurrentUser;
         }
+
+
     }
 }

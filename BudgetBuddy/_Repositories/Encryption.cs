@@ -3,6 +3,7 @@ using System.Text;
 using System.Security.Cryptography;
 using System.Data.SqlTypes;
 using System.Security.Policy;
+using System.Linq;
 
 namespace BudgetBuddy._Repositories
 {
@@ -33,15 +34,19 @@ namespace BudgetBuddy._Repositories
             return hashSalt;
         }
 
+
         public static bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt)
         {
+
             var saltBytes = Convert.FromBase64String(storedSalt);
+            var passBytes = Convert.FromBase64String(storedHash);
+
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
+            var bytes = rfc2898DeriveBytes.GetBytes(32);
+            var result = bytes.SequenceEqual(passBytes);
 
-            return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(32)) == storedHash;
+            return result;
         }
-
-
     }
 }
     
