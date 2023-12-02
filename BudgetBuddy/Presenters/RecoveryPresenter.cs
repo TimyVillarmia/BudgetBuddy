@@ -32,8 +32,8 @@ namespace BudgetBuddy.Presenters
         {
             var updateAccount = new user
             {
-                email = _view1.Email,
-                password_hash = _view2.Password
+                email = _view1.Email.Trim(),
+                password_hash = _view2.Password.Trim()
             };
 
             try
@@ -62,7 +62,7 @@ namespace BudgetBuddy.Presenters
             // mapping account class
             var recoverAccount = new user
             {
-                email = _view1.Email,
+                email = _view1.Email.Trim(),
             };
 
             try

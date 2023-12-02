@@ -26,25 +26,31 @@ namespace BudgetBuddy.Repositories
             // check if the email is already exist in the database
             // if email is doesn't exist proceed to create account and return true
             // otherwise, false
-
-            HashSalt hashSalt = GenerateSaltedHash(account.password_hash);
-
-            account.password_salt = hashSalt.Salt;
-            account.password_hash = hashSalt.Hash;
-
-            // check first if account exist
-            if (!doesAccountExist(account))
+            try
             {
-                _db.users.InsertOnSubmit(account);
-                _db.SubmitChanges();
-                return true;
+                HashSalt hashSalt = GenerateSaltedHash(account.password_hash);
+
+                account.password_salt = hashSalt.Salt;
+                account.password_hash = hashSalt.Hash;
+
+                // check first if account exist
+                if (!doesAccountExist(account))
+                {
+                    _db.users.InsertOnSubmit(account);
+                    _db.SubmitChanges();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            else
+            catch (Exception e)
             {
+                MessageBox.Show(e.Message);
                 return false;
             }
 
-       
         }
 
 

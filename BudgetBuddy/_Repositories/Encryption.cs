@@ -25,7 +25,7 @@ namespace BudgetBuddy._Repositories
             var salt = Convert.ToBase64String(saltByte);
 
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, saltByte, 10000);
-            var hashPassword = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256));
+            var hashPassword = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(32));
 
 
             HashSalt hashSalt = new HashSalt { Hash = hashPassword, Salt = salt };
@@ -38,7 +38,7 @@ namespace BudgetBuddy._Repositories
             var saltBytes = Convert.FromBase64String(storedSalt);
             var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
 
-            return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == storedHash;
+            return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(32)) == storedHash;
         }
 
 

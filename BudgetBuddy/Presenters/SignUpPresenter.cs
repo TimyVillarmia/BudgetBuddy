@@ -35,10 +35,10 @@ namespace BudgetBuddy.Presenters
 
             var newAccount = new user
             {
-                email = _view.Email,
-                first_name = _view.FirstName,
-                last_name = _view.LastName,
-                password_hash = _view.Password
+                email = _view.Email.Trim(),
+                first_name = _view.FirstName.Trim(),
+                last_name = _view.LastName.Trim(),
+                password_hash = _view.Password.Trim()
                 
             };
 
