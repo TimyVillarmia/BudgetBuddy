@@ -15,8 +15,7 @@ namespace BudgetBuddy.Views
     {
         public Dashboard()
         {
-            InitializeComponent();
-            test.Text = Session.CurrentUser;
+ 
         }
 
 
