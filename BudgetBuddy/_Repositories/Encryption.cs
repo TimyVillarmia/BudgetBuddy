@@ -1,33 +1,44 @@
 ﻿using System;
 using System.Text;
 using System.Security.Cryptography;
+using System.Data.SqlTypes;
+using System.Security.Policy;
 
 namespace BudgetBuddy._Repositories
 {
     public static class Encryption
     {
-        public static string Salt()
+        public class HashSalt
+        {
+            public string Hash { get; set; }
+            public string Salt { get; set; }
+        }
+
+        public static HashSalt GenerateSaltedHash(string password)
         {
 
             //Generate a cryptographic random number.
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
-            byte[] buff = new byte[12];
-            rng.GetBytes(buff);
-            return Convert.ToBase64String(buff);
+            byte[] saltByte = new byte[12];
+            rng.GetNonZeroBytes(saltByte);
+            // Salt
+            var salt = Convert.ToBase64String(saltByte);
+
+            var rfc2898DeriveBytes = new Rfc2898DeriveBytes(password, saltByte, 10000);
+            var hashPassword = Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256));
+
+
+            HashSalt hashSalt = new HashSalt { Hash = hashPassword, Salt = salt };
+
+            return hashSalt;
         }
 
-        public static string Hash(string input, string salt)
+        public static bool VerifyPassword(string enteredPassword, string storedHash, string storedSalt)
         {
+            var saltBytes = Convert.FromBase64String(storedSalt);
+            var rfc2898DeriveBytes = new Rfc2898DeriveBytes(enteredPassword, saltBytes, 10000);
 
-
-            var sha256 = SHA256.Create();
-
-            //Prepend the salt to the password 
-            byte[] bytes = Encoding.UTF8.GetBytes(salt + input);
-            //and hash it
-            byte[] hashed = sha256.ComputeHash(bytes);
-
-            return Convert.ToBase64String(hashed);
+            return Convert.ToBase64String(rfc2898DeriveBytes.GetBytes(256)) == storedHash;
         }
 
 

@@ -3,6 +3,7 @@ using BudgetBuddy.Models;
 using System;
 using System.Linq;
 using System.Windows.Forms;
+using static BudgetBuddy._Repositories.Encryption;
 
 namespace BudgetBuddy.Repositories
 {
@@ -25,8 +26,11 @@ namespace BudgetBuddy.Repositories
             // check if the email is already exist in the database
             // if email is doesn't exist proceed to create account and return true
             // otherwise, false
-            account.password_salt = Encryption.Salt();
-            account.password_hash = Encryption.Hash(account.password_hash, account.password_salt);
+
+            HashSalt hashSalt = GenerateSaltedHash(account.password_hash);
+
+            account.password_salt = hashSalt.Salt;
+            account.password_hash = hashSalt.Hash;
 
             // check first if account exist
             if (!doesAccountExist(account))
@@ -46,6 +50,8 @@ namespace BudgetBuddy.Repositories
 
         public bool LoginAccount(user account)
         {
+
+
             //insert login account linq code
 
             var login = (from acc in _db.users
@@ -54,7 +60,7 @@ namespace BudgetBuddy.Repositories
 
             //Compare the hash of the given password with the hash from the database.
             //If they match, the password is correct. Otherwise, the password is incorrect.
-            if (login.password_hash == Encryption.Hash(account.password_hash, login.password_salt))
+            if (Encryption.VerifyPassword(account.password_hash, login.password_hash, login.password_salt))
             {
                 return true;
             }
@@ -87,7 +93,10 @@ namespace BudgetBuddy.Repositories
                                select acc).First();
 
 
-                recover.password_hash = Encryption.Hash(account.password_hash, recover.password_salt);
+                HashSalt hashSalt = GenerateSaltedHash(account.password_hash);
+
+                account.password_salt = hashSalt.Salt;
+                account.password_hash = hashSalt.Hash;
 
                 _db.SubmitChanges();
 

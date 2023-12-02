@@ -54,5 +54,15 @@ namespace BudgetBuddy.Properties {
                 return ((string)(this["BudgetBuddyConnectionString2"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CCUR4CG;Initial Catalog=BudgetBuddy;Integrated Security=True")]
+        public string BudgetBuddyConnectionString3 {
+            get {
+                return ((string)(this["BudgetBuddyConnectionString3"]));
+            }
+        }
     }
 }

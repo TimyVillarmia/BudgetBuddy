@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BudgetBuddy" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAB1-PC4\LAB1PC4;Initial Catalog=BudgetBuddy;Integrated Security=True" SettingsObjectName="BudgetBuddy.Properties.Settings" SettingsPropertyName="BudgetBuddyConnectionString2" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-CCUR4CG;Initial Catalog=BudgetBuddy;Integrated Security=True" SettingsObjectName="BudgetBuddy.Properties.Settings" SettingsPropertyName="BudgetBuddyConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.users" Member="users">
     <Type Name="user">
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="first_name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="last_name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
-      <Column Name="password_hash" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
-      <Column Name="password_salt" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
+      <Column Name="password_hash" Type="System.String" DbType="Char(128) NOT NULL" CanBeNull="false" />
+      <Column Name="password_salt" Type="System.String" DbType="Char(128) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

@@ -36,7 +36,7 @@ namespace BudgetBuddy.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::BudgetBuddy.Properties.Settings.Default.BudgetBuddyConnectionString2, mappingSource)
+				base(global::BudgetBuddy.Properties.Settings.Default.BudgetBuddyConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -195,7 +195,7 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_hash", DbType="Char(64) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_hash", DbType="Char(128) NOT NULL", CanBeNull=false)]
 		public string password_hash
 		{
 			get
@@ -215,7 +215,7 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_salt", DbType="Char(64) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_salt", DbType="Char(128) NOT NULL", CanBeNull=false)]
 		public string password_salt
 		{
 			get
