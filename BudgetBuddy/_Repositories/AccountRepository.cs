@@ -2,6 +2,7 @@
 using BudgetBuddy.Models;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BudgetBuddy._Repositories.Encryption;
 
@@ -36,7 +37,7 @@ namespace BudgetBuddy.Repositories
                 // check first if account exist
                 if (!doesAccountExist(account))
                 {
-                    _db.users.InsertOnSubmit(account);
+                     _db.users.InsertOnSubmit(account);
                     _db.SubmitChanges();
                     return true;
                 }
@@ -74,15 +75,7 @@ namespace BudgetBuddy.Repositories
             {
                 return false;
             }
-            //if (login.password_hash == Encryption.Hash(account.password_hash, login.password_salt))
-            //{
-            //    return true;
-            //}
-            //else
-            //{
-            //    return false;
-            //}
-
+  
 
         }
 

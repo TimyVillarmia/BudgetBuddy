@@ -45,7 +45,7 @@ namespace BudgetBuddy.Presenters.UserControls
         {
             // subscribing events using lambda expression and delagate
             // subscibe SignInBtn.Click event to delagate LoginAccountEvent
-            SignInBtn.Click += delegate
+            SignInBtn.Click += async delegate
             {
                 // invoking the event
                 LoginAccountEvent?.Invoke(this, EventArgs.Empty);
@@ -54,7 +54,7 @@ namespace BudgetBuddy.Presenters.UserControls
                 if (isSuccessful)
                 {
                     
-                    Session.SendOTP(EmailTxtBox.Text);
+                    await Session.SendOTP(EmailTxtBox.Text);
                     Session.CurrentUser = EmailTxtBox.Text;
                     MainForm.States = MainForm.states.Login;
                     MainForm.Confirmation.BringToFront();

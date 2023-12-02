@@ -47,14 +47,14 @@ namespace BudgetBuddy.Views.UserControls
         {
             // subscribing events using lambda expression and delagate
             // subscibe OTPBtn.Click event to delagate RecoverAccountEvent
-            OTPBtn.Click += delegate
+            OTPBtn.Click += async delegate
             {
                 // invoking the event
                 RecoverAccountEvent?.Invoke(this, EventArgs.Empty);
 
                 if (isSuccessful)
                 {
-                    Session.SendOTP(EmailTxtBox.Text);
+                    await Session.SendOTP(EmailTxtBox.Text);
                     Session.CurrentUser = EmailTxtBox.Text;
                     MainForm.States = MainForm.states.Recovery;
                     MainForm.Confirmation.BringToFront();

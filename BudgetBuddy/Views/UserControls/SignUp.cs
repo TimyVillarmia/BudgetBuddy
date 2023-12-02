@@ -47,7 +47,7 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void AssociateAndRaiseViewEvents()
         {
-            CreateAccountBtn.Click += delegate
+            CreateAccountBtn.Click += async delegate
             {
 
                 if (checkFirstname && checkLastname && checkEmail && checkPassword && checkConfirm)
@@ -56,7 +56,7 @@ namespace BudgetBuddy.Presenters.UserControls
 
                     if (isSuccessful)
                     {
-                        Session.SendOTP(EmailTxtBox.Text);
+                        await Session.SendOTP(EmailTxtBox.Text);
                         Session.CurrentUser = EmailTxtBox.Text;
                         MainForm.States = MainForm.states.SignUp;
                         MainForm.Confirmation.BringToFront();

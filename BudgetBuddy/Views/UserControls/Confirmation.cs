@@ -59,12 +59,24 @@ namespace BudgetBuddy.Views.UserControls
 
                         case MainForm.states.SignUp:
                             // SignUp -> Confirmation -> SignIn
+                            firstDigitOTP.Clear();
+                            secondDigitOTP.Clear();
+                            thirdDigitOTP.Clear();
+                            fourthDigitOTP.Clear();
+                            fifthDigitOTP.Clear();
+                            sixthDigitOTP.Clear();
                             MainForm.SignIn.BringToFront();
                             MainForm.SignIn.Focus();
                             break;
 
                         case MainForm.states.Recovery:
                             // Recovery1(Email) -> Confirmation -> Recovery2(Update Password)
+                            firstDigitOTP.Clear();
+                            secondDigitOTP.Clear();
+                            thirdDigitOTP.Clear();
+                            fourthDigitOTP.Clear();
+                            fifthDigitOTP.Clear();
+                            sixthDigitOTP.Clear();
                             MainForm.Recovery2.BringToFront();
                             MainForm.Recovery2.Focus();
                             break;

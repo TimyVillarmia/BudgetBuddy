@@ -19,7 +19,7 @@ namespace BudgetBuddy._Repositories
         {
 
             //Generate a cryptographic random number.
-            RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
+            var rng =  RandomNumberGenerator.Create();
             byte[] saltByte = new byte[12];
             rng.GetNonZeroBytes(saltByte);
             // Salt

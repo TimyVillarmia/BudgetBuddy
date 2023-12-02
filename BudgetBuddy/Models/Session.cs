@@ -17,7 +17,7 @@ namespace BudgetBuddy.Models
 
 
         //method for generating OTP
-        public static void SendOTP(string email)
+        public static async Task SendOTP(string email)
         {
             string otp_char = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
             OTP = "";
@@ -49,24 +49,30 @@ namespace BudgetBuddy.Models
                 Text = msg  //MSG = OTP
             };
 
-            SmtpClient client = new SmtpClient(); // allows sending of e-mail notifications using a SMTP server
+            // allows sending of e-mail notifications using a SMTP server
+            using (var client = new SmtpClient())
+            {
+                try
+                {
+                    client.Connect("smtp.gmail.com", 465, true); //Gmail's smtp server, PORT: 465
+                    client.Authenticate(senderEmail, senderPass); //Login sender's email and password
+                    await client.SendAsync(message); //
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Unable to generate OTP, please try again");
+                    return;
+                }
+                finally
+                {
+                    client.Disconnect(true); // always Disconnect the service.
+                    client.Dispose(); //Releases all resource used by the MailService object.
+                }
+            }
 
-            try
-            {
-                client.Connect("smtp.gmail.com", 465, true); //Gmail's smtp server, PORT: 465
-                client.Authenticate(senderEmail, senderPass); //Login sender's email and password
-                client.Send(message); //
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Unable to generate OTP, please try again");
-                return;
-            }
-            finally
-            {
-                client.Disconnect(true); // always Disconnect the service.
-                client.Dispose(); //Releases all resource used by the MailService object.
-            }
+  
+
+           
         }
     }
 }
