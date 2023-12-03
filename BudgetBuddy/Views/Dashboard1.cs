@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BudgetBuddy.Presenters;
+using BudgetBuddy.Models;
+using BudgetBuddy.Repositories;
 
 namespace BudgetBuddy.Views
 {
@@ -18,14 +21,24 @@ namespace BudgetBuddy.Views
             InitializeComponent();
         }
 
+        public Overview Overview { get; set; }
+
         private void Dashboard1_Load(object sender, EventArgs e)
         {
-            Overview overview = new Overview()
+
+            DataClasses1DataContext db = new DataClasses1DataContext();
+            IAccountRepository accountRepository = new AccountRepository(db);
+
+            Overview = new Overview(this)
             {
                 Dock = DockStyle.Fill
             };
 
-            DashboardPanel.Controls.Add(overview);
+            IOverviewView overview = Overview;
+
+            new OverviewPresenter(accountRepository, overview);
+
+            DashboardPanel.Controls.Add(Overview);
         }
     }
 }

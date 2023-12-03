@@ -1,4 +1,5 @@
-﻿using Guna.Charts.WinForms;
+﻿using BudgetBuddy.Models;
+using Guna.Charts.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,10 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace BudgetBuddy.Presenters
 {
-    internal class DoughnutChart
+    internal class DoughnutChartPresenter
     {
+        private readonly IAccountRepository _accountRepository;
+
         public static void Doughnut(GunaChart chart)
         {
             string[] typeofExpenses = { "Rent", "Foods", "Medical Bills", "Shopping" };

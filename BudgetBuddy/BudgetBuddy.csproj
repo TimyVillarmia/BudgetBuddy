@@ -246,7 +246,8 @@
     </Compile>
     <Compile Include="Models\IAccountRepository.cs" />
     <Compile Include="Models\Session.cs" />
-    <Compile Include="Presenters\DoughnutChart.cs" />
+    <Compile Include="Presenters\DoughnutChartPresenter.cs" />
+    <Compile Include="Presenters\OverviewPresenter.cs" />
     <Compile Include="Presenters\RecoveryPresenter.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Presenters\SignUpPresenter.cs" />
@@ -280,6 +281,7 @@
     <Compile Include="Views\Dashboard1.Designer.cs">
       <DependentUpon>Dashboard1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IOverviewView.cs" />
     <Compile Include="Views\IRecovery1View.cs" />
     <Compile Include="Views\IRecovery2View.cs" />
     <Compile Include="Views\UserControls\Confirmation.cs">

@@ -20,7 +20,7 @@ namespace BudgetBuddy.Views.Charts
 
         private void DoughnutChart_Load(object sender, EventArgs e)
         {
-            Presenters.DoughnutChart.Doughnut(gunaChart1);
+            Presenters.DoughnutChartPresenter.Doughnut(gunaChart1);
         }
     }
 }

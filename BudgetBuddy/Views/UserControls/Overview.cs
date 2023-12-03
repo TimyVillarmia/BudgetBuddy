@@ -13,10 +13,21 @@ namespace BudgetBuddy.Views.UserControls
 {
     public partial class Overview : UserControl
     {
-        public Overview()
+        public MainForm MainForm;
+
+        public Overview(Dashboard1 form)
         {
             InitializeComponent();
+            MainForm = form;
+
         }
+
+        public Overview()
+        {
+
+        }
+
+
 
         private void Overview_Load(object sender, EventArgs e)
         {
