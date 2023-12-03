@@ -69,7 +69,7 @@
             this.TopNav.Dock = System.Windows.Forms.DockStyle.Top;
             this.TopNav.Location = new System.Drawing.Point(0, 0);
             this.TopNav.Name = "TopNav";
-            this.TopNav.Size = new System.Drawing.Size(1280, 70);
+            this.TopNav.Size = new System.Drawing.Size(1440, 70);
             this.TopNav.TabIndex = 1;
             // 
             // guna2GroupBox1
@@ -86,7 +86,7 @@
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.guna2GroupBox1.Location = new System.Drawing.Point(269, 0);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(742, 70);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(902, 70);
             this.guna2GroupBox1.TabIndex = 11;
             // 
             // ReportsBtn
@@ -160,7 +160,7 @@
             this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
-            this.guna2GroupBox2.Location = new System.Drawing.Point(1011, 0);
+            this.guna2GroupBox2.Location = new System.Drawing.Point(1171, 0);
             this.guna2GroupBox2.Name = "guna2GroupBox2";
             this.guna2GroupBox2.Size = new System.Drawing.Size(269, 70);
             this.guna2GroupBox2.TabIndex = 9;
@@ -273,19 +273,20 @@
             this.DashboardPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DashboardPanel.Location = new System.Drawing.Point(0, 70);
             this.DashboardPanel.Name = "DashboardPanel";
-            this.DashboardPanel.Size = new System.Drawing.Size(1280, 730);
+            this.DashboardPanel.Size = new System.Drawing.Size(1440, 954);
             this.DashboardPanel.TabIndex = 2;
             // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 800);
+            this.ClientSize = new System.Drawing.Size(1440, 1024);
             this.Controls.Add(this.DashboardPanel);
             this.Controls.Add(this.TopNav);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard";
             this.Text = "Dashboard";
+            this.Load += new System.EventHandler(this.Dashboard_Load);
             this.TopNav.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
