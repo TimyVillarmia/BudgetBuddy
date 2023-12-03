@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetBuddy.Views
 {
-    internal interface IOverviewView
+    public interface IOverviewView
     {
     }
 }

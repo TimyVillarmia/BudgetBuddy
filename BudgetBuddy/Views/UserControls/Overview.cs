@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace BudgetBuddy.Views.UserControls
 {
-    public partial class Overview : UserControl
+    public partial class Overview : UserControl, IOverviewView
     {
-        public MainForm MainForm;
+        public Dashboard1 MainForm;
 
         public Overview(Dashboard1 form)
         {
