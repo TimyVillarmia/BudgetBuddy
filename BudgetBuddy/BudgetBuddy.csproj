@@ -456,6 +456,15 @@
   <ItemGroup>
     <None Include="Resources\Increase.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Expenses.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Savings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Income.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
