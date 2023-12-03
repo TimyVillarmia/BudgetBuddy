@@ -246,6 +246,7 @@
     </Compile>
     <Compile Include="Models\IAccountRepository.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Presenters\DoughnutChart.cs" />
     <Compile Include="Presenters\RecoveryPresenter.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Presenters\SignUpPresenter.cs" />
@@ -267,6 +268,18 @@
     <Compile Include="Resources\Page3.Designer.cs">
       <DependentUpon>Page3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Charts\DoughnutChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\Charts\DoughnutChart.Designer.cs">
+      <DependentUpon>DoughnutChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dashboard1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Dashboard1.Designer.cs">
+      <DependentUpon>Dashboard1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\IRecovery1View.cs" />
     <Compile Include="Views\IRecovery2View.cs" />
     <Compile Include="Views\UserControls\Confirmation.cs">
@@ -286,12 +299,6 @@
     </Compile>
     <Compile Include="Views\UserControls\Pagination.Designer.cs">
       <DependentUpon>Pagination.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Dashboard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Dashboard.Designer.cs">
-      <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ISignInView.cs" />
     <Compile Include="Views\UserControls\Recovery1.cs">
@@ -339,8 +346,11 @@
     <EmbeddedResource Include="Resources\Page3.resx">
       <DependentUpon>Page3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Charts\DoughnutChart.resx">
+      <DependentUpon>DoughnutChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Dashboard1.resx">
+      <DependentUpon>Dashboard1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Confirmation.resx">
       <DependentUpon>Confirmation.cs</DependentUpon>

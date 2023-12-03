@@ -1,6 +1,6 @@
 ﻿namespace BudgetBuddy.Views
 {
-    partial class Dashboard
+    partial class Dashboard1
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard1));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.TopNav = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
@@ -70,7 +70,7 @@
             this.TopNav.Location = new System.Drawing.Point(0, 0);
             this.TopNav.Name = "TopNav";
             this.TopNav.Size = new System.Drawing.Size(1440, 70);
-            this.TopNav.TabIndex = 1;
+            this.TopNav.TabIndex = 2;
             // 
             // guna2GroupBox1
             // 
@@ -274,9 +274,9 @@
             this.DashboardPanel.Location = new System.Drawing.Point(0, 70);
             this.DashboardPanel.Name = "DashboardPanel";
             this.DashboardPanel.Size = new System.Drawing.Size(1440, 954);
-            this.DashboardPanel.TabIndex = 2;
+            this.DashboardPanel.TabIndex = 3;
             // 
-            // Dashboard
+            // Dashboard1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -284,9 +284,9 @@
             this.Controls.Add(this.DashboardPanel);
             this.Controls.Add(this.TopNav);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Dashboard";
-            this.Text = "Dashboard";
-            this.Load += new System.EventHandler(this.Dashboard_Load);
+            this.Name = "Dashboard1";
+            this.Text = "Dashboard1";
+            this.Load += new System.EventHandler(this.Dashboard1_Load);
             this.TopNav.ResumeLayout(false);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox2.ResumeLayout(false);
@@ -298,10 +298,12 @@
         }
 
         #endregion
+
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Guna.UI2.WinForms.Guna2Panel TopNav;
-        private Guna.UI2.WinForms.Guna2Panel DashboardPanel;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
+        private Guna.UI2.WinForms.Guna2Button ReportsBtn;
+        private Guna.UI2.WinForms.Guna2Button StatsBtn;
         private Guna.UI2.WinForms.Guna2Button TransactionBtn;
         private Guna.UI2.WinForms.Guna2Button OverviewBtn;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox2;
@@ -312,7 +314,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
-        private Guna.UI2.WinForms.Guna2Button ReportsBtn;
-        private Guna.UI2.WinForms.Guna2Button StatsBtn;
+        private Guna.UI2.WinForms.Guna2Panel DashboardPanel;
     }
 }

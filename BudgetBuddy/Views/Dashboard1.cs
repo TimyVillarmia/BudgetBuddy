@@ -1,4 +1,4 @@
-﻿using BudgetBuddy.Models;
+﻿using BudgetBuddy.Views.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,25 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BudgetBuddy.Views;
-using BudgetBuddy.Views.UserControls;
 
 namespace BudgetBuddy.Views
 {
-    public partial class Dashboard : Form
+    public partial class Dashboard1 : Form
     {
-        public Dashboard()
+        public Dashboard1()
         {
- 
+            InitializeComponent();
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
+        private void Dashboard1_Load(object sender, EventArgs e)
         {
             Overview overview = new Overview()
             {
                 Dock = DockStyle.Fill
             };
-             
+
             DashboardPanel.Controls.Add(overview);
         }
     }

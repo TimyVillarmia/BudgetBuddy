@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BudgetBuddy.Views.Charts;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,12 @@ namespace BudgetBuddy.Views.UserControls
             InitializeComponent();
         }
 
+        private void Overview_Load(object sender, EventArgs e)
+        {
 
+            DoughnutChart doughnutChart = new DoughnutChart();
+
+            ChartPanel.Controls.Add(doughnutChart);
+        }
     }
 }

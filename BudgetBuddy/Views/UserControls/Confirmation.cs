@@ -52,7 +52,7 @@ namespace BudgetBuddy.Views.UserControls
                         case MainForm.states.Login:
                             // Login -> Confirmation -> Dashboard
                             ParentForm.Hide();
-                            Dashboard dashboard = new Dashboard();
+                            Dashboard1 dashboard = new Dashboard1();
                             dashboard.ShowDialog();
                             ParentForm.Close();
                             break;
