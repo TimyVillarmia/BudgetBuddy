@@ -15,6 +15,11 @@ namespace BudgetBuddy.Views.UserControls
     {
         public Dashboard1 MainForm;
 
+        public event EventHandler LoadOverviewData;
+        public event EventHandler AddNewCardEvent;
+        public event EventHandler SendEvent;
+        public event EventHandler RequestEvent;
+
         public Overview(Dashboard1 form)
         {
             InitializeComponent();

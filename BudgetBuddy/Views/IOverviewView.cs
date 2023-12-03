@@ -8,5 +8,13 @@ namespace BudgetBuddy.Views
 {
     public interface IOverviewView
     {
+        event EventHandler LoadOverviewData;
+        event EventHandler AddNewCardEvent;
+        event EventHandler SendEvent;
+        event EventHandler RequestEvent;
+
+
+
+
     }
 }
