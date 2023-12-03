@@ -46,6 +46,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.DashboardPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.TopNav.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
@@ -276,6 +277,12 @@
             this.DashboardPanel.Size = new System.Drawing.Size(1440, 954);
             this.DashboardPanel.TabIndex = 3;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.DockIndicatorTransparencyValue = 0.6D;
+            this.guna2DragControl1.TargetControl = this.TopNav;
+            this.guna2DragControl1.UseTransparentDrag = true;
+            // 
             // Dashboard1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -285,6 +292,7 @@
             this.Controls.Add(this.TopNav);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Dashboard1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dashboard1";
             this.Load += new System.EventHandler(this.Dashboard1_Load);
             this.TopNav.ResumeLayout(false);
@@ -315,5 +323,6 @@
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private Guna.UI2.WinForms.Guna2Panel DashboardPanel;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
