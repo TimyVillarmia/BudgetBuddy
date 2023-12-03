@@ -290,7 +290,6 @@
             this.ResendLbl.TabIndex = 32;
             this.ResendLbl.TabStop = true;
             this.ResendLbl.Text = "Resend Code";
-            this.ResendLbl.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.ResendLbl_LinkClicked);
             // 
             // emailPlaceHolder
             // 

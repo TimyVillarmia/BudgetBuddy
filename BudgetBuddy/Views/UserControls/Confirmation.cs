@@ -23,7 +23,17 @@ namespace BudgetBuddy.Views.UserControls
 
             InitializeComponent();
             MainForm = form;
+            ResendLbl.Click += AssociateAndRaiseViewEvents;
 
+        }
+
+        private void AssociateAndRaiseViewEvents(object sender, EventArgs e)
+        {
+            ResendLbl.Click += async delegate
+            {
+                await Session.SendOTP(Session.CurrentUser);
+
+            };
         }
 
         public Confirmation()
@@ -100,11 +110,7 @@ namespace BudgetBuddy.Views.UserControls
         }
 
 
-        private void ResendLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Session.SendOTP(Session.CurrentUser);
-
-        }
+ 
 
         private void Confirmation_Enter(object sender, EventArgs e)
         {
