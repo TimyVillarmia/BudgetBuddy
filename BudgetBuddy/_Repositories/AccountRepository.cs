@@ -1,6 +1,7 @@
 ﻿using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -123,8 +124,47 @@ namespace BudgetBuddy.Repositories
             return login.Any();
         }
 
+        public IQueryable GetBankAccountList(account account)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckAccount(user account)
+        {
+            var accountlist = from acc in _db.accounts
+                               where acc.email == account.email
+                               select acc;
 
 
+            return accountlist.Any();
+        }
 
+        public bool AddCard(account card, string pin)
+        {
+            try
+            {
+                var checkBank = (from bank_account in _db.metrobank_accounts
+                                 where bank_account.owner_name == card.owner_name &&
+                                 bank_account.PIN == pin &&
+                                 bank_account.expiry_date == card.expiry_date
+                                 select bank_account).First();
+
+                card.email = card.email;
+                card.account_number = checkBank.account_number;
+                card.account_type = checkBank.account_type;
+                card.owner_name = checkBank.owner_name;
+                card.expiry_date = checkBank.expiry_date;
+
+                _db.accounts.InsertOnSubmit(card);
+                _db.SubmitChanges();
+
+                return true;
+            }
+            catch(Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
+        }
     }
 }

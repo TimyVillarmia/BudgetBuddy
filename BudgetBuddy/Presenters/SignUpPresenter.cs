@@ -1,14 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using BudgetBuddy.Models;
 using BudgetBuddy.Views;
-using BudgetBuddy._Repositories;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace BudgetBuddy.Presenters
 {

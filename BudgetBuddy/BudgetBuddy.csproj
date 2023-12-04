@@ -239,6 +239,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Card.cs" />
     <Compile Include="Models\DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -281,9 +282,16 @@
     <Compile Include="Views\Dashboard1.Designer.cs">
       <DependentUpon>Dashboard1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\IAddCardView.cs" />
     <Compile Include="Views\IOverviewView.cs" />
     <Compile Include="Views\IRecovery1View.cs" />
     <Compile Include="Views\IRecovery2View.cs" />
+    <Compile Include="Views\UserControls\AddCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\AddCard.Designer.cs">
+      <DependentUpon>AddCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Confirmation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -353,6 +361,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dashboard1.resx">
       <DependentUpon>Dashboard1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\AddCard.resx">
+      <DependentUpon>AddCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Confirmation.resx">
       <DependentUpon>Confirmation.cs</DependentUpon>

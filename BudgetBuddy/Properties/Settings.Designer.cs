@@ -64,5 +64,15 @@ namespace BudgetBuddy.Properties {
                 return ((string)(this["BudgetBuddyConnectionString3"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-CCUR4CG;Initial Catalog=Metrobank;Integrated Security=True")]
+        public string MetrobankConnectionString {
+            get {
+                return ((string)(this["MetrobankConnectionString"]));
+            }
+        }
     }
 }

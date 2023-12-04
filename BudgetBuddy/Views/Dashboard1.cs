@@ -22,6 +22,7 @@ namespace BudgetBuddy.Views
         }
 
         public Overview Overview { get; set; }
+        public AddCard AddCard { get; set; }
 
         private void Dashboard1_Load(object sender, EventArgs e)
         {
@@ -34,11 +35,21 @@ namespace BudgetBuddy.Views
                 Dock = DockStyle.Fill
             };
 
-            IOverviewView overview = Overview;
+            AddCard = new AddCard(this)
+            {
+                Dock = DockStyle.Fill
+            };
 
-            new OverviewPresenter(accountRepository, overview);
+            IOverviewView overview = Overview;
+            IAddCardView addcard = AddCard;
+
+            new OverviewPresenter(accountRepository, overview, addcard);
+
 
             DashboardPanel.Controls.Add(Overview);
+            DashboardPanel.Controls.Add(AddCard);
+
+            Overview.Focus();
         }
     }
 }

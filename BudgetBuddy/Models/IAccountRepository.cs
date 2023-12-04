@@ -13,5 +13,8 @@ namespace BudgetBuddy.Models
         bool doesAccountExist(user account);
         bool LoginAccount(user account);
         bool RecoverAccount(user account);
+        IQueryable GetBankAccountList(account account);
+        bool AddCard(account card, string pin);
+        bool CheckAccount(user account);
     }
 }
