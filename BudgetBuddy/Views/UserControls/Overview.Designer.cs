@@ -66,11 +66,12 @@
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2DataGridView1 = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.BankAccountDataGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.NoCardLbl = new System.Windows.Forms.Label();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.AccountNumberLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.SearchTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -91,7 +92,6 @@
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.BankAccountDataGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel1.SuspendLayout();
             this.RightPanel.SuspendLayout();
             this.guna2CustomGradientPanel7.SuspendLayout();
@@ -108,12 +108,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BankAccountDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
             this.CardObject.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BankAccountDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -123,7 +123,7 @@
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel1.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1440, 954);
+            this.guna2Panel1.Size = new System.Drawing.Size(1920, 1174);
             this.guna2Panel1.TabIndex = 0;
             // 
             // RightPanel
@@ -136,10 +136,10 @@
             this.RightPanel.Controls.Add(this.guna2CustomGradientPanel2);
             this.RightPanel.Controls.Add(this.guna2DataGridView1);
             this.RightPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RightPanel.Location = new System.Drawing.Point(370, 0);
+            this.RightPanel.Location = new System.Drawing.Point(493, 0);
             this.RightPanel.Margin = new System.Windows.Forms.Padding(0);
             this.RightPanel.Name = "RightPanel";
-            this.RightPanel.Size = new System.Drawing.Size(1070, 954);
+            this.RightPanel.Size = new System.Drawing.Size(1427, 1174);
             this.RightPanel.TabIndex = 0;
             this.RightPanel.Enter += new System.EventHandler(this.RightPanel_Enter);
             // 
@@ -147,9 +147,10 @@
             // 
             this.guna2Panel4.BorderRadius = 18;
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
-            this.guna2Panel4.Location = new System.Drawing.Point(543, 231);
+            this.guna2Panel4.Location = new System.Drawing.Point(724, 284);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(494, 277);
+            this.guna2Panel4.Size = new System.Drawing.Size(659, 341);
             this.guna2Panel4.TabIndex = 16;
             // 
             // ChartPanel
@@ -157,9 +158,10 @@
             this.ChartPanel.BorderRadius = 18;
             this.ChartPanel.FillColor = System.Drawing.Color.White;
             this.ChartPanel.ForeColor = System.Drawing.Color.White;
-            this.ChartPanel.Location = new System.Drawing.Point(28, 231);
+            this.ChartPanel.Location = new System.Drawing.Point(37, 284);
+            this.ChartPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ChartPanel.Name = "ChartPanel";
-            this.ChartPanel.Size = new System.Drawing.Size(487, 277);
+            this.ChartPanel.Size = new System.Drawing.Size(649, 341);
             this.ChartPanel.TabIndex = 15;
             // 
             // guna2CustomGradientPanel7
@@ -170,9 +172,10 @@
             this.guna2CustomGradientPanel7.Controls.Add(this.label28);
             this.guna2CustomGradientPanel7.Controls.Add(this.SavingLbl);
             this.guna2CustomGradientPanel7.Controls.Add(this.guna2PictureBox13);
-            this.guna2CustomGradientPanel7.Location = new System.Drawing.Point(807, 30);
+            this.guna2CustomGradientPanel7.Location = new System.Drawing.Point(1076, 37);
+            this.guna2CustomGradientPanel7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2CustomGradientPanel7.Name = "guna2CustomGradientPanel7";
-            this.guna2CustomGradientPanel7.Size = new System.Drawing.Size(230, 180);
+            this.guna2CustomGradientPanel7.Size = new System.Drawing.Size(307, 222);
             this.guna2CustomGradientPanel7.TabIndex = 14;
             // 
             // guna2PictureBox12
@@ -182,9 +185,10 @@
             this.guna2PictureBox12.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox12.Image = global::BudgetBuddy.Properties.Resources.Increase;
             this.guna2PictureBox12.ImageRotate = 0F;
-            this.guna2PictureBox12.Location = new System.Drawing.Point(55, 81);
+            this.guna2PictureBox12.Location = new System.Drawing.Point(73, 100);
+            this.guna2PictureBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox12.Name = "guna2PictureBox12";
-            this.guna2PictureBox12.Size = new System.Drawing.Size(20, 20);
+            this.guna2PictureBox12.Size = new System.Drawing.Size(27, 25);
             this.guna2PictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox12.TabIndex = 4;
             this.guna2PictureBox12.TabStop = false;
@@ -195,9 +199,10 @@
             this.PercentSavings.BackColor = System.Drawing.Color.Transparent;
             this.PercentSavings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PercentSavings.ForeColor = System.Drawing.Color.Green;
-            this.PercentSavings.Location = new System.Drawing.Point(18, 81);
+            this.PercentSavings.Location = new System.Drawing.Point(24, 100);
+            this.PercentSavings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PercentSavings.Name = "PercentSavings";
-            this.PercentSavings.Size = new System.Drawing.Size(41, 20);
+            this.PercentSavings.Size = new System.Drawing.Size(52, 25);
             this.PercentSavings.TabIndex = 3;
             this.PercentSavings.Text = "24%";
             // 
@@ -207,9 +212,10 @@
             this.label28.BackColor = System.Drawing.Color.Transparent;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(18, 144);
+            this.label28.Location = new System.Drawing.Point(24, 177);
+            this.label28.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(112, 20);
+            this.label28.Size = new System.Drawing.Size(142, 25);
             this.label28.TabIndex = 2;
             this.label28.Text = "Total Savings  ";
             // 
@@ -219,9 +225,10 @@
             this.SavingLbl.BackColor = System.Drawing.Color.Transparent;
             this.SavingLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SavingLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
-            this.SavingLbl.Location = new System.Drawing.Point(16, 111);
+            this.SavingLbl.Location = new System.Drawing.Point(21, 137);
+            this.SavingLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.SavingLbl.Name = "SavingLbl";
-            this.SavingLbl.Size = new System.Drawing.Size(155, 33);
+            this.SavingLbl.Size = new System.Drawing.Size(198, 42);
             this.SavingLbl.TabIndex = 1;
             this.SavingLbl.Text = "₱7,043.88";
             // 
@@ -232,9 +239,10 @@
             this.guna2PictureBox13.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox13.Image = global::BudgetBuddy.Properties.Resources.Savings;
             this.guna2PictureBox13.ImageRotate = 0F;
-            this.guna2PictureBox13.Location = new System.Drawing.Point(22, 19);
+            this.guna2PictureBox13.Location = new System.Drawing.Point(29, 23);
+            this.guna2PictureBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox13.Name = "guna2PictureBox13";
-            this.guna2PictureBox13.Size = new System.Drawing.Size(50, 50);
+            this.guna2PictureBox13.Size = new System.Drawing.Size(67, 62);
             this.guna2PictureBox13.TabIndex = 0;
             this.guna2PictureBox13.TabStop = false;
             // 
@@ -246,9 +254,10 @@
             this.guna2CustomGradientPanel1.Controls.Add(this.label4);
             this.guna2CustomGradientPanel1.Controls.Add(this.ExpenseLbl);
             this.guna2CustomGradientPanel1.Controls.Add(this.guna2PictureBox11);
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(543, 30);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(724, 37);
+            this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(230, 180);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(307, 222);
             this.guna2CustomGradientPanel1.TabIndex = 13;
             // 
             // guna2PictureBox2
@@ -258,9 +267,10 @@
             this.guna2PictureBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = global::BudgetBuddy.Properties.Resources.Decrease;
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(56, 81);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(75, 100);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(20, 20);
+            this.guna2PictureBox2.Size = new System.Drawing.Size(27, 25);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox2.TabIndex = 4;
             this.guna2PictureBox2.TabStop = false;
@@ -271,9 +281,10 @@
             this.PercentExpenses.BackColor = System.Drawing.Color.Transparent;
             this.PercentExpenses.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PercentExpenses.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(201)))), ((int)(((byte)(2)))), ((int)(((byte)(49)))));
-            this.PercentExpenses.Location = new System.Drawing.Point(18, 81);
+            this.PercentExpenses.Location = new System.Drawing.Point(24, 100);
+            this.PercentExpenses.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PercentExpenses.Name = "PercentExpenses";
-            this.PercentExpenses.Size = new System.Drawing.Size(41, 20);
+            this.PercentExpenses.Size = new System.Drawing.Size(52, 25);
             this.PercentExpenses.TabIndex = 3;
             this.PercentExpenses.Text = "16%";
             // 
@@ -283,9 +294,10 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(18, 144);
+            this.label4.Location = new System.Drawing.Point(24, 177);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 20);
+            this.label4.Size = new System.Drawing.Size(158, 25);
             this.label4.TabIndex = 2;
             this.label4.Text = "Total Expenses  ";
             // 
@@ -295,9 +307,10 @@
             this.ExpenseLbl.BackColor = System.Drawing.Color.Transparent;
             this.ExpenseLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpenseLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
-            this.ExpenseLbl.Location = new System.Drawing.Point(16, 111);
+            this.ExpenseLbl.Location = new System.Drawing.Point(21, 137);
+            this.ExpenseLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ExpenseLbl.Name = "ExpenseLbl";
-            this.ExpenseLbl.Size = new System.Drawing.Size(155, 33);
+            this.ExpenseLbl.Size = new System.Drawing.Size(198, 42);
             this.ExpenseLbl.TabIndex = 1;
             this.ExpenseLbl.Text = "₱1,903.74";
             // 
@@ -308,9 +321,10 @@
             this.guna2PictureBox11.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox11.Image = global::BudgetBuddy.Properties.Resources.Expenses;
             this.guna2PictureBox11.ImageRotate = 0F;
-            this.guna2PictureBox11.Location = new System.Drawing.Point(22, 19);
+            this.guna2PictureBox11.Location = new System.Drawing.Point(29, 23);
+            this.guna2PictureBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox11.Name = "guna2PictureBox11";
-            this.guna2PictureBox11.Size = new System.Drawing.Size(50, 50);
+            this.guna2PictureBox11.Size = new System.Drawing.Size(67, 62);
             this.guna2PictureBox11.TabIndex = 0;
             this.guna2PictureBox11.TabStop = false;
             // 
@@ -323,9 +337,10 @@
             this.guna2CustomGradientPanel6.Controls.Add(this.IncomeLbl);
             this.guna2CustomGradientPanel6.Controls.Add(this.guna2PictureBox10);
             this.guna2CustomGradientPanel6.ForeColor = System.Drawing.Color.White;
-            this.guna2CustomGradientPanel6.Location = new System.Drawing.Point(285, 30);
+            this.guna2CustomGradientPanel6.Location = new System.Drawing.Point(380, 37);
+            this.guna2CustomGradientPanel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2CustomGradientPanel6.Name = "guna2CustomGradientPanel6";
-            this.guna2CustomGradientPanel6.Size = new System.Drawing.Size(230, 180);
+            this.guna2CustomGradientPanel6.Size = new System.Drawing.Size(307, 222);
             this.guna2CustomGradientPanel6.TabIndex = 12;
             // 
             // guna2PictureBox9
@@ -335,9 +350,10 @@
             this.guna2PictureBox9.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox9.Image = global::BudgetBuddy.Properties.Resources.Increase;
             this.guna2PictureBox9.ImageRotate = 0F;
-            this.guna2PictureBox9.Location = new System.Drawing.Point(55, 81);
+            this.guna2PictureBox9.Location = new System.Drawing.Point(73, 100);
+            this.guna2PictureBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox9.Name = "guna2PictureBox9";
-            this.guna2PictureBox9.Size = new System.Drawing.Size(20, 20);
+            this.guna2PictureBox9.Size = new System.Drawing.Size(27, 25);
             this.guna2PictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox9.TabIndex = 4;
             this.guna2PictureBox9.TabStop = false;
@@ -348,9 +364,10 @@
             this.PercentIncome.BackColor = System.Drawing.Color.Transparent;
             this.PercentIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PercentIncome.ForeColor = System.Drawing.Color.Green;
-            this.PercentIncome.Location = new System.Drawing.Point(18, 81);
+            this.PercentIncome.Location = new System.Drawing.Point(24, 100);
+            this.PercentIncome.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PercentIncome.Name = "PercentIncome";
-            this.PercentIncome.Size = new System.Drawing.Size(41, 20);
+            this.PercentIncome.Size = new System.Drawing.Size(52, 25);
             this.PercentIncome.TabIndex = 3;
             this.PercentIncome.Text = "32%";
             // 
@@ -360,9 +377,10 @@
             this.label24.BackColor = System.Drawing.Color.Transparent;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(18, 144);
+            this.label24.Location = new System.Drawing.Point(24, 177);
+            this.label24.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(105, 20);
+            this.label24.Size = new System.Drawing.Size(130, 25);
             this.label24.TabIndex = 2;
             this.label24.Text = "Total Income ";
             // 
@@ -372,9 +390,10 @@
             this.IncomeLbl.BackColor = System.Drawing.Color.Transparent;
             this.IncomeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IncomeLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
-            this.IncomeLbl.Location = new System.Drawing.Point(16, 111);
+            this.IncomeLbl.Location = new System.Drawing.Point(21, 137);
+            this.IncomeLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.IncomeLbl.Name = "IncomeLbl";
-            this.IncomeLbl.Size = new System.Drawing.Size(155, 33);
+            this.IncomeLbl.Size = new System.Drawing.Size(198, 42);
             this.IncomeLbl.TabIndex = 1;
             this.IncomeLbl.Text = "₱5,178.62";
             // 
@@ -385,9 +404,10 @@
             this.guna2PictureBox10.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox10.Image = global::BudgetBuddy.Properties.Resources.Income;
             this.guna2PictureBox10.ImageRotate = 0F;
-            this.guna2PictureBox10.Location = new System.Drawing.Point(22, 19);
+            this.guna2PictureBox10.Location = new System.Drawing.Point(29, 23);
+            this.guna2PictureBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox10.Name = "guna2PictureBox10";
-            this.guna2PictureBox10.Size = new System.Drawing.Size(50, 50);
+            this.guna2PictureBox10.Size = new System.Drawing.Size(67, 62);
             this.guna2PictureBox10.TabIndex = 0;
             this.guna2PictureBox10.TabStop = false;
             // 
@@ -399,9 +419,10 @@
             this.guna2CustomGradientPanel2.Controls.Add(this.label2);
             this.guna2CustomGradientPanel2.Controls.Add(this.BalanceLbl);
             this.guna2CustomGradientPanel2.Controls.Add(this.guna2PictureBox1);
-            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(28, 30);
+            this.guna2CustomGradientPanel2.Location = new System.Drawing.Point(37, 37);
+            this.guna2CustomGradientPanel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2CustomGradientPanel2.Name = "guna2CustomGradientPanel2";
-            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(230, 180);
+            this.guna2CustomGradientPanel2.Size = new System.Drawing.Size(307, 222);
             this.guna2CustomGradientPanel2.TabIndex = 11;
             // 
             // guna2PictureBox8
@@ -411,9 +432,10 @@
             this.guna2PictureBox8.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox8.Image = global::BudgetBuddy.Properties.Resources.Increase;
             this.guna2PictureBox8.ImageRotate = 0F;
-            this.guna2PictureBox8.Location = new System.Drawing.Point(55, 81);
+            this.guna2PictureBox8.Location = new System.Drawing.Point(73, 100);
+            this.guna2PictureBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox8.Name = "guna2PictureBox8";
-            this.guna2PictureBox8.Size = new System.Drawing.Size(20, 20);
+            this.guna2PictureBox8.Size = new System.Drawing.Size(27, 25);
             this.guna2PictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox8.TabIndex = 4;
             this.guna2PictureBox8.TabStop = false;
@@ -424,9 +446,10 @@
             this.PercentBalance.BackColor = System.Drawing.Color.Transparent;
             this.PercentBalance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PercentBalance.ForeColor = System.Drawing.Color.Green;
-            this.PercentBalance.Location = new System.Drawing.Point(18, 81);
+            this.PercentBalance.Location = new System.Drawing.Point(24, 100);
+            this.PercentBalance.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.PercentBalance.Name = "PercentBalance";
-            this.PercentBalance.Size = new System.Drawing.Size(41, 20);
+            this.PercentBalance.Size = new System.Drawing.Size(52, 25);
             this.PercentBalance.TabIndex = 3;
             this.PercentBalance.Text = "32%";
             // 
@@ -436,9 +459,10 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(18, 144);
+            this.label2.Location = new System.Drawing.Point(24, 177);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 20);
+            this.label2.Size = new System.Drawing.Size(132, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Total Balance";
             // 
@@ -448,9 +472,10 @@
             this.BalanceLbl.BackColor = System.Drawing.Color.Transparent;
             this.BalanceLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BalanceLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
-            this.BalanceLbl.Location = new System.Drawing.Point(16, 111);
+            this.BalanceLbl.Location = new System.Drawing.Point(21, 137);
+            this.BalanceLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.BalanceLbl.Name = "BalanceLbl";
-            this.BalanceLbl.Size = new System.Drawing.Size(155, 33);
+            this.BalanceLbl.Size = new System.Drawing.Size(198, 42);
             this.BalanceLbl.TabIndex = 1;
             this.BalanceLbl.Text = "₱3,274.88";
             // 
@@ -461,9 +486,10 @@
             this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(22, 19);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(29, 23);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.guna2PictureBox1.Size = new System.Drawing.Size(67, 62);
             this.guna2PictureBox1.TabIndex = 0;
             this.guna2PictureBox1.TabStop = false;
             // 
@@ -495,7 +521,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.guna2DataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.guna2DataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.guna2DataGridView1.Location = new System.Drawing.Point(28, 530);
+            this.guna2DataGridView1.Location = new System.Drawing.Point(37, 652);
+            this.guna2DataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2DataGridView1.Name = "guna2DataGridView1";
             this.guna2DataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -507,7 +534,8 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.guna2DataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.guna2DataGridView1.RowHeadersVisible = false;
-            this.guna2DataGridView1.Size = new System.Drawing.Size(1014, 394);
+            this.guna2DataGridView1.RowHeadersWidth = 51;
+            this.guna2DataGridView1.Size = new System.Drawing.Size(1352, 485);
             this.guna2DataGridView1.TabIndex = 10;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -538,7 +566,7 @@
             this.guna2Panel2.Controls.Add(this.guna2PictureBox3);
             this.guna2Panel2.Controls.Add(this.label8);
             this.guna2Panel2.Controls.Add(this.guna2TextBox2);
-            this.guna2Panel2.Controls.Add(this.label7);
+            this.guna2Panel2.Controls.Add(this.AccountNumberLbl);
             this.guna2Panel2.Controls.Add(this.label6);
             this.guna2Panel2.Controls.Add(this.SearchTxtBox);
             this.guna2Panel2.Controls.Add(this.label5);
@@ -554,8 +582,63 @@
             this.guna2Panel2.Location = new System.Drawing.Point(0, 0);
             this.guna2Panel2.Margin = new System.Windows.Forms.Padding(0);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(370, 954);
+            this.guna2Panel2.Size = new System.Drawing.Size(493, 1174);
             this.guna2Panel2.TabIndex = 1;
+            // 
+            // BankAccountDataGrid
+            // 
+            this.BankAccountDataGrid.AllowUserToAddRows = false;
+            this.BankAccountDataGrid.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.BankAccountDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.BankAccountDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.BankAccountDataGrid.ColumnHeadersHeight = 15;
+            this.BankAccountDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.BankAccountDataGrid.DefaultCellStyle = dataGridViewCellStyle7;
+            this.BankAccountDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BankAccountDataGrid.Location = new System.Drawing.Point(20, 613);
+            this.BankAccountDataGrid.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BankAccountDataGrid.Name = "BankAccountDataGrid";
+            this.BankAccountDataGrid.ReadOnly = true;
+            this.BankAccountDataGrid.RowHeadersVisible = false;
+            this.BankAccountDataGrid.RowHeadersWidth = 51;
+            this.BankAccountDataGrid.Size = new System.Drawing.Size(453, 231);
+            this.BankAccountDataGrid.TabIndex = 28;
+            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.BankAccountDataGrid.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.BankAccountDataGrid.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.Height = 15;
+            this.BankAccountDataGrid.ThemeStyle.ReadOnly = true;
+            this.BankAccountDataGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.BankAccountDataGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.BankAccountDataGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BankAccountDataGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.BankAccountDataGrid.ThemeStyle.RowsStyle.Height = 22;
+            this.BankAccountDataGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.BankAccountDataGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             // 
             // NoCardLbl
             // 
@@ -563,9 +646,10 @@
             this.NoCardLbl.BackColor = System.Drawing.Color.Transparent;
             this.NoCardLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NoCardLbl.ForeColor = System.Drawing.Color.White;
-            this.NoCardLbl.Location = new System.Drawing.Point(140, 303);
+            this.NoCardLbl.Location = new System.Drawing.Point(187, 373);
+            this.NoCardLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NoCardLbl.Name = "NoCardLbl";
-            this.NoCardLbl.Size = new System.Drawing.Size(178, 24);
+            this.NoCardLbl.Size = new System.Drawing.Size(224, 29);
             this.NoCardLbl.TabIndex = 27;
             this.NoCardLbl.Text = "No Card Available";
             // 
@@ -574,7 +658,8 @@
             this.guna2PictureBox3.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox3.Image = global::BudgetBuddy.Properties.Resources.visa_logo;
             this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(275, 730);
+            this.guna2PictureBox3.Location = new System.Drawing.Point(367, 898);
+            this.guna2PictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
             this.guna2PictureBox3.Size = new System.Drawing.Size(80, 27);
             this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -587,9 +672,10 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(11, 782);
+            this.label8.Location = new System.Drawing.Point(15, 962);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 20);
+            this.label8.Size = new System.Drawing.Size(86, 25);
             this.label8.TabIndex = 25;
             this.label8.Text = "Amount";
             // 
@@ -607,33 +693,36 @@
             this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox2.IconLeft = global::BudgetBuddy.Properties.Resources.Peso_Symbol;
             this.guna2TextBox2.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.guna2TextBox2.Location = new System.Drawing.Point(15, 815);
+            this.guna2TextBox2.Location = new System.Drawing.Point(20, 1003);
+            this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PasswordChar = '\0';
             this.guna2TextBox2.PlaceholderText = "";
             this.guna2TextBox2.SelectedText = "";
-            this.guna2TextBox2.Size = new System.Drawing.Size(340, 36);
+            this.guna2TextBox2.Size = new System.Drawing.Size(453, 44);
             this.guna2TextBox2.TabIndex = 24;
             // 
-            // label7
+            // AccountNumberLbl
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(11, 733);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(204, 24);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "1218 7732 8153 0183";
+            this.AccountNumberLbl.AutoSize = true;
+            this.AccountNumberLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AccountNumberLbl.ForeColor = System.Drawing.Color.White;
+            this.AccountNumberLbl.Location = new System.Drawing.Point(15, 902);
+            this.AccountNumberLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.AccountNumberLbl.Name = "AccountNumberLbl";
+            this.AccountNumberLbl.Size = new System.Drawing.Size(258, 29);
+            this.AccountNumberLbl.TabIndex = 23;
+            this.AccountNumberLbl.Text = "1218 7732 8153 0183";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(11, 699);
+            this.label6.Location = new System.Drawing.Point(15, 860);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 20);
+            this.label6.Size = new System.Drawing.Size(140, 25);
             this.label6.TabIndex = 22;
             this.label6.Text = "Card Number";
             // 
@@ -651,12 +740,13 @@
             this.SearchTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchTxtBox.IconLeft = global::BudgetBuddy.Properties.Resources.Search;
             this.SearchTxtBox.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.SearchTxtBox.Location = new System.Drawing.Point(15, 454);
+            this.SearchTxtBox.Location = new System.Drawing.Point(20, 559);
+            this.SearchTxtBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.SearchTxtBox.Name = "SearchTxtBox";
             this.SearchTxtBox.PasswordChar = '\0';
             this.SearchTxtBox.PlaceholderText = "";
             this.SearchTxtBox.SelectedText = "";
-            this.SearchTxtBox.Size = new System.Drawing.Size(340, 36);
+            this.SearchTxtBox.Size = new System.Drawing.Size(453, 44);
             this.SearchTxtBox.TabIndex = 19;
             // 
             // label5
@@ -664,9 +754,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(11, 415);
+            this.label5.Location = new System.Drawing.Point(15, 511);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(147, 24);
+            this.label5.Size = new System.Drawing.Size(185, 29);
             this.label5.TabIndex = 18;
             this.label5.Text = "Quick Transfer";
             // 
@@ -680,9 +771,10 @@
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
             this.guna2Button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(195, 884);
+            this.guna2Button2.Location = new System.Drawing.Point(260, 1088);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(160, 40);
+            this.guna2Button2.Size = new System.Drawing.Size(213, 49);
             this.guna2Button2.TabIndex = 17;
             this.guna2Button2.Text = "Request";
             // 
@@ -696,9 +788,10 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
             this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(15, 884);
+            this.guna2Button1.Location = new System.Drawing.Point(20, 1088);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(160, 40);
+            this.guna2Button1.Size = new System.Drawing.Size(213, 49);
             this.guna2Button1.TabIndex = 16;
             this.guna2Button1.Text = "Send";
             // 
@@ -712,9 +805,10 @@
             this.AddCardBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
             this.AddCardBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddCardBtn.ForeColor = System.Drawing.Color.White;
-            this.AddCardBtn.Location = new System.Drawing.Point(218, 26);
+            this.AddCardBtn.Location = new System.Drawing.Point(291, 32);
+            this.AddCardBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AddCardBtn.Name = "AddCardBtn";
-            this.AddCardBtn.Size = new System.Drawing.Size(137, 30);
+            this.AddCardBtn.Size = new System.Drawing.Size(183, 37);
             this.AddCardBtn.TabIndex = 15;
             this.AddCardBtn.Text = "Add new card";
             this.AddCardBtn.Click += new System.EventHandler(this.AddCardBtn_Click);
@@ -724,9 +818,10 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(17, 30);
+            this.label21.Location = new System.Drawing.Point(23, 37);
+            this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(87, 24);
+            this.label21.Size = new System.Drawing.Size(109, 29);
             this.label21.TabIndex = 14;
             this.label21.Text = "My Card";
             // 
@@ -735,18 +830,20 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(95)))), ((int)(((byte)(76)))));
-            this.label20.Location = new System.Drawing.Point(17, 369);
+            this.label20.Location = new System.Drawing.Point(23, 454);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(275, 20);
+            this.label20.Size = new System.Drawing.Size(329, 25);
             this.label20.TabIndex = 13;
             this.label20.Text = "₱ 1650.75 used from ₱6,600 limit";
             // 
             // guna2ProgressBar1
             // 
             this.guna2ProgressBar1.BorderRadius = 14;
-            this.guna2ProgressBar1.Location = new System.Drawing.Point(15, 333);
+            this.guna2ProgressBar1.Location = new System.Drawing.Point(20, 410);
+            this.guna2ProgressBar1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2ProgressBar1.Name = "guna2ProgressBar1";
-            this.guna2ProgressBar1.Size = new System.Drawing.Size(340, 30);
+            this.guna2ProgressBar1.Size = new System.Drawing.Size(453, 37);
             this.guna2ProgressBar1.TabIndex = 12;
             this.guna2ProgressBar1.Text = "guna2ProgressBar1";
             this.guna2ProgressBar1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
@@ -756,9 +853,10 @@
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(17, 307);
+            this.label19.Location = new System.Drawing.Point(23, 378);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(91, 20);
+            this.label19.Size = new System.Drawing.Size(111, 25);
             this.label19.TabIndex = 11;
             this.label19.Text = "Daily Limit";
             // 
@@ -780,9 +878,10 @@
             this.CardObject.FillColor2 = System.Drawing.Color.Transparent;
             this.CardObject.FillColor3 = System.Drawing.Color.Transparent;
             this.CardObject.FillColor4 = System.Drawing.Color.Transparent;
-            this.CardObject.Location = new System.Drawing.Point(15, 71);
+            this.CardObject.Location = new System.Drawing.Point(20, 87);
+            this.CardObject.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CardObject.Name = "CardObject";
-            this.CardObject.Size = new System.Drawing.Size(340, 220);
+            this.CardObject.Size = new System.Drawing.Size(453, 271);
             this.CardObject.TabIndex = 6;
             // 
             // guna2PictureBox7
@@ -790,7 +889,8 @@
             this.guna2PictureBox7.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox7.Image = global::BudgetBuddy.Properties.Resources.visa_logo;
             this.guna2PictureBox7.ImageRotate = 0F;
-            this.guna2PictureBox7.Location = new System.Drawing.Point(235, 176);
+            this.guna2PictureBox7.Location = new System.Drawing.Point(313, 217);
+            this.guna2PictureBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox7.Name = "guna2PictureBox7";
             this.guna2PictureBox7.Size = new System.Drawing.Size(80, 27);
             this.guna2PictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -804,9 +904,10 @@
             this.CardNumberLbl.BackColor = System.Drawing.Color.Transparent;
             this.CardNumberLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CardNumberLbl.ForeColor = System.Drawing.Color.White;
-            this.CardNumberLbl.Location = new System.Drawing.Point(17, 179);
+            this.CardNumberLbl.Location = new System.Drawing.Point(23, 220);
+            this.CardNumberLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.CardNumberLbl.Name = "CardNumberLbl";
-            this.CardNumberLbl.Size = new System.Drawing.Size(204, 24);
+            this.CardNumberLbl.Size = new System.Drawing.Size(258, 29);
             this.CardNumberLbl.TabIndex = 23;
             this.CardNumberLbl.Text = "1421 0627 9514 8821";
             // 
@@ -816,9 +917,10 @@
             this.NameLbl.BackColor = System.Drawing.Color.Transparent;
             this.NameLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameLbl.ForeColor = System.Drawing.Color.White;
-            this.NameLbl.Location = new System.Drawing.Point(18, 154);
+            this.NameLbl.Location = new System.Drawing.Point(24, 190);
+            this.NameLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NameLbl.Name = "NameLbl";
-            this.NameLbl.Size = new System.Drawing.Size(134, 20);
+            this.NameLbl.Size = new System.Drawing.Size(168, 25);
             this.NameLbl.TabIndex = 22;
             this.NameLbl.Text = "Michael Stevanus";
             // 
@@ -827,9 +929,10 @@
             this.guna2PictureBox6.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox6.Image = global::BudgetBuddy.Properties.Resources.emv_chip_2;
             this.guna2PictureBox6.ImageRotate = 0F;
-            this.guna2PictureBox6.Location = new System.Drawing.Point(17, 74);
+            this.guna2PictureBox6.Location = new System.Drawing.Point(23, 91);
+            this.guna2PictureBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox6.Name = "guna2PictureBox6";
-            this.guna2PictureBox6.Size = new System.Drawing.Size(65, 49);
+            this.guna2PictureBox6.Size = new System.Drawing.Size(87, 60);
             this.guna2PictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox6.TabIndex = 21;
             this.guna2PictureBox6.TabStop = false;
@@ -841,9 +944,10 @@
             this.ExpiryDateLbl.BackColor = System.Drawing.Color.Transparent;
             this.ExpiryDateLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExpiryDateLbl.ForeColor = System.Drawing.Color.White;
-            this.ExpiryDateLbl.Location = new System.Drawing.Point(243, 47);
+            this.ExpiryDateLbl.Location = new System.Drawing.Point(324, 58);
+            this.ExpiryDateLbl.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ExpiryDateLbl.Name = "ExpiryDateLbl";
-            this.ExpiryDateLbl.Size = new System.Drawing.Size(41, 13);
+            this.ExpiryDateLbl.Size = new System.Drawing.Size(49, 17);
             this.ExpiryDateLbl.TabIndex = 20;
             this.ExpiryDateLbl.Text = "03/22";
             // 
@@ -853,9 +957,10 @@
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(243, 28);
+            this.label11.Location = new System.Drawing.Point(324, 34);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(72, 13);
+            this.label11.Size = new System.Drawing.Size(91, 17);
             this.label11.TabIndex = 3;
             this.label11.Text = "Expiry Date";
             // 
@@ -863,9 +968,10 @@
             // 
             this.guna2PictureBox5.Image = global::BudgetBuddy.Properties.Resources.logo;
             this.guna2PictureBox5.ImageRotate = 0F;
-            this.guna2PictureBox5.Location = new System.Drawing.Point(22, 19);
+            this.guna2PictureBox5.Location = new System.Drawing.Point(29, 23);
+            this.guna2PictureBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.guna2PictureBox5.Name = "guna2PictureBox5";
-            this.guna2PictureBox5.Size = new System.Drawing.Size(20, 28);
+            this.guna2PictureBox5.Size = new System.Drawing.Size(27, 34);
             this.guna2PictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.guna2PictureBox5.TabIndex = 17;
             this.guna2PictureBox5.TabStop = false;
@@ -876,10 +982,10 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
-            this.label9.Location = new System.Drawing.Point(111, 24);
+            this.label9.Location = new System.Drawing.Point(148, 30);
             this.label9.Margin = new System.Windows.Forms.Padding(0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(72, 20);
+            this.label9.Size = new System.Drawing.Size(85, 25);
             this.label9.TabIndex = 19;
             this.label9.Text = "BUDDY";
             // 
@@ -889,70 +995,23 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(48, 23);
+            this.label10.Location = new System.Drawing.Point(64, 28);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(67, 20);
+            this.label10.Size = new System.Drawing.Size(80, 25);
             this.label10.TabIndex = 18;
             this.label10.Text = "Budget";
             // 
-            // BankAccountDataGrid
-            // 
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            this.BankAccountDataGrid.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.BankAccountDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
-            this.BankAccountDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.BankAccountDataGrid.DefaultCellStyle = dataGridViewCellStyle7;
-            this.BankAccountDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.BankAccountDataGrid.Location = new System.Drawing.Point(15, 498);
-            this.BankAccountDataGrid.Name = "BankAccountDataGrid";
-            this.BankAccountDataGrid.RowHeadersVisible = false;
-            this.BankAccountDataGrid.Size = new System.Drawing.Size(340, 188);
-            this.BankAccountDataGrid.TabIndex = 28;
-            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.BankAccountDataGrid.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.BankAccountDataGrid.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.BankAccountDataGrid.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.BankAccountDataGrid.ThemeStyle.HeaderStyle.Height = 15;
-            this.BankAccountDataGrid.ThemeStyle.ReadOnly = false;
-            this.BankAccountDataGrid.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.BankAccountDataGrid.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.BankAccountDataGrid.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BankAccountDataGrid.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.BankAccountDataGrid.ThemeStyle.RowsStyle.Height = 22;
-            this.BankAccountDataGrid.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.BankAccountDataGrid.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
             // Overview
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Overview";
-            this.Size = new System.Drawing.Size(1440, 954);
+            this.Size = new System.Drawing.Size(1920, 1174);
             this.Load += new System.EventHandler(this.Overview_Load);
             this.guna2Panel1.ResumeLayout(false);
             this.RightPanel.ResumeLayout(false);
@@ -975,13 +1034,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.BankAccountDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             this.CardObject.ResumeLayout(false);
             this.CardObject.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BankAccountDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1002,7 +1061,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox3;
         private System.Windows.Forms.Label label8;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox2;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label AccountNumberLbl;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label NoCardLbl;
         private Guna.UI2.WinForms.Guna2Panel RightPanel;

@@ -124,14 +124,18 @@ namespace BudgetBuddy.Repositories
             return login.Any();
         }
 
-        public IEnumerable<Users> GetBankAccountList()
+        public IEnumerable<BankAccount> GetBankAccountList()
         {
             var query = (from list in _db.metrobank_accounts
                          select list).ToList();
 
 
-            return query.Select(sel => new Users { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
+            var selected = query.Select(sel => new BankAccount { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
+
+            return selected;
         }
+
+
         public account GetAccount(account account)
         {
             var accountlist = (from acc in _db.accounts

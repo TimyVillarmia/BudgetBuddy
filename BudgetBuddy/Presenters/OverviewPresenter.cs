@@ -18,7 +18,7 @@ namespace BudgetBuddy.Presenters
         private readonly IAccountRepository _accountRepository;
         private readonly IOverviewView _view;
         private readonly IAddCardView _view1;
-        private IEnumerable<Users> accountList;
+        private IEnumerable<BankAccount> accountList;
         private BindingSource bankBindingSource;
 
 
@@ -32,46 +32,45 @@ namespace BudgetBuddy.Presenters
             _view = view;
             _view1 = view1;
 
-            this._view.SetBankListBindingSource(bankBindingSource);
 
 
             // subscribe the view's event to the presenter's event
             _view.LoadOverviewData += GetCard;
             _view.SearchAccountEvent += SearchAccount;
-
-
             _view1.AddNewCardEvent += AddCardMethod;
-            LoadAllBankList();
+
+
+            this._view.SetBankListBindingSource(bankBindingSource);
+
 
 
         }
 
         private void LoadAllBankList()
         {
-            accountList = _accountRepository.GetBankAccountList();
+            accountList = _accountRepository.GetBankAccountList().Where(exclude => exclude.DisplayName != _view.bankAccount.DisplayName);
             bankBindingSource.DataSource = accountList;//Set data source.
         }
 
         private void SearchAccount(object sender, EventArgs e)
         {
-            var name = new account
-            {
-                owner_name = _view.OwnerName
-            };
+
             
             try
             {
 
                 bool emptyValue = string.IsNullOrWhiteSpace(_view.SearchName);
 
-                if (emptyValue == false)
+                if (emptyValue)
                 {
-                    accountList = _accountRepository.GetBankAccountList().Where(search => search.DisplayName.StartsWith(_view.SearchName));
+                    accountList = _accountRepository.GetBankAccountList().Where(exclude => exclude.DisplayName != _view.bankAccount.DisplayName);
+
 
                 }
                 else
                 {
-                    accountList = _accountRepository.GetBankAccountList();
+                    accountList = _accountRepository.GetBankAccountList().Where(search => search.DisplayName.ToLower().StartsWith(_view.SearchName)); 
+
                 }
 
                 bankBindingSource.DataSource = accountList;
@@ -88,6 +87,7 @@ namespace BudgetBuddy.Presenters
 
         private void GetCard(object sender, EventArgs e)
         {
+
             var email = new account
             {
                 email = Session.CurrentUser
@@ -98,9 +98,9 @@ namespace BudgetBuddy.Presenters
                 var acc = _accountRepository.GetAccount(email);
                 if (acc != null) 
                 { 
-                    _view.CardNumber = acc.account_number;
-                    _view.OwnerName = acc.owner_name;
-                    _view.ExpiryDate = acc.expiry_date.ToString("MM/yy");
+                    _view.bankAccount.AccountNumber = acc.account_number;
+                    _view.bankAccount.DisplayName = acc.owner_name;
+                    _view.bankAccount.ExpiryDate = acc.expiry_date.ToString("MM/yy");
 
                     _view.HasAccount = true;
                     
@@ -115,6 +115,10 @@ namespace BudgetBuddy.Presenters
             {
                 MessageBox.Show(ex.Message);
             }
+
+            LoadAllBankList();
+
+
         }
 
 

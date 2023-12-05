@@ -44,30 +44,10 @@ namespace BudgetBuddy.Views.UserControls
             get { return _isSuccessful; }
             set { _isSuccessful = value; }
         }
-        public string Balance { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Income { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Expenses { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string Savings { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public string ExpiryDate
-        {
-            get { return ExpiryDateLbl.Text; }
-            set { ExpiryDateLbl.Text = value; }
-        }
-        public string CardNumber
-        {
-            get { return CardNumberLbl.Text; }
-            set { CardNumberLbl.Text = value; }
-        }
-        public string OwnerName
-        {
-            get { return NameLbl.Text; }
-            set { NameLbl.Text = value; }
-        }
-        public string SearchName
-        {
-            get { return SearchTxtBox.Text; }
-            set { SearchTxtBox.Text = value; }
-        }
+
+        public BankAccount bankAccount { get; set; }
+
+        public string SearchName { get; set; }
 
         private void AssociateAndRaiseViewEvents()
         {
@@ -86,9 +66,9 @@ namespace BudgetBuddy.Views.UserControls
                     PercentIncome.Visible = true;
                     PercentSavings.Visible = true;
 
-                    ExpiryDateLbl.Text = ExpiryDate;
-                    NameLbl.Text = OwnerName;
-                    CardNumberLbl.Text = CardNumber;
+                    ExpiryDateLbl.Text = bankAccount.ExpiryDate;
+                    NameLbl.Text = bankAccount.DisplayName;
+                    CardNumberLbl.Text = bankAccount.AccountNumber;
 
 
                 }
@@ -110,8 +90,9 @@ namespace BudgetBuddy.Views.UserControls
 
             SearchTxtBox.TextChanged += delegate
             {
+                SearchName = SearchTxtBox.Text.ToLower();
                 SearchAccountEvent?.Invoke(this, EventArgs.Empty);
-                SearchName = SearchTxtBox.Text;
+                
 
             };
 

@@ -21,15 +21,8 @@ namespace BudgetBuddy.Views
         bool isSuccessful { get; set; }
         string SearchName { get; set; }
 
+        BankAccount bankAccount { get; set; }
 
-        // account/card information
-        string ExpiryDate { get; set; }
-        string CardNumber { get; set; }
-        string OwnerName { get; set; }
-        string Balance { get; set; }
-        string Income { get; set; }
-        string Expenses { get; set; }
-        string Savings { get; set; }
 
         void SetBankListBindingSource(BindingSource bank);
 
