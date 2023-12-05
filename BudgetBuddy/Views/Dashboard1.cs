@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using BudgetBuddy.Presenters;
 using BudgetBuddy.Models;
 using BudgetBuddy.Repositories;
+using Guna.UI2.WinForms;
 
 namespace BudgetBuddy.Views
 {
@@ -19,6 +20,7 @@ namespace BudgetBuddy.Views
         public Dashboard1()
         {
             InitializeComponent();
+            AssociateAndRaiseViewEvents();
         }
 
         public Overview Overview { get; set; }
@@ -30,6 +32,7 @@ namespace BudgetBuddy.Views
             DataClasses1DataContext db = new DataClasses1DataContext();
             IAccountRepository accountRepository = new AccountRepository(db);
 
+            
             Overview = new Overview(this)
             {
                 Dock = DockStyle.Fill
@@ -48,8 +51,68 @@ namespace BudgetBuddy.Views
 
             DashboardPanel.Controls.Add(Overview);
             DashboardPanel.Controls.Add(AddCard);
-
             Overview.Focus();
+            OverviewBtn.PerformClick();
+
         }
+
+        private void FormatBtn(Guna2Button button)
+        {
+            if (button.Checked)
+            {
+                button.ForeColor = Color.White;
+                button.CustomBorderColor = Color.FromArgb(255, 137, 6);
+                button.CustomBorderThickness = new Padding(0, 0, 0, 1);
+            }
+            else
+            {
+                button.ForeColor = Color.FromArgb(167, 169, 190);
+                button.CustomBorderColor = Color.Transparent;
+                button.CustomBorderThickness = new Padding(0, 0, 0, 0);
+            }
+  
+
+
+        }
+
+        private void AssociateAndRaiseViewEvents()
+        {
+
+            OverviewBtn.CheckedChanged += delegate
+            {
+
+                Overview.BringToFront();
+                FormatBtn(OverviewBtn);
+
+            };
+            StatsBtn.CheckedChanged += delegate
+            {
+
+                //Overview.BringToFront();
+                FormatBtn(StatsBtn);
+
+
+            };
+            TransactionBtn.CheckedChanged += delegate
+            {
+
+                //Overview.BringToFront();
+                FormatBtn(TransactionBtn);
+
+
+            };
+            ReportsBtn.CheckedChanged += delegate
+            {
+
+                //Overview.BringToFront();
+                FormatBtn(ReportsBtn);
+
+
+            };
+
+
+
+        }
+
     }
 }
