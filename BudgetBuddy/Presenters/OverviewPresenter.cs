@@ -45,9 +45,9 @@ namespace BudgetBuddy.Presenters
                 var acc = _accountRepository.GetAccount(email);
                 if (acc != null) 
                 { 
-                    _view.card.CardNumber = acc.account_number;
-                    _view.card.Name = acc.owner_name;
-                    _view.card.ExpiryDate = acc.expiry_date;
+                    _view.CardNumber = acc.account_number;
+                    _view.Name = acc.owner_name;
+                    _view.ExpiryDate = acc.expiry_date.ToString("MM/yy");
 
                     _view.HasAccount = true;
                     
@@ -58,9 +58,9 @@ namespace BudgetBuddy.Presenters
 
                 }
             }
-            catch
+            catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
 

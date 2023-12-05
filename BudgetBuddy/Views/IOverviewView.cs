@@ -15,13 +15,18 @@ namespace BudgetBuddy.Views
         event EventHandler RequestEvent;
 
         bool HasAccount { get; set; }
+        bool isSuccessful { get; set; }
+
+
+        // account/card information
+        string ExpiryDate { get; set; }
+        string CardNumber { get; set; }
+        string Name { get; set; }
         string Balance { get; set; }
         string Income { get; set; }
         string Expenses { get; set; }
         string Savings { get; set; }
-        bool isSuccessful { get; set; }
 
-        Card card { get; set; }
 
     }
 }

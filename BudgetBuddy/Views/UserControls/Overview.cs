@@ -29,7 +29,6 @@ namespace BudgetBuddy.Views.UserControls
         {
             InitializeComponent();
             Dashboard = form;
-            NoCardLbl.Location = new Point(178, 24);
             AssociateAndRaiseViewEvents();
 
         }
@@ -48,32 +47,52 @@ namespace BudgetBuddy.Views.UserControls
         public string Income { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Expenses { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Savings { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public Card card { get; set; }
+        public string ExpiryDate
+        {
+            get { return ExpiryDateLbl.Text; }
+            set { ExpiryDateLbl.Text = value; }
+        }
+        public string CardNumber
+        {
+            get { return CardNumberLbl.Text; }
+            set { CardNumberLbl.Text = value; }
+        }
+        public string Name
+        {
+            get { return NameLbl.Text; }
+            set { NameLbl.Text = value; }
+        }
 
         private void AssociateAndRaiseViewEvents()
         {
-            this.Enter += delegate
+            this.Load += delegate
             {
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
 
                 if (HasAccount)
                 {
                     NoCardLbl.Visible = false;
+                    AddCardBtn.Visible = false;
                     CardObject.Visible = true;
+
                     PercentBalance.Visible = true;
                     PercentExpenses.Visible = false;
                     PercentIncome.Visible = true;
                     PercentSavings.Visible = true;
-                    ExpiryDateLbl.Text = card.ExpiryDate.ToString();
-                    NameLbl.Text = card.Name;
-                    CardNumberLbl.Text = card.CardNumber;
+
+                    ExpiryDateLbl.Text = ExpiryDate;
+                    NameLbl.Text = Name;
+                    CardNumberLbl.Text = CardNumber;
 
 
                 }
                 else
                 {
-                    NoCardLbl.Visible = true;
                     CardObject.Visible = false;
+                    AddCardBtn.Visible = true;
+
+                    NoCardLbl.Visible = true;
+                    NoCardLbl.Location = new Point(178, 24);
                     PercentBalance.Visible = false;
                     PercentExpenses.Visible = false;
                     PercentIncome.Visible = false;
@@ -97,9 +116,9 @@ namespace BudgetBuddy.Views.UserControls
         private void Overview_Load(object sender, EventArgs e)
         {
 
-            DoughnutChart doughnutChart = new DoughnutChart();
+            //DoughnutChart doughnutChart = new DoughnutChart();
 
-            ChartPanel.Controls.Add(doughnutChart);
+            //ChartPanel.Controls.Add(doughnutChart);
         }
 
         private void AddCardBtn_Click(object sender, EventArgs e)
