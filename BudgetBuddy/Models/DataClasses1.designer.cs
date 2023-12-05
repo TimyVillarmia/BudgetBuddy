@@ -30,18 +30,21 @@ namespace BudgetBuddy.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Insertaccount(account instance);
-    partial void Updateaccount(account instance);
-    partial void Deleteaccount(account instance);
-    partial void Insertuser(user instance);
-    partial void Updateuser(user instance);
-    partial void Deleteuser(user instance);
-    partial void Insertmetrobank_account(metrobank_account instance);
-    partial void Updatemetrobank_account(metrobank_account instance);
-    partial void Deletemetrobank_account(metrobank_account instance);
+    partial void InsertMetrobank(Metrobank instance);
+    partial void UpdateMetrobank(Metrobank instance);
+    partial void DeleteMetrobank(Metrobank instance);
+    partial void Insertusers_bank_account(users_bank_account instance);
+    partial void Updateusers_bank_account(users_bank_account instance);
+    partial void Deleteusers_bank_account(users_bank_account instance);
     partial void Inserttransaction(transaction instance);
     partial void Updatetransaction(transaction instance);
     partial void Deletetransaction(transaction instance);
+    partial void Insertuser_detail(user_detail instance);
+    partial void Updateuser_detail(user_detail instance);
+    partial void Deleteuser_detail(user_detail instance);
+    partial void Insertuser(user instance);
+    partial void Updateuser(user instance);
+    partial void Deleteuser(user instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -74,27 +77,19 @@ namespace BudgetBuddy.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<account> accounts
+		public System.Data.Linq.Table<Metrobank> Metrobanks
 		{
 			get
 			{
-				return this.GetTable<account>();
+				return this.GetTable<Metrobank>();
 			}
 		}
 		
-		public System.Data.Linq.Table<user> users
+		public System.Data.Linq.Table<users_bank_account> users_bank_accounts
 		{
 			get
 			{
-				return this.GetTable<user>();
-			}
-		}
-		
-		public System.Data.Linq.Table<metrobank_account> metrobank_accounts
-		{
-			get
-			{
-				return this.GetTable<metrobank_account>();
+				return this.GetTable<users_bank_account>();
 			}
 		}
 		
@@ -105,504 +100,29 @@ namespace BudgetBuddy.Models
 				return this.GetTable<transaction>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.accounts")]
-	public partial class account : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _account_id;
-		
-		private string _account_number;
-		
-		private string _account_type;
-		
-		private string _owner_name;
-		
-		private System.DateTime _expiry_date;
-		
-		private string _email;
-		
-		private EntitySet<transaction> _transactions;
-		
-		private EntitySet<transaction> _transactions1;
-		
-		private EntityRef<user> _user;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onaccount_idChanging(int value);
-    partial void Onaccount_idChanged();
-    partial void Onaccount_numberChanging(string value);
-    partial void Onaccount_numberChanged();
-    partial void Onaccount_typeChanging(string value);
-    partial void Onaccount_typeChanged();
-    partial void Onowner_nameChanging(string value);
-    partial void Onowner_nameChanged();
-    partial void Onexpiry_dateChanging(System.DateTime value);
-    partial void Onexpiry_dateChanged();
-    partial void OnemailChanging(string value);
-    partial void OnemailChanged();
-    #endregion
-		
-		public account()
-		{
-			this._transactions = new EntitySet<transaction>(new Action<transaction>(this.attach_transactions), new Action<transaction>(this.detach_transactions));
-			this._transactions1 = new EntitySet<transaction>(new Action<transaction>(this.attach_transactions1), new Action<transaction>(this.detach_transactions1));
-			this._user = default(EntityRef<user>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int account_id
+		public System.Data.Linq.Table<user_detail> user_details
 		{
 			get
 			{
-				return this._account_id;
-			}
-			set
-			{
-				if ((this._account_id != value))
-				{
-					this.Onaccount_idChanging(value);
-					this.SendPropertyChanging();
-					this._account_id = value;
-					this.SendPropertyChanged("account_id");
-					this.Onaccount_idChanged();
-				}
+				return this.GetTable<user_detail>();
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_number", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string account_number
+		public System.Data.Linq.Table<user> users
 		{
 			get
 			{
-				return this._account_number;
+				return this.GetTable<user>();
 			}
-			set
-			{
-				if ((this._account_number != value))
-				{
-					this.Onaccount_numberChanging(value);
-					this.SendPropertyChanging();
-					this._account_number = value;
-					this.SendPropertyChanged("account_number");
-					this.Onaccount_numberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_type", DbType="VarChar(8) NOT NULL", CanBeNull=false)]
-		public string account_type
-		{
-			get
-			{
-				return this._account_type;
-			}
-			set
-			{
-				if ((this._account_type != value))
-				{
-					this.Onaccount_typeChanging(value);
-					this.SendPropertyChanging();
-					this._account_type = value;
-					this.SendPropertyChanged("account_type");
-					this.Onaccount_typeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_owner_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string owner_name
-		{
-			get
-			{
-				return this._owner_name;
-			}
-			set
-			{
-				if ((this._owner_name != value))
-				{
-					this.Onowner_nameChanging(value);
-					this.SendPropertyChanging();
-					this._owner_name = value;
-					this.SendPropertyChanged("owner_name");
-					this.Onowner_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_expiry_date", DbType="Date NOT NULL")]
-		public System.DateTime expiry_date
-		{
-			get
-			{
-				return this._expiry_date;
-			}
-			set
-			{
-				if ((this._expiry_date != value))
-				{
-					this.Onexpiry_dateChanging(value);
-					this.SendPropertyChanging();
-					this._expiry_date = value;
-					this.SendPropertyChanged("expiry_date");
-					this.Onexpiry_dateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					if (this._user.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnemailChanging(value);
-					this.SendPropertyChanging();
-					this._email = value;
-					this.SendPropertyChanged("email");
-					this.OnemailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="account_transaction", Storage="_transactions", ThisKey="account_id", OtherKey="receiver_id")]
-		public EntitySet<transaction> transactions
-		{
-			get
-			{
-				return this._transactions;
-			}
-			set
-			{
-				this._transactions.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="account_transaction1", Storage="_transactions1", ThisKey="account_id", OtherKey="sender_id")]
-		public EntitySet<transaction> transactions1
-		{
-			get
-			{
-				return this._transactions1;
-			}
-			set
-			{
-				this._transactions1.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account", Storage="_user", ThisKey="email", OtherKey="email", IsForeignKey=true)]
-		public user user
-		{
-			get
-			{
-				return this._user.Entity;
-			}
-			set
-			{
-				user previousValue = this._user.Entity;
-				if (((previousValue != value) 
-							|| (this._user.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._user.Entity = null;
-						previousValue.accounts.Remove(this);
-					}
-					this._user.Entity = value;
-					if ((value != null))
-					{
-						value.accounts.Add(this);
-						this._email = value.email;
-					}
-					else
-					{
-						this._email = default(string);
-					}
-					this.SendPropertyChanged("user");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_transactions(transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.account = this;
-		}
-		
-		private void detach_transactions(transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.account = null;
-		}
-		
-		private void attach_transactions1(transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.account1 = this;
-		}
-		
-		private void detach_transactions1(transaction entity)
-		{
-			this.SendPropertyChanging();
-			entity.account1 = null;
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
-	public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Metrobank")]
+	public partial class Metrobank : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _user_id;
-		
-		private string _email;
-		
-		private string _first_name;
-		
-		private string _last_name;
-		
-		private string _password_hash;
-		
-		private string _password_salt;
-		
-		private EntitySet<account> _accounts;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onuser_idChanging(int value);
-    partial void Onuser_idChanged();
-    partial void OnemailChanging(string value);
-    partial void OnemailChanged();
-    partial void Onfirst_nameChanging(string value);
-    partial void Onfirst_nameChanged();
-    partial void Onlast_nameChanging(string value);
-    partial void Onlast_nameChanged();
-    partial void Onpassword_hashChanging(string value);
-    partial void Onpassword_hashChanged();
-    partial void Onpassword_saltChanging(string value);
-    partial void Onpassword_saltChanged();
-    #endregion
-		
-		public user()
-		{
-			this._accounts = new EntitySet<account>(new Action<account>(this.attach_accounts), new Action<account>(this.detach_accounts));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int user_id
-		{
-			get
-			{
-				return this._user_id;
-			}
-			set
-			{
-				if ((this._user_id != value))
-				{
-					this.Onuser_idChanging(value);
-					this.SendPropertyChanging();
-					this._user_id = value;
-					this.SendPropertyChanged("user_id");
-					this.Onuser_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string email
-		{
-			get
-			{
-				return this._email;
-			}
-			set
-			{
-				if ((this._email != value))
-				{
-					this.OnemailChanging(value);
-					this.SendPropertyChanging();
-					this._email = value;
-					this.SendPropertyChanged("email");
-					this.OnemailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="VarChar(64) NOT NULL", CanBeNull=false)]
-		public string first_name
-		{
-			get
-			{
-				return this._first_name;
-			}
-			set
-			{
-				if ((this._first_name != value))
-				{
-					this.Onfirst_nameChanging(value);
-					this.SendPropertyChanging();
-					this._first_name = value;
-					this.SendPropertyChanged("first_name");
-					this.Onfirst_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_last_name", DbType="VarChar(64) NOT NULL", CanBeNull=false)]
-		public string last_name
-		{
-			get
-			{
-				return this._last_name;
-			}
-			set
-			{
-				if ((this._last_name != value))
-				{
-					this.Onlast_nameChanging(value);
-					this.SendPropertyChanging();
-					this._last_name = value;
-					this.SendPropertyChanged("last_name");
-					this.Onlast_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_hash", DbType="Char(64) NOT NULL", CanBeNull=false)]
-		public string password_hash
-		{
-			get
-			{
-				return this._password_hash;
-			}
-			set
-			{
-				if ((this._password_hash != value))
-				{
-					this.Onpassword_hashChanging(value);
-					this.SendPropertyChanging();
-					this._password_hash = value;
-					this.SendPropertyChanged("password_hash");
-					this.Onpassword_hashChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_salt", DbType="Char(64) NOT NULL", CanBeNull=false)]
-		public string password_salt
-		{
-			get
-			{
-				return this._password_salt;
-			}
-			set
-			{
-				if ((this._password_salt != value))
-				{
-					this.Onpassword_saltChanging(value);
-					this.SendPropertyChanging();
-					this._password_salt = value;
-					this.SendPropertyChanged("password_salt");
-					this.Onpassword_saltChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_account", Storage="_accounts", ThisKey="email", OtherKey="email")]
-		public EntitySet<account> accounts
-		{
-			get
-			{
-				return this._accounts;
-			}
-			set
-			{
-				this._accounts.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_accounts(account entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = this;
-		}
-		
-		private void detach_accounts(account entity)
-		{
-			this.SendPropertyChanging();
-			entity.user = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.metrobank_accounts")]
-	public partial class metrobank_account : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _account_id;
 		
 		private string _account_number;
 		
@@ -610,9 +130,9 @@ namespace BudgetBuddy.Models
 		
 		private decimal _current_balance;
 		
-		private System.DateTime _open_date;
-		
 		private string _owner_name;
+		
+		private System.DateTime _open_date;
 		
 		private string _address;
 		
@@ -622,22 +142,22 @@ namespace BudgetBuddy.Models
 		
 		private System.DateTime _expiry_date;
 		
+		private string _email;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void Onaccount_idChanging(int value);
-    partial void Onaccount_idChanged();
     partial void Onaccount_numberChanging(string value);
     partial void Onaccount_numberChanged();
     partial void Onaccount_typeChanging(string value);
     partial void Onaccount_typeChanged();
     partial void Oncurrent_balanceChanging(decimal value);
     partial void Oncurrent_balanceChanged();
-    partial void Onopen_dateChanging(System.DateTime value);
-    partial void Onopen_dateChanged();
     partial void Onowner_nameChanging(string value);
     partial void Onowner_nameChanged();
+    partial void Onopen_dateChanging(System.DateTime value);
+    partial void Onopen_dateChanged();
     partial void OnaddressChanging(string value);
     partial void OnaddressChanged();
     partial void Onphone_numberChanging(string value);
@@ -646,34 +166,16 @@ namespace BudgetBuddy.Models
     partial void OnPINChanged();
     partial void Onexpiry_dateChanging(System.DateTime value);
     partial void Onexpiry_dateChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
     #endregion
 		
-		public metrobank_account()
+		public Metrobank()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int account_id
-		{
-			get
-			{
-				return this._account_id;
-			}
-			set
-			{
-				if ((this._account_id != value))
-				{
-					this.Onaccount_idChanging(value);
-					this.SendPropertyChanging();
-					this._account_id = value;
-					this.SendPropertyChanged("account_id");
-					this.Onaccount_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_number", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_number", DbType="VarChar(255) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
 		public string account_number
 		{
 			get
@@ -733,6 +235,26 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_owner_name", DbType="VarChar(50)")]
+		public string owner_name
+		{
+			get
+			{
+				return this._owner_name;
+			}
+			set
+			{
+				if ((this._owner_name != value))
+				{
+					this.Onowner_nameChanging(value);
+					this.SendPropertyChanging();
+					this._owner_name = value;
+					this.SendPropertyChanged("owner_name");
+					this.Onowner_nameChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_open_date", DbType="Date NOT NULL")]
 		public System.DateTime open_date
 		{
@@ -749,26 +271,6 @@ namespace BudgetBuddy.Models
 					this._open_date = value;
 					this.SendPropertyChanged("open_date");
 					this.Onopen_dateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_owner_name", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string owner_name
-		{
-			get
-			{
-				return this._owner_name;
-			}
-			set
-			{
-				if ((this._owner_name != value))
-				{
-					this.Onowner_nameChanging(value);
-					this.SendPropertyChanging();
-					this._owner_name = value;
-					this.SendPropertyChanged("owner_name");
-					this.Onowner_nameChanged();
 				}
 			}
 		}
@@ -853,6 +355,26 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -874,6 +396,261 @@ namespace BudgetBuddy.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users_bank_accounts")]
+	public partial class users_bank_account : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _account_number;
+		
+		private string _account_type;
+		
+		private string _owner_name;
+		
+		private System.DateTime _expiry_date;
+		
+		private string _email;
+		
+		private EntitySet<transaction> _transactions;
+		
+		private EntitySet<transaction> _transactions1;
+		
+		private EntityRef<user> _user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onaccount_numberChanging(string value);
+    partial void Onaccount_numberChanged();
+    partial void Onaccount_typeChanging(string value);
+    partial void Onaccount_typeChanged();
+    partial void Onowner_nameChanging(string value);
+    partial void Onowner_nameChanged();
+    partial void Onexpiry_dateChanging(System.DateTime value);
+    partial void Onexpiry_dateChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    #endregion
+		
+		public users_bank_account()
+		{
+			this._transactions = new EntitySet<transaction>(new Action<transaction>(this.attach_transactions), new Action<transaction>(this.detach_transactions));
+			this._transactions1 = new EntitySet<transaction>(new Action<transaction>(this.attach_transactions1), new Action<transaction>(this.detach_transactions1));
+			this._user = default(EntityRef<user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_number", DbType="VarChar(255) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string account_number
+		{
+			get
+			{
+				return this._account_number;
+			}
+			set
+			{
+				if ((this._account_number != value))
+				{
+					this.Onaccount_numberChanging(value);
+					this.SendPropertyChanging();
+					this._account_number = value;
+					this.SendPropertyChanged("account_number");
+					this.Onaccount_numberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_type", DbType="VarChar(8) NOT NULL", CanBeNull=false)]
+		public string account_type
+		{
+			get
+			{
+				return this._account_type;
+			}
+			set
+			{
+				if ((this._account_type != value))
+				{
+					this.Onaccount_typeChanging(value);
+					this.SendPropertyChanging();
+					this._account_type = value;
+					this.SendPropertyChanged("account_type");
+					this.Onaccount_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_owner_name", DbType="VarChar(50)")]
+		public string owner_name
+		{
+			get
+			{
+				return this._owner_name;
+			}
+			set
+			{
+				if ((this._owner_name != value))
+				{
+					this.Onowner_nameChanging(value);
+					this.SendPropertyChanging();
+					this._owner_name = value;
+					this.SendPropertyChanged("owner_name");
+					this.Onowner_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_expiry_date", DbType="Date NOT NULL")]
+		public System.DateTime expiry_date
+		{
+			get
+			{
+				return this._expiry_date;
+			}
+			set
+			{
+				if ((this._expiry_date != value))
+				{
+					this.Onexpiry_dateChanging(value);
+					this.SendPropertyChanging();
+					this._expiry_date = value;
+					this.SendPropertyChanged("expiry_date");
+					this.Onexpiry_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(255)")]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction", Storage="_transactions", ThisKey="account_number", OtherKey="receiver_id")]
+		public EntitySet<transaction> transactions
+		{
+			get
+			{
+				return this._transactions;
+			}
+			set
+			{
+				this._transactions.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction1", Storage="_transactions1", ThisKey="account_number", OtherKey="sender_id")]
+		public EntitySet<transaction> transactions1
+		{
+			get
+			{
+				return this._transactions1;
+			}
+			set
+			{
+				this._transactions1.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_users_bank_account", Storage="_user", ThisKey="email", OtherKey="email", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.users_bank_accounts.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.users_bank_accounts.Add(this);
+						this._email = value.email;
+					}
+					else
+					{
+						this._email = default(string);
+					}
+					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_transactions(transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.users_bank_account = this;
+		}
+		
+		private void detach_transactions(transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.users_bank_account = null;
+		}
+		
+		private void attach_transactions1(transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.users_bank_account1 = this;
+		}
+		
+		private void detach_transactions1(transaction entity)
+		{
+			this.SendPropertyChanging();
+			entity.users_bank_account1 = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.transactions")]
 	public partial class transaction : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -882,9 +659,9 @@ namespace BudgetBuddy.Models
 		
 		private int _transaction_id;
 		
-		private System.Nullable<int> _sender_id;
+		private string _sender_id;
 		
-		private System.Nullable<int> _receiver_id;
+		private string _receiver_id;
 		
 		private string _transaction_type;
 		
@@ -894,9 +671,9 @@ namespace BudgetBuddy.Models
 		
 		private System.DateTime _transaction_date;
 		
-		private EntityRef<account> _account;
+		private EntityRef<users_bank_account> _users_bank_account;
 		
-		private EntityRef<account> _account1;
+		private EntityRef<users_bank_account> _users_bank_account1;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -904,9 +681,9 @@ namespace BudgetBuddy.Models
     partial void OnCreated();
     partial void Ontransaction_idChanging(int value);
     partial void Ontransaction_idChanged();
-    partial void Onsender_idChanging(System.Nullable<int> value);
+    partial void Onsender_idChanging(string value);
     partial void Onsender_idChanged();
-    partial void Onreceiver_idChanging(System.Nullable<int> value);
+    partial void Onreceiver_idChanging(string value);
     partial void Onreceiver_idChanged();
     partial void Ontransaction_typeChanging(string value);
     partial void Ontransaction_typeChanged();
@@ -920,8 +697,8 @@ namespace BudgetBuddy.Models
 		
 		public transaction()
 		{
-			this._account = default(EntityRef<account>);
-			this._account1 = default(EntityRef<account>);
+			this._users_bank_account = default(EntityRef<users_bank_account>);
+			this._users_bank_account1 = default(EntityRef<users_bank_account>);
 			OnCreated();
 		}
 		
@@ -945,8 +722,8 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sender_id", DbType="Int")]
-		public System.Nullable<int> sender_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sender_id", DbType="VarChar(255)")]
+		public string sender_id
 		{
 			get
 			{
@@ -956,7 +733,7 @@ namespace BudgetBuddy.Models
 			{
 				if ((this._sender_id != value))
 				{
-					if (this._account1.HasLoadedOrAssignedValue)
+					if (this._users_bank_account1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -969,8 +746,8 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_receiver_id", DbType="Int")]
-		public System.Nullable<int> receiver_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_receiver_id", DbType="VarChar(255)")]
+		public string receiver_id
 		{
 			get
 			{
@@ -980,7 +757,7 @@ namespace BudgetBuddy.Models
 			{
 				if ((this._receiver_id != value))
 				{
-					if (this._account.HasLoadedOrAssignedValue)
+					if (this._users_bank_account.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1073,70 +850,70 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="account_transaction", Storage="_account", ThisKey="receiver_id", OtherKey="account_id", IsForeignKey=true)]
-		public account account
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction", Storage="_users_bank_account", ThisKey="receiver_id", OtherKey="account_number", IsForeignKey=true)]
+		public users_bank_account users_bank_account
 		{
 			get
 			{
-				return this._account.Entity;
+				return this._users_bank_account.Entity;
 			}
 			set
 			{
-				account previousValue = this._account.Entity;
+				users_bank_account previousValue = this._users_bank_account.Entity;
 				if (((previousValue != value) 
-							|| (this._account.HasLoadedOrAssignedValue == false)))
+							|| (this._users_bank_account.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._account.Entity = null;
+						this._users_bank_account.Entity = null;
 						previousValue.transactions.Remove(this);
 					}
-					this._account.Entity = value;
+					this._users_bank_account.Entity = value;
 					if ((value != null))
 					{
 						value.transactions.Add(this);
-						this._receiver_id = value.account_id;
+						this._receiver_id = value.account_number;
 					}
 					else
 					{
-						this._receiver_id = default(Nullable<int>);
+						this._receiver_id = default(string);
 					}
-					this.SendPropertyChanged("account");
+					this.SendPropertyChanged("users_bank_account");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="account_transaction1", Storage="_account1", ThisKey="sender_id", OtherKey="account_id", IsForeignKey=true)]
-		public account account1
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction1", Storage="_users_bank_account1", ThisKey="sender_id", OtherKey="account_number", IsForeignKey=true)]
+		public users_bank_account users_bank_account1
 		{
 			get
 			{
-				return this._account1.Entity;
+				return this._users_bank_account1.Entity;
 			}
 			set
 			{
-				account previousValue = this._account1.Entity;
+				users_bank_account previousValue = this._users_bank_account1.Entity;
 				if (((previousValue != value) 
-							|| (this._account1.HasLoadedOrAssignedValue == false)))
+							|| (this._users_bank_account1.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._account1.Entity = null;
+						this._users_bank_account1.Entity = null;
 						previousValue.transactions1.Remove(this);
 					}
-					this._account1.Entity = value;
+					this._users_bank_account1.Entity = value;
 					if ((value != null))
 					{
 						value.transactions1.Add(this);
-						this._sender_id = value.account_id;
+						this._sender_id = value.account_number;
 					}
 					else
 					{
-						this._sender_id = default(Nullable<int>);
+						this._sender_id = default(string);
 					}
-					this.SendPropertyChanged("account1");
+					this.SendPropertyChanged("users_bank_account1");
 				}
 			}
 		}
@@ -1159,6 +936,371 @@ namespace BudgetBuddy.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_details")]
+	public partial class user_detail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _userDetails_id;
+		
+		private string _first_name;
+		
+		private string _last_name;
+		
+		private System.Nullable<int> _user_id;
+		
+		private EntityRef<user> _user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnuserDetails_idChanging(int value);
+    partial void OnuserDetails_idChanged();
+    partial void Onfirst_nameChanging(string value);
+    partial void Onfirst_nameChanged();
+    partial void Onlast_nameChanging(string value);
+    partial void Onlast_nameChanged();
+    partial void Onuser_idChanging(System.Nullable<int> value);
+    partial void Onuser_idChanged();
+    #endregion
+		
+		public user_detail()
+		{
+			this._user = default(EntityRef<user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userDetails_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int userDetails_id
+		{
+			get
+			{
+				return this._userDetails_id;
+			}
+			set
+			{
+				if ((this._userDetails_id != value))
+				{
+					this.OnuserDetails_idChanging(value);
+					this.SendPropertyChanging();
+					this._userDetails_id = value;
+					this.SendPropertyChanged("userDetails_id");
+					this.OnuserDetails_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_first_name", DbType="VarChar(64) NOT NULL", CanBeNull=false)]
+		public string first_name
+		{
+			get
+			{
+				return this._first_name;
+			}
+			set
+			{
+				if ((this._first_name != value))
+				{
+					this.Onfirst_nameChanging(value);
+					this.SendPropertyChanging();
+					this._first_name = value;
+					this.SendPropertyChanged("first_name");
+					this.Onfirst_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_last_name", DbType="VarChar(64) NOT NULL", CanBeNull=false)]
+		public string last_name
+		{
+			get
+			{
+				return this._last_name;
+			}
+			set
+			{
+				if ((this._last_name != value))
+				{
+					this.Onlast_nameChanging(value);
+					this.SendPropertyChanging();
+					this._last_name = value;
+					this.SendPropertyChanged("last_name");
+					this.Onlast_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
+		public System.Nullable<int> user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_detail", Storage="_user", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.user_details.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.user_details.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
+	public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _user_id;
+		
+		private string _email;
+		
+		private string _password_hash;
+		
+		private string _password_salt;
+		
+		private EntitySet<users_bank_account> _users_bank_accounts;
+		
+		private EntitySet<user_detail> _user_details;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onuser_idChanging(int value);
+    partial void Onuser_idChanged();
+    partial void OnemailChanging(string value);
+    partial void OnemailChanged();
+    partial void Onpassword_hashChanging(string value);
+    partial void Onpassword_hashChanged();
+    partial void Onpassword_saltChanging(string value);
+    partial void Onpassword_saltChanged();
+    #endregion
+		
+		public user()
+		{
+			this._users_bank_accounts = new EntitySet<users_bank_account>(new Action<users_bank_account>(this.attach_users_bank_accounts), new Action<users_bank_account>(this.detach_users_bank_accounts));
+			this._user_details = new EntitySet<user_detail>(new Action<user_detail>(this.attach_user_details), new Action<user_detail>(this.detach_user_details));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_email", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string email
+		{
+			get
+			{
+				return this._email;
+			}
+			set
+			{
+				if ((this._email != value))
+				{
+					this.OnemailChanging(value);
+					this.SendPropertyChanging();
+					this._email = value;
+					this.SendPropertyChanged("email");
+					this.OnemailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_hash", DbType="Char(64) NOT NULL", CanBeNull=false)]
+		public string password_hash
+		{
+			get
+			{
+				return this._password_hash;
+			}
+			set
+			{
+				if ((this._password_hash != value))
+				{
+					this.Onpassword_hashChanging(value);
+					this.SendPropertyChanging();
+					this._password_hash = value;
+					this.SendPropertyChanged("password_hash");
+					this.Onpassword_hashChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_password_salt", DbType="Char(64) NOT NULL", CanBeNull=false)]
+		public string password_salt
+		{
+			get
+			{
+				return this._password_salt;
+			}
+			set
+			{
+				if ((this._password_salt != value))
+				{
+					this.Onpassword_saltChanging(value);
+					this.SendPropertyChanging();
+					this._password_salt = value;
+					this.SendPropertyChanged("password_salt");
+					this.Onpassword_saltChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_users_bank_account", Storage="_users_bank_accounts", ThisKey="email", OtherKey="email")]
+		public EntitySet<users_bank_account> users_bank_accounts
+		{
+			get
+			{
+				return this._users_bank_accounts;
+			}
+			set
+			{
+				this._users_bank_accounts.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_detail", Storage="_user_details", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<user_detail> user_details
+		{
+			get
+			{
+				return this._user_details;
+			}
+			set
+			{
+				this._user_details.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_users_bank_accounts(users_bank_account entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_users_bank_accounts(users_bank_account entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_user_details(user_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_user_details(user_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
 		}
 	}
 }

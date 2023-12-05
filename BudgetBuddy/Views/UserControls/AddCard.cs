@@ -50,6 +50,7 @@ namespace BudgetBuddy.Views.UserControls
                 if (isSuccessful)
                 {
                     dashboard.AddCard.Hide();
+                    dashboard.Overview.BringToFront();
                     dashboard.Overview.Focus();
 
                 }

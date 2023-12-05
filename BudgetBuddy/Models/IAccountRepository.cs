@@ -9,12 +9,12 @@ namespace BudgetBuddy.Models
 {
     public interface IAccountRepository
     {
-        bool CreateAccount(user account);
+        bool CreateAccount(user user, user_detail user_Detail);
         bool doesAccountExist(user account);
-        bool LoginAccount(user account);
+        bool LoginAccount(user user);
         bool RecoverAccount(user account);
-        IEnumerable<BankAccount> GetBankAccountList();
-        bool AddCard(account card, string pin);
-        account GetAccount(account account);
+        IEnumerable<Users> GetBankAccountList();
+        bool AddCard(users_bank_account card, string pin);
+        users_bank_account GetAccount(string email);
     }
 }

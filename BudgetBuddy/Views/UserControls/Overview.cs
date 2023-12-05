@@ -45,46 +45,31 @@ namespace BudgetBuddy.Views.UserControls
             set { _isSuccessful = value; }
         }
 
-        public BankAccount bankAccount { get; set; }
 
         public string SearchName { get; set; }
+        public string DisplayName { get; set; }
+        public string AccountNumber { get; set; }
+        public string ExpiryDate { get; set; }
+        public string Balance { get; set; }
+        public string Income { get; set; }
+        public string Expenses { get; set; }
+        public string Savings { get; set; }
 
         private void AssociateAndRaiseViewEvents()
         {
+            this.Enter += delegate
+            {
+                LoadOverviewData?.Invoke(this, EventArgs.Empty);
+                ReloadForm();
+
+            };
+
             this.Load += delegate
             {
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
-
-                if (HasAccount)
-                {
-                    NoCardLbl.Visible = false;
-                    AddCardBtn.Visible = false;
-                    CardObject.Visible = true;
-
-                    PercentBalance.Visible = true;
-                    PercentExpenses.Visible = false;
-                    PercentIncome.Visible = true;
-                    PercentSavings.Visible = true;
-
-                    ExpiryDateLbl.Text = bankAccount.ExpiryDate;
-                    NameLbl.Text = bankAccount.DisplayName;
-                    CardNumberLbl.Text = bankAccount.AccountNumber;
+                ReloadForm();
 
 
-                }
-                else
-                {
-                    CardObject.Visible = false;
-                    AddCardBtn.Visible = true;
-
-                    NoCardLbl.Visible = true;
-                    NoCardLbl.Location = new Point(178, 24);
-                    PercentBalance.Visible = false;
-                    PercentExpenses.Visible = false;
-                    PercentIncome.Visible = false;
-                    PercentSavings.Visible = false;
-
-                }
             };
 
 
@@ -106,15 +91,40 @@ namespace BudgetBuddy.Views.UserControls
 
         }
 
-
-
-        private void Overview_Load(object sender, EventArgs e)
+        public void ReloadForm()
         {
+            if (HasAccount)
+            {
+                NoCardLbl.Visible = false;
+                AddCardBtn.Visible = false;
+                CardObject.Visible = true;
 
-            //DoughnutChart doughnutChart = new DoughnutChart();
+                PercentBalance.Visible = true;
+                PercentExpenses.Visible = false;
+                PercentIncome.Visible = true;
+                PercentSavings.Visible = true;
 
-            //ChartPanel.Controls.Add(doughnutChart);
+                ExpiryDateLbl.Text = ExpiryDate;
+                NameLbl.Text = DisplayName;
+                CardNumberLbl.Text = AccountNumber;
+
+
+            }
+            else
+            {
+                CardObject.Visible = false;
+                AddCardBtn.Visible = true;
+
+                NoCardLbl.Visible = true;
+                NoCardLbl.Location = new Point(20, 87);
+                PercentBalance.Visible = false;
+                PercentExpenses.Visible = false;
+                PercentIncome.Visible = false;
+                PercentSavings.Visible = false;
+
+            }
         }
+
 
         private void AddCardBtn_Click(object sender, EventArgs e)
         {

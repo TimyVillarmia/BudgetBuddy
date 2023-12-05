@@ -22,7 +22,7 @@ namespace BudgetBuddy.Repositories
 
 
         // methods
-        public bool CreateAccount(user account)
+        public bool CreateAccount(user user, user_detail user_Detail)
         {
             //insert create account linq code
             // check if the email is already exist in the database
@@ -30,16 +30,20 @@ namespace BudgetBuddy.Repositories
             // otherwise, false
             try
             {
-                HashSalt hashSalt = GenerateSaltedHash(account.password_hash);
+                HashSalt hashSalt = GenerateSaltedHash(user.password_hash);
 
-                account.password_salt = hashSalt.Salt;
-                account.password_hash = hashSalt.Hash;
+                user.password_salt = hashSalt.Salt;
+                user.password_hash = hashSalt.Hash;
 
                 // check first if account exist
-                if (!doesAccountExist(account))
+                if (!doesAccountExist(user))
                 {
-                    _db.users.InsertOnSubmit(account);
+                    _db.users.InsertOnSubmit(user);
                     _db.SubmitChanges();
+                    user_Detail.user_id = user.user_id;
+                    _db.user_details.InsertOnSubmit(user_Detail);
+                    _db.SubmitChanges();
+
                     return true;
                 }
                 else
@@ -124,45 +128,49 @@ namespace BudgetBuddy.Repositories
             return login.Any();
         }
 
-        public IEnumerable<BankAccount> GetBankAccountList()
+        public IEnumerable<Users> GetBankAccountList()
         {
-            var query = (from list in _db.metrobank_accounts
+            var query = (from list in _db.Metrobanks
                          select list).ToList();
 
 
-            var selected = query.Select(sel => new BankAccount { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
+            var selected = query.Select(sel => new Users { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
 
             return selected;
         }
 
 
-        public account GetAccount(account account)
+        public users_bank_account GetAccount(string email)
         {
-            var accountlist = (from acc in _db.accounts
-                               where acc.email == account.email
+            var accountlist = (from acc in _db.users_bank_accounts
+                               where acc.email == email
                                select acc).FirstOrDefault();
 
 
             return accountlist;
+
         }
 
-        public bool AddCard(account card, string pin)
+        public bool AddCard(users_bank_account card, string pin)
         {
             try
             {
-                var checkBank = (from bank_account in _db.metrobank_accounts
+                // query from the metrobank table *acts like an API*
+                var checkBank = (from bank_account in _db.Metrobanks
                                  where bank_account.owner_name == card.owner_name &&
                                  bank_account.PIN == pin &&
-                                 bank_account.expiry_date == card.expiry_date
+                                 bank_account.expiry_date == card.expiry_date &&
+                                 bank_account.email == card.email
                                  select bank_account).First();
 
-                card.email = card.email;
+                // insert bank account associated with users
+                card.email = checkBank.email.ToLower();
                 card.account_number = checkBank.account_number;
                 card.account_type = checkBank.account_type;
-                card.owner_name = checkBank.owner_name;
+                card.owner_name = checkBank.owner_name.ToLower();
                 card.expiry_date = checkBank.expiry_date;
 
-                _db.accounts.InsertOnSubmit(card);
+                _db.users_bank_accounts.InsertOnSubmit(card);
                 _db.SubmitChanges();
 
                 return true;

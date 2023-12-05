@@ -42,7 +42,7 @@ namespace BudgetBuddy.Presenters
             // mapping account class
             var loginAccount = new user
             {
-                email = _view.Email.Trim(),
+                email = _view.Email.Trim().ToLower(),
                 password_hash = _view.Password.Trim()
             };
 

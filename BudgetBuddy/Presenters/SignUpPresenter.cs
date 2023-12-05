@@ -24,21 +24,26 @@ namespace BudgetBuddy.Presenters
 
         private void CreateAccount(object sender, EventArgs e)
         {
-
-
-            var newAccount = new user
+            var newUser = new user
             {
-                email = _view.Email.Trim(),
+                email = _view.Email.Trim().ToLower(),
+                password_hash = _view.Password.Trim()
+
+            };
+
+            var newUser_detail = new user_detail
+            {
                 first_name = _view.FirstName.Trim(),
                 last_name = _view.LastName.Trim(),
-                password_hash = _view.Password.Trim()
                 
             };
+
+
 
             try
             {
 
-                if (_accountRepository.CreateAccount(newAccount))
+                if (_accountRepository.CreateAccount(newUser, newUser_detail))
                 {
                     _view.isSuccessful = true;
 

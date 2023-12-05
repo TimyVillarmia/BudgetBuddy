@@ -18,7 +18,7 @@ namespace BudgetBuddy.Presenters
         private readonly IAccountRepository _accountRepository;
         private readonly IOverviewView _view;
         private readonly IAddCardView _view1;
-        private IEnumerable<BankAccount> accountList;
+        private IEnumerable<Users> accountList;
         private BindingSource bankBindingSource;
 
 
@@ -41,6 +41,7 @@ namespace BudgetBuddy.Presenters
 
 
             this._view.SetBankListBindingSource(bankBindingSource);
+            LoadAllBankList();
 
 
 
@@ -48,7 +49,7 @@ namespace BudgetBuddy.Presenters
 
         private void LoadAllBankList()
         {
-            accountList = _accountRepository.GetBankAccountList().Where(exclude => exclude.DisplayName != _view.bankAccount.DisplayName);
+            accountList = _accountRepository.GetBankAccountList();
             bankBindingSource.DataSource = accountList;//Set data source.
         }
 
@@ -63,7 +64,7 @@ namespace BudgetBuddy.Presenters
 
                 if (emptyValue)
                 {
-                    accountList = _accountRepository.GetBankAccountList().Where(exclude => exclude.DisplayName != _view.bankAccount.DisplayName);
+                    accountList = _accountRepository.GetBankAccountList();
 
 
                 }
@@ -88,19 +89,16 @@ namespace BudgetBuddy.Presenters
         private void GetCard(object sender, EventArgs e)
         {
 
-            var email = new account
-            {
-                email = Session.CurrentUser
-            };
 
             try
             {
-                var acc = _accountRepository.GetAccount(email);
+                var acc = _accountRepository.GetAccount(Session.CurrentUser);
+
                 if (acc != null) 
-                { 
-                    _view.bankAccount.AccountNumber = acc.account_number;
-                    _view.bankAccount.DisplayName = acc.owner_name;
-                    _view.bankAccount.ExpiryDate = acc.expiry_date.ToString("MM/yy");
+                {
+                    _view.DisplayName = acc.owner_name;
+                    _view.AccountNumber = acc.account_number;
+                    _view.ExpiryDate = acc.expiry_date.ToString("MM/yy");
 
                     _view.HasAccount = true;
                     
@@ -116,7 +114,6 @@ namespace BudgetBuddy.Presenters
                 MessageBox.Show(ex.Message);
             }
 
-            LoadAllBankList();
 
 
         }
@@ -124,12 +121,12 @@ namespace BudgetBuddy.Presenters
 
         private void AddCardMethod(object sender, EventArgs e)
         {
-            var newCard = new account
+            var newCard = new users_bank_account
             {
                 account_number = _view1.Card.CardNumber,
-                owner_name = _view1.Card.Name,
+                owner_name = _view1.Card.Name.ToLower(),
                 expiry_date = _view1.Card.ExpiryDate,
-                email = _view1.Card.Email
+                email = _view1.Card.Email.ToLower(),
             };
 
 
@@ -144,7 +141,9 @@ namespace BudgetBuddy.Presenters
                 else
                 {
                     _view1.isSuccessful = false;
-                    
+                    MessageBox.Show("make sure you fill the form correctly");
+
+
 
                 }
             }
