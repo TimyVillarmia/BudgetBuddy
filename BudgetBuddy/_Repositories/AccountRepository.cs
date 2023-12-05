@@ -132,17 +132,6 @@ namespace BudgetBuddy.Repositories
 
             return query.Select(sel => new Users { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
         }
-        public IEnumerable<Users> GetBankAccountByValue(string name)
-        {
-            var query = (from list in _db.metrobank_accounts
-                         where list.owner_name == name
-                         select list).ToList();
-
-
-
-            return query.Select(sel => new Users { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
-        }
-
         public account GetAccount(account account)
         {
             var accountlist = (from acc in _db.accounts

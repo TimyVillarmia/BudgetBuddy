@@ -61,7 +61,6 @@ namespace BudgetBuddy.Presenters
             
             try
             {
-                MessageBox.Show(_view.SearchName);
 
                 bool emptyValue = string.IsNullOrWhiteSpace(_view.SearchName);
 
