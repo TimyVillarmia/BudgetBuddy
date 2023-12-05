@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BudgetBuddy.Views
 {
@@ -13,20 +14,24 @@ namespace BudgetBuddy.Views
         event EventHandler LoadOverviewData;
         event EventHandler SendEvent;
         event EventHandler RequestEvent;
+        event EventHandler SearchAccountEvent;
+
 
         bool HasAccount { get; set; }
         bool isSuccessful { get; set; }
+        string SearchName { get; set; }
 
 
         // account/card information
         string ExpiryDate { get; set; }
         string CardNumber { get; set; }
-        string Name { get; set; }
+        string OwnerName { get; set; }
         string Balance { get; set; }
         string Income { get; set; }
         string Expenses { get; set; }
         string Savings { get; set; }
 
+        void SetBankListBindingSource(BindingSource bank);
 
     }
 }

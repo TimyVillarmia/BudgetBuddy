@@ -124,9 +124,22 @@ namespace BudgetBuddy.Repositories
             return login.Any();
         }
 
-        public IQueryable GetBankAccountList(account account)
+        public IEnumerable<metrobank_account> GetBankAccountList()
         {
-            throw new NotImplementedException();
+            var query = (from list in _db.metrobank_accounts
+                         select list).ToList();
+
+            var bankAccountList = new List<metrobank_account>(query);
+            return bankAccountList;
+        }
+        public IEnumerable<metrobank_account> GetBankAccountByValue(string name)
+        {
+            var query = (from list in _db.metrobank_accounts
+                         where list.owner_name == name
+                         select list).ToList();
+
+            var bankAccountList = new List<metrobank_account>(query);
+            return bankAccountList;
         }
 
         public account GetAccount(account account)

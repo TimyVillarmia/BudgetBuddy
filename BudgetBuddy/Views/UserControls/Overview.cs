@@ -24,6 +24,7 @@ namespace BudgetBuddy.Views.UserControls
         public event EventHandler LoadOverviewData;
         public event EventHandler SendEvent;
         public event EventHandler RequestEvent;
+        public event EventHandler SearchAccountEvent;
 
         public Overview(Dashboard1 form)
         {
@@ -57,10 +58,15 @@ namespace BudgetBuddy.Views.UserControls
             get { return CardNumberLbl.Text; }
             set { CardNumberLbl.Text = value; }
         }
-        public string Name
+        public string OwnerName
         {
             get { return NameLbl.Text; }
             set { NameLbl.Text = value; }
+        }
+        public string SearchName
+        {
+            get { return SearchTxtBox.Text; }
+            set { SearchTxtBox.Text = value; }
         }
 
         private void AssociateAndRaiseViewEvents()
@@ -81,7 +87,7 @@ namespace BudgetBuddy.Views.UserControls
                     PercentSavings.Visible = true;
 
                     ExpiryDateLbl.Text = ExpiryDate;
-                    NameLbl.Text = Name;
+                    NameLbl.Text = OwnerName;
                     CardNumberLbl.Text = CardNumber;
 
 
@@ -99,6 +105,13 @@ namespace BudgetBuddy.Views.UserControls
                     PercentSavings.Visible = false;
 
                 }
+            };
+
+
+            SearchTxtBox.TextChanged += delegate
+            {
+                SearchAccountEvent?.Invoke(this, EventArgs.Empty);
+
             };
 
 
@@ -131,5 +144,9 @@ namespace BudgetBuddy.Views.UserControls
 
         }
 
+        public void SetBankListBindingSource(BindingSource bank)
+        {
+            BankAccountDataGrid.DataSource = bank;
+        }
     }
 }
