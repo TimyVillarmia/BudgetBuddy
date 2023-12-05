@@ -129,14 +129,14 @@ namespace BudgetBuddy.Repositories
             throw new NotImplementedException();
         }
 
-        public bool CheckAccount(user account)
+        public account GetAccount(account account)
         {
-            var accountlist = from acc in _db.accounts
+            var accountlist = (from acc in _db.accounts
                                where acc.email == account.email
-                               select acc;
+                               select acc).FirstOrDefault();
 
 
-            return accountlist.Any();
+            return accountlist;
         }
 
         public bool AddCard(account card, string pin)

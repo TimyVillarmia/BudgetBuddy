@@ -29,6 +29,7 @@ namespace BudgetBuddy.Views.UserControls
         {
             InitializeComponent();
             Dashboard = form;
+            NoCardLbl.Location = new Point(178, 24);
             AssociateAndRaiseViewEvents();
 
         }
@@ -47,6 +48,7 @@ namespace BudgetBuddy.Views.UserControls
         public string Income { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Expenses { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string Savings { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public Card card { get; set; }
 
         private void AssociateAndRaiseViewEvents()
         {
@@ -62,6 +64,10 @@ namespace BudgetBuddy.Views.UserControls
                     PercentExpenses.Visible = false;
                     PercentIncome.Visible = true;
                     PercentSavings.Visible = true;
+                    ExpiryDateLbl.Text = card.ExpiryDate.ToString();
+                    NameLbl.Text = card.Name;
+                    CardNumberLbl.Text = card.CardNumber;
+
 
                 }
                 else

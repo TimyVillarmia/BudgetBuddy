@@ -21,7 +21,7 @@ namespace BudgetBuddy.Views
         string Savings { get; set; }
         bool isSuccessful { get; set; }
 
-
+        Card card { get; set; }
 
     }
 }

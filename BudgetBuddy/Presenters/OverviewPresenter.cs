@@ -35,18 +35,22 @@ namespace BudgetBuddy.Presenters
 
         private void GetCard(object sender, EventArgs e)
         {
-            var email = new user
+            var email = new account
             {
                 email = Session.CurrentUser
             };
 
             try
             {
-         
-
-                if (_accountRepository.CheckAccount(email)) 
+                var acc = _accountRepository.GetAccount(email);
+                if (acc != null) 
                 { 
+                    _view.card.CardNumber = acc.account_number;
+                    _view.card.Name = acc.owner_name;
+                    _view.card.ExpiryDate = acc.expiry_date;
+
                     _view.HasAccount = true;
+                    
                 }
                 else
                 {
