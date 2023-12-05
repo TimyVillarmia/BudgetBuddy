@@ -15,8 +15,8 @@ namespace BudgetBuddy.Repositories
         protected DataClasses1DataContext _db;
 
         // constructor
-        public AccountRepository(DataClasses1DataContext db) 
-        { 
+        public AccountRepository(DataClasses1DataContext db)
+        {
             _db = db;
         }
 
@@ -38,7 +38,7 @@ namespace BudgetBuddy.Repositories
                 // check first if account exist
                 if (!doesAccountExist(account))
                 {
-                     _db.users.InsertOnSubmit(account);
+                    _db.users.InsertOnSubmit(account);
                     _db.SubmitChanges();
                     return true;
                 }
@@ -76,7 +76,7 @@ namespace BudgetBuddy.Repositories
             {
                 return false;
             }
-  
+
 
         }
 
@@ -102,7 +102,7 @@ namespace BudgetBuddy.Repositories
 
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 return false;
@@ -124,22 +124,23 @@ namespace BudgetBuddy.Repositories
             return login.Any();
         }
 
-        public IEnumerable<metrobank_account> GetBankAccountList()
+        public IEnumerable<Users> GetBankAccountList()
         {
             var query = (from list in _db.metrobank_accounts
                          select list).ToList();
 
-            var bankAccountList = new List<metrobank_account>(query);
-            return bankAccountList;
+
+            return query.Select(sel => new Users { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
         }
-        public IEnumerable<metrobank_account> GetBankAccountByValue(string name)
+        public IEnumerable<Users> GetBankAccountByValue(string name)
         {
             var query = (from list in _db.metrobank_accounts
                          where list.owner_name == name
                          select list).ToList();
 
-            var bankAccountList = new List<metrobank_account>(query);
-            return bankAccountList;
+
+
+            return query.Select(sel => new Users { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
         }
 
         public account GetAccount(account account)
@@ -173,11 +174,12 @@ namespace BudgetBuddy.Repositories
 
                 return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 return false;
             }
+
         }
     }
 }

@@ -18,7 +18,7 @@ namespace BudgetBuddy.Presenters
         private readonly IAccountRepository _accountRepository;
         private readonly IOverviewView _view;
         private readonly IAddCardView _view1;
-        private IEnumerable<metrobank_account> accountList;
+        private IEnumerable<Users> accountList;
         private BindingSource bankBindingSource;
 
 
@@ -49,7 +49,7 @@ namespace BudgetBuddy.Presenters
         private void LoadAllBankList()
         {
             accountList = _accountRepository.GetBankAccountList();
-            bankBindingSource.DataSource = accountList.Select(o => o.owner_name);//Set data source.
+            bankBindingSource.DataSource = accountList;//Set data source.
         }
 
         private void SearchAccount(object sender, EventArgs e)
@@ -61,21 +61,22 @@ namespace BudgetBuddy.Presenters
             
             try
             {
-               
+                MessageBox.Show(_view.SearchName);
 
                 bool emptyValue = string.IsNullOrWhiteSpace(_view.SearchName);
 
-                if (emptyValue)
+                if (emptyValue == false)
                 {
-                    accountList = _accountRepository.GetBankAccountList();
+                    accountList = _accountRepository.GetBankAccountList().Where(search => search.DisplayName.StartsWith(_view.SearchName));
 
                 }
                 else
                 {
-                    accountList = _accountRepository.GetBankAccountByValue(_view.SearchName);
-
+                    accountList = _accountRepository.GetBankAccountList();
                 }
-                bankBindingSource.DataSource = accountList.Select(o => o.owner_name); 
+
+                bankBindingSource.DataSource = accountList;
+
 
 
 

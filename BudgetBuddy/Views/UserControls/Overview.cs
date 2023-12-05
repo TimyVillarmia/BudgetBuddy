@@ -111,6 +111,7 @@ namespace BudgetBuddy.Views.UserControls
             SearchTxtBox.TextChanged += delegate
             {
                 SearchAccountEvent?.Invoke(this, EventArgs.Empty);
+                SearchName = SearchTxtBox.Text;
 
             };
 

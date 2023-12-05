@@ -247,6 +247,7 @@
     </Compile>
     <Compile Include="Models\IAccountRepository.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\Users.cs" />
     <Compile Include="Presenters\DoughnutChartPresenter.cs" />
     <Compile Include="Presenters\OverviewPresenter.cs" />
     <Compile Include="Presenters\RecoveryPresenter.cs" />

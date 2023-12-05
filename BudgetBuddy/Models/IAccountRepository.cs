@@ -13,8 +13,8 @@ namespace BudgetBuddy.Models
         bool doesAccountExist(user account);
         bool LoginAccount(user account);
         bool RecoverAccount(user account);
-        IEnumerable<metrobank_account> GetBankAccountList();
-        IEnumerable<metrobank_account> GetBankAccountByValue(string name);
+        IEnumerable<Users> GetBankAccountList();
+        IEnumerable<Users> GetBankAccountByValue(string name);
         bool AddCard(account card, string pin);
         account GetAccount(account account);
     }
