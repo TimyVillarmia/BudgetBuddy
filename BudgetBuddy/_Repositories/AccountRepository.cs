@@ -134,42 +134,35 @@ namespace BudgetBuddy.Repositories
                          select list).ToList();
 
 
-            var selected = query.Select(sel => new Users { DisplayName = sel.owner_name, AccountNumber = sel.account_number });
+            var selected = query.Select(sel => new Users { owner_name = sel.owner_name, account_number = sel.account_number });
 
             return selected;
         }
 
 
-        public users_bank_account GetAccount(string email)
-        {
-            var accountlist = (from acc in _db.users_bank_accounts
-                               where acc.email == email
-                               select acc).FirstOrDefault();
-
-
-            return accountlist;
-
-        }
-
-        public bool AddCard(users_bank_account card, string pin)
+        public users_bank_account GetBankAccount(string email)
         {
             try
             {
-                // query from the metrobank table *acts like an API*
-                var checkBank = (from bank_account in _db.Metrobanks
-                                 where bank_account.owner_name == card.owner_name &&
-                                 bank_account.PIN == pin &&
-                                 bank_account.expiry_date == card.expiry_date &&
-                                 bank_account.email == card.email
-                                 select bank_account).First();
+                var accountlist = (from acc in _db.users_bank_accounts
+                                   where acc.email == email
+                                   select acc).FirstOrDefault();
 
-                // insert bank account associated with users
-                card.email = checkBank.email.ToLower();
-                card.account_number = checkBank.account_number;
-                card.account_type = checkBank.account_type;
-                card.owner_name = checkBank.owner_name.ToLower();
-                card.expiry_date = checkBank.expiry_date;
 
+                return accountlist;
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+
+
+        }
+
+        public bool AddCard(users_bank_account card)
+        {
+            try
+            {
                 _db.users_bank_accounts.InsertOnSubmit(card);
                 _db.SubmitChanges();
 
@@ -177,8 +170,9 @@ namespace BudgetBuddy.Repositories
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
                 return false;
+
+                throw new Exception("The card has already added to another account");
             }
 
         }

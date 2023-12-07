@@ -48,6 +48,15 @@
       <Association Name="user_user_detail" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.user_todo" Member="user_todos">
+    <Type Name="user_todo">
+      <Column Name="todo_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="todo_name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
+      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="user_user_todo" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.users" Member="users">
     <Type Name="user">
       <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -56,6 +65,7 @@
       <Column Name="password_salt" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
       <Association Name="user_users_bank_account" Member="users_bank_accounts" ThisKey="email" OtherKey="email" Type="users_bank_account" />
       <Association Name="user_user_detail" Member="user_details" ThisKey="user_id" OtherKey="user_id" Type="user_detail" />
+      <Association Name="user_user_todo" Member="user_todos" ThisKey="user_id" OtherKey="user_id" Type="user_todo" />
     </Type>
   </Table>
 </Database>

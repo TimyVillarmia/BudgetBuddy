@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBuddy.Views;
 using BudgetBuddy.Models;
+using RestSharp.Extensions;
 
 namespace BudgetBuddy.Views.UserControls
 {
@@ -139,6 +140,7 @@ namespace BudgetBuddy.Views.UserControls
         public void SetBankListBindingSource(BindingSource bank)
         {
             BankAccountDataGrid.DataSource = bank;
+            MessageBox.Show($"{BankAccountDataGrid.Columns.Count}");
         }
     }
 }

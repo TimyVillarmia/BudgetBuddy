@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BudgetBuddy.Models;
 
 namespace BudgetBuddy.Models
 {
@@ -14,7 +15,7 @@ namespace BudgetBuddy.Models
         bool LoginAccount(user user);
         bool RecoverAccount(user account);
         IEnumerable<Users> GetBankAccountList();
-        bool AddCard(users_bank_account card, string pin);
-        users_bank_account GetAccount(string email);
+        bool AddCard(users_bank_account card);
+        users_bank_account GetBankAccount(string email);
     }
 }

@@ -30,19 +30,19 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.CardNumberTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.ConfirmBtn = new Guna.UI2.WinForms.Guna2Button();
             this.PINTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.Date = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.ExpiryDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.EmailTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.NameTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
-            this.CardNumberTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,7 +66,7 @@
             this.guna2Panel1.Controls.Add(this.PINTxtbox);
             this.guna2Panel1.Controls.Add(this.label6);
             this.guna2Panel1.Controls.Add(this.label5);
-            this.guna2Panel1.Controls.Add(this.Date);
+            this.guna2Panel1.Controls.Add(this.ExpiryDate);
             this.guna2Panel1.Controls.Add(this.EmailTxtbox);
             this.guna2Panel1.Controls.Add(this.label4);
             this.guna2Panel1.Controls.Add(this.NameTxtbox);
@@ -79,6 +79,25 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(469, 549);
             this.guna2Panel1.TabIndex = 1;
+            // 
+            // CardNumberTxtbox
+            // 
+            this.CardNumberTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CardNumberTxtbox.DefaultText = "";
+            this.CardNumberTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.CardNumberTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.CardNumberTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.CardNumberTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.CardNumberTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CardNumberTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CardNumberTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CardNumberTxtbox.Location = new System.Drawing.Point(25, 123);
+            this.CardNumberTxtbox.Name = "CardNumberTxtbox";
+            this.CardNumberTxtbox.PasswordChar = '\0';
+            this.CardNumberTxtbox.PlaceholderText = "";
+            this.CardNumberTxtbox.SelectedText = "";
+            this.CardNumberTxtbox.Size = new System.Drawing.Size(417, 36);
+            this.CardNumberTxtbox.TabIndex = 21;
             // 
             // guna2Button4
             // 
@@ -155,18 +174,19 @@
             this.label5.TabIndex = 10;
             this.label5.Text = "Expiry Date";
             // 
-            // Date
+            // ExpiryDate
             // 
-            this.Date.Checked = true;
-            this.Date.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Date.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.Date.Location = new System.Drawing.Point(27, 395);
-            this.Date.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
-            this.Date.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
-            this.Date.Name = "Date";
-            this.Date.Size = new System.Drawing.Size(200, 36);
-            this.Date.TabIndex = 9;
-            this.Date.Value = new System.DateTime(2023, 12, 4, 20, 58, 25, 799);
+            this.ExpiryDate.Checked = true;
+            this.ExpiryDate.CustomFormat = "yyyy-MM-dd";
+            this.ExpiryDate.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.ExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.ExpiryDate.Location = new System.Drawing.Point(27, 395);
+            this.ExpiryDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.ExpiryDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.ExpiryDate.Name = "ExpiryDate";
+            this.ExpiryDate.Size = new System.Drawing.Size(200, 36);
+            this.ExpiryDate.TabIndex = 9;
+            this.ExpiryDate.Value = new System.DateTime(2023, 12, 4, 20, 58, 25, 799);
             // 
             // EmailTxtbox
             // 
@@ -246,25 +266,6 @@
             this.guna2Separator1.Size = new System.Drawing.Size(546, 10);
             this.guna2Separator1.TabIndex = 1;
             // 
-            // CardNumberTxtbox
-            // 
-            this.CardNumberTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.CardNumberTxtbox.DefaultText = "";
-            this.CardNumberTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.CardNumberTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.CardNumberTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.CardNumberTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.CardNumberTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CardNumberTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CardNumberTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CardNumberTxtbox.Location = new System.Drawing.Point(25, 123);
-            this.CardNumberTxtbox.Name = "CardNumberTxtbox";
-            this.CardNumberTxtbox.PasswordChar = '\0';
-            this.CardNumberTxtbox.PlaceholderText = "";
-            this.CardNumberTxtbox.SelectedText = "";
-            this.CardNumberTxtbox.Size = new System.Drawing.Size(417, 36);
-            this.CardNumberTxtbox.TabIndex = 21;
-            // 
             // AddCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -288,7 +289,7 @@
         private Guna.UI2.WinForms.Guna2TextBox PINTxtbox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private Guna.UI2.WinForms.Guna2DateTimePicker Date;
+        private Guna.UI2.WinForms.Guna2DateTimePicker ExpiryDate;
         private Guna.UI2.WinForms.Guna2TextBox EmailTxtbox;
         private System.Windows.Forms.Label label4;
         private Guna.UI2.WinForms.Guna2TextBox NameTxtbox;

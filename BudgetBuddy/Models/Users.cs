@@ -8,7 +8,7 @@ namespace BudgetBuddy.Models
 {
     public class Users
     {
-        public string DisplayName { get; set; }
-        public string AccountNumber { get; set; }
+        public string owner_name { get; set; }
+        public string account_number { get; set; }
     }
 }

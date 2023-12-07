@@ -1,4 +1,5 @@
-﻿using BudgetBuddy.Models;
+﻿using BudgetBuddy._Repositories;
+using BudgetBuddy.Models;
 using BudgetBuddy.Views;
 using BudgetBuddy.Views.UserControls;
 using System;
@@ -45,15 +46,16 @@ namespace BudgetBuddy.Presenters
 
 
 
+
         }
 
-        private void LoadAllBankList()
+        private async void LoadAllBankList()
         {
-            accountList = _accountRepository.GetBankAccountList();
+            accountList = await MetrobankRepository.GetAllAsync();
             bankBindingSource.DataSource = accountList;//Set data source.
         }
 
-        private void SearchAccount(object sender, EventArgs e)
+        private async void SearchAccount(object sender, EventArgs e)
         {
 
             
@@ -64,13 +66,14 @@ namespace BudgetBuddy.Presenters
 
                 if (emptyValue)
                 {
-                    accountList = _accountRepository.GetBankAccountList();
+                    accountList = await MetrobankRepository.GetAllAsync();
 
 
                 }
                 else
                 {
-                    accountList = _accountRepository.GetBankAccountList().Where(search => search.DisplayName.ToLower().StartsWith(_view.SearchName)); 
+                    var result = await MetrobankRepository.GetAllAsync();
+                    accountList = result.Where(search => search.owner_name.ToLower().StartsWith(_view.SearchName)); 
 
                 }
 
@@ -91,8 +94,8 @@ namespace BudgetBuddy.Presenters
 
 
             try
-            {
-                var acc = _accountRepository.GetAccount(Session.CurrentUser);
+            { 
+                var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
 
                 if (acc != null) 
                 {
@@ -121,20 +124,13 @@ namespace BudgetBuddy.Presenters
 
         private void AddCardMethod(object sender, EventArgs e)
         {
-            var newCard = new users_bank_account
-            {
-                account_number = _view1.Card.CardNumber,
-                owner_name = _view1.Card.Name.ToLower(),
-                expiry_date = _view1.Card.ExpiryDate,
-                email = _view1.Card.Email.ToLower(),
-            };
 
 
             try
             {
 
 
-                if (_accountRepository.AddCard(newCard, _view1.Card.PIN))
+                if (_accountRepository.AddCard(_view1.Card))
                 {
                     _view1.isSuccessful = true;
                 }

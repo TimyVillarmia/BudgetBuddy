@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
 using BudgetBuddy.Presenters;
 using BudgetBuddy.Presenters.UserControls;
@@ -45,6 +46,7 @@ namespace BudgetBuddy
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             // Declare a new db instance 
             DataClasses1DataContext db = new DataClasses1DataContext();
             IAccountRepository accountRepository = new AccountRepository(db);

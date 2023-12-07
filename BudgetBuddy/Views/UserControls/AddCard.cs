@@ -1,4 +1,5 @@
-﻿using BudgetBuddy.Models;
+﻿using BudgetBuddy._Repositories;
+using BudgetBuddy.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +23,7 @@ namespace BudgetBuddy.Views.UserControls
         public AddCard(Dashboard1 form)
         {
             InitializeComponent();
-            Date.CustomFormat = "yyyy-MM-dd";
+            ExpiryDate.CustomFormat = "yyyy-MM-dd";
             dashboard = form;
             AssociateAndRaiseViewEvents();
         }
@@ -30,33 +31,62 @@ namespace BudgetBuddy.Views.UserControls
         public event EventHandler AddNewCardEvent;
         public bool isSuccessful { get; set; }
 
-        public Card Card { get; set; }
+        public users_bank_account Card { get; set; }
 
         private void AssociateAndRaiseViewEvents()
         {
-            ConfirmBtn.Click += delegate
+            ConfirmBtn.Click += async delegate
             {
-                Card = new Card
+                try
                 {
-                    CardNumber = CardNumberTxtbox.Text,
-                    Name = NameTxtbox.Text,
-                    Email = EmailTxtbox.Text,
-                    ExpiryDate = Date.Value,
-                    PIN = PINTxtbox.Text
-                };
+                    var respond = await MetrobankRepository.GetAccount(EmailTxtbox.Text);
 
-                AddNewCardEvent?.Invoke(this, EventArgs.Empty);
+                    if (PINTxtbox.Text == respond.PIN &&
+                    CardNumberTxtbox.Text == respond.account_number &&
+                    NameTxtbox.Text.ToLower() == respond.owner_name.ToLower() &&
+                    EmailTxtbox.Text.ToLower() == respond.email.ToLower() &&
+                    ExpiryDate.Value.ToString("yyyy-MM-dd") == respond.expiry_date.ToString("yyyy-MM-dd")
+                    )
+                    {
+                        Card = new users_bank_account
+                        {
+                            account_number = respond.account_number,
+                            account_type = respond.account_type,
+                            owner_name = respond.owner_name,
+                            expiry_date = respond.expiry_date,
+                            email = Session.CurrentUser
+                            
+                        };
 
-                if (isSuccessful)
-                {
-                    dashboard.AddCard.Hide();
-                    dashboard.Overview.BringToFront();
-                    dashboard.Overview.Focus();
+                        AddNewCardEvent?.Invoke(this, EventArgs.Empty);
+
+                        if (isSuccessful)
+                        {
+                            dashboard.AddCard.Hide();
+                            dashboard.Overview.BringToFront();
+                            dashboard.Overview.Focus();
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("something went wrong");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Make sure you completed the form correctly");
+
+                    }
+
+
+
+
+
 
                 }
-                else
+                catch(Exception ex)
                 {
-                    MessageBox.Show("something went wrong");
+                    throw ex;
                 }
             };
         }

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BudgetBuddy.Repositories;
 using BudgetBuddy.Presenters;
+using BudgetBuddy._Repositories;
 
 namespace BudgetBuddy
 {
@@ -19,6 +20,7 @@ namespace BudgetBuddy
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

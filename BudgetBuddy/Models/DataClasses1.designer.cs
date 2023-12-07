@@ -42,6 +42,9 @@ namespace BudgetBuddy.Models
     partial void Insertuser_detail(user_detail instance);
     partial void Updateuser_detail(user_detail instance);
     partial void Deleteuser_detail(user_detail instance);
+    partial void Insertuser_todo(user_todo instance);
+    partial void Updateuser_todo(user_todo instance);
+    partial void Deleteuser_todo(user_todo instance);
     partial void Insertuser(user instance);
     partial void Updateuser(user instance);
     partial void Deleteuser(user instance);
@@ -106,6 +109,14 @@ namespace BudgetBuddy.Models
 			get
 			{
 				return this.GetTable<user_detail>();
+			}
+		}
+		
+		public System.Data.Linq.Table<user_todo> user_todos
+		{
+			get
+			{
+				return this.GetTable<user_todo>();
 			}
 		}
 		
@@ -1114,6 +1125,181 @@ namespace BudgetBuddy.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_todo")]
+	public partial class user_todo : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _todo_id;
+		
+		private string _todo_name;
+		
+		private System.DateTime _date;
+		
+		private System.Nullable<int> _user_id;
+		
+		private EntityRef<user> _user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Ontodo_idChanging(int value);
+    partial void Ontodo_idChanged();
+    partial void Ontodo_nameChanging(string value);
+    partial void Ontodo_nameChanged();
+    partial void OndateChanging(System.DateTime value);
+    partial void OndateChanged();
+    partial void Onuser_idChanging(System.Nullable<int> value);
+    partial void Onuser_idChanged();
+    #endregion
+		
+		public user_todo()
+		{
+			this._user = default(EntityRef<user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_todo_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int todo_id
+		{
+			get
+			{
+				return this._todo_id;
+			}
+			set
+			{
+				if ((this._todo_id != value))
+				{
+					this.Ontodo_idChanging(value);
+					this.SendPropertyChanging();
+					this._todo_id = value;
+					this.SendPropertyChanged("todo_id");
+					this.Ontodo_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_todo_name", DbType="VarChar(64) NOT NULL", CanBeNull=false)]
+		public string todo_name
+		{
+			get
+			{
+				return this._todo_name;
+			}
+			set
+			{
+				if ((this._todo_name != value))
+				{
+					this.Ontodo_nameChanging(value);
+					this.SendPropertyChanging();
+					this._todo_name = value;
+					this.SendPropertyChanged("todo_name");
+					this.Ontodo_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date", DbType="Date NOT NULL")]
+		public System.DateTime date
+		{
+			get
+			{
+				return this._date;
+			}
+			set
+			{
+				if ((this._date != value))
+				{
+					this.OndateChanging(value);
+					this.SendPropertyChanging();
+					this._date = value;
+					this.SendPropertyChanged("date");
+					this.OndateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
+		public System.Nullable<int> user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_todo", Storage="_user", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.user_todos.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.user_todos.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.users")]
 	public partial class user : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1131,6 +1317,8 @@ namespace BudgetBuddy.Models
 		private EntitySet<users_bank_account> _users_bank_accounts;
 		
 		private EntitySet<user_detail> _user_details;
+		
+		private EntitySet<user_todo> _user_todos;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1150,6 +1338,7 @@ namespace BudgetBuddy.Models
 		{
 			this._users_bank_accounts = new EntitySet<users_bank_account>(new Action<users_bank_account>(this.attach_users_bank_accounts), new Action<users_bank_account>(this.detach_users_bank_accounts));
 			this._user_details = new EntitySet<user_detail>(new Action<user_detail>(this.attach_user_details), new Action<user_detail>(this.detach_user_details));
+			this._user_todos = new EntitySet<user_todo>(new Action<user_todo>(this.attach_user_todos), new Action<user_todo>(this.detach_user_todos));
 			OnCreated();
 		}
 		
@@ -1259,6 +1448,19 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_todo", Storage="_user_todos", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<user_todo> user_todos
+		{
+			get
+			{
+				return this._user_todos;
+			}
+			set
+			{
+				this._user_todos.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1298,6 +1500,18 @@ namespace BudgetBuddy.Models
 		}
 		
 		private void detach_user_details(user_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_user_todos(user_todo entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_user_todos(user_todo entity)
 		{
 			this.SendPropertyChanging();
 			entity.user = null;
