@@ -41,7 +41,7 @@ namespace BudgetBuddy.Presenters
             _view1.AddNewCardEvent += AddCardMethod;
 
 
-            this._view.SetBankListBindingSource(bankBindingSource);
+            _view.SetBankListBindingSource(bankBindingSource);
             LoadAllBankList();
 
 

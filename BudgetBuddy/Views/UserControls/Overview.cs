@@ -140,7 +140,6 @@ namespace BudgetBuddy.Views.UserControls
         public void SetBankListBindingSource(BindingSource bank)
         {
             BankAccountDataGrid.DataSource = bank;
-            MessageBox.Show($"{BankAccountDataGrid.Columns.Count}");
         }
     }
 }
