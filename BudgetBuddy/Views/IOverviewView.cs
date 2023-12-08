@@ -16,7 +16,7 @@ namespace BudgetBuddy.Views
         event EventHandler SendEvent;
         event EventHandler RequestEvent;
         event EventHandler SearchAccountEvent;
-
+        event EventHandler AddTodoEvent;
 
         bool HasAccount { get; set; }
         bool isSuccessful { get; set; }
@@ -36,7 +36,9 @@ namespace BudgetBuddy.Views
 
         Guna2DataGridView ContactDataGrid { get; set; }
         Guna2DataGridView RecentTransactions { get; set; }
-        void SetBankListBindingSource(BindingSource bank, BindingSource transaction);
+        Guna2DataGridView ToDoList { get; set; }
+
+        void SetBankListBindingSource(BindingSource bank, BindingSource transaction, BindingSource todo);
 
     }
 }

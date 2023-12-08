@@ -12,6 +12,7 @@ using BudgetBuddy.Views;
 using BudgetBuddy.Models;
 using RestSharp.Extensions;
 using Guna.UI2.WinForms;
+using BudgetBuddy._Repositories;
 
 namespace BudgetBuddy.Views.UserControls
 {
@@ -27,6 +28,7 @@ namespace BudgetBuddy.Views.UserControls
         public event EventHandler SendEvent;
         public event EventHandler RequestEvent;
         public event EventHandler SearchAccountEvent;
+        public event EventHandler AddTodoEvent;
 
         public Overview(Dashboard1 form)
         {
@@ -70,6 +72,12 @@ namespace BudgetBuddy.Views.UserControls
 
         public Guna2DataGridView RecentTransactions
         {
+            get { return ToDoDataGrid; }
+            set { ToDoDataGrid = value; }
+        }
+
+        public Guna2DataGridView ToDoList
+        {
             get { return TransactionDataGrid; }
             set { TransactionDataGrid = value; }
         }
@@ -77,13 +85,16 @@ namespace BudgetBuddy.Views.UserControls
         {
             this.Enter += delegate
             {
+
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
+
                 ReloadForm();
 
             };
 
             this.Load += delegate
             {
+
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
                 ReloadForm();
 
@@ -139,6 +150,7 @@ namespace BudgetBuddy.Views.UserControls
 
 
             };
+
             SendMoneyBtn.Click += delegate
             {
                 DialogResult dialogResult = MessageBox.Show($"Are you sure to request to {MoneyTransferAmountTxtBox.Text} from {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
@@ -159,6 +171,15 @@ namespace BudgetBuddy.Views.UserControls
 
 
             };
+
+            AddTodoBtn.Click += delegate
+            {
+
+
+
+                AddTodoEvent?.Invoke(this, EventArgs.Empty);
+
+            };
         }
 
         public Overview()
@@ -169,6 +190,7 @@ namespace BudgetBuddy.Views.UserControls
 
         public void ReloadForm()
         {
+
             if (HasAccount)
             {
                 NoCardLbl.Visible = false;
@@ -209,10 +231,11 @@ namespace BudgetBuddy.Views.UserControls
 
         }
 
-        public void SetBankListBindingSource(BindingSource bank, BindingSource transaction)
+        public void SetBankListBindingSource(BindingSource bank, BindingSource transaction, BindingSource todo)
         {
             BankAccountDataGrid.DataSource = bank;
             TransactionDataGrid.DataSource = transaction;
+            ToDoDataGrid.DataSource = ToDoDataGrid;
         }
 
         private void MoneyTransferAmountTxtBox_KeyPress(object sender, KeyPressEventArgs e)

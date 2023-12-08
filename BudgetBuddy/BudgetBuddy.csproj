@@ -256,6 +256,7 @@
     </Compile>
     <Compile Include="Models\IAccountRepository.cs" />
     <Compile Include="Models\Session.cs" />
+    <Compile Include="Models\TodoModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Presenters\DoughnutChartPresenter.cs" />
@@ -263,6 +264,7 @@
     <Compile Include="Presenters\RecoveryPresenter.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Presenters\SignUpPresenter.cs" />
+    <Compile Include="Presenters\TransactionsPresenter.cs" />
     <Compile Include="Resources\Page1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -309,6 +311,7 @@
     <Compile Include="Views\UserControls\Confirmation.Designer.cs">
       <DependentUpon>Confirmation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\ITransactionsView.cs" />
     <Compile Include="Views\UserControls\Overview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -346,6 +349,12 @@
     </Compile>
     <Compile Include="Views\UserControls\Recovery2.Designer.cs">
       <DependentUpon>Recovery2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\Transactions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\Transactions.Designer.cs">
+      <DependentUpon>Transactions.cs</DependentUpon>
     </Compile>
     <Compile Include="_Repositories\AccountRepository.cs" />
     <Compile Include="_Repositories\BaseRepository.cs" />
@@ -410,6 +419,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Recovery2.resx">
       <DependentUpon>Recovery2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\Transactions.resx">
+      <DependentUpon>Transactions.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>

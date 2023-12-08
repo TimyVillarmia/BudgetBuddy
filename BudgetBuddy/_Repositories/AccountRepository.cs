@@ -226,6 +226,43 @@ namespace BudgetBuddy.Repositories
 
             return queryjoin;
         }
+
+
+        public IEnumerable<TodoModel> GetTodoList()
+        {
+
+
+            //var queryjoin = (from todo in _db.user_todos
+            //                 join user in _db.users on todo.user_id equals user.user_id
+            //                 where user.email == Session.CurrentUser
+            //                 select new TodoModel
+            //                 {
+            //                     TodoName = todo.todo_name,
+            //                     TodoDate = todo.date.ToString("yyyy/MM/dd")
+            //                 }).ToList();
+
+
+
+            //return queryjoin;
+            return null;
+        }
+
+        public void CreateTodo(user_todo newTodo)
+        {
+
+            //var queryID = (from user in _db.users
+            //                 where user.email == Session.CurrentUser
+            //                 select user).FirstOrDefault();
+
+
+            //newTodo.user_id = queryID.user_id;
+
+            //_db.user_todos.InsertOnSubmit(newTodo);
+            //_db.SubmitChanges();
+
+
+
+        }
         public void CreateTransactions(transaction NewTransaction)
         {
             try

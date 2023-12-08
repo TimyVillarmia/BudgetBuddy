@@ -19,10 +19,15 @@ namespace BudgetBuddy.Presenters
         private readonly IAccountRepository _accountRepository;
         private readonly IOverviewView _view;
         private readonly IAddCardView _view1;
+
         private IEnumerable<Users> accountList;
         private IEnumerable<TransactionModel> transactionList;
+        private IEnumerable<TodoModel> todoList;
+
+
         private BindingSource bankBindingSource;
         private BindingSource transactionBindingSource;
+        private BindingSource todoBindingSource;
 
 
         // constructor
@@ -30,6 +35,7 @@ namespace BudgetBuddy.Presenters
         {
             this.bankBindingSource = new BindingSource();
             this.transactionBindingSource = new BindingSource();
+            this.todoBindingSource = new BindingSource();
 
 
             _accountRepository = accountRepository;
@@ -45,7 +51,7 @@ namespace BudgetBuddy.Presenters
 
             _view1.AddNewCardEvent += AddCardMethod;
 
-            _view.SetBankListBindingSource(bankBindingSource, transactionBindingSource);
+            _view.SetBankListBindingSource(bankBindingSource, transactionBindingSource, todoBindingSource);
             LoadAllDataGridList();
 
 
@@ -69,25 +75,38 @@ namespace BudgetBuddy.Presenters
 
         private async void LoadAllDataGridList()
         {
-            accountList = await MetrobankRepository.GetAllAsync();
-            bankBindingSource.DataSource = accountList; //Set data source.
+
+
 
             transactionList = _accountRepository.GetTransactionsList();
             transactionBindingSource.DataSource = transactionList; //Set data source.
 
+            todoList = _accountRepository.GetTodoList();
+            transactionBindingSource.DataSource = todoList; //Set data source.
+
+            var result = await MetrobankRepository.GetAllAsync();
+
+            accountList = result.ToList();
+            bankBindingSource.DataSource = accountList; //Set data source.
+
             _view.ContactDataGrid.Columns[0].HeaderText = "Name";
             _view.ContactDataGrid.Columns[1].Visible = false;
 
-            _view.RecentTransactions.Columns[0].HeaderText = "Transaction";
-            _view.RecentTransactions.Columns[0].HeaderText = "Type";
-            _view.RecentTransactions.Columns[0].HeaderText = "Date";
-            _view.RecentTransactions.Columns[0].HeaderText = "Amount";
+
+
+
+            //MessageBox.Show($"{_view.RecentTransactions.Columns.Count}");
+            //_view.RecentTransactions.Columns[0].HeaderText = "Transaction";
+            //_view.RecentTransactions.Columns[1].HeaderText = "Type";
+            //_view.RecentTransactions.Columns[2].HeaderText = "Date";
+            //_view.RecentTransactions.Columns[3].HeaderText = "Amount";
         }
 
         private async void SearchAccount(object sender, EventArgs e)
         {
+            var asyncResult = await MetrobankRepository.GetAllAsync();
 
-            
+
             try
             {
 
@@ -95,14 +114,12 @@ namespace BudgetBuddy.Presenters
 
                 if (emptyValue)
                 {
-                    accountList = await MetrobankRepository.GetAllAsync();
-
+                    accountList = asyncResult;
 
                 }
                 else
                 {
-                    var result = await MetrobankRepository.GetAllAsync();
-                    accountList = result.Where(search => search.owner_name.ToLower().StartsWith(_view.SearchName)); 
+                    accountList = asyncResult.Where(search => search.owner_name.ToLower().StartsWith(_view.SearchName)); 
 
                 }
 
@@ -118,37 +135,40 @@ namespace BudgetBuddy.Presenters
             }
         }
 
-        private async void LoadOverview(object sender, EventArgs e)
+
+        private  void LoadOverview(object sender, EventArgs e)
         {
 
 
             try
-            { 
+            {
+
                 var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
-
-
 
                 transactionList = _accountRepository.GetTransactionsList();
                 transactionBindingSource.DataSource = transactionList; //Set data source.
 
                 if (acc != null) 
                 {
-                    var respond = await MetrobankRepository.GetBalance(acc.CardNumber);
+
+
 
                     _view.DisplayName = acc.OwnerName;
                     _view.AccountNumber = acc.CardNumber;
                     _view.ExpiryDate = acc.ExpiryDate.ToString("MM/yy");
-
-                    _view.Balance = respond.ToString();
+                    //var asyncResult = MetrobankRepository.GetBalance(acc.CardNumber);
+                    //_view.Balance = $"₱ {await asyncResult:n}";
 
                     _view.HasAccount = true;
                     
+
                 }
                 else
                 {
                     _view.HasAccount = false;
 
                 }
+
             }
             catch(Exception ex)
             {

@@ -63,6 +63,16 @@ namespace BudgetBuddy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Budgeting {
+            get {
+                object obj = ResourceManager.GetObject("Budgeting", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap CardBG {
             get {
                 object obj = ResourceManager.GetObject("CardBG", resourceCulture);
@@ -256,6 +266,16 @@ namespace BudgetBuddy.Properties {
         internal static System.Drawing.Bitmap Show {
             get {
                 object obj = ResourceManager.GetObject("Show", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Statistics {
+            get {
+                object obj = ResourceManager.GetObject("Statistics", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
