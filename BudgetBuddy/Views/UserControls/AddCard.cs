@@ -54,7 +54,6 @@ namespace BudgetBuddy.Views.UserControls
                             account_type = respond.account_type,
                             owner_name = respond.owner_name,
                             expiry_date = respond.expiry_date,
-                            email = Session.CurrentUser
                             
                         };
 

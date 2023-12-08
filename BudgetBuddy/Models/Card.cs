@@ -9,10 +9,8 @@ namespace BudgetBuddy.Models
     public class Card
     {
         public string CardNumber { get; set; }
-        public string Name { get; set; }
-        public string Email { get; set; }
+        public string OwnerName { get; set; }
         public DateTime ExpiryDate { get; set; }
-        public string PIN { get; set; }
     }
 
 }

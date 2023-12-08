@@ -20,13 +20,16 @@ namespace BudgetBuddy.Presenters
         private readonly IOverviewView _view;
         private readonly IAddCardView _view1;
         private IEnumerable<Users> accountList;
+        private IEnumerable<TransactionModel> transactionList;
         private BindingSource bankBindingSource;
+        private BindingSource transactionBindingSource;
 
 
         // constructor
         public OverviewPresenter(IAccountRepository accountRepository, IOverviewView view, IAddCardView view1)
         {
             this.bankBindingSource = new BindingSource();
+            this.transactionBindingSource = new BindingSource();
 
 
             _accountRepository = accountRepository;
@@ -42,8 +45,8 @@ namespace BudgetBuddy.Presenters
 
             _view1.AddNewCardEvent += AddCardMethod;
 
-            _view.SetBankListBindingSource(bankBindingSource);
-            LoadAllBankList();
+            _view.SetBankListBindingSource(bankBindingSource, transactionBindingSource);
+            LoadAllDataGridList();
 
 
 
@@ -54,8 +57,7 @@ namespace BudgetBuddy.Presenters
         {
             var createNewTransaction = new transaction
             {
-                sender_id = _view.AccountNumber,
-                receiver_id = _view.SendMoneyToAccountNumber,
+                receiver_account_number = _view.SendMoneyToAccountNumber,
                 transaction_type = "MoneyTransfer",
                 transaction_name = "Send",
                 amount = _view.MoneyTransferAmount,
@@ -65,10 +67,13 @@ namespace BudgetBuddy.Presenters
             _accountRepository.CreateTransactions(createNewTransaction);
         }
 
-        private async void LoadAllBankList()
+        private async void LoadAllDataGridList()
         {
             accountList = await MetrobankRepository.GetAllAsync();
-            bankBindingSource.DataSource = accountList;//Set data source.
+            bankBindingSource.DataSource = accountList; //Set data source.
+
+            transactionList = _accountRepository.GetTransactionsList();
+            transactionBindingSource.DataSource = transactionList; //Set data source.
 
             _view.ContactDataGrid.Columns[0].HeaderText = "Name";
             _view.ContactDataGrid.Columns[1].Visible = false;
@@ -118,9 +123,9 @@ namespace BudgetBuddy.Presenters
 
                 if (acc != null) 
                 {
-                    _view.DisplayName = acc.owner_name;
-                    _view.AccountNumber = acc.account_number;
-                    _view.ExpiryDate = acc.expiry_date.ToString("MM/yy");
+                    _view.DisplayName = acc.OwnerName;
+                    _view.AccountNumber = acc.CardNumber;
+                    _view.ExpiryDate = acc.ExpiryDate.ToString("MM/yy");
 
                     _view.HasAccount = true;
                     

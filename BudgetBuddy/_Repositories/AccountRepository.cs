@@ -1,11 +1,15 @@
 ﻿using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static BudgetBuddy._Repositories.Encryption;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace BudgetBuddy.Repositories
 {
@@ -129,18 +133,31 @@ namespace BudgetBuddy.Repositories
         }
 
   
-        public users_bank_account GetBankAccount(string email)
+        public Card GetBankAccount(string email)
         {
             try
             {
-                var accountlist = (from acc in _db.users_bank_accounts
-                                   where acc.email == email
-                                   select acc).FirstOrDefault();
+                var queryjoin = (from ba in _db.users_bank_accounts
+                                 join user in _db.users on ba.user_id equals user.user_id
+                                 where user.email == Session.CurrentUser
+                                 select new 
+                                 {
+                                     ba.account_number,
+                                     ba.account_type,
+                                     ba.owner_name,
+                                     ba.expiry_date,
+                                 }).FirstOrDefault();
 
 
-                return accountlist;
+                return new Card
+                {
+                    CardNumber = queryjoin.account_number,
+                    OwnerName = queryjoin.owner_name,
+                    ExpiryDate = queryjoin.expiry_date
+                };
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 throw e;
             }
@@ -152,12 +169,22 @@ namespace BudgetBuddy.Repositories
         {
             try
             {
+
+
+
+                var queryjoin = (from user in _db.users
+                                 where user.email == Session.CurrentUser
+                                 select user).FirstOrDefault();
+
+                card.user_id = queryjoin.user_id;
+
+
                 _db.users_bank_accounts.InsertOnSubmit(card);
                 _db.SubmitChanges();
 
                 return true;
             }
-            catch (Exception e)
+            catch
             {
                 return false;
 
@@ -166,21 +193,47 @@ namespace BudgetBuddy.Repositories
 
         }
 
-        public IEnumerable<transaction> GetTransactionsList(string account_number)
+        public IEnumerable<TransactionModel> GetTransactionsList()
         {
-            var query = (from list in _db.transactions
-                         select list).ToList();
 
 
-            var selected = query.Where(account => account.sender_id == account_number);
+            var queryjoin = (from t in _db.transactions
+                             join ba in _db.users_bank_accounts on t.sender_account equals ba.usersBA_id
+                             join u in _db.users on ba.user_id equals u.user_id
+                             where u.email == Session.CurrentUser
+                             select new TransactionModel
+                             {
+                                 TransactionName = t.transaction_name,
+                                 Type = t.transaction_type,
+                                 date = t.transaction_date,
+                                 amount = t.amount
+                             }).ToList();
 
-            return selected;
+
+
+            return queryjoin;
         }
         public void CreateTransactions(transaction transaction)
         {
             try
             {
-                _db.transactions.InsertOnSubmit(transaction);
+                var newTransaction = (from t in _db.transactions
+                                      join ba in _db.users_bank_accounts on t.sender_account equals ba.usersBA_id
+                                      join u in _db.users on ba.user_id equals u.user_id
+                                      where u.email == Session.CurrentUser
+                                      select new transaction()
+                                      {
+                                          receiver_account_number = transaction.receiver_account_number,
+                                          transaction_type = transaction.transaction_type,
+                                          transaction_name = transaction.transaction_name,
+                                          amount = transaction.amount,
+                                          transaction_date = transaction.transaction_date,
+                                          sender_account = ba.usersBA_id
+                                     
+                                 }).FirstOrDefault();
+
+
+                _db.transactions.InsertOnSubmit(newTransaction);
                 _db.SubmitChanges();
 
             }

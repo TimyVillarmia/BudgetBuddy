@@ -180,9 +180,18 @@ namespace BudgetBuddy.Views.UserControls
 
         }
 
-        public void SetBankListBindingSource(BindingSource bank)
+        public void SetBankListBindingSource(BindingSource bank, BindingSource transaction)
         {
             BankAccountDataGrid.DataSource = bank;
+            TransactionDataGrid.DataSource = transaction;
+        }
+
+        private void MoneyTransferAmountTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

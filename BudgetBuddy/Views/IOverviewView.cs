@@ -33,7 +33,7 @@ namespace BudgetBuddy.Views
         decimal MoneyTransferAmount { get; set; }
 
         Guna2DataGridView ContactDataGrid { get; set; }
-        void SetBankListBindingSource(BindingSource bank);
+        void SetBankListBindingSource(BindingSource bank, BindingSource transaction);
 
     }
 }
