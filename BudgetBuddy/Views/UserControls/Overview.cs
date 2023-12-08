@@ -67,6 +67,12 @@ namespace BudgetBuddy.Views.UserControls
             get { return BankAccountDataGrid; }
             set { BankAccountDataGrid = value; }
         }
+
+        public Guna2DataGridView RecentTransactions
+        {
+            get { return TransactionDataGrid; }
+            set { TransactionDataGrid = value; }
+        }
         private void AssociateAndRaiseViewEvents()
         {
             this.Enter += delegate
@@ -115,12 +121,32 @@ namespace BudgetBuddy.Views.UserControls
 
             SendMoneyBtn.Click += delegate
             {
-                DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"Are you sure to send {MoneyTransferAmountTxtBox.Text} to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
 
                 if (dialogResult == DialogResult.Yes)
                 {
                     MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
                     SendEvent?.Invoke(this, EventArgs.Empty);
+                    this.Focus();
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    // do nothing
+                }
+
+
+
+            };
+            SendMoneyBtn.Click += delegate
+            {
+                DialogResult dialogResult = MessageBox.Show($"Are you sure to request to {MoneyTransferAmountTxtBox.Text} from {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
+                    RequestEvent?.Invoke(this, EventArgs.Empty);
                     this.Focus();
 
 
@@ -150,6 +176,7 @@ namespace BudgetBuddy.Views.UserControls
                 CardObject.Visible = true;
 
                 PercentBalance.Visible = true;
+                BalanceLbl.Text = Balance;
                 PercentIncome.Visible = true;
 
                 ExpiryDateLbl.Text = ExpiryDate;

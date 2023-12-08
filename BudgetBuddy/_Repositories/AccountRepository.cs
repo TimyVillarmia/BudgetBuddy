@@ -159,6 +159,7 @@ namespace BudgetBuddy.Repositories
                         CardNumber = queryjoin.account_number,
                         OwnerName = queryjoin.owner_name,
                         ExpiryDate = queryjoin.expiry_date
+                        
                     };
                 }
 

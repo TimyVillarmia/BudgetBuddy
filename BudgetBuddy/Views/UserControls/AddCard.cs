@@ -48,6 +48,7 @@ namespace BudgetBuddy.Views.UserControls
                     ExpiryDate.Value.ToString("yyyy-MM-dd") == respond.expiry_date.ToString("yyyy-MM-dd")
                     )
                     {
+
                         Card = new users_bank_account
                         {
                             account_number = respond.account_number,

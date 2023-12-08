@@ -77,6 +77,11 @@ namespace BudgetBuddy.Presenters
 
             _view.ContactDataGrid.Columns[0].HeaderText = "Name";
             _view.ContactDataGrid.Columns[1].Visible = false;
+
+            _view.RecentTransactions.Columns[0].HeaderText = "Transaction";
+            _view.RecentTransactions.Columns[0].HeaderText = "Type";
+            _view.RecentTransactions.Columns[0].HeaderText = "Date";
+            _view.RecentTransactions.Columns[0].HeaderText = "Amount";
         }
 
         private async void SearchAccount(object sender, EventArgs e)
@@ -113,7 +118,7 @@ namespace BudgetBuddy.Presenters
             }
         }
 
-        private void LoadOverview(object sender, EventArgs e)
+        private async void LoadOverview(object sender, EventArgs e)
         {
 
 
@@ -121,14 +126,20 @@ namespace BudgetBuddy.Presenters
             { 
                 var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
 
+
+
                 transactionList = _accountRepository.GetTransactionsList();
                 transactionBindingSource.DataSource = transactionList; //Set data source.
 
                 if (acc != null) 
                 {
+                    var respond = await MetrobankRepository.GetBalance(acc.CardNumber);
+
                     _view.DisplayName = acc.OwnerName;
                     _view.AccountNumber = acc.CardNumber;
                     _view.ExpiryDate = acc.ExpiryDate.ToString("MM/yy");
+
+                    _view.Balance = respond.ToString();
 
                     _view.HasAccount = true;
                     

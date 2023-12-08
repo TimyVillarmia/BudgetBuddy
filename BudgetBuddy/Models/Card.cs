@@ -10,6 +10,8 @@ namespace BudgetBuddy.Models
     {
         public string CardNumber { get; set; }
         public string OwnerName { get; set; }
+        public string Balance { get; set; }
+
         public DateTime ExpiryDate { get; set; }
     }
 
