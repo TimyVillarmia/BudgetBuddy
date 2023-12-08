@@ -57,7 +57,10 @@ namespace BudgetBuddy.Views.UserControls
         public string Expenses { get; set; }
         public string Savings { get; set; }
 
+
         public string SendMoneyToAccountNumber { get; set; }
+        public string SendMoneyToAccountName { get; set; }
+
         public decimal MoneyTransferAmount { get; set; }
         public Guna2DataGridView ContactDataGrid
         {
@@ -97,11 +100,12 @@ namespace BudgetBuddy.Views.UserControls
                 {
                     int selectedrowindex = BankAccountDataGrid.SelectedCells[0].RowIndex;
                     DataGridViewRow selectedRow = BankAccountDataGrid.Rows[selectedrowindex];
-                    string cellValue = Convert.ToString(selectedRow.Cells["account_number"].Value);
+                    string cellNumber = Convert.ToString(selectedRow.Cells["account_number"].Value);
+                    string cellName = Convert.ToString(selectedRow.Cells["owner_name"].Value);
 
-                    SelectAccountNumberLbl.Text = cellValue;
-                    SendMoneyToAccountNumber = cellValue;
-                }
+                    SelectAccountNumberLbl.Text = cellNumber;
+                    SendMoneyToAccountNumber = cellNumber;
+                    SendMoneyToAccountName = cellName;
 
 
             };
@@ -109,7 +113,7 @@ namespace BudgetBuddy.Views.UserControls
 
             SendMoneyBtn.Click += delegate
             {
-                DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountNumber}", "Quick Transfer", MessageBoxButtons.YesNo);
+                DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
 
                 if (dialogResult == DialogResult.Yes)
                 {
