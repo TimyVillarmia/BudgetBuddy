@@ -17,6 +17,6 @@ namespace BudgetBuddy.Models
         bool AddCard(users_bank_account card);
         Card GetBankAccount(string email);
         IEnumerable<TransactionModel> GetTransactionsList();
-        void CreateTransactions(transaction transaction);
+        void CreateTransactions(transaction NewTransaction);
     }
 }

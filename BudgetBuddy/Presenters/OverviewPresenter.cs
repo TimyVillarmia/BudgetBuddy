@@ -39,7 +39,7 @@ namespace BudgetBuddy.Presenters
 
 
             // subscribe the view's event to the presenter's event
-            _view.LoadOverviewData += GetCard;
+            _view.LoadOverviewData += LoadOverview;
             _view.SearchAccountEvent += SearchAccount;
             _view.SendEvent += SendMoneyTo;
 
@@ -113,13 +113,16 @@ namespace BudgetBuddy.Presenters
             }
         }
 
-        private void GetCard(object sender, EventArgs e)
+        private void LoadOverview(object sender, EventArgs e)
         {
 
 
             try
             { 
                 var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
+
+                transactionList = _accountRepository.GetTransactionsList();
+                transactionBindingSource.DataSource = transactionList; //Set data source.
 
                 if (acc != null) 
                 {

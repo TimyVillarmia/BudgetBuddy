@@ -213,28 +213,30 @@ namespace BudgetBuddy.Repositories
 
             return queryjoin;
         }
-        public void CreateTransactions(transaction transaction)
+        public void CreateTransactions(transaction NewTransaction)
         {
             try
             {
-                var newTransaction = (from t in _db.transactions
-                                      join ba in _db.users_bank_accounts on t.sender_account equals ba.usersBA_id
-                                      join u in _db.users on ba.user_id equals u.user_id
-                                      where u.email == Session.CurrentUser
-                                      select new transaction()
-                                      {
-                                          receiver_account_number = transaction.receiver_account_number,
-                                          transaction_type = transaction.transaction_type,
-                                          transaction_name = transaction.transaction_name,
-                                          amount = transaction.amount,
-                                          transaction_date = transaction.transaction_date,
-                                          sender_account = ba.usersBA_id
-                                     
-                                 }).FirstOrDefault();
 
 
-                _db.transactions.InsertOnSubmit(newTransaction);
-                _db.SubmitChanges();
+                var queryBA = (from t in _db.users_bank_accounts
+                               join u in _db.users on t.user_id equals u.user_id
+                               where u.email == Session.CurrentUser
+                               select t).FirstOrDefault();
+
+                if (queryBA == null)
+                {
+                    MessageBox.Show("Make sure you have added a bank acount into your account");
+                }
+                else
+                {
+
+                    NewTransaction.sender_account = queryBA.usersBA_id;
+
+                    _db.transactions.InsertOnSubmit(NewTransaction);
+                    _db.SubmitChanges();
+                }
+
 
             }
             catch (Exception e)
