@@ -1,31 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BudgetBuddy" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-CCUR4CG;Initial Catalog=BudgetBuddy;Integrated Security=True" SettingsObjectName="BudgetBuddy.Properties.Settings" SettingsPropertyName="BudgetBuddyConnectionString3" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Metrobank" Member="Metrobanks">
-    <Type Name="Metrobank">
-      <Column Name="account_number" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="account_type" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
-      <Column Name="current_balance" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
-      <Column Name="owner_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="open_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="address" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="phone_number" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PIN" Type="System.String" DbType="VarChar(4) NOT NULL" CanBeNull="false" />
-      <Column Name="expiry_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
-  <Table Name="dbo.users_bank_accounts" Member="users_bank_accounts">
-    <Type Name="users_bank_account">
-      <Column Name="account_number" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="account_type" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
-      <Column Name="owner_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="expiry_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="email" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Association Name="users_bank_account_transaction" Member="transactions" ThisKey="account_number" OtherKey="receiver_id" Type="transaction" />
-      <Association Name="users_bank_account_transaction1" Member="transactions1" ThisKey="account_number" OtherKey="sender_id" Type="transaction" />
-      <Association Name="user_users_bank_account" Member="user" ThisKey="email" OtherKey="email" Type="user" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.transactions" Member="transactions">
     <Type Name="transaction">
       <Column Name="transaction_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -39,12 +13,24 @@
       <Association Name="users_bank_account_transaction1" Member="users_bank_account1" ThisKey="sender_id" OtherKey="account_number" Type="users_bank_account" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.users" Member="users">
+    <Type Name="user">
+      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="password_hash" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
+      <Column Name="password_salt" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
+      <Association Name="user_user_detail" Member="user_details" ThisKey="user_id" OtherKey="user_id" Type="user_detail" />
+      <Association Name="user_user_todo" Member="user_todos" ThisKey="user_id" OtherKey="user_id" Type="user_todo" />
+      <Association Name="user_users_bank_account" Member="users_bank_accounts" ThisKey="email" OtherKey="email" Type="users_bank_account" />
+    </Type>
+  </Table>
   <Table Name="dbo.user_details" Member="user_details">
     <Type Name="user_detail">
       <Column Name="userDetails_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="first_name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="last_name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="profile_src" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
       <Association Name="user_user_detail" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
@@ -57,15 +43,16 @@
       <Association Name="user_user_todo" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.users" Member="users">
-    <Type Name="user">
-      <Column Name="user_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+  <Table Name="dbo.users_bank_accounts" Member="users_bank_accounts">
+    <Type Name="users_bank_account">
+      <Column Name="account_number" Type="System.String" DbType="VarChar(255) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="account_type" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="owner_name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="expiry_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="password_hash" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
-      <Column Name="password_salt" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
-      <Association Name="user_users_bank_account" Member="users_bank_accounts" ThisKey="email" OtherKey="email" Type="users_bank_account" />
-      <Association Name="user_user_detail" Member="user_details" ThisKey="user_id" OtherKey="user_id" Type="user_detail" />
-      <Association Name="user_user_todo" Member="user_todos" ThisKey="user_id" OtherKey="user_id" Type="user_todo" />
+      <Association Name="users_bank_account_transaction" Member="transactions" ThisKey="account_number" OtherKey="receiver_id" Type="transaction" />
+      <Association Name="users_bank_account_transaction1" Member="transactions1" ThisKey="account_number" OtherKey="sender_id" Type="transaction" />
+      <Association Name="user_users_bank_account" Member="user" ThisKey="email" OtherKey="email" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

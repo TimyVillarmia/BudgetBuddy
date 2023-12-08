@@ -128,18 +128,7 @@ namespace BudgetBuddy.Repositories
             return login.Any();
         }
 
-        public IEnumerable<Users> GetBankAccountList()
-        {
-            var query = (from list in _db.Metrobanks
-                         select list).ToList();
-
-
-            var selected = query.Select(sel => new Users { owner_name = sel.owner_name, account_number = sel.account_number });
-
-            return selected;
-        }
-
-
+  
         public users_bank_account GetBankAccount(string email)
         {
             try
@@ -176,5 +165,31 @@ namespace BudgetBuddy.Repositories
             }
 
         }
+
+        public IEnumerable<transaction> GetTransactionsList(string account_number)
+        {
+            var query = (from list in _db.transactions
+                         select list).ToList();
+
+
+            var selected = query.Where(account => account.sender_id == account_number);
+
+            return selected;
+        }
+        public void CreateTransactions(transaction transaction)
+        {
+            try
+            {
+                _db.transactions.InsertOnSubmit(transaction);
+                _db.SubmitChanges();
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+
+            }
+        }
+
     }
 }

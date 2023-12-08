@@ -1,5 +1,6 @@
 ﻿using BudgetBuddy.Models;
 using BudgetBuddy.Views.UserControls;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,8 +29,10 @@ namespace BudgetBuddy.Views
         string Income { get; set; }
         string Expenses { get; set; }
         string Savings { get; set; }
+        string SendMoneyToAccountNumber { get; set; }
+        decimal MoneyTransferAmount { get; set; }
 
-
+        Guna2DataGridView ContactDataGrid { get; set; }
         void SetBankListBindingSource(BindingSource bank);
 
     }

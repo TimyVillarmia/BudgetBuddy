@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using BudgetBuddy.Views;
 using BudgetBuddy.Models;
 using RestSharp.Extensions;
+using Guna.UI2.WinForms;
 
 namespace BudgetBuddy.Views.UserControls
 {
@@ -56,6 +57,13 @@ namespace BudgetBuddy.Views.UserControls
         public string Expenses { get; set; }
         public string Savings { get; set; }
 
+        public string SendMoneyToAccountNumber { get; set; }
+        public decimal MoneyTransferAmount { get; set; }
+        public Guna2DataGridView ContactDataGrid
+        {
+            get { return BankAccountDataGrid; }
+            set { BankAccountDataGrid = value; }
+        }
         private void AssociateAndRaiseViewEvents()
         {
             this.Enter += delegate
@@ -83,6 +91,45 @@ namespace BudgetBuddy.Views.UserControls
             };
 
 
+            BankAccountDataGrid.SelectionChanged += delegate
+            {
+                if (BankAccountDataGrid.SelectedCells.Count > 0)
+                {
+                    int selectedrowindex = BankAccountDataGrid.SelectedCells[0].RowIndex;
+                    DataGridViewRow selectedRow = BankAccountDataGrid.Rows[selectedrowindex];
+                    string cellValue = Convert.ToString(selectedRow.Cells["account_number"].Value);
+
+                    SelectAccountNumberLbl.Text = cellValue;
+                    SendMoneyToAccountNumber = cellValue;
+                }
+
+
+            };
+
+
+            SendMoneyBtn.Click += delegate
+            {
+                DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountNumber}", "Quick Transfer", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
+                    SendEvent?.Invoke(this, EventArgs.Empty);
+
+
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    // do nothing
+                }
+
+
+
+
+
+
+            };
+
 
         }
 
@@ -101,9 +148,7 @@ namespace BudgetBuddy.Views.UserControls
                 CardObject.Visible = true;
 
                 PercentBalance.Visible = true;
-                PercentExpenses.Visible = false;
                 PercentIncome.Visible = true;
-                PercentSavings.Visible = true;
 
                 ExpiryDateLbl.Text = ExpiryDate;
                 NameLbl.Text = DisplayName;
@@ -119,9 +164,7 @@ namespace BudgetBuddy.Views.UserControls
                 NoCardLbl.Visible = true;
                 NoCardLbl.Location = new Point(20, 87);
                 PercentBalance.Visible = false;
-                PercentExpenses.Visible = false;
                 PercentIncome.Visible = false;
-                PercentSavings.Visible = false;
 
             }
         }

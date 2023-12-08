@@ -14,8 +14,9 @@ namespace BudgetBuddy.Models
         bool doesAccountExist(user account);
         bool LoginAccount(user user);
         bool RecoverAccount(user account);
-        IEnumerable<Users> GetBankAccountList();
         bool AddCard(users_bank_account card);
         users_bank_account GetBankAccount(string email);
+        IEnumerable<transaction> GetTransactionsList(string account_number);
+        void CreateTransactions(transaction transaction);
     }
 }

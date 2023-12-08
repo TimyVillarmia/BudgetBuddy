@@ -38,8 +38,9 @@ namespace BudgetBuddy.Presenters
             // subscribe the view's event to the presenter's event
             _view.LoadOverviewData += GetCard;
             _view.SearchAccountEvent += SearchAccount;
-            _view1.AddNewCardEvent += AddCardMethod;
+            _view.SendEvent += SendMoneyTo;
 
+            _view1.AddNewCardEvent += AddCardMethod;
 
             _view.SetBankListBindingSource(bankBindingSource);
             LoadAllBankList();
@@ -49,10 +50,28 @@ namespace BudgetBuddy.Presenters
 
         }
 
+        private void SendMoneyTo(object sender, EventArgs e)
+        {
+            var createNewTransaction = new transaction
+            {
+                sender_id = _view.AccountNumber,
+                receiver_id = _view.SendMoneyToAccountNumber,
+                transaction_type = "MoneyTransfer",
+                transaction_name = "Send",
+                amount = _view.MoneyTransferAmount,
+                transaction_date = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))
+            };
+
+            _accountRepository.CreateTransactions(createNewTransaction);
+        }
+
         private async void LoadAllBankList()
         {
             accountList = await MetrobankRepository.GetAllAsync();
             bankBindingSource.DataSource = accountList;//Set data source.
+
+            _view.ContactDataGrid.Columns[0].HeaderText = "Name";
+            _view.ContactDataGrid.Columns[1].Visible = false;
         }
 
         private async void SearchAccount(object sender, EventArgs e)
