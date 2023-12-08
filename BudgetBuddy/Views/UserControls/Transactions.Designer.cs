@@ -82,7 +82,7 @@
             this.TransactionDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.TransactionDataGrid.RowHeadersVisible = false;
             this.TransactionDataGrid.RowHeadersWidth = 51;
-            this.TransactionDataGrid.Size = new System.Drawing.Size(1369, 835);
+            this.TransactionDataGrid.Size = new System.Drawing.Size(1323, 835);
             this.TransactionDataGrid.TabIndex = 19;
             this.TransactionDataGrid.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.TransactionDataGrid.ThemeStyle.AlternatingRowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,7 +112,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(39, 34);
+            this.label1.Location = new System.Drawing.Point(50, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(295, 33);
             this.label1.TabIndex = 21;

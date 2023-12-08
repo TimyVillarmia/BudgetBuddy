@@ -26,6 +26,8 @@ namespace BudgetBuddy.Views
         public Overview Overview { get; set; }
         public AddCard AddCard { get; set; }
         public Transactions Transactions { get; set; }
+        public Payments Payments { get; set; }
+        public Budgeting Budgeting { get; set; }
 
         private void Dashboard1_Load(object sender, EventArgs e)
         {
@@ -43,6 +45,15 @@ namespace BudgetBuddy.Views
             {
                 Dock = DockStyle.Fill
             };
+            Payments = new Payments()
+            {
+                Dock = DockStyle.Fill
+            };
+            Budgeting = new Budgeting()
+            {
+                Dock = DockStyle.Fill
+            };
+
 
             AddCard = new AddCard(this)
             {
@@ -59,6 +70,8 @@ namespace BudgetBuddy.Views
 
             DashboardPanel.Controls.Add(Overview);
             DashboardPanel.Controls.Add(Transactions);
+            DashboardPanel.Controls.Add(Payments);
+            DashboardPanel.Controls.Add(Budgeting);
             DashboardPanel.Controls.Add(AddCard);
 
             Overview.Focus();
@@ -96,11 +109,11 @@ namespace BudgetBuddy.Views
                 FormatBtn(OverviewBtn);
 
             };
-            StatsBtn.CheckedChanged += delegate
+            BudgetingBtn.CheckedChanged += delegate
             {
 
-                //Overview.BringToFront();
-                FormatBtn(StatsBtn);
+                Budgeting.BringToFront();
+                FormatBtn(BudgetingBtn);
 
 
             };
@@ -113,11 +126,10 @@ namespace BudgetBuddy.Views
 
 
             };
-            ReportsBtn.CheckedChanged += delegate
+            PaymentBtn.CheckedChanged += delegate
             {
-
-                //Overview.BringToFront();
-                FormatBtn(ReportsBtn);
+                Payments.BringToFront();
+                FormatBtn(PaymentBtn);
 
 
             };

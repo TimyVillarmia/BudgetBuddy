@@ -34,16 +34,16 @@
             this.TopNav = new Guna.UI2.WinForms.Guna2Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.ProfileBtn = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.NotifBtn = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.SettingBtn = new Guna.UI2.WinForms.Guna2CircleButton();
-            this.ReportsBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.StatsBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.PaymentBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.BudgetingBtn = new Guna.UI2.WinForms.Guna2Button();
             this.TransactionBtn = new Guna.UI2.WinForms.Guna2Button();
             this.OverviewBtn = new Guna.UI2.WinForms.Guna2Button();
             this.DashboardPanel = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.NotifBtn = new Guna.UI2.WinForms.Guna2CircleButton();
+            this.SettingBtn = new Guna.UI2.WinForms.Guna2CircleButton();
             this.TopNav.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -64,8 +64,8 @@
             this.TopNav.Controls.Add(this.ProfileBtn);
             this.TopNav.Controls.Add(this.NotifBtn);
             this.TopNav.Controls.Add(this.SettingBtn);
-            this.TopNav.Controls.Add(this.ReportsBtn);
-            this.TopNav.Controls.Add(this.StatsBtn);
+            this.TopNav.Controls.Add(this.PaymentBtn);
+            this.TopNav.Controls.Add(this.BudgetingBtn);
             this.TopNav.Controls.Add(this.TransactionBtn);
             this.TopNav.Controls.Add(this.OverviewBtn);
             this.TopNav.Dock = System.Windows.Forms.DockStyle.Top;
@@ -99,17 +99,6 @@
             this.label3.TabIndex = 21;
             this.label3.Text = "Budget";
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::BudgetBuddy.Properties.Resources.logo;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(25, 17);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(25, 38);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 20;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // ProfileBtn
             // 
             this.ProfileBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -125,75 +114,44 @@
             this.ProfileBtn.TabIndex = 19;
             this.ProfileBtn.Text = "guna2CircleButton3";
             // 
-            // NotifBtn
+            // PaymentBtn
             // 
-            this.NotifBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.NotifBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.NotifBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.NotifBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.NotifBtn.FillColor = System.Drawing.Color.Transparent;
-            this.NotifBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.NotifBtn.ForeColor = System.Drawing.Color.White;
-            this.NotifBtn.Image = ((System.Drawing.Image)(resources.GetObject("NotifBtn.Image")));
-            this.NotifBtn.ImageSize = new System.Drawing.Size(40, 40);
-            this.NotifBtn.Location = new System.Drawing.Point(1304, 10);
-            this.NotifBtn.Name = "NotifBtn";
-            this.NotifBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.NotifBtn.Size = new System.Drawing.Size(50, 50);
-            this.NotifBtn.TabIndex = 18;
+            this.PaymentBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.PaymentBtn.Checked = true;
+            this.PaymentBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.PaymentBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.PaymentBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.PaymentBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.PaymentBtn.FillColor = System.Drawing.Color.Transparent;
+            this.PaymentBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.PaymentBtn.ForeColor = System.Drawing.Color.White;
+            this.PaymentBtn.Location = new System.Drawing.Point(856, 0);
+            this.PaymentBtn.Name = "PaymentBtn";
+            this.PaymentBtn.Size = new System.Drawing.Size(110, 70);
+            this.PaymentBtn.TabIndex = 14;
+            this.PaymentBtn.Text = "Payments";
             // 
-            // SettingBtn
+            // BudgetingBtn
             // 
-            this.SettingBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.SettingBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.SettingBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.SettingBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.SettingBtn.FillColor = System.Drawing.Color.Transparent;
-            this.SettingBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SettingBtn.ForeColor = System.Drawing.Color.White;
-            this.SettingBtn.Image = global::BudgetBuddy.Properties.Resources.Settings;
-            this.SettingBtn.ImageSize = new System.Drawing.Size(40, 40);
-            this.SettingBtn.Location = new System.Drawing.Point(1248, 10);
-            this.SettingBtn.Name = "SettingBtn";
-            this.SettingBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.SettingBtn.Size = new System.Drawing.Size(50, 50);
-            this.SettingBtn.TabIndex = 17;
-            // 
-            // ReportsBtn
-            // 
-            this.ReportsBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.ReportsBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.ReportsBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.ReportsBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.ReportsBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.ReportsBtn.FillColor = System.Drawing.Color.Transparent;
-            this.ReportsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.ReportsBtn.ForeColor = System.Drawing.Color.White;
-            this.ReportsBtn.Location = new System.Drawing.Point(850, 0);
-            this.ReportsBtn.Name = "ReportsBtn";
-            this.ReportsBtn.Size = new System.Drawing.Size(110, 70);
-            this.ReportsBtn.TabIndex = 14;
-            this.ReportsBtn.Text = "Reports";
-            // 
-            // StatsBtn
-            // 
-            this.StatsBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
-            this.StatsBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.StatsBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.StatsBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.StatsBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.StatsBtn.FillColor = System.Drawing.Color.Transparent;
-            this.StatsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.StatsBtn.ForeColor = System.Drawing.Color.White;
-            this.StatsBtn.Location = new System.Drawing.Point(596, 0);
-            this.StatsBtn.Name = "StatsBtn";
-            this.StatsBtn.Size = new System.Drawing.Size(110, 70);
-            this.StatsBtn.TabIndex = 13;
-            this.StatsBtn.Text = "Statistics";
+            this.BudgetingBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.BudgetingBtn.Checked = true;
+            this.BudgetingBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.BudgetingBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.BudgetingBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.BudgetingBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.BudgetingBtn.FillColor = System.Drawing.Color.Transparent;
+            this.BudgetingBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.BudgetingBtn.ForeColor = System.Drawing.Color.White;
+            this.BudgetingBtn.Location = new System.Drawing.Point(596, 0);
+            this.BudgetingBtn.Name = "BudgetingBtn";
+            this.BudgetingBtn.Size = new System.Drawing.Size(116, 70);
+            this.BudgetingBtn.TabIndex = 13;
+            this.BudgetingBtn.Text = "Budgeting";
             // 
             // TransactionBtn
             // 
             this.TransactionBtn.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.RadioButton;
+            this.TransactionBtn.Checked = true;
             this.TransactionBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.TransactionBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.TransactionBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -201,7 +159,7 @@
             this.TransactionBtn.FillColor = System.Drawing.Color.Transparent;
             this.TransactionBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
             this.TransactionBtn.ForeColor = System.Drawing.Color.White;
-            this.TransactionBtn.Location = new System.Drawing.Point(712, 0);
+            this.TransactionBtn.Location = new System.Drawing.Point(718, 0);
             this.TransactionBtn.Name = "TransactionBtn";
             this.TransactionBtn.Size = new System.Drawing.Size(132, 70);
             this.TransactionBtn.TabIndex = 12;
@@ -237,6 +195,51 @@
             this.guna2DragControl1.TargetControl = this.TopNav;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::BudgetBuddy.Properties.Resources.logo;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(25, 17);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(25, 38);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 20;
+            this.guna2PictureBox1.TabStop = false;
+            // 
+            // NotifBtn
+            // 
+            this.NotifBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.NotifBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.NotifBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.NotifBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.NotifBtn.FillColor = System.Drawing.Color.Transparent;
+            this.NotifBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.NotifBtn.ForeColor = System.Drawing.Color.White;
+            this.NotifBtn.Image = ((System.Drawing.Image)(resources.GetObject("NotifBtn.Image")));
+            this.NotifBtn.ImageSize = new System.Drawing.Size(40, 40);
+            this.NotifBtn.Location = new System.Drawing.Point(1304, 10);
+            this.NotifBtn.Name = "NotifBtn";
+            this.NotifBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.NotifBtn.Size = new System.Drawing.Size(50, 50);
+            this.NotifBtn.TabIndex = 18;
+            // 
+            // SettingBtn
+            // 
+            this.SettingBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.SettingBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.SettingBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.SettingBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.SettingBtn.FillColor = System.Drawing.Color.Transparent;
+            this.SettingBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SettingBtn.ForeColor = System.Drawing.Color.White;
+            this.SettingBtn.Image = global::BudgetBuddy.Properties.Resources.Settings;
+            this.SettingBtn.ImageSize = new System.Drawing.Size(40, 40);
+            this.SettingBtn.Location = new System.Drawing.Point(1248, 10);
+            this.SettingBtn.Name = "SettingBtn";
+            this.SettingBtn.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.SettingBtn.Size = new System.Drawing.Size(50, 50);
+            this.SettingBtn.TabIndex = 17;
+            // 
             // Dashboard1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -268,8 +271,8 @@
         private Guna.UI2.WinForms.Guna2CircleButton ProfileBtn;
         private Guna.UI2.WinForms.Guna2CircleButton NotifBtn;
         private Guna.UI2.WinForms.Guna2CircleButton SettingBtn;
-        private Guna.UI2.WinForms.Guna2Button ReportsBtn;
-        private Guna.UI2.WinForms.Guna2Button StatsBtn;
+        private Guna.UI2.WinForms.Guna2Button PaymentBtn;
+        private Guna.UI2.WinForms.Guna2Button BudgetingBtn;
         private Guna.UI2.WinForms.Guna2Button TransactionBtn;
         private Guna.UI2.WinForms.Guna2Button OverviewBtn;
     }

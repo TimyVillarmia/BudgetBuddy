@@ -136,7 +136,7 @@ namespace BudgetBuddy.Presenters
         }
 
 
-        private  void LoadOverview(object sender, EventArgs e)
+        private async void LoadOverview(object sender, EventArgs e)
         {
 
 
@@ -144,6 +144,7 @@ namespace BudgetBuddy.Presenters
             {
 
                 var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
+                var asyncResult = await MetrobankRepository.GetBalance(acc.CardNumber);
 
                 transactionList = _accountRepository.GetTransactionsList();
                 transactionBindingSource.DataSource = transactionList; //Set data source.
@@ -156,8 +157,7 @@ namespace BudgetBuddy.Presenters
                     _view.DisplayName = acc.OwnerName;
                     _view.AccountNumber = acc.CardNumber;
                     _view.ExpiryDate = acc.ExpiryDate.ToString("MM/yy");
-                    //var asyncResult = MetrobankRepository.GetBalance(acc.CardNumber);
-                    //_view.Balance = $"₱ {await asyncResult:n}";
+                    _view.Balance = $"₱ {asyncResult.ToString():n}";
 
                     _view.HasAccount = true;
                     

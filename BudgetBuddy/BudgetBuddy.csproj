@@ -305,6 +305,12 @@
     <Compile Include="Views\UserControls\AddCard.Designer.cs">
       <DependentUpon>AddCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\UserControls\Budgeting.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\Budgeting.Designer.cs">
+      <DependentUpon>Budgeting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Confirmation.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -325,6 +331,12 @@
       <DependentUpon>Pagination.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\ISignInView.cs" />
+    <Compile Include="Views\UserControls\Payments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\Payments.Designer.cs">
+      <DependentUpon>Payments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Recovery1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -386,6 +398,9 @@
     <EmbeddedResource Include="Views\UserControls\AddCard.resx">
       <DependentUpon>AddCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\Budgeting.resx">
+      <DependentUpon>Budgeting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Confirmation.resx">
       <DependentUpon>Confirmation.cs</DependentUpon>
     </EmbeddedResource>
@@ -394,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Pagination.resx">
       <DependentUpon>Pagination.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\Payments.resx">
+      <DependentUpon>Payments.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Recovery1.resx">
       <DependentUpon>Recovery1.cs</DependentUpon>
@@ -519,6 +537,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BudgetBuddy.sql" />
+    <None Include="Resources\Netflix.png" />
+    <None Include="Resources\Youtube.png" />
+    <None Include="Resources\Figma.png" />
+    <None Include="Resources\Spotify.png" />
+    <None Include="Resources\Budgeting.png" />
+    <None Include="Resources\Statistics.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
