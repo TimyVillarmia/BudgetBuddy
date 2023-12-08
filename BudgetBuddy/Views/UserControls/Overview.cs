@@ -89,7 +89,7 @@ namespace BudgetBuddy.Views.UserControls
             {
                 SearchName = SearchTxtBox.Text.ToLower();
                 SearchAccountEvent?.Invoke(this, EventArgs.Empty);
-                
+
 
             };
 
@@ -108,33 +108,34 @@ namespace BudgetBuddy.Views.UserControls
                     SendMoneyToAccountName = cellName;
 
 
-            };
+                };
 
 
-            SendMoneyBtn.Click += delegate
-            {
-                DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
-
-                if (dialogResult == DialogResult.Yes)
+                SendMoneyBtn.Click += delegate
                 {
-                    MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
-                    SendEvent?.Invoke(this, EventArgs.Empty);
+                    DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
+                        SendEvent?.Invoke(this, EventArgs.Empty);
 
 
-                }
-                else if (dialogResult == DialogResult.No)
-                {
-                    // do nothing
-                }
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        // do nothing
+                    }
 
 
 
 
+
+
+                };
 
 
             };
-
-
         }
 
         public Overview()
