@@ -411,7 +411,6 @@
     <EmbeddedResource Include="Views\UserControls\Recovery2.resx">
       <DependentUpon>Recovery2.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BudgetBuddy.bak" />
     <None Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
