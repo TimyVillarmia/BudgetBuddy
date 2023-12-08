@@ -148,13 +148,25 @@ namespace BudgetBuddy.Repositories
                                      ba.expiry_date,
                                  }).FirstOrDefault();
 
-
-                return new Card
+                if (queryjoin == null)
                 {
-                    CardNumber = queryjoin.account_number,
-                    OwnerName = queryjoin.owner_name,
-                    ExpiryDate = queryjoin.expiry_date
-                };
+                    return null;
+                }
+                else
+                {
+                    return new Card
+                    {
+                        CardNumber = queryjoin.account_number,
+                        OwnerName = queryjoin.owner_name,
+                        ExpiryDate = queryjoin.expiry_date
+                    };
+                }
+
+
+     
+
+
+
 
             }
             catch (Exception e)
@@ -206,7 +218,7 @@ namespace BudgetBuddy.Repositories
                                  TransactionName = t.transaction_name,
                                  Type = t.transaction_type,
                                  date = t.transaction_date,
-                                 amount = t.amount
+                                 amount = $"₱ {t.amount}"
                              }).ToList();
 
 

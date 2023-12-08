@@ -110,29 +110,26 @@ namespace BudgetBuddy.Views.UserControls
 
                 };
 
+            };
 
-                SendMoneyBtn.Click += delegate
+
+            SendMoneyBtn.Click += delegate
+            {
+                DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
                 {
-                    DialogResult dialogResult = MessageBox.Show($"Are you sure to transfer to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
-
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
-                        SendEvent?.Invoke(this, EventArgs.Empty);
+                    MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
+                    SendEvent?.Invoke(this, EventArgs.Empty);
+                    this.Focus();
 
 
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        // do nothing
-                    }
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    // do nothing
+                }
 
-
-
-
-
-
-                };
 
 
             };

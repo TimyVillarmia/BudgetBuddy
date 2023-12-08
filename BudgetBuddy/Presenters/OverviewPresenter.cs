@@ -59,7 +59,7 @@ namespace BudgetBuddy.Presenters
             {
                 receiver_account_number = _view.SendMoneyToAccountNumber,
                 transaction_type = "MoneyTransfer",
-                transaction_name = "Send",
+                transaction_name = _view.SendMoneyToAccountName,
                 amount = _view.MoneyTransferAmount,
                 transaction_date = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))
             };
