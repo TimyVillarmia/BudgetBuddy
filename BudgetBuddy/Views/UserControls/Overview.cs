@@ -62,8 +62,10 @@ namespace BudgetBuddy.Views.UserControls
         public string Savings { get; set; }
 
 
-        public string SendMoneyToAccountNumber { get; set; }
+        public string SendMoneyToAccountNumber { get; set; }      
+
         public string SendMoneyToAccountName { get; set; }
+        public string RequestMoneyToAccountName { get; set; }
 
         public decimal MoneyTransferAmount { get; set; }
         public Guna2DataGridView ContactDataGrid
@@ -154,7 +156,7 @@ namespace BudgetBuddy.Views.UserControls
 
             };
 
-            SendMoneyBtn.Click += delegate
+            RequestMoneyBtn.Click += delegate
             {
                 DialogResult dialogResult = MessageBox.Show($"Are you sure to request to {MoneyTransferAmountTxtBox.Text} from {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
 

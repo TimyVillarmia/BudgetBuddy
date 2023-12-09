@@ -48,7 +48,7 @@ namespace BudgetBuddy.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::BudgetBuddy.Properties.Settings.Default.BudgetBuddyConnectionString3, mappingSource)
+				base(global::BudgetBuddy.Properties.Settings.Default.BudgetBuddyConnectionString4, mappingSource)
 		{
 			OnCreated();
 		}

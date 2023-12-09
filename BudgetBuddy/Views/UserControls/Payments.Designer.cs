@@ -34,14 +34,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.label7 = new System.Windows.Forms.Label();
-            this.CardNumberTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.ConfirmBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.EmailTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.PayBtn = new Guna.UI2.WinForms.Guna2Button();
             this.PINTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.ExpiryDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.EmailTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.NameTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.NameTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.CardNumberTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,7 +49,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.ShopNameCombo = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.PriceTxtbox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.BillingComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
@@ -68,14 +68,14 @@
             this.guna2Panel1.Controls.Add(this.label6);
             this.guna2Panel1.Controls.Add(this.guna2Separator1);
             this.guna2Panel1.Controls.Add(this.label7);
-            this.guna2Panel1.Controls.Add(this.CardNumberTxtbox);
-            this.guna2Panel1.Controls.Add(this.ConfirmBtn);
+            this.guna2Panel1.Controls.Add(this.EmailTxtbox);
+            this.guna2Panel1.Controls.Add(this.PayBtn);
             this.guna2Panel1.Controls.Add(this.PINTxtbox);
             this.guna2Panel1.Controls.Add(this.label5);
             this.guna2Panel1.Controls.Add(this.ExpiryDate);
-            this.guna2Panel1.Controls.Add(this.EmailTxtbox);
+            this.guna2Panel1.Controls.Add(this.NameTxtBox);
             this.guna2Panel1.Controls.Add(this.label4);
-            this.guna2Panel1.Controls.Add(this.NameTxtbox);
+            this.guna2Panel1.Controls.Add(this.CardNumberTxtbox);
             this.guna2Panel1.Controls.Add(this.label3);
             this.guna2Panel1.Controls.Add(this.label2);
             this.guna2Panel1.Controls.Add(this.label1);
@@ -132,40 +132,40 @@
             this.label7.TabIndex = 47;
             this.label7.Text = "Payment";
             // 
-            // CardNumberTxtbox
+            // EmailTxtbox
             // 
-            this.CardNumberTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.CardNumberTxtbox.DefaultText = "";
-            this.CardNumberTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.CardNumberTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.CardNumberTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.CardNumberTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.CardNumberTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CardNumberTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.CardNumberTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.CardNumberTxtbox.Location = new System.Drawing.Point(39, 172);
-            this.CardNumberTxtbox.Name = "CardNumberTxtbox";
-            this.CardNumberTxtbox.PasswordChar = '\0';
-            this.CardNumberTxtbox.PlaceholderText = "";
-            this.CardNumberTxtbox.SelectedText = "";
-            this.CardNumberTxtbox.Size = new System.Drawing.Size(534, 36);
-            this.CardNumberTxtbox.TabIndex = 46;
+            this.EmailTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.EmailTxtbox.DefaultText = "";
+            this.EmailTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.EmailTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.EmailTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.EmailTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.EmailTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.EmailTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.EmailTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.EmailTxtbox.Location = new System.Drawing.Point(39, 172);
+            this.EmailTxtbox.Name = "EmailTxtbox";
+            this.EmailTxtbox.PasswordChar = '\0';
+            this.EmailTxtbox.PlaceholderText = "";
+            this.EmailTxtbox.SelectedText = "";
+            this.EmailTxtbox.Size = new System.Drawing.Size(534, 36);
+            this.EmailTxtbox.TabIndex = 46;
             // 
-            // ConfirmBtn
+            // PayBtn
             // 
-            this.ConfirmBtn.BorderRadius = 8;
-            this.ConfirmBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.ConfirmBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.ConfirmBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.ConfirmBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.ConfirmBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
-            this.ConfirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConfirmBtn.ForeColor = System.Drawing.Color.White;
-            this.ConfirmBtn.Location = new System.Drawing.Point(39, 664);
-            this.ConfirmBtn.Name = "ConfirmBtn";
-            this.ConfirmBtn.Size = new System.Drawing.Size(534, 45);
-            this.ConfirmBtn.TabIndex = 44;
-            this.ConfirmBtn.Text = "Pay";
+            this.PayBtn.BorderRadius = 8;
+            this.PayBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.PayBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.PayBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.PayBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.PayBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
+            this.PayBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PayBtn.ForeColor = System.Drawing.Color.White;
+            this.PayBtn.Location = new System.Drawing.Point(39, 664);
+            this.PayBtn.Name = "PayBtn";
+            this.PayBtn.Size = new System.Drawing.Size(534, 45);
+            this.PayBtn.TabIndex = 44;
+            this.PayBtn.Text = " Pay";
             // 
             // PINTxtbox
             // 
@@ -211,24 +211,24 @@
             this.ExpiryDate.TabIndex = 40;
             this.ExpiryDate.Value = new System.DateTime(2023, 12, 4, 20, 58, 25, 799);
             // 
-            // EmailTxtbox
+            // NameTxtBox
             // 
-            this.EmailTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.EmailTxtbox.DefaultText = "";
-            this.EmailTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.EmailTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.EmailTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.EmailTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.EmailTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.EmailTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.EmailTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.EmailTxtbox.Location = new System.Drawing.Point(39, 591);
-            this.EmailTxtbox.Name = "EmailTxtbox";
-            this.EmailTxtbox.PasswordChar = '\0';
-            this.EmailTxtbox.PlaceholderText = "";
-            this.EmailTxtbox.SelectedText = "";
-            this.EmailTxtbox.Size = new System.Drawing.Size(534, 36);
-            this.EmailTxtbox.TabIndex = 39;
+            this.NameTxtBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.NameTxtBox.DefaultText = "";
+            this.NameTxtBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.NameTxtBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.NameTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.NameTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.NameTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.NameTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.NameTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.NameTxtBox.Location = new System.Drawing.Point(39, 591);
+            this.NameTxtBox.Name = "NameTxtBox";
+            this.NameTxtBox.PasswordChar = '\0';
+            this.NameTxtBox.PlaceholderText = "";
+            this.NameTxtBox.SelectedText = "";
+            this.NameTxtBox.Size = new System.Drawing.Size(534, 36);
+            this.NameTxtBox.TabIndex = 39;
             // 
             // label4
             // 
@@ -241,24 +241,24 @@
             this.label4.TabIndex = 38;
             this.label4.Text = "Name";
             // 
-            // NameTxtbox
+            // CardNumberTxtbox
             // 
-            this.NameTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.NameTxtbox.DefaultText = "";
-            this.NameTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.NameTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.NameTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.NameTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.NameTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.NameTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.NameTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.NameTxtbox.Location = new System.Drawing.Point(39, 383);
-            this.NameTxtbox.Name = "NameTxtbox";
-            this.NameTxtbox.PasswordChar = '\0';
-            this.NameTxtbox.PlaceholderText = "";
-            this.NameTxtbox.SelectedText = "";
-            this.NameTxtbox.Size = new System.Drawing.Size(534, 36);
-            this.NameTxtbox.TabIndex = 37;
+            this.CardNumberTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.CardNumberTxtbox.DefaultText = "";
+            this.CardNumberTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.CardNumberTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.CardNumberTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.CardNumberTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.CardNumberTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CardNumberTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.CardNumberTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.CardNumberTxtbox.Location = new System.Drawing.Point(39, 383);
+            this.CardNumberTxtbox.Name = "CardNumberTxtbox";
+            this.CardNumberTxtbox.PasswordChar = '\0';
+            this.CardNumberTxtbox.PlaceholderText = "";
+            this.CardNumberTxtbox.SelectedText = "";
+            this.CardNumberTxtbox.Size = new System.Drawing.Size(534, 36);
+            this.CardNumberTxtbox.TabIndex = 37;
             // 
             // label3
             // 
@@ -355,24 +355,24 @@
             this.ShopNameCombo.TabIndex = 54;
             this.ShopNameCombo.SelectedIndexChanged += new System.EventHandler(this.ShopNameCombo_SelectedIndexChanged);
             // 
-            // guna2TextBox1
+            // PriceTxtbox
             // 
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(183, 472);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(374, 36);
-            this.guna2TextBox1.TabIndex = 53;
+            this.PriceTxtbox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PriceTxtbox.DefaultText = "";
+            this.PriceTxtbox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.PriceTxtbox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.PriceTxtbox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.PriceTxtbox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.PriceTxtbox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.PriceTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.PriceTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.PriceTxtbox.Location = new System.Drawing.Point(183, 472);
+            this.PriceTxtbox.Name = "PriceTxtbox";
+            this.PriceTxtbox.PasswordChar = '\0';
+            this.PriceTxtbox.PlaceholderText = "";
+            this.PriceTxtbox.SelectedText = "";
+            this.PriceTxtbox.Size = new System.Drawing.Size(374, 36);
+            this.PriceTxtbox.TabIndex = 53;
             // 
             // label12
             // 
@@ -444,7 +444,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
             this.Controls.Add(this.label13);
             this.Controls.Add(this.BillingComboBox);
-            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.PriceTxtbox);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.ShopNameCombo);
@@ -469,14 +469,14 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
         private System.Windows.Forms.Label label7;
-        private Guna.UI2.WinForms.Guna2TextBox CardNumberTxtbox;
-        private Guna.UI2.WinForms.Guna2Button ConfirmBtn;
+        private Guna.UI2.WinForms.Guna2TextBox EmailTxtbox;
+        private Guna.UI2.WinForms.Guna2Button PayBtn;
         private Guna.UI2.WinForms.Guna2TextBox PINTxtbox;
         private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2DateTimePicker ExpiryDate;
-        private Guna.UI2.WinForms.Guna2TextBox EmailTxtbox;
+        private Guna.UI2.WinForms.Guna2TextBox NameTxtBox;
         private System.Windows.Forms.Label label4;
-        private Guna.UI2.WinForms.Guna2TextBox NameTxtbox;
+        private Guna.UI2.WinForms.Guna2TextBox CardNumberTxtbox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -487,7 +487,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label11;
         private Guna.UI2.WinForms.Guna2ComboBox ShopNameCombo;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2TextBox PriceTxtbox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private Guna.UI2.WinForms.Guna2ComboBox BillingComboBox;

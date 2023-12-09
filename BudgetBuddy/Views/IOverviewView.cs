@@ -31,7 +31,7 @@ namespace BudgetBuddy.Views
         string Savings { get; set; }
         string SendMoneyToAccountNumber { get; set; }
         string SendMoneyToAccountName { get; set; }
-
+        string RequestMoneyToAccountName { get; set; }
         decimal MoneyTransferAmount { get; set; }
 
         Guna2DataGridView ContactDataGrid { get; set; }

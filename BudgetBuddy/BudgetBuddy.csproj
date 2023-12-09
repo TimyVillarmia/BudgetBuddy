@@ -261,6 +261,7 @@
     <Compile Include="Models\Users.cs" />
     <Compile Include="Presenters\DoughnutChartPresenter.cs" />
     <Compile Include="Presenters\OverviewPresenter.cs" />
+    <Compile Include="Presenters\PaymentPresenter.cs" />
     <Compile Include="Presenters\RecoveryPresenter.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Presenters\SignUpPresenter.cs" />
@@ -297,6 +298,7 @@
     </Compile>
     <Compile Include="Views\IAddCardView.cs" />
     <Compile Include="Views\IOverviewView.cs" />
+    <Compile Include="Views\IPaymentView.cs" />
     <Compile Include="Views\IRecovery1View.cs" />
     <Compile Include="Views\IRecovery2View.cs" />
     <Compile Include="Views\UserControls\AddCard.cs">

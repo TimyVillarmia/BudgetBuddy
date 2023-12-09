@@ -48,6 +48,7 @@ namespace BudgetBuddy.Presenters
             _view.LoadOverviewData += LoadOverview;
             _view.SearchAccountEvent += SearchAccount;
             _view.SendEvent += SendMoneyTo;
+            _view.RequestEvent += RequestMoneyFrom;
 
             _view1.AddNewCardEvent += AddCardMethod;
 
@@ -57,6 +58,20 @@ namespace BudgetBuddy.Presenters
 
 
 
+        }
+
+        private void RequestMoneyFrom(object sender, EventArgs e)
+        {
+            //var createNewTransaction = new transaction
+            //{
+            //    receiver_account_number = _view.SendMoneyToAccountNumber,
+            //    transaction_type = "MoneyTransfer",
+            //    transaction_name = _view.RequestMoneyToAccountName,
+            //    amount = _view.MoneyTransferAmount,
+            //    transaction_date = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))
+            //};
+
+            //_accountRepository.CreateTransactions(createNewTransaction);
         }
 
         private void SendMoneyTo(object sender, EventArgs e)
@@ -144,7 +159,7 @@ namespace BudgetBuddy.Presenters
             {
 
                 var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
-                var asyncResult = await MetrobankRepository.GetBalance(acc.CardNumber);
+                //var asyncResult = await MetrobankRepository.GetBalance(acc.CardNumber);
 
                 transactionList = _accountRepository.GetTransactionsList();
                 transactionBindingSource.DataSource = transactionList; //Set data source.
@@ -154,10 +169,11 @@ namespace BudgetBuddy.Presenters
 
 
 
+
                     _view.DisplayName = acc.OwnerName;
                     _view.AccountNumber = acc.CardNumber;
                     _view.ExpiryDate = acc.ExpiryDate.ToString("MM/yy");
-                    _view.Balance = $"₱ {asyncResult.ToString():n}";
+                    //_view.Balance = $"₱ {asyncResult.ToString():n}";
 
                     _view.HasAccount = true;
                     

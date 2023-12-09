@@ -62,10 +62,13 @@ namespace BudgetBuddy.Views
    
             IOverviewView overview = Overview;
             ITransactionsView transactionsView = Transactions;
+            IPaymentView paymentView = Payments;
             IAddCardView addcard = AddCard;
 
             new OverviewPresenter(accountRepository, overview, addcard);
             new TransactionsPresenter(accountRepository, transactionsView);
+            new PaymentPresenter(accountRepository, paymentView);
+
 
 
             DashboardPanel.Controls.Add(Overview);
