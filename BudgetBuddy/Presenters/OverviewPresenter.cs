@@ -78,7 +78,7 @@ namespace BudgetBuddy.Presenters
         {
             var createNewTransaction = new transaction
             {
-                receiver_account_number = _view.SendMoneyToAccountNumber,
+                receiver_name = _view.SendMoneyToAccountNumber,
                 transaction_type = "MoneyTransfer",
                 transaction_name = _view.SendMoneyToAccountName,
                 amount = _view.MoneyTransferAmount,
@@ -159,6 +159,8 @@ namespace BudgetBuddy.Presenters
             {
 
                 var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
+                var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
+
                 //var asyncResult = await MetrobankRepository.GetBalance(acc.CardNumber);
 
                 transactionList = _accountRepository.GetTransactionsList();
@@ -170,9 +172,9 @@ namespace BudgetBuddy.Presenters
 
 
 
-                    _view.DisplayName = acc.OwnerName;
-                    _view.AccountNumber = acc.CardNumber;
-                    _view.ExpiryDate = acc.ExpiryDate.ToString("MM/yy");
+                    _view.owner_name = acc.OwnerName;
+                    _view.account_number = acc.CardNumber;
+                    _view.expiry_date = acc.ExpiryDate.ToString("MM/yy");
                     //_view.Balance = $"₱ {asyncResult.ToString():n}";
 
                     _view.HasAccount = true;
@@ -204,7 +206,7 @@ namespace BudgetBuddy.Presenters
             {
 
 
-                if (_accountRepository.AddCard(_view1.Card))
+                if (_accountRepository.AddCard(_view1.new_account))
                 {
                     _view1.isSuccessful = true;
                 }

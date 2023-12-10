@@ -22,13 +22,15 @@ namespace BudgetBuddy.Views
         bool isSuccessful { get; set; }
         string SearchName { get; set; }
 
-        string DisplayName { get; set; }
-        string AccountNumber { get; set; }
-        string ExpiryDate { get; set; }
-        string Balance { get; set; }
-        string Income { get; set; }
-        string Expenses { get; set; }
-        string Savings { get; set; }
+        //Checking & Savings Account Fields
+        string account_number { get; set; }
+        string account_type { get; set; }
+        string checking_balance { get; set; }
+        string savings_balance { get; set; }
+        string owner_name { get; set; }
+        string expiry_date { get; set; }
+
+
         string SendMoneyToAccountNumber { get; set; }
         string SendMoneyToAccountName { get; set; }
         string RequestMoneyToAccountName { get; set; }

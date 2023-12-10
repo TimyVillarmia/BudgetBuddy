@@ -1,26 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BudgetBuddy" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=LAB1-PC6\LAB1PC6;Initial Catalog=BudgetBuddy;Integrated Security=True" SettingsObjectName="BudgetBuddy.Properties.Settings" SettingsPropertyName="BudgetBuddyConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-CCUR4CG;Initial Catalog=BudgetBuddy;Integrated Security=True" SettingsObjectName="BudgetBuddy.Properties.Settings" SettingsPropertyName="BudgetBuddyConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.transactions" Member="transactions">
     <Type Name="transaction">
       <Column Name="transaction_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="receiver_account_number" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="receiver_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="sender_name" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
       <Column Name="transaction_type" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="transaction_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="amount" Type="System.Decimal" DbType="Decimal(9,2) NOT NULL" CanBeNull="false" />
       <Column Name="transaction_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="sender_account" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="users_bank_account_transaction" Member="users_bank_account" ThisKey="sender_account" OtherKey="usersBA_id" Type="users_bank_account" IsForeignKey="true" />
+      <Column Name="users_bank_account_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="users_bank_account_transaction" Member="users_bank_account" ThisKey="users_bank_account_id" OtherKey="users_bank_account_id" Type="users_bank_account" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.users_bank_accounts" Member="users_bank_accounts">
     <Type Name="users_bank_account">
-      <Column Name="usersBA_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="account_number" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="account_type" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
-      <Column Name="owner_name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="expiry_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="users_bank_account_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="external_id" Type="System.String" DbType="Char(36) NOT NULL" CanBeNull="false" />
+      <Column Name="account_type" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="users_bank_account_transaction" Member="transactions" ThisKey="usersBA_id" OtherKey="sender_account" Type="transaction" />
+      <Association Name="users_bank_account_transaction" Member="transactions" ThisKey="users_bank_account_id" OtherKey="users_bank_account_id" Type="transaction" />
       <Association Name="user_users_bank_account" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>

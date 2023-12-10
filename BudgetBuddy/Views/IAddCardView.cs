@@ -11,7 +11,7 @@ namespace BudgetBuddy.Views
     {
         event EventHandler AddNewCardEvent;
         bool isSuccessful { get; set; }
-        users_bank_account Card { get; set; }
+        users_bank_account new_account { get; set; }
 
     }
 }

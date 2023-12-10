@@ -18,6 +18,7 @@ namespace BudgetBuddy.Models
         public string PIN { get; set; }
         public DateTime expiry_date { get; set; }
         public string email { get; set; }
+        public string external_id { get; set; }
 
     }
 }

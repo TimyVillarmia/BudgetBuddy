@@ -50,20 +50,17 @@ namespace BudgetBuddy.Views.UserControls
             get { return _isSuccessful; }
             set { _isSuccessful = value; }
         }
-
-
         public string SearchName { get; set; }
-        public string DisplayName { get; set; }
-        public string AccountNumber { get; set; }
-        public string ExpiryDate { get; set; }
-        public string Balance { get; set; }
-        public string Income { get; set; }
-        public string Expenses { get; set; }
-        public string Savings { get; set; }
+
+        public string account_number { get; set; }
+        public string account_type { get; set; }
+        public string checking_balance { get; set; }
+        public string savings_balance { get; set; }
+        public string owner_name { get; set; }
+        public string expiry_date { get; set; }
 
 
         public string SendMoneyToAccountNumber { get; set; }      
-
         public string SendMoneyToAccountName { get; set; }
         public string RequestMoneyToAccountName { get; set; }
 
@@ -235,12 +232,12 @@ namespace BudgetBuddy.Views.UserControls
                 CardObject.Visible = true;
 
                 PercentBalance.Visible = true;
-                BalanceLbl.Text = Balance;
+                BalanceLbl.Text = savings_balance;
                 PercentIncome.Visible = true;
 
-                ExpiryDateLbl.Text = ExpiryDate;
-                NameLbl.Text = DisplayName;
-                CardNumberLbl.Text = AccountNumber;
+                ExpiryDateLbl.Text = expiry_date;
+                NameLbl.Text = owner_name;
+                CardNumberLbl.Text = account_number;
 
 
             }

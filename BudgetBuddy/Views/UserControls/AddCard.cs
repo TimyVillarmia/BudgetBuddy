@@ -31,7 +31,7 @@ namespace BudgetBuddy.Views.UserControls
         public event EventHandler AddNewCardEvent;
         public bool isSuccessful { get; set; }
 
-        public users_bank_account Card { get; set; }
+        public users_bank_account new_account { get; set; }
 
         private void AssociateAndRaiseViewEvents()
         {
@@ -39,7 +39,7 @@ namespace BudgetBuddy.Views.UserControls
             {
                 try
                 {
-                    var respond = await MetrobankRepository.GetAccount(EmailTxtbox.Text);
+                    var respond = await MetrobankRepository.GetAccountFromJSONServer(EmailTxtbox.Text, CardNumberTxtbox.Text);
 
                     if (PINTxtbox.Text == respond.PIN &&
                     CardNumberTxtbox.Text == respond.account_number &&
@@ -49,12 +49,10 @@ namespace BudgetBuddy.Views.UserControls
                     )
                     {
 
-                        Card = new users_bank_account
+                        new_account = new users_bank_account
                         {
-                            account_number = respond.account_number,
-                            account_type = respond.account_type,
-                            owner_name = respond.owner_name,
-                            expiry_date = respond.expiry_date,
+                            external_id = respond.external_id,
+                            account_type = respond.account_type
                             
                         };
 
@@ -88,6 +86,13 @@ namespace BudgetBuddy.Views.UserControls
                 {
                     throw ex;
                 }
+            };
+
+
+
+            CancelBtn.Click += delegate
+            {
+                dashboard.AddCard.Hide();
             };
         }
 

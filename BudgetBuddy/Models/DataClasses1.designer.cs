@@ -48,7 +48,7 @@ namespace BudgetBuddy.Models
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::BudgetBuddy.Properties.Settings.Default.BudgetBuddyConnectionString4, mappingSource)
+				base(global::BudgetBuddy.Properties.Settings.Default.BudgetBuddyConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -126,7 +126,9 @@ namespace BudgetBuddy.Models
 		
 		private int _transaction_id;
 		
-		private string _receiver_account_number;
+		private string _receiver_name;
+		
+		private string _sender_name;
 		
 		private string _transaction_type;
 		
@@ -136,7 +138,7 @@ namespace BudgetBuddy.Models
 		
 		private System.DateTime _transaction_date;
 		
-		private System.Nullable<int> _sender_account;
+		private System.Nullable<int> _users_bank_account_id;
 		
 		private EntityRef<users_bank_account> _users_bank_account;
 		
@@ -146,8 +148,10 @@ namespace BudgetBuddy.Models
     partial void OnCreated();
     partial void Ontransaction_idChanging(int value);
     partial void Ontransaction_idChanged();
-    partial void Onreceiver_account_numberChanging(string value);
-    partial void Onreceiver_account_numberChanged();
+    partial void Onreceiver_nameChanging(string value);
+    partial void Onreceiver_nameChanged();
+    partial void Onsender_nameChanging(string value);
+    partial void Onsender_nameChanged();
     partial void Ontransaction_typeChanging(string value);
     partial void Ontransaction_typeChanged();
     partial void Ontransaction_nameChanging(string value);
@@ -156,8 +160,8 @@ namespace BudgetBuddy.Models
     partial void OnamountChanged();
     partial void Ontransaction_dateChanging(System.DateTime value);
     partial void Ontransaction_dateChanged();
-    partial void Onsender_accountChanging(System.Nullable<int> value);
-    partial void Onsender_accountChanged();
+    partial void Onusers_bank_account_idChanging(System.Nullable<int> value);
+    partial void Onusers_bank_account_idChanged();
     #endregion
 		
 		public transaction()
@@ -186,22 +190,42 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_receiver_account_number", DbType="VarChar(255)")]
-		public string receiver_account_number
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_receiver_name", DbType="VarChar(255)")]
+		public string receiver_name
 		{
 			get
 			{
-				return this._receiver_account_number;
+				return this._receiver_name;
 			}
 			set
 			{
-				if ((this._receiver_account_number != value))
+				if ((this._receiver_name != value))
 				{
-					this.Onreceiver_account_numberChanging(value);
+					this.Onreceiver_nameChanging(value);
 					this.SendPropertyChanging();
-					this._receiver_account_number = value;
-					this.SendPropertyChanged("receiver_account_number");
-					this.Onreceiver_account_numberChanged();
+					this._receiver_name = value;
+					this.SendPropertyChanged("receiver_name");
+					this.Onreceiver_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sender_name", DbType="VarChar(255)")]
+		public string sender_name
+		{
+			get
+			{
+				return this._sender_name;
+			}
+			set
+			{
+				if ((this._sender_name != value))
+				{
+					this.Onsender_nameChanging(value);
+					this.SendPropertyChanging();
+					this._sender_name = value;
+					this.SendPropertyChanged("sender_name");
+					this.Onsender_nameChanged();
 				}
 			}
 		}
@@ -286,31 +310,31 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sender_account", DbType="Int")]
-		public System.Nullable<int> sender_account
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_bank_account_id", DbType="Int")]
+		public System.Nullable<int> users_bank_account_id
 		{
 			get
 			{
-				return this._sender_account;
+				return this._users_bank_account_id;
 			}
 			set
 			{
-				if ((this._sender_account != value))
+				if ((this._users_bank_account_id != value))
 				{
 					if (this._users_bank_account.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.Onsender_accountChanging(value);
+					this.Onusers_bank_account_idChanging(value);
 					this.SendPropertyChanging();
-					this._sender_account = value;
-					this.SendPropertyChanged("sender_account");
-					this.Onsender_accountChanged();
+					this._users_bank_account_id = value;
+					this.SendPropertyChanged("users_bank_account_id");
+					this.Onusers_bank_account_idChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction", Storage="_users_bank_account", ThisKey="sender_account", OtherKey="usersBA_id", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction", Storage="_users_bank_account", ThisKey="users_bank_account_id", OtherKey="users_bank_account_id", IsForeignKey=true)]
 		public users_bank_account users_bank_account
 		{
 			get
@@ -333,11 +357,11 @@ namespace BudgetBuddy.Models
 					if ((value != null))
 					{
 						value.transactions.Add(this);
-						this._sender_account = value.usersBA_id;
+						this._users_bank_account_id = value.users_bank_account_id;
 					}
 					else
 					{
-						this._sender_account = default(Nullable<int>);
+						this._users_bank_account_id = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("users_bank_account");
 				}
@@ -371,15 +395,11 @@ namespace BudgetBuddy.Models
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _usersBA_id;
+		private int _users_bank_account_id;
 		
-		private string _account_number;
+		private string _external_id;
 		
 		private string _account_type;
-		
-		private string _owner_name;
-		
-		private System.DateTime _expiry_date;
 		
 		private System.Nullable<int> _user_id;
 		
@@ -391,16 +411,12 @@ namespace BudgetBuddy.Models
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnusersBA_idChanging(int value);
-    partial void OnusersBA_idChanged();
-    partial void Onaccount_numberChanging(string value);
-    partial void Onaccount_numberChanged();
+    partial void Onusers_bank_account_idChanging(int value);
+    partial void Onusers_bank_account_idChanged();
+    partial void Onexternal_idChanging(string value);
+    partial void Onexternal_idChanged();
     partial void Onaccount_typeChanging(string value);
     partial void Onaccount_typeChanged();
-    partial void Onowner_nameChanging(string value);
-    partial void Onowner_nameChanged();
-    partial void Onexpiry_dateChanging(System.DateTime value);
-    partial void Onexpiry_dateChanged();
     partial void Onuser_idChanging(System.Nullable<int> value);
     partial void Onuser_idChanged();
     #endregion
@@ -412,47 +428,47 @@ namespace BudgetBuddy.Models
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_usersBA_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int usersBA_id
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_users_bank_account_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int users_bank_account_id
 		{
 			get
 			{
-				return this._usersBA_id;
+				return this._users_bank_account_id;
 			}
 			set
 			{
-				if ((this._usersBA_id != value))
+				if ((this._users_bank_account_id != value))
 				{
-					this.OnusersBA_idChanging(value);
+					this.Onusers_bank_account_idChanging(value);
 					this.SendPropertyChanging();
-					this._usersBA_id = value;
-					this.SendPropertyChanged("usersBA_id");
-					this.OnusersBA_idChanged();
+					this._users_bank_account_id = value;
+					this.SendPropertyChanged("users_bank_account_id");
+					this.Onusers_bank_account_idChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_number", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
-		public string account_number
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_external_id", DbType="Char(36) NOT NULL", CanBeNull=false)]
+		public string external_id
 		{
 			get
 			{
-				return this._account_number;
+				return this._external_id;
 			}
 			set
 			{
-				if ((this._account_number != value))
+				if ((this._external_id != value))
 				{
-					this.Onaccount_numberChanging(value);
+					this.Onexternal_idChanging(value);
 					this.SendPropertyChanging();
-					this._account_number = value;
-					this.SendPropertyChanged("account_number");
-					this.Onaccount_numberChanged();
+					this._external_id = value;
+					this.SendPropertyChanged("external_id");
+					this.Onexternal_idChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_type", DbType="VarChar(8) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_account_type", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
 		public string account_type
 		{
 			get
@@ -468,46 +484,6 @@ namespace BudgetBuddy.Models
 					this._account_type = value;
 					this.SendPropertyChanged("account_type");
 					this.Onaccount_typeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_owner_name", DbType="VarChar(50)")]
-		public string owner_name
-		{
-			get
-			{
-				return this._owner_name;
-			}
-			set
-			{
-				if ((this._owner_name != value))
-				{
-					this.Onowner_nameChanging(value);
-					this.SendPropertyChanging();
-					this._owner_name = value;
-					this.SendPropertyChanged("owner_name");
-					this.Onowner_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_expiry_date", DbType="Date NOT NULL")]
-		public System.DateTime expiry_date
-		{
-			get
-			{
-				return this._expiry_date;
-			}
-			set
-			{
-				if ((this._expiry_date != value))
-				{
-					this.Onexpiry_dateChanging(value);
-					this.SendPropertyChanging();
-					this._expiry_date = value;
-					this.SendPropertyChanged("expiry_date");
-					this.Onexpiry_dateChanged();
 				}
 			}
 		}
@@ -536,7 +512,7 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction", Storage="_transactions", ThisKey="usersBA_id", OtherKey="sender_account")]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="users_bank_account_transaction", Storage="_transactions", ThisKey="users_bank_account_id", OtherKey="users_bank_account_id")]
 		public EntitySet<transaction> transactions
 		{
 			get

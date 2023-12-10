@@ -133,20 +133,14 @@ namespace BudgetBuddy.Repositories
         }
 
   
-        public Card GetBankAccount(string email)
+        public IEnumerable<users_bank_account> GetBankAccount(string email)
         {
             try
             {
                 var queryjoin = (from ba in _db.users_bank_accounts
                                  join user in _db.users on ba.user_id equals user.user_id
                                  where user.email == Session.CurrentUser
-                                 select new 
-                                 {
-                                     ba.account_number,
-                                     ba.account_type,
-                                     ba.owner_name,
-                                     ba.expiry_date,
-                                 }).FirstOrDefault();
+                                 select ba).ToList();
 
                 if (queryjoin == null)
                 {
@@ -154,13 +148,8 @@ namespace BudgetBuddy.Repositories
                 }
                 else
                 {
-                    return new Card
-                    {
-                        CardNumber = queryjoin.account_number,
-                        OwnerName = queryjoin.owner_name,
-                        ExpiryDate = queryjoin.expiry_date
-                        
-                    };
+                    return queryjoin;
+
                 }
 
 
@@ -178,7 +167,7 @@ namespace BudgetBuddy.Repositories
 
         }
 
-        public bool AddCard(users_bank_account card)
+        public bool AddCard(users_bank_account new_card)
         {
             try
             {
@@ -189,10 +178,10 @@ namespace BudgetBuddy.Repositories
                                  where user.email == Session.CurrentUser
                                  select user).FirstOrDefault();
 
-                card.user_id = queryjoin.user_id;
+                new_card.user_id = queryjoin.user_id;
 
 
-                _db.users_bank_accounts.InsertOnSubmit(card);
+                _db.users_bank_accounts.InsertOnSubmit(new_card);
                 _db.SubmitChanges();
 
                 return true;
@@ -211,7 +200,7 @@ namespace BudgetBuddy.Repositories
 
 
             var queryjoin = (from t in _db.transactions
-                             join ba in _db.users_bank_accounts on t.sender_account equals ba.usersBA_id
+                             join ba in _db.users_bank_accounts on t.users_bank_account_id equals ba.users_bank_account_id
                              join u in _db.users on ba.user_id equals u.user_id
                              where u.email == Session.CurrentUser
                              select new TransactionModel
@@ -281,7 +270,7 @@ namespace BudgetBuddy.Repositories
                 else
                 {
 
-                    NewTransaction.sender_account = queryBA.usersBA_id;
+                    NewTransaction.users_bank_account_id = queryBA.users_bank_account_id;
 
                     _db.transactions.InsertOnSubmit(NewTransaction);
                     _db.SubmitChanges();
