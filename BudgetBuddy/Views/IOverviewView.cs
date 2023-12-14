@@ -1,5 +1,6 @@
 ﻿using BudgetBuddy.Models;
 using BudgetBuddy.Views.UserControls;
+using Guna.Charts.WinForms;
 using Guna.UI2.WinForms;
 using Guna.UI2.WinForms.Enums;
 using System;
@@ -42,6 +43,7 @@ namespace BudgetBuddy.Views
         Guna2DataGridView RecentTransactions { get; set; }
         Guna2DataGridView ToDoList { get; set; }
         Guna2ProgressIndicator Loader { get; set; }
+        GunaChart Doughnut { get; set; }
         void SetBankListBindingSource(BindingSource bank, BindingSource transaction, BindingSource todo);
 
     }

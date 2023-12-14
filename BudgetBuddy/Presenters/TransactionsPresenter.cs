@@ -1,6 +1,7 @@
 ﻿using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
 using BudgetBuddy.Views;
+using Guna.Charts.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -12,6 +12,6 @@ namespace BudgetBuddy.Models
         public string Type { get; set; }
         public string TransactionName { get; set; }
         public DateTime date { get; set; }
-        public string amount { get; set; }
+        public Decimal amount { get; set; }
     }
 }

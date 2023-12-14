@@ -82,7 +82,7 @@ namespace BudgetBuddy._Repositories
 
 
             }
-            catch (Exception exception)
+            catch 
             {
 
                 throw new ArgumentNullException(nameof(BankAccount));
@@ -154,7 +154,7 @@ namespace BudgetBuddy._Repositories
 
 
             }
-            catch (Exception exception)
+            catch
             {
 
                 throw new ArgumentNullException(nameof(BankAccount));
@@ -222,7 +222,7 @@ namespace BudgetBuddy._Repositories
 
 
             }
-            catch (Exception exception)
+            catch
             {
 
                 throw new ArgumentNullException(nameof(BankAccount));

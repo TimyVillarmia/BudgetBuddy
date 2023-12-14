@@ -366,10 +366,6 @@
             this.ShopNameCombo.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.ShopNameCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.ShopNameCombo.ItemHeight = 30;
-            this.ShopNameCombo.Items.AddRange(new object[] {
-            "Youtube Premium",
-            "Spotify Premium",
-            "Netflix"});
             this.ShopNameCombo.Location = new System.Drawing.Point(244, 450);
             this.ShopNameCombo.Margin = new System.Windows.Forms.Padding(4);
             this.ShopNameCombo.Name = "ShopNameCombo";

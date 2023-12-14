@@ -1,22 +1,8 @@
-﻿using BudgetBuddy.Views.Charts;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using BudgetBuddy.Views;
-using BudgetBuddy.Models;
-using RestSharp.Extensions;
 using Guna.UI2.WinForms;
-using BudgetBuddy._Repositories;
-using System.Windows.Forms.DataVisualization.Charting;
 using Guna.Charts.WinForms;
-using System.Linq.Expressions;
-using Guna.UI2.WinForms.Enums;
 
 namespace BudgetBuddy.Views.UserControls
 {
@@ -101,6 +87,11 @@ namespace BudgetBuddy.Views.UserControls
             get { return LoaderObj; }
             set { LoaderObj = value; }
         }
+        public GunaChart Doughnut
+        {
+            get { return gunaChart1; }
+            set { gunaChart1 = value; }
+        }
 
         private void AssociateAndRaiseViewEvents()
         {
@@ -108,7 +99,6 @@ namespace BudgetBuddy.Views.UserControls
             {
 
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
-                LoadChart(gunaChart1);
                 ReloadFormChecking();
                 ReloadFormSavings();
             };
@@ -117,7 +107,6 @@ namespace BudgetBuddy.Views.UserControls
             {
 
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
-                LoadChart(gunaChart1);
                 ReloadFormChecking();
                 ReloadFormSavings();
 
@@ -291,37 +280,7 @@ namespace BudgetBuddy.Views.UserControls
             }
         }
 
-        private void LoadChart(GunaChart doughnut)
-        {
-            string[] categories = { "Food", "Rent", "Bills","Subscription"};
-
-            //Chart configuration
-            doughnut.Title.Text = "Spending Acitivities";
-            doughnut.Legend.Position = LegendPosition.Right;
-            doughnut.XAxes.Display = false;
-            doughnut.YAxes.Display = false;
-        
-
-            var r = new Random();
-            int num = r.Next(10, 100);
-
-            var dataset = new GunaDoughnutDataset();
-
-            dataset.DataPoints.Add(categories[0], num);
-            dataset.DataPoints.Add(categories[1], num);
-            dataset.DataPoints.Add(categories[2], num);
-            dataset.DataPoints.Add(categories[3], num);
-
-
-            //Create a new dataset 
-
-
-            //Add a new dataset to a chart.Datasets
-            doughnut.Datasets.Add(dataset);
-
-            //An update was made to re-render the chart
-            doughnut.Update();
-        }
+ 
 
         public Overview()
         {

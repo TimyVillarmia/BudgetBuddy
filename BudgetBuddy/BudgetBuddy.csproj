@@ -259,7 +259,7 @@
     <Compile Include="Models\TodoModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Models\Users.cs" />
-    <Compile Include="Presenters\DoughnutChartPresenter.cs" />
+    <Compile Include="Presenters\BudgetingPresenter.cs" />
     <Compile Include="Presenters\OverviewPresenter.cs" />
     <Compile Include="Presenters\PaymentPresenter.cs" />
     <Compile Include="Presenters\RecoveryPresenter.cs" />
@@ -284,12 +284,6 @@
     <Compile Include="Resources\Page3.Designer.cs">
       <DependentUpon>Page3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Charts\DoughnutChart.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\Charts\DoughnutChart.Designer.cs">
-      <DependentUpon>DoughnutChart.cs</DependentUpon>
-    </Compile>
     <Compile Include="Views\Dashboard1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +291,7 @@
       <DependentUpon>Dashboard1.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IAddCardView.cs" />
+    <Compile Include="Views\IBudgetingView.cs" />
     <Compile Include="Views\IOverviewView.cs" />
     <Compile Include="Views\IPaymentView.cs" />
     <Compile Include="Views\IRecovery1View.cs" />
@@ -390,9 +385,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Page3.resx">
       <DependentUpon>Page3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\Charts\DoughnutChart.resx">
-      <DependentUpon>DoughnutChart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Dashboard1.resx">
       <DependentUpon>Dashboard1.cs</DependentUpon>

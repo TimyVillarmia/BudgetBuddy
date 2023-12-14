@@ -69,10 +69,12 @@ namespace BudgetBuddy.Views
             ITransactionsView transactionsView = Transactions;
             IPaymentView paymentView = Payments;
             IAddCardView addcard = AddCard;
+            IBudgetingView budgetingview = Budgeting;
 
             new OverviewPresenter(accountRepository, overview, addcard);
             new TransactionsPresenter(accountRepository, transactionsView);
             new PaymentPresenter(accountRepository, paymentView);
+            new BudgetingPresenter(accountRepository, budgetingview);
 
 
 

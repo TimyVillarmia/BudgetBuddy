@@ -18,7 +18,7 @@ namespace BudgetBuddy.Views
         string PayToAccountNumber { get; set; }
         string PayToAccountName { get; set; }
         decimal MoneyTransferAmount { get; set; }
-
+        string TransactionName { get; set; }
 
     }
 }

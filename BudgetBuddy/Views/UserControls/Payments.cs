@@ -33,6 +33,7 @@ namespace BudgetBuddy.Views.UserControls
         public string PayToAccountNumber { get; set; }
         public string PayToAccountName { get; set; }
         public decimal MoneyTransferAmount { get; set; }
+        public string TransactionName { get; set; }
 
 
 
@@ -64,18 +65,20 @@ namespace BudgetBuddy.Views.UserControls
                     {
 
        
-                        DialogResult dialogResult = MessageBox.Show($"Are you sure to send {PayToAccountName} to {PayToAccountNumber}", "Quick Transfer", MessageBoxButtons.YesNo);
+                        DialogResult dialogResult = MessageBox.Show($"Are you sure to send {PayToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
 
                         if (dialogResult == DialogResult.Yes)
                         {
-                            var vendor = await MetrobankRepository.PaytoVendor(PayToAccountName);
-                            PayToAccountNumber = vendor.account_number;
+                            //var vendor = await MetrobankRepository.PaytoVendor(PayToAccountName);
+                            //PayToAccountNumber = vendor.account_number;
                             MoneyTransferAmount = Decimal.Parse(PriceTxtbox.Text);
 
                             Sender_name = respond.owner_name;
                             Sender_number = respond.account_number;
 
+
                             PayEvent?.Invoke(this, EventArgs.Empty);
+                            MessageBox.Show("Payment successful");
                             this.Focus();
 
 
@@ -84,8 +87,6 @@ namespace BudgetBuddy.Views.UserControls
                         {
                             // do nothing
                         }
-
-
                         else
                         {
                             MessageBox.Show("something went wrong");
@@ -116,8 +117,7 @@ namespace BudgetBuddy.Views.UserControls
 
             this.Load += delegate
             {
-                TypeComboBox.SelectedIndex = 0;
-                ShopNameCombo.SelectedIndex = 0;
+
                 LoadEvent?.Invoke(this, EventArgs.Empty);
 
                 if (hasAccount)
@@ -149,14 +149,18 @@ namespace BudgetBuddy.Views.UserControls
                     case 0:
                         ShopNameCombo.Items.Clear();
                         subscriptionItems.ForEach(item => ShopNameCombo.Items.Add(item));
+                        TransactionName = TypeComboBox.SelectedItem.ToString();
                         break;
                     case 1:
                         ShopNameCombo.Items.Clear();
                         billsItems.ForEach(item => ShopNameCombo.Items.Add(item));
+                        TransactionName = TypeComboBox.SelectedItem.ToString();
+
                         break;
                     case 2:
                         ShopNameCombo.Items.Clear();
                         foodItems.ForEach(item => ShopNameCombo.Items.Add(item));
+                        TransactionName = TypeComboBox.SelectedItem.ToString();
                         break;
                 }
 
@@ -186,10 +190,14 @@ namespace BudgetBuddy.Views.UserControls
                     { "Jollibee", Properties.Resources.Jollibee },
                     { "KFC", Properties.Resources.KFC }
                 };
-                
+
+
+
+
                 Picturebox.Image = pictures[ShopNameCombo.SelectedItem.ToString()];
                 PayToAccountName = ShopNameCombo.SelectedItem.ToString();
                 NameShop.Text = ShopNameCombo.SelectedItem.ToString();
+
             };
         }
 

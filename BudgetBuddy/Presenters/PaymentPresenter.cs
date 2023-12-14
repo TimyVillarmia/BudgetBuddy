@@ -25,7 +25,7 @@ namespace BudgetBuddy.Presenters
             _view.LoadEvent += LoadMethod;
         }
 
-        private async void LoadMethod(object sender, EventArgs e)
+        private void LoadMethod(object sender, EventArgs e)
         {
             var external_ID = _accountRepository.GetBankAccountExternal_ID(Session.CurrentUser);
 
@@ -34,13 +34,24 @@ namespace BudgetBuddy.Presenters
             {
                 var checking = external_ID.Where(check => check.account_type == "checking").FirstOrDefault();
 
+                _view.hasAccount = (checking == null) ? false : true;
 
-                var chcking_account = await MetrobankRepository.GetAccountFromJSONServer(checking.external_id);
-                _view.hasAccount = true;
+                //var chcking_account = await MetrobankRepository.GetAccountFromJSONServer(checking.external_id);
 
-                _view.Email = chcking_account.email;
-                _view.Sender_number = chcking_account.account_number;
-                _view.Sender_name = chcking_account.owner_name;
+                //_view.Email = chcking_account.email;
+                //_view.Sender_number = chcking_account.account_number;
+                //_view.Sender_name = chcking_account.owner_name;
+
+                var task = Task.Run(async () =>
+                {
+                    var chcking_account = await MetrobankRepository.GetAccountFromJSONServer(checking.external_id);
+
+                    _view.Email = chcking_account.email;
+                    _view.Sender_number = chcking_account.account_number;
+                    _view.Sender_name = chcking_account.owner_name;
+                });
+
+                task.Wait();
             }
             else
             {
@@ -62,7 +73,7 @@ namespace BudgetBuddy.Presenters
                 receiver_name = _view.PayToAccountName,
                 sender_name = _view.Sender_name,
                 transaction_type = "Payments",
-                transaction_name = _view.PayToAccountName,
+                transaction_name = _view.TransactionName,
                 amount = _view.MoneyTransferAmount,
                 transaction_date = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))
             };

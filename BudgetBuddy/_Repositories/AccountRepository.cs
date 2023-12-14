@@ -210,7 +210,7 @@ namespace BudgetBuddy.Repositories
                                  Type = t.transaction_type,
                                  TransactionName = t.transaction_name,
                                  date = t.transaction_date,
-                                 amount = $"₱ {t.amount}"
+                                 amount = t.amount
                              }).ToList();
 
 
