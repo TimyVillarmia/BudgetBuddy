@@ -1,5 +1,6 @@
 ﻿using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,64 +36,91 @@ namespace BudgetBuddy.Views.UserControls
 
         private void AssociateAndRaiseViewEvents()
         {
+            this.Load += delegate
+            {
+                AccountTypeCombo.SelectedIndex = 0;
+            };
+
             ConfirmBtn.Click += async delegate
             {
-                try
+                if(PINTxtbox.Text != string.Empty &&
+                CardNumberTxtbox.Text != string.Empty &&
+                NameTxtbox.Text != string.Empty &&
+                EmailTxtbox.Text != string.Empty &&
+                ExpiryDate.Value.ToString("yyyy-MM-dd") != string.Empty &&
+                AccountTypeCombo.SelectedItem.ToString() != string.Empty
+                )
                 {
-                    var respond = await MetrobankRepository.GetAccountFromJSONServer(EmailTxtbox.Text, CardNumberTxtbox.Text);
-
-                    if (PINTxtbox.Text == respond.PIN &&
-                    CardNumberTxtbox.Text == respond.account_number &&
-                    NameTxtbox.Text.ToLower() == respond.owner_name.ToLower() &&
-                    EmailTxtbox.Text.ToLower() == respond.email.ToLower() &&
-                    ExpiryDate.Value.ToString("yyyy-MM-dd") == respond.expiry_date.ToString("yyyy-MM-dd")
-                    )
+                    try
                     {
+                        var respond = await MetrobankRepository.GetAccountFromJSONServer(EmailTxtbox.Text, CardNumberTxtbox.Text);
 
-                        new_account = new users_bank_account
+                        if (PINTxtbox.Text == respond.PIN &&
+                        CardNumberTxtbox.Text == respond.account_number &&
+                        NameTxtbox.Text.ToLower() == respond.owner_name.ToLower() &&
+                        EmailTxtbox.Text.ToLower() == respond.email.ToLower() &&
+                        ExpiryDate.Value.ToString("yyyy-MM-dd") == respond.expiry_date.ToString("yyyy-MM-dd") &&
+                        AccountTypeCombo.SelectedItem.ToString().ToLower() == respond.account_type
+                        )
                         {
-                            external_id = respond.external_id,
-                            account_type = respond.account_type
-                            
-                        };
 
-                        AddNewCardEvent?.Invoke(this, EventArgs.Empty);
+                            new_account = new users_bank_account
+                            {
+                                external_id = respond.external_id,
+                                account_type = respond.account_type
 
-                        if (isSuccessful)
-                        {
-                            dashboard.AddCard.Hide();
-                            dashboard.Overview.BringToFront();
-                            dashboard.Overview.Focus();
+                            };
 
+                            AddNewCardEvent?.Invoke(this, EventArgs.Empty);
+
+                            if (isSuccessful)
+                            {
+                                dashboard.DBPanel.Controls.Clear();
+                                dashboard.DBPanel.Controls.Add(dashboard.Overview);
+
+                                //dashboard.AddCard.Hide();
+                                //dashboard.Overview.BringToFront();
+                                //dashboard.Overview.Focus();
+
+
+                            }
+                            else
+                            {
+                                MessageBox.Show($"The {AccountTypeCombo.SelectedItem.ToString()} Account is already added");
+                            }
                         }
                         else
                         {
-                            MessageBox.Show("something went wrong");
+                            MessageBox.Show("Make sure you completed the form correctly");
+
                         }
+
+
+
+
+
+
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Make sure you completed the form correctly");
-
+                        throw ex;
                     }
-
-
-
-
-
-
                 }
-                catch(Exception ex)
+                else
                 {
-                    throw ex;
+                    MessageBox.Show("Make sure you completed the form correctly");
+
                 }
+
+
             };
 
 
 
             CancelBtn.Click += delegate
             {
-                dashboard.AddCard.Hide();
+                dashboard.DBPanel.Controls.Clear();
+                dashboard.DBPanel.Controls.Add(dashboard.Overview);
             };
         }
 

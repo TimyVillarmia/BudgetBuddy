@@ -8,8 +8,9 @@ namespace BudgetBuddy.Models
 {
     public class TransactionModel
     {
-        public string TransactionName { get; set; }
+        public string Receiver { get; set; }
         public string Type { get; set; }
+        public string TransactionName { get; set; }
         public DateTime date { get; set; }
         public string amount { get; set; }
     }

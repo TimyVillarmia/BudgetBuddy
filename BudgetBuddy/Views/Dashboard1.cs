@@ -28,6 +28,11 @@ namespace BudgetBuddy.Views
         public Transactions Transactions { get; set; }
         public Payments Payments { get; set; }
         public Budgeting Budgeting { get; set; }
+        public Guna2Panel DBPanel
+        {
+            get { return DashboardPanel; }
+            set { DashboardPanel = value; }
+        }
 
         private void Dashboard1_Load(object sender, EventArgs e)
         {
@@ -72,10 +77,10 @@ namespace BudgetBuddy.Views
 
 
             DashboardPanel.Controls.Add(Overview);
-            DashboardPanel.Controls.Add(Transactions);
-            DashboardPanel.Controls.Add(Payments);
-            DashboardPanel.Controls.Add(Budgeting);
-            DashboardPanel.Controls.Add(AddCard);
+            //DashboardPanel.Controls.Add(Transactions);
+            //DashboardPanel.Controls.Add(Payments);
+            //DashboardPanel.Controls.Add(Budgeting);
+            //DashboardPanel.Controls.Add(AddCard);
 
             Overview.Focus();
             OverviewBtn.PerformClick();
@@ -106,32 +111,39 @@ namespace BudgetBuddy.Views
 
             OverviewBtn.CheckedChanged += delegate
             {
+                DashboardPanel.Controls.Clear();
+                DashboardPanel.Controls.Add(Overview);
 
-                Overview.BringToFront();
-                Overview.Focus();
+
+                //Overview.BringToFront();
+                //Overview.Focus();
                 FormatBtn(OverviewBtn);
 
             };
             BudgetingBtn.CheckedChanged += delegate
             {
-
-                Budgeting.BringToFront();
+                DashboardPanel.Controls.Clear();
+                DashboardPanel.Controls.Add(Budgeting);
+                //Budgeting.BringToFront();
                 FormatBtn(BudgetingBtn);
 
 
             };
             TransactionBtn.CheckedChanged += delegate
             {
-
-                Transactions.BringToFront();
-                Transactions.Focus();
+                DashboardPanel.Controls.Clear();
+                DashboardPanel.Controls.Add(Transactions);
+                //Transactions.BringToFront();
+                //Transactions.Focus();
                 FormatBtn(TransactionBtn);
 
 
             };
             PaymentBtn.CheckedChanged += delegate
             {
-                Payments.BringToFront();
+                DashboardPanel.Controls.Clear();
+                DashboardPanel.Controls.Add(Payments);
+                //Payments.BringToFront();
                 FormatBtn(PaymentBtn);
 
 

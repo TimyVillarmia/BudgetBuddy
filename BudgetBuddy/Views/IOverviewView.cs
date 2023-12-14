@@ -1,6 +1,7 @@
 ﻿using BudgetBuddy.Models;
 using BudgetBuddy.Views.UserControls;
 using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,8 @@ namespace BudgetBuddy.Views
         event EventHandler SearchAccountEvent;
         event EventHandler AddTodoEvent;
 
-        bool HasAccount { get; set; }
+        bool HasChecking { get; set; }
+        bool HasSavings { get; set; }
         bool isSuccessful { get; set; }
         string SearchName { get; set; }
 
@@ -39,7 +41,7 @@ namespace BudgetBuddy.Views
         Guna2DataGridView ContactDataGrid { get; set; }
         Guna2DataGridView RecentTransactions { get; set; }
         Guna2DataGridView ToDoList { get; set; }
-
+        Guna2ProgressIndicator Loader { get; set; }
         void SetBankListBindingSource(BindingSource bank, BindingSource transaction, BindingSource todo);
 
     }

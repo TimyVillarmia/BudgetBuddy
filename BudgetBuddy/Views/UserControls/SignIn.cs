@@ -134,5 +134,16 @@ namespace BudgetBuddy.Presenters.UserControls
             }
 
         }
+
+        private void PasswordTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                SignInBtn.PerformClick();
+                // these last two lines will stop the beep sound
+                e.SuppressKeyPress = true;
+                e.Handled = true;
+            }
+        }
     }
 }

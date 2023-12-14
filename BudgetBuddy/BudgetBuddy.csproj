@@ -540,9 +540,17 @@
   <ItemGroup>
     <Content Include="BudgetBuddy.sql" />
     <None Include="Resources\Netflix.png" />
-    <None Include="Resources\Youtube.png" />
-    <None Include="Resources\Figma.png" />
     <None Include="Resources\Spotify.png" />
+    <None Include="Resources\Youtube.png" />
+    <None Include="Resources\KFC.png" />
+    <None Include="Resources\McDonalds.png" />
+    <None Include="Resources\Jollibee.png" />
+    <None Include="Resources\VECO.jpg" />
+    <None Include="Resources\MCWD.jpg" />
+    <None Include="Resources\Coverge.jpg" />
+    <None Include="Resources\Jollibee.jpg" />
+    <None Include="Resources\McDonalds.jpg" />
+    <None Include="Resources\Figma.png" />
     <None Include="Resources\Budgeting.png" />
     <None Include="Resources\Statistics.png" />
   </ItemGroup>

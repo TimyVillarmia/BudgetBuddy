@@ -1,4 +1,5 @@
-﻿using BudgetBuddy.Models;
+﻿using BudgetBuddy._Repositories;
+using BudgetBuddy.Models;
 using BudgetBuddy.Views;
 using System;
 using System.Collections.Generic;
@@ -21,13 +22,45 @@ namespace BudgetBuddy.Presenters
 
 
             _view.PayEvent += PayMethod;
+            _view.LoadEvent += LoadMethod;
+        }
+
+        private async void LoadMethod(object sender, EventArgs e)
+        {
+            var external_ID = _accountRepository.GetBankAccountExternal_ID(Session.CurrentUser);
+
+
+            if (external_ID != null)
+            {
+                var checking = external_ID.Where(check => check.account_type == "checking").FirstOrDefault();
+
+
+                var chcking_account = await MetrobankRepository.GetAccountFromJSONServer(checking.external_id);
+                _view.hasAccount = true;
+
+                _view.Email = chcking_account.email;
+                _view.Sender_number = chcking_account.account_number;
+                _view.Sender_name = chcking_account.owner_name;
+            }
+            else
+            {
+                _view.hasAccount = false;
+
+            }
+
+
+
         }
 
         private void PayMethod(object sender, EventArgs e)
         {
+
+
             var createNewTransaction = new transaction
             {
-                receiver_account_number = _view.PayToAccountNumber,
+
+                receiver_name = _view.PayToAccountName,
+                sender_name = _view.Sender_name,
                 transaction_type = "Payments",
                 transaction_name = _view.PayToAccountName,
                 amount = _view.MoneyTransferAmount,

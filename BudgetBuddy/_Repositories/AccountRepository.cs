@@ -133,7 +133,7 @@ namespace BudgetBuddy.Repositories
         }
 
   
-        public IEnumerable<users_bank_account> GetBankAccount(string email)
+        public IEnumerable<users_bank_account> GetBankAccountExternal_ID(string email)
         {
             try
             {
@@ -142,18 +142,19 @@ namespace BudgetBuddy.Repositories
                                  where user.email == Session.CurrentUser
                                  select ba).ToList();
 
-                if (queryjoin == null)
-                {
-                    return null;
-                }
-                else
+                if (queryjoin.Any())
                 {
                     return queryjoin;
 
                 }
+                else
+                {
+                    return null;
+
+                }
 
 
-     
+
 
 
 
@@ -205,8 +206,9 @@ namespace BudgetBuddy.Repositories
                              where u.email == Session.CurrentUser
                              select new TransactionModel
                              {
-                                 TransactionName = t.transaction_name,
+                                 Receiver = t.receiver_name,
                                  Type = t.transaction_type,
+                                 TransactionName = t.transaction_name,
                                  date = t.transaction_date,
                                  amount = $"₱ {t.amount}"
                              }).ToList();

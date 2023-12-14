@@ -15,6 +15,8 @@ using Guna.UI2.WinForms;
 using BudgetBuddy._Repositories;
 using System.Windows.Forms.DataVisualization.Charting;
 using Guna.Charts.WinForms;
+using System.Linq.Expressions;
+using Guna.UI2.WinForms.Enums;
 
 namespace BudgetBuddy.Views.UserControls
 {
@@ -23,8 +25,8 @@ namespace BudgetBuddy.Views.UserControls
   
 
         public Dashboard1 Dashboard;
-        private bool _HasAccount;
         private bool _isSuccessful;
+
 
         public event EventHandler LoadOverviewData;
         public event EventHandler SendEvent;
@@ -38,12 +40,23 @@ namespace BudgetBuddy.Views.UserControls
             Dashboard = form;
             AssociateAndRaiseViewEvents();
 
+            LoaderObj.Visible = false;
+            NoCardLbl.Visible = true;
+            NoCardLbl.Location = new Point(20, 87);
+            AddCardBtn.Visible = true;
+            CardObject.Visible = false;
+
+            PercentBalance.Visible = false;
+            BalanceLbl.Text = "No Checking Account";
+            SavingsLbl.Text = "No Savings Account";
+            PercentSavings.Visible = false;
+
+            PercentBalance.Visible = false;
+            PercentSavings.Visible = false;
+
         }
-        public bool HasAccount
-        {
-            get { return _HasAccount; }
-            set { _HasAccount = value; }
-        }
+        public bool HasChecking { get; set; }
+        public bool HasSavings { get; set; }
 
         public bool isSuccessful
         {
@@ -82,15 +95,21 @@ namespace BudgetBuddy.Views.UserControls
             get { return TransactionDataGrid; }
             set { TransactionDataGrid = value; }
         }
+
+        public Guna2ProgressIndicator Loader
+        {
+            get { return LoaderObj; }
+            set { LoaderObj = value; }
+        }
+
         private void AssociateAndRaiseViewEvents()
         {
             this.Enter += delegate
             {
 
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
-
-                ReloadForm();
-
+                ReloadFormChecking();
+                ReloadFormSavings();
             };
 
             this.Load += delegate
@@ -98,7 +117,11 @@ namespace BudgetBuddy.Views.UserControls
 
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
                 LoadChart(gunaChart1);
-                ReloadForm();
+                ReloadFormChecking();
+                ReloadFormSavings();
+
+
+
 
 
             };
@@ -182,6 +205,72 @@ namespace BudgetBuddy.Views.UserControls
                 AddTodoEvent?.Invoke(this, EventArgs.Empty);
 
             };
+
+
+
+        }
+
+        private void ReloadFormSavings()
+        {
+            if (HasSavings)
+            {
+                AddCardBtn.Visible = (HasChecking && HasSavings) ? false : true;
+                SavingsCardLbl.Text = HasSavings == true ? "Total Savings" : "No Savings Account";
+
+                PercentBalance.Visible = true;
+                SavingsLbl.Text = savings_balance ?? " ";
+                PercentSavings.Visible = true;
+
+
+
+            }
+            else
+            {
+                AddCardBtn.Visible = (HasChecking && HasSavings) ? false : true;
+                SavingsCardLbl.Text = HasSavings == true? "Total Savings" : "No Savings Account";
+
+                SavingsLbl.Text = savings_balance ?? " ";
+                PercentSavings.Visible = false;
+
+                PercentSavings.Visible = false;
+
+            }
+        }
+
+
+        private void ReloadFormChecking()
+        {
+            if (HasChecking)
+            {
+                NoCardLbl.Visible = false;
+                AddCardBtn.Visible = (HasChecking && HasSavings) ? false : true;
+                CardObject.Visible = true;
+
+                PercentBalance.Visible = true;
+                BalanceLbl.Text = checking_balance ?? " ";
+                PercentSavings.Visible = true;
+
+                ExpiryDateLbl.Text = expiry_date;
+                NameLbl.Text = owner_name;
+                CardNumberLbl.Text = account_number;
+                BalanceCardLbl.Text = HasChecking == true ? "Total Balance" : "No Checking Account";
+
+
+            }
+            else
+            {
+                NoCardLbl.Visible = true;
+                NoCardLbl.Location = new Point(20, 87);
+                AddCardBtn.Visible = (HasChecking && HasSavings) ? false : true;
+                CardObject.Visible = false;
+
+                PercentBalance.Visible = false;
+                BalanceLbl.Text = checking_balance ?? " ";
+                PercentSavings.Visible = false;
+
+                BalanceCardLbl.Text = HasChecking == true ? "Total Balance" : "No Checking Account";
+
+            }
         }
 
         private void LoadChart(GunaChart doughnut)
@@ -222,43 +311,9 @@ namespace BudgetBuddy.Views.UserControls
 
         }
 
-        public void ReloadForm()
-        {
-
-            if (HasAccount)
-            {
-                NoCardLbl.Visible = false;
-                AddCardBtn.Visible = false;
-                CardObject.Visible = true;
-
-                PercentBalance.Visible = true;
-                BalanceLbl.Text = savings_balance;
-                PercentIncome.Visible = true;
-
-                ExpiryDateLbl.Text = expiry_date;
-                NameLbl.Text = owner_name;
-                CardNumberLbl.Text = account_number;
+ 
 
 
-            }
-            else
-            {
-                CardObject.Visible = false;
-                AddCardBtn.Visible = true;
-
-                NoCardLbl.Visible = true;
-                NoCardLbl.Location = new Point(20, 87);
-                PercentBalance.Visible = false;
-                PercentIncome.Visible = false;
-
-            }
-        }
-
-
-        private void AddCardBtn_Click(object sender, EventArgs e)
-        {
-            Dashboard.AddCard.BringToFront();
-        }
 
         private void RightPanel_Enter(object sender, EventArgs e)
         {
@@ -278,6 +333,15 @@ namespace BudgetBuddy.Views.UserControls
             {
                 e.Handled = true;
             }
+        }
+
+        private void AddCardBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard.DBPanel.Controls.Clear();
+            Dashboard.DBPanel.Controls.Add(Dashboard.AddCard);
+
+            //Dashboard.AddCard.BringToFront();
+
         }
     }
 }

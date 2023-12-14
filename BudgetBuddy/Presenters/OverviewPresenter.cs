@@ -5,10 +5,12 @@ using BudgetBuddy.Views.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Data.Linq.Mapping;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace BudgetBuddy.Presenters
@@ -62,25 +64,27 @@ namespace BudgetBuddy.Presenters
 
         private void RequestMoneyFrom(object sender, EventArgs e)
         {
-            //var createNewTransaction = new transaction
-            //{
-            //    receiver_account_number = _view.SendMoneyToAccountNumber,
-            //    transaction_type = "MoneyTransfer",
-            //    transaction_name = _view.RequestMoneyToAccountName,
-            //    amount = _view.MoneyTransferAmount,
-            //    transaction_date = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))
-            //};
+            var createNewTransaction = new transaction
+            {
+                receiver_name = _view.owner_name,
+                sender_name = _view.SendMoneyToAccountName,
+                transaction_type = "MoneyTransfer",
+                transaction_name = "Request",
+                amount = _view.MoneyTransferAmount,
+                transaction_date = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))
+            };
 
-            //_accountRepository.CreateTransactions(createNewTransaction);
+            _accountRepository.CreateTransactions(createNewTransaction);
         }
 
         private void SendMoneyTo(object sender, EventArgs e)
         {
             var createNewTransaction = new transaction
             {
-                receiver_name = _view.SendMoneyToAccountNumber,
+                receiver_name = _view.SendMoneyToAccountName,
+                sender_name = _view.owner_name,
                 transaction_type = "MoneyTransfer",
-                transaction_name = _view.SendMoneyToAccountName,
+                transaction_name = "Send",
                 amount = _view.MoneyTransferAmount,
                 transaction_date = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"))
             };
@@ -151,46 +155,113 @@ namespace BudgetBuddy.Presenters
         }
 
 
-        private async void LoadOverview(object sender, EventArgs e)
+
+        public async Task LoadCheckingAccount(string external_id)
+        {
+            if (external_id == null)
+            {
+                _view.HasChecking = false;
+
+
+            }
+            else
+            {
+                var checking_account = await MetrobankRepository.GetAccountFromJSONServer(external_id);
+
+                _view.owner_name = checking_account.owner_name;
+                _view.account_number = checking_account.account_number;
+                _view.expiry_date = checking_account.expiry_date.ToString("MM/yy");
+
+                _view.checking_balance = $"₱ {checking_account.current_balance.ToString():n}";
+
+    
+
+                
+            }
+
+         
+        }
+
+        public async Task LoadSavingsAccount(string external_id)
+        {
+            if (external_id == null)
+            {
+                _view.HasSavings = false;
+
+            }
+            else
+            {
+                var savings_account = await MetrobankRepository.GetAccountFromJSONServer(external_id);
+
+
+                var savings_bal = savings_account.current_balance.ToString() ?? "No Savings Account";
+
+                _view.savings_balance = $"₱ {savings_bal:n}";
+
+
+            }
+
+
+        }
+
+        private void LoadOverview(object sender, EventArgs e)
         {
 
 
             try
             {
-
-                var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
-                var acc = _accountRepository.GetBankAccount(Session.CurrentUser);
-
-                //var asyncResult = await MetrobankRepository.GetBalance(acc.CardNumber);
+                
+                var external_ID = _accountRepository.GetBankAccountExternal_ID(Session.CurrentUser);
 
                 transactionList = _accountRepository.GetTransactionsList();
                 transactionBindingSource.DataSource = transactionList; //Set data source.
 
-                if (acc != null) 
+
+                if (external_ID != null) 
                 {
 
+                    var checking = external_ID.Where(check => check.account_type == "checking").FirstOrDefault();
+                    var savings = external_ID.Where(saving => saving.account_type == "savings").FirstOrDefault();
+                    _view.HasChecking = (checking == null) ? false : true;
+                    _view.HasChecking = (savings == null) ? false : true;
 
 
+                    var task = Task.Run(async () =>
+                    {
+                        var checking_account = await MetrobankRepository.GetAccountFromJSONServer(checking.external_id);
 
-                    _view.owner_name = acc.OwnerName;
-                    _view.account_number = acc.CardNumber;
-                    _view.expiry_date = acc.ExpiryDate.ToString("MM/yy");
-                    //_view.Balance = $"₱ {asyncResult.ToString():n}";
+                        _view.owner_name = checking_account.owner_name;
+                        _view.account_number = checking_account.account_number;
+                        _view.expiry_date = checking_account.expiry_date.ToString("MM/yy");
 
-                    _view.HasAccount = true;
-                    
+                        _view.checking_balance = $"₱ {checking_account.current_balance.ToString():n}";
+                    });
+                    task.Wait();
+
+                    while (!task.IsCompleted)
+                    {
+                        _view.Loader.Visible = true; 
+                        _view.Loader.Location = new Point(183, 158);
+                        _view.checking_balance = "Loading...";
+
+                    }
+                    _view.Loader.Visible = false;
+                    _view.HasChecking = true;
+                    //_ = LoadSavingsAccount(savings.external_id);
+
 
                 }
                 else
                 {
-                    _view.HasAccount = false;
+                    _view.HasChecking = false;
+                    _view.HasSavings = false;
 
                 }
 
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
             }
 
 
@@ -213,7 +284,6 @@ namespace BudgetBuddy.Presenters
                 else
                 {
                     _view1.isSuccessful = false;
-                    MessageBox.Show("make sure you fill the form correctly");
 
 
 

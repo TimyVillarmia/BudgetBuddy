@@ -43,6 +43,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.AccountTypeCombo = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +62,7 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
+            this.guna2Panel1.Controls.Add(this.AccountTypeCombo);
             this.guna2Panel1.Controls.Add(this.CardNumberTxtbox);
             this.guna2Panel1.Controls.Add(this.CancelBtn);
             this.guna2Panel1.Controls.Add(this.ConfirmBtn);
@@ -77,7 +79,7 @@
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
             this.guna2Panel1.Location = new System.Drawing.Point(613, 274);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(625, 676);
             this.guna2Panel1.TabIndex = 1;
@@ -115,7 +117,7 @@
             this.CancelBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CancelBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
             this.CancelBtn.Location = new System.Drawing.Point(323, 564);
-            this.CancelBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CancelBtn.Margin = new System.Windows.Forms.Padding(4);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(268, 55);
             this.CancelBtn.TabIndex = 20;
@@ -132,7 +134,7 @@
             this.ConfirmBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConfirmBtn.ForeColor = System.Drawing.Color.White;
             this.ConfirmBtn.Location = new System.Drawing.Point(41, 564);
-            this.ConfirmBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ConfirmBtn.Margin = new System.Windows.Forms.Padding(4);
             this.ConfirmBtn.Name = "ConfirmBtn";
             this.ConfirmBtn.Size = new System.Drawing.Size(261, 55);
             this.ConfirmBtn.TabIndex = 13;
@@ -189,7 +191,7 @@
             this.ExpiryDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ExpiryDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.ExpiryDate.Location = new System.Drawing.Point(36, 486);
-            this.ExpiryDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ExpiryDate.Margin = new System.Windows.Forms.Padding(4);
             this.ExpiryDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.ExpiryDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.ExpiryDate.Name = "ExpiryDate";
@@ -276,10 +278,28 @@
             // guna2Separator1
             // 
             this.guna2Separator1.Location = new System.Drawing.Point(-4, 73);
-            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Separator1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Separator1.Name = "guna2Separator1";
             this.guna2Separator1.Size = new System.Drawing.Size(728, 12);
             this.guna2Separator1.TabIndex = 1;
+            // 
+            // AccountTypeCombo
+            // 
+            this.AccountTypeCombo.BackColor = System.Drawing.Color.Transparent;
+            this.AccountTypeCombo.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.AccountTypeCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AccountTypeCombo.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.AccountTypeCombo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.AccountTypeCombo.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.AccountTypeCombo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.AccountTypeCombo.ItemHeight = 30;
+            this.AccountTypeCombo.Items.AddRange(new object[] {
+            "Checking",
+            "Savings"});
+            this.AccountTypeCombo.Location = new System.Drawing.Point(382, 27);
+            this.AccountTypeCombo.Name = "AccountTypeCombo";
+            this.AccountTypeCombo.Size = new System.Drawing.Size(209, 36);
+            this.AccountTypeCombo.TabIndex = 22;
             // 
             // AddCard
             // 
@@ -287,7 +307,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
             this.Controls.Add(this.guna2Panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddCard";
             this.Size = new System.Drawing.Size(1920, 1174);
             this.guna2Panel1.ResumeLayout(false);
@@ -313,5 +333,6 @@
         private Guna.UI2.WinForms.Guna2Button ConfirmBtn;
         private Guna.UI2.WinForms.Guna2Button CancelBtn;
         private Guna.UI2.WinForms.Guna2TextBox CardNumberTxtbox;
+        private Guna.UI2.WinForms.Guna2ComboBox AccountTypeCombo;
     }
 }
