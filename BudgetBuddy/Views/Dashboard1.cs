@@ -116,7 +116,7 @@ namespace BudgetBuddy.Views
 
 
                 //Overview.BringToFront();
-                //Overview.Focus();
+                Overview.Focus();
                 FormatBtn(OverviewBtn);
 
             };
@@ -125,6 +125,7 @@ namespace BudgetBuddy.Views
                 DashboardPanel.Controls.Clear();
                 DashboardPanel.Controls.Add(Budgeting);
                 //Budgeting.BringToFront();
+                Transactions.Focus();
                 FormatBtn(BudgetingBtn);
 
 
@@ -134,7 +135,7 @@ namespace BudgetBuddy.Views
                 DashboardPanel.Controls.Clear();
                 DashboardPanel.Controls.Add(Transactions);
                 //Transactions.BringToFront();
-                //Transactions.Focus();
+                Transactions.Focus();
                 FormatBtn(TransactionBtn);
 
 
@@ -144,6 +145,7 @@ namespace BudgetBuddy.Views
                 DashboardPanel.Controls.Clear();
                 DashboardPanel.Controls.Add(Payments);
                 //Payments.BringToFront();
+                Transactions.Focus();
                 FormatBtn(PaymentBtn);
 
 

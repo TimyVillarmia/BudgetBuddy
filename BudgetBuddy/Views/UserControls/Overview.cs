@@ -108,6 +108,7 @@ namespace BudgetBuddy.Views.UserControls
             {
 
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
+                LoadChart(gunaChart1);
                 ReloadFormChecking();
                 ReloadFormSavings();
             };
@@ -157,19 +158,28 @@ namespace BudgetBuddy.Views.UserControls
 
             SendMoneyBtn.Click += delegate
             {
-                DialogResult dialogResult = MessageBox.Show($"Are you sure to send {MoneyTransferAmountTxtBox.Text} to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
 
-                if (dialogResult == DialogResult.Yes)
+                if (int.Parse(MoneyTransferAmountTxtBox.Text) <= 5)
                 {
-                    MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
-                    SendEvent?.Invoke(this, EventArgs.Empty);
-                    this.Focus();
-
-
+                    MessageBox.Show("Amount must be greater than or equal to 5");
                 }
-                else if (dialogResult == DialogResult.No)
+                else
                 {
-                    // do nothing
+                    DialogResult dialogResult = MessageBox.Show($"Are you sure to send {MoneyTransferAmountTxtBox.Text} to {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
+                        SendEvent?.Invoke(this, EventArgs.Empty);
+                        this.Focus();
+
+
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        // do nothing
+                    }
+
                 }
 
 
@@ -178,20 +188,28 @@ namespace BudgetBuddy.Views.UserControls
 
             RequestMoneyBtn.Click += delegate
             {
-                DialogResult dialogResult = MessageBox.Show($"Are you sure to request to {MoneyTransferAmountTxtBox.Text} from {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
-
-                if (dialogResult == DialogResult.Yes)
+                if (int.Parse(MoneyTransferAmountTxtBox.Text) <= 5)
                 {
-                    MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
-                    RequestEvent?.Invoke(this, EventArgs.Empty);
-                    this.Focus();
-
-
+                    MessageBox.Show("Amount must be greater than or equal to 5");
                 }
-                else if (dialogResult == DialogResult.No)
+                else
                 {
-                    // do nothing
+                    DialogResult dialogResult = MessageBox.Show($"Are you sure to request to {MoneyTransferAmountTxtBox.Text} from {SendMoneyToAccountName}", "Quick Transfer", MessageBoxButtons.YesNo);
+
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
+                        RequestEvent?.Invoke(this, EventArgs.Empty);
+                        this.Focus();
+
+
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        // do nothing
+                    }
                 }
+  
 
 
 

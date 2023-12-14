@@ -26,10 +26,17 @@ namespace BudgetBuddy.Views.UserControls
 
         private void AssociateAndRaiseViewEvents()
         {
+            this.Load += delegate
+            {
+                LoadTransactions?.Invoke(this, EventArgs.Empty);
+            };
+
             this.Enter += delegate
             {
                 LoadTransactions?.Invoke(this, EventArgs.Empty);
             };
+
+
         }
 
      

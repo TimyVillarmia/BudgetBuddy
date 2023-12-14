@@ -32,7 +32,7 @@ namespace BudgetBuddy.Presenters
 
 
             // subscribe the view's event to the presenter's event
-            _view.LoadTransactions += LoadTransactionsDate;
+            _view.LoadTransactions += LoadAllDataGridList;
 
 
 
@@ -46,11 +46,8 @@ namespace BudgetBuddy.Presenters
 
         private void LoadAllDataGridList()
         {
-
-
             transactionList = _accountRepository.GetTransactionsList();
             transactionBindingSource.DataSource = transactionList; //Set data source.
-
 
 
             _view.TransactionsGrid.Columns[0].HeaderText = "Transaction";
@@ -59,11 +56,16 @@ namespace BudgetBuddy.Presenters
             _view.TransactionsGrid.Columns[0].HeaderText = "Amount";
         }
 
-        private void LoadTransactionsDate(object sender, EventArgs e)
+        private void LoadAllDataGridList(object sender, EventArgs e)
         {
-
             transactionList = _accountRepository.GetTransactionsList();
             transactionBindingSource.DataSource = transactionList; //Set data source.
+
+
+
         }
+
+
+ 
     }
 }

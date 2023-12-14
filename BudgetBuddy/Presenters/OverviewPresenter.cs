@@ -58,7 +58,7 @@ namespace BudgetBuddy.Presenters
             LoadAllDataGridList();
 
 
-
+    
 
         }
 
@@ -75,6 +75,8 @@ namespace BudgetBuddy.Presenters
             };
 
             _accountRepository.CreateTransactions(createNewTransaction);
+            transactionList = _accountRepository.GetTransactionsList();
+            transactionBindingSource.DataSource = transactionList; //Set data source.
         }
 
         private void SendMoneyTo(object sender, EventArgs e)
@@ -90,7 +92,11 @@ namespace BudgetBuddy.Presenters
             };
 
             _accountRepository.CreateTransactions(createNewTransaction);
+            transactionList = _accountRepository.GetTransactionsList();
+            transactionBindingSource.DataSource = transactionList; //Set data source.
         }
+
+
 
         private async void LoadAllDataGridList()
         {
@@ -104,9 +110,10 @@ namespace BudgetBuddy.Presenters
             transactionBindingSource.DataSource = todoList; //Set data source.
 
             var result = await MetrobankRepository.GetAllAsync();
-
             accountList = result.ToList();
             bankBindingSource.DataSource = accountList; //Set data source.
+
+
 
             _view.ContactDataGrid.Columns[0].HeaderText = "Name";
             _view.ContactDataGrid.Columns[1].Visible = false;
@@ -114,7 +121,6 @@ namespace BudgetBuddy.Presenters
 
 
 
-            //MessageBox.Show($"{_view.RecentTransactions.Columns.Count}");
             //_view.RecentTransactions.Columns[0].HeaderText = "Transaction";
             //_view.RecentTransactions.Columns[1].HeaderText = "Type";
             //_view.RecentTransactions.Columns[2].HeaderText = "Date";
@@ -156,31 +162,7 @@ namespace BudgetBuddy.Presenters
 
 
 
-        public async Task LoadCheckingAccount(string external_id)
-        {
-            if (external_id == null)
-            {
-                _view.HasChecking = false;
-
-
-            }
-            else
-            {
-                var checking_account = await MetrobankRepository.GetAccountFromJSONServer(external_id);
-
-                _view.owner_name = checking_account.owner_name;
-                _view.account_number = checking_account.account_number;
-                _view.expiry_date = checking_account.expiry_date.ToString("MM/yy");
-
-                _view.checking_balance = $"₱ {checking_account.current_balance.ToString():n}";
-
-    
-
-                
-            }
-
-         
-        }
+   
 
         public async Task LoadSavingsAccount(string external_id)
         {
@@ -215,7 +197,6 @@ namespace BudgetBuddy.Presenters
 
                 transactionList = _accountRepository.GetTransactionsList();
                 transactionBindingSource.DataSource = transactionList; //Set data source.
-
 
                 if (external_ID != null) 
                 {
