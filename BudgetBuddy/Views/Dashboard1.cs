@@ -58,7 +58,8 @@ namespace BudgetBuddy.Views
             };
             UserProfile = new Profile(this)
             {
-                Dock = DockStyle.Fill
+                Dock = DockStyle.Fill,
+                
             };
             Voucher = new Vouchers(this)
             {
