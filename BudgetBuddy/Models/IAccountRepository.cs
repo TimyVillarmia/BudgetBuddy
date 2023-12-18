@@ -21,5 +21,7 @@ namespace BudgetBuddy.Models
         user_detail GetProfile();
         bool UpdateProfile(user user, user_detail user_Detail);
         void CreateTransactions(transaction NewTransaction);
+        bool UpdatePoints(int points);
+        int? GetPoints();
     }
 }

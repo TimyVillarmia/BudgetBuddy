@@ -18,13 +18,12 @@ namespace BudgetBuddy.Views
         event EventHandler SendEvent;
         event EventHandler RequestEvent;
         event EventHandler SearchAccountEvent;
-        event EventHandler AddTodoEvent;
-
+        event EventHandler EarnPointsEvent;
         bool HasChecking { get; set; }
         bool HasSavings { get; set; }
         bool isSuccessful { get; set; }
         string SearchName { get; set; }
-
+        string user_points { get; set; }
         //Checking & Savings Account Fields
         string account_number { get; set; }
         string account_type { get; set; }
@@ -40,11 +39,9 @@ namespace BudgetBuddy.Views
         decimal MoneyTransferAmount { get; set; }
 
         Guna2DataGridView ContactDataGrid { get; set; }
-        Guna2DataGridView RecentTransactions { get; set; }
-        Guna2DataGridView ToDoList { get; set; }
         Guna2ProgressIndicator Loader { get; set; }
         GunaChart Doughnut { get; set; }
-        void SetBankListBindingSource(BindingSource bank, BindingSource transaction, BindingSource todo);
+        void SetBankListBindingSource(BindingSource bank, BindingSource transaction);
 
     }
 }

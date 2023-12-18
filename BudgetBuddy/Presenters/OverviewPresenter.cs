@@ -53,16 +53,39 @@ namespace BudgetBuddy.Presenters
             _view.SearchAccountEvent += SearchAccount;
             _view.SendEvent += SendMoneyTo;
             _view.RequestEvent += RequestMoneyFrom;
+            _view.EarnPointsEvent += EarnPoints;
 
             _view1.AddNewCardEvent += AddCardMethod;
 
 
 
             LoadAllDataGridList();
-            _view.SetBankListBindingSource(bankBindingSource, transactionBindingSource, todoBindingSource);
+            _view.SetBankListBindingSource(bankBindingSource, transactionBindingSource);
 
             LoadDoughnutChart();
 
+
+
+        }
+
+        private void EarnPoints(object sender, EventArgs e)
+        {
+            transactionList = _accountRepository.GetTransactionsList();
+
+            var today = DateTime.Today.ToString("yyyy-MM-dd");
+
+
+            var subscriptionDataSet = transactionList
+                                    .Where(type => type.date == DateTime.Parse(today))
+                                    .Select(amount => amount.amount)
+                                    .Sum();
+
+
+            if (subscriptionDataSet >= 200)
+            {
+                _accountRepository.UpdatePoints(100);
+                _view.user_points = $"{_accountRepository.GetPoints()}";
+            }
 
 
         }
@@ -109,8 +132,9 @@ namespace BudgetBuddy.Presenters
         {
             transactionList = _accountRepository.GetTransactionsList();
 
+            _view.Doughnut.Datasets.Clear();
+            dataset.DataPoints.Clear();
 
-            
 
             //Chart configuration
             _view.Doughnut.Title.Text = "Spending Acitivities";
@@ -118,8 +142,7 @@ namespace BudgetBuddy.Presenters
             _view.Doughnut.XAxes.Display = false;
             _view.Doughnut.YAxes.Display = false;
 
-
-
+            dataset.Label = "Spending";
 
            
 
@@ -146,7 +169,6 @@ namespace BudgetBuddy.Presenters
                                        .Sum();
 
 
-            
 
 
             dataset.DataPoints.Add("Subscription", Convert.ToDouble(subscriptionDataSet));
@@ -158,12 +180,9 @@ namespace BudgetBuddy.Presenters
             dataset.DataPoints.Add("MoneyTransfer", Convert.ToDouble(moneyTransferDataSet));
 
 
-            //Create a new dataset `
-
-            //Add a new dataset to a chart.Datasets
+      
+ 
             _view.Doughnut.Datasets.Add(dataset);
-
-
 
             //An update was made to re-render the chart
             _view.Doughnut.Update();

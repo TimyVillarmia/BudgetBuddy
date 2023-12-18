@@ -3,6 +3,7 @@ using BudgetBuddy.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -66,6 +67,60 @@ namespace BudgetBuddy.Repositories
                 return false;
             }
 
+        }
+
+
+        public int? GetPoints()
+        {
+            try
+            {
+                var points = (from ud in _db.user_details
+                                      join u in _db.users on ud.user_id equals u.user_id
+                                      where u.email == Session.CurrentUser
+                                      select ud.user_points).First();
+
+
+
+
+                return points;
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+
+
+            }
+
+
+        }
+
+
+        public bool UpdatePoints(int points)
+        {
+
+            try
+            {
+                var update_details = (from ud in _db.user_details
+                                      join u in _db.users on ud.user_id equals u.user_id
+                                      where u.email == Session.CurrentUser
+                                      select ud).FirstOrDefault();
+
+
+                update_details.user_points += points;
+
+                _db.SubmitChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+
+            }
+
+
+ 
         }
 
         public bool UpdateProfile(user user, user_detail user_Detail)

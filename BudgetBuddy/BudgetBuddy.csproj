@@ -319,6 +319,12 @@
       <DependentUpon>Confirmation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IVouchersView.cs" />
+    <Compile Include="Views\UserControls\MissionComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\MissionComponent.Designer.cs">
+      <DependentUpon>MissionComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\UserControls\Overview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -407,6 +413,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Confirmation.resx">
       <DependentUpon>Confirmation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\MissionComponent.resx">
+      <DependentUpon>MissionComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Overview.resx">
       <DependentUpon>Overview.cs</DependentUpon>
@@ -544,6 +553,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BudgetBuddy.sql" />
+    <None Include="Resources\quest.png" />
     <None Include="Resources\user.png" />
     <None Include="Resources\Netflix.png" />
     <None Include="Resources\Spotify.png" />
