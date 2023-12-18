@@ -8,11 +8,10 @@ using System.Windows.Forms;
 
 namespace BudgetBuddy.Views
 {
-    public interface ITransactionsView
+    public interface IVouchersView
     {
         event EventHandler LoadTransactions;
-        Guna2DataGridView TransactionsGrid { get; set; }
-        void SetTransactionListBindingSource(BindingSource transaction);
+
 
 
     }

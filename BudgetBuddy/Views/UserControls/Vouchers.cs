@@ -12,11 +12,11 @@ using BudgetBuddy.Views;
 
 namespace BudgetBuddy.Views.UserControls
 {
-    public partial class Transactions : UserControl, ITransactionsView
+    public partial class Vouchers : UserControl, IVouchersView
     {
         public Dashboard1 Dashboard;
 
-        public Transactions(Dashboard1 dashboard1)
+        public Vouchers(Dashboard1 dashboard1)
         {
             InitializeComponent();
             Dashboard = dashboard1;
@@ -41,17 +41,11 @@ namespace BudgetBuddy.Views.UserControls
 
      
 
-        public Guna2DataGridView TransactionsGrid
-        {
-            get { return TransactionDataGrid; }
-            set { TransactionDataGrid = value; }
-        }
 
         public event EventHandler LoadTransactions;
 
         public void SetTransactionListBindingSource(BindingSource transaction)
         {
-            TransactionDataGrid.DataSource = transaction;
         }
 
     }

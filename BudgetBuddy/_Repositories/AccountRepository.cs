@@ -44,7 +44,12 @@ namespace BudgetBuddy.Repositories
                 {
                     _db.users.InsertOnSubmit(user);
                     _db.SubmitChanges();
-                    user_Detail.user_id = user.user_id;
+
+                    var getID = (from u in _db.users
+                                 where u.email == user.email
+                                 select u.user_id).FirstOrDefault();
+
+                    user_Detail.user_id = getID;
                     _db.user_details.InsertOnSubmit(user_Detail);
                     _db.SubmitChanges();
 
@@ -60,6 +65,46 @@ namespace BudgetBuddy.Repositories
                 MessageBox.Show(e.Message);
                 return false;
             }
+
+        }
+
+        public bool UpdateProfile(user user, user_detail user_Detail)
+        {
+
+
+            try
+            {
+
+                HashSalt hashSalt = GenerateSaltedHash(user.password_hash);
+
+
+                var get_user = (from u in _db.users
+                             where u.email == Session.CurrentUser
+                             select u).FirstOrDefault();
+
+                var update_details = (from ud in _db.user_details
+                                      where ud.user_id == get_user.user_id
+                                      select ud).FirstOrDefault();
+
+                get_user.password_hash = hashSalt.Hash;
+                get_user.password_salt = hashSalt.Salt;
+
+                update_details.first_name = user_Detail.first_name;
+                update_details.last_name = user_Detail.last_name;
+
+
+                _db.SubmitChanges();
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
+                //return false;
+            }
+
+
 
         }
 
@@ -219,41 +264,30 @@ namespace BudgetBuddy.Repositories
         }
 
 
-        public IEnumerable<TodoModel> GetTodoList()
+        public void UploadProfilePicture(string profile_src)
         {
+            try
+            {
+                var queryjoin = (from ud in _db.user_details
+                                 join user in _db.users on ud.user_id equals user.user_id
+                                 where user.email == Session.CurrentUser
+                                 select ud).FirstOrDefault();
 
+                queryjoin.profile_src = profile_src;
 
-            //var queryjoin = (from todo in _db.user_todos
-            //                 join user in _db.users on todo.user_id equals user.user_id
-            //                 where user.email == Session.CurrentUser
-            //                 select new TodoModel
-            //                 {
-            //                     TodoName = todo.todo_name,
-            //                     TodoDate = todo.date.ToString("yyyy/MM/dd")
-            //                 }).ToList();
+                _db.SubmitChanges();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-
-
-            //return queryjoin;
-            return null;
-        }
-
-        public void CreateTodo(user_todo newTodo)
-        {
-
-            //var queryID = (from user in _db.users
-            //                 where user.email == Session.CurrentUser
-            //                 select user).FirstOrDefault();
-
-
-            //newTodo.user_id = queryID.user_id;
-
-            //_db.user_todos.InsertOnSubmit(newTodo);
-            //_db.SubmitChanges();
 
 
 
         }
+
+
         public void CreateTransactions(transaction NewTransaction)
         {
             try
@@ -287,5 +321,23 @@ namespace BudgetBuddy.Repositories
             }
         }
 
+        public user_detail GetProfile()
+        {
+            var profile = (from ud in _db.user_details
+                           join u in _db.users on ud.user_id equals u.user_id
+                           where u.email == Session.CurrentUser.ToString()
+                           select ud).FirstOrDefault();
+
+            if (profile != null)
+            {
+                return profile;
+
+            }
+            else
+            {
+                return null;
+            }
+
+        }
     }
 }

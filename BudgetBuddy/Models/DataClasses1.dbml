@@ -13,14 +13,14 @@
       <Association Name="users_bank_account_transaction" Member="users_bank_account" ThisKey="users_bank_account_id" OtherKey="users_bank_account_id" Type="users_bank_account" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.users_bank_accounts" Member="users_bank_accounts">
-    <Type Name="users_bank_account">
-      <Column Name="users_bank_account_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="external_id" Type="System.String" DbType="Char(36) NOT NULL" CanBeNull="false" />
-      <Column Name="account_type" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="users_bank_account_transaction" Member="transactions" ThisKey="users_bank_account_id" OtherKey="users_bank_account_id" Type="transaction" />
-      <Association Name="user_users_bank_account" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
+  <Table Name="dbo.vouchers" Member="vouchers">
+    <Type Name="voucher">
+      <Column Name="voucher_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="voucher_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="required_points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="voucher_type" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="voucher_reward" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="voucher_user_voucher" Member="user_vouchers" ThisKey="voucher_id" OtherKey="voucher_id" Type="user_voucher" />
     </Type>
   </Table>
   <Table Name="dbo.user_details" Member="user_details">
@@ -30,16 +30,17 @@
       <Column Name="last_name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
       <Column Name="profile_src" Type="System.String" DbType="VarChar(64)" CanBeNull="true" />
       <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="user_points" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="user_user_detail" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.user_todo" Member="user_todos">
-    <Type Name="user_todo">
-      <Column Name="todo_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="todo_name" Type="System.String" DbType="VarChar(64) NOT NULL" CanBeNull="false" />
-      <Column Name="date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+  <Table Name="dbo.user_voucher" Member="user_vouchers">
+    <Type Name="user_voucher">
+      <Column Name="user_voucher_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="user_user_todo" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
+      <Column Name="voucher_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="voucher_user_voucher" Member="voucher" ThisKey="voucher_id" OtherKey="voucher_id" Type="voucher" IsForeignKey="true" />
+      <Association Name="user_user_voucher" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.users" Member="users">
@@ -48,9 +49,19 @@
       <Column Name="email" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="password_hash" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
       <Column Name="password_salt" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
-      <Association Name="user_users_bank_account" Member="users_bank_accounts" ThisKey="user_id" OtherKey="user_id" Type="users_bank_account" />
       <Association Name="user_user_detail" Member="user_details" ThisKey="user_id" OtherKey="user_id" Type="user_detail" />
-      <Association Name="user_user_todo" Member="user_todos" ThisKey="user_id" OtherKey="user_id" Type="user_todo" />
+      <Association Name="user_user_voucher" Member="user_vouchers" ThisKey="user_id" OtherKey="user_id" Type="user_voucher" />
+      <Association Name="user_users_bank_account" Member="users_bank_accounts" ThisKey="user_id" OtherKey="user_id" Type="users_bank_account" />
+    </Type>
+  </Table>
+  <Table Name="dbo.users_bank_accounts" Member="users_bank_accounts">
+    <Type Name="users_bank_account">
+      <Column Name="users_bank_account_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="external_id" Type="System.String" DbType="Char(36) NOT NULL" CanBeNull="false" />
+      <Column Name="account_type" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="users_bank_account_transaction" Member="transactions" ThisKey="users_bank_account_id" OtherKey="users_bank_account_id" Type="transaction" />
+      <Association Name="user_users_bank_account" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

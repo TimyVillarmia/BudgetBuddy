@@ -27,13 +27,12 @@ namespace BudgetBuddy.Presenters
 
         private IEnumerable<Users> accountList;
         private IEnumerable<TransactionModel> transactionList;
-        private IEnumerable<TodoModel> todoList;
 
 
         private BindingSource bankBindingSource;
         private BindingSource transactionBindingSource;
         private BindingSource todoBindingSource;
-
+        public GunaDoughnutDataset dataset = new GunaDoughnutDataset();
 
         // constructor
         public OverviewPresenter(IAccountRepository accountRepository, IOverviewView view, IAddCardView view1)
@@ -122,7 +121,7 @@ namespace BudgetBuddy.Presenters
 
 
 
-            var dataset = new GunaDoughnutDataset();
+           
 
 
 
@@ -159,7 +158,7 @@ namespace BudgetBuddy.Presenters
             dataset.DataPoints.Add("MoneyTransfer", Convert.ToDouble(moneyTransferDataSet));
 
 
-            //Create a new dataset 
+            //Create a new dataset `
 
             //Add a new dataset to a chart.Datasets
             _view.Doughnut.Datasets.Add(dataset);
@@ -179,8 +178,6 @@ namespace BudgetBuddy.Presenters
             transactionList = _accountRepository.GetTransactionsList();
             transactionBindingSource.DataSource = transactionList; //Set data source.
 
-            todoList = _accountRepository.GetTodoList();
-            transactionBindingSource.DataSource = todoList; //Set data source.
 
             var result = await MetrobankRepository.GetAllAsync();
             accountList = result.ToList();
@@ -266,6 +263,7 @@ namespace BudgetBuddy.Presenters
             try
             {
                 
+
                 var external_ID = _accountRepository.GetBankAccountExternal_ID(Session.CurrentUser);
 
                 transactionList = _accountRepository.GetTransactionsList();

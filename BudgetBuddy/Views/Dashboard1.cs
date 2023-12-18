@@ -15,7 +15,7 @@ using Guna.UI2.WinForms;
 
 namespace BudgetBuddy.Views
 {
-    public partial class Dashboard1 : Form
+    public partial class Dashboard1 : Form, IDashboardView
     {
         public Dashboard1()
         {
@@ -25,14 +25,25 @@ namespace BudgetBuddy.Views
 
         public Overview Overview { get; set; }
         public AddCard AddCard { get; set; }
-        public Transactions Transactions { get; set; }
+        public Vouchers Voucher { get; set; }
         public Payments Payments { get; set; }
         public Budgeting Budgeting { get; set; }
+        public Profile UserProfile { get; set; }
+        public Guna2CirclePictureBox ProfileCircleBtn
+        {
+            get { return ProfileBtn; }
+            set { ProfileBtn = value; }
+        }
+
         public Guna2Panel DBPanel
         {
             get { return DashboardPanel; }
             set { DashboardPanel = value; }
         }
+
+        public string Profile_Src { get; set; }
+
+        public event EventHandler LoadProfileEvent;
 
         private void Dashboard1_Load(object sender, EventArgs e)
         {
@@ -45,8 +56,11 @@ namespace BudgetBuddy.Views
             {
                 Dock = DockStyle.Fill
             };
-
-            Transactions = new Transactions(this)
+            UserProfile = new Profile(this)
+            {
+                Dock = DockStyle.Fill
+            };
+            Voucher = new Vouchers(this)
             {
                 Dock = DockStyle.Fill
             };
@@ -66,15 +80,19 @@ namespace BudgetBuddy.Views
             };
    
             IOverviewView overview = Overview;
-            ITransactionsView transactionsView = Transactions;
+            IProfileView profile = UserProfile;
+            IVouchersView transactionsView = Voucher;
             IPaymentView paymentView = Payments;
             IAddCardView addcard = AddCard;
             IBudgetingView budgetingview = Budgeting;
+            IDashboardView dashboardView = this;
 
             new OverviewPresenter(accountRepository, overview, addcard);
-            new TransactionsPresenter(accountRepository, transactionsView);
+            new ProfilePresenter(accountRepository, profile);
+            new VouchersPresenter(accountRepository, transactionsView);
             new PaymentPresenter(accountRepository, paymentView);
             new BudgetingPresenter(accountRepository, budgetingview);
+            new DashboardPresenter(accountRepository, dashboardView);
 
 
 
@@ -111,6 +129,27 @@ namespace BudgetBuddy.Views
         private void AssociateAndRaiseViewEvents()
         {
 
+            this.Load += delegate
+            {
+
+                string[] s = { "\\bin" };
+                string appPath = Application.StartupPath.Split(s, StringSplitOptions.None)[0] + @"\Resources\UserProfile\";
+
+
+                LoadProfileEvent?.Invoke(this, EventArgs.Empty);
+
+
+                if (Profile_Src != string.Empty)
+                {
+
+                    ProfileBtn.Image = new Bitmap(appPath + Profile_Src);
+                }
+                else
+                {
+                    ProfileBtn.Image = Properties.Resources.user;
+                }
+            };
+
             OverviewBtn.CheckedChanged += delegate
             {
                 DashboardPanel.Controls.Clear();
@@ -127,18 +166,18 @@ namespace BudgetBuddy.Views
                 DashboardPanel.Controls.Clear();
                 DashboardPanel.Controls.Add(Budgeting);
                 //Budgeting.BringToFront();
-                Transactions.Focus();
+                Voucher.Focus();
                 FormatBtn(BudgetingBtn);
 
 
             };
-            TransactionBtn.CheckedChanged += delegate
+            VouchersBtn.CheckedChanged += delegate
             {
                 DashboardPanel.Controls.Clear();
-                DashboardPanel.Controls.Add(Transactions);
+                DashboardPanel.Controls.Add(Voucher);
                 //Transactions.BringToFront();
-                Transactions.Focus();
-                FormatBtn(TransactionBtn);
+                Voucher.Focus();
+                FormatBtn(VouchersBtn);
 
 
             };
@@ -147,15 +186,15 @@ namespace BudgetBuddy.Views
                 DashboardPanel.Controls.Clear();
                 DashboardPanel.Controls.Add(Payments);
                 //Payments.BringToFront();
-                Transactions.Focus();
                 FormatBtn(PaymentBtn);
 
 
             };
 
-            SettingBtn.Click += delegate
+            ProfileBtn.Click += delegate
             {
-
+                DashboardPanel.Controls.Clear();
+                DashboardPanel.Controls.Add(UserProfile);
             };
 
             
@@ -163,6 +202,7 @@ namespace BudgetBuddy.Views
 
 
         }
+
 
     }
 }

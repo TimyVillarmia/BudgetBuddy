@@ -260,12 +260,14 @@
     <Compile Include="Models\TransactionModel.cs" />
     <Compile Include="Models\Users.cs" />
     <Compile Include="Presenters\BudgetingPresenter.cs" />
+    <Compile Include="Presenters\DashboardPresenter.cs" />
     <Compile Include="Presenters\OverviewPresenter.cs" />
     <Compile Include="Presenters\PaymentPresenter.cs" />
+    <Compile Include="Presenters\ProfilePresenter.cs" />
     <Compile Include="Presenters\RecoveryPresenter.cs" />
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Presenters\SignUpPresenter.cs" />
-    <Compile Include="Presenters\TransactionsPresenter.cs" />
+    <Compile Include="Presenters\VouchersPresenter.cs" />
     <Compile Include="Resources\Page1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -292,8 +294,10 @@
     </Compile>
     <Compile Include="Views\IAddCardView.cs" />
     <Compile Include="Views\IBudgetingView.cs" />
+    <Compile Include="Views\IDashboardView.cs" />
     <Compile Include="Views\IOverviewView.cs" />
     <Compile Include="Views\IPaymentView.cs" />
+    <Compile Include="Views\IProfileView.cs" />
     <Compile Include="Views\IRecovery1View.cs" />
     <Compile Include="Views\IRecovery2View.cs" />
     <Compile Include="Views\UserControls\AddCard.cs">
@@ -314,7 +318,7 @@
     <Compile Include="Views\UserControls\Confirmation.Designer.cs">
       <DependentUpon>Confirmation.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\ITransactionsView.cs" />
+    <Compile Include="Views\IVouchersView.cs" />
     <Compile Include="Views\UserControls\Overview.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -333,6 +337,12 @@
     </Compile>
     <Compile Include="Views\UserControls\Payments.Designer.cs">
       <DependentUpon>Payments.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserControls\Profile.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\UserControls\Profile.Designer.cs">
+      <DependentUpon>Profile.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\Recovery1.cs">
       <SubType>UserControl</SubType>
@@ -359,11 +369,11 @@
     <Compile Include="Views\UserControls\Recovery2.Designer.cs">
       <DependentUpon>Recovery2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\UserControls\Transactions.cs">
+    <Compile Include="Views\UserControls\Vouchers.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\Transactions.Designer.cs">
-      <DependentUpon>Transactions.cs</DependentUpon>
+    <Compile Include="Views\UserControls\Vouchers.Designer.cs">
+      <DependentUpon>Vouchers.cs</DependentUpon>
     </Compile>
     <Compile Include="_Repositories\AccountRepository.cs" />
     <Compile Include="_Repositories\BaseRepository.cs" />
@@ -407,6 +417,9 @@
     <EmbeddedResource Include="Views\UserControls\Payments.resx">
       <DependentUpon>Payments.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\UserControls\Profile.resx">
+      <DependentUpon>Profile.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Recovery1.resx">
       <DependentUpon>Recovery1.cs</DependentUpon>
     </EmbeddedResource>
@@ -432,8 +445,8 @@
     <EmbeddedResource Include="Views\UserControls\Recovery2.resx">
       <DependentUpon>Recovery2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\Transactions.resx">
-      <DependentUpon>Transactions.cs</DependentUpon>
+    <EmbeddedResource Include="Views\UserControls\Vouchers.resx">
+      <DependentUpon>Vouchers.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Models\DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
@@ -531,6 +544,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BudgetBuddy.sql" />
+    <None Include="Resources\user.png" />
     <None Include="Resources\Netflix.png" />
     <None Include="Resources\Spotify.png" />
     <None Include="Resources\Youtube.png" />
@@ -545,6 +559,9 @@
     <None Include="Resources\Figma.png" />
     <None Include="Resources\Budgeting.png" />
     <None Include="Resources\Statistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\UserProfile\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Fody.4.0.2\build\Fody.targets" Condition="Exists('..\packages\Fody.4.0.2\build\Fody.targets')" />
