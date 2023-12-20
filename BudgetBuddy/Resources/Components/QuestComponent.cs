@@ -59,5 +59,28 @@ namespace BudgetBuddy.Views.UserControls
            
 
         }
+
+        public QuestComponent(string quest_description, int quest_reward, DateTime quest_date)
+        {
+            InitializeComponent();
+
+            _quest_description = quest_description;
+            _quest_reward = quest_reward;
+            _quest_date = quest_date;
+
+            MissionName.Text = _quest_description;
+            PointsLbl.Text = $"{_quest_reward} pts.";
+
+            if (_status == "Complete")
+            {
+                this.BackColor = Color.Green;
+            }
+            else
+            {
+                this.BackColor = SystemColors.Control;
+            }
+
+
+        }
     }
 }

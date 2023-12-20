@@ -32,6 +32,12 @@ namespace BudgetBuddy.Views.UserControls
         }
         public string Profile_Src {get; set; }
         public bool isSuccessful { get; set; }
+        public FlowLayoutPanel VoucherPanel
+        {
+            get { return voucherPanel; }
+            set {  voucherPanel = value; }
+
+        }
 
         public Profile(Dashboard1 dashboard)
         {

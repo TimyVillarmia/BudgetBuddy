@@ -51,8 +51,8 @@ namespace BudgetBuddy.Presenters.UserControls
                         await Session.SendOTP(EmailTxtBox.Text);
                         Session.CurrentUser = EmailTxtBox.Text;
                         MainForm.States = MainForm.states.SignUp;
-                        MainForm.Confirmation.BringToFront();
-                        MainForm.Confirmation.Focus();
+                        MainForm.MainPanel.Controls.Clear();
+                        MainForm.MainPanel.Controls.Add(MainForm.Confirmation);
                         FirstNameTxtBox.Clear();
                         LastNameTxtBox.Clear();
                         EmailTxtBox.Clear();
@@ -87,7 +87,10 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void SignInLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MainForm.SignIn.BringToFront();
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(MainForm.SignIn);
+
+
 
         }
 

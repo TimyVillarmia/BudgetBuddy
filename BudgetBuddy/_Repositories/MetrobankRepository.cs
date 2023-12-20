@@ -233,7 +233,7 @@ namespace BudgetBuddy._Repositories
         }
 
         //Now define your asynchronous method which will retrieve all your Accounts.
-        public static async Task<IEnumerable<Users>> GetAllAsync()
+        public static async Task<IEnumerable<UserModel>> GetAllAsync()
         {
             //Define your baseUrl
             string baseUrl = "https://my-json-server.typicode.com/TimyVillarmia/metrobank/accounts";
@@ -253,14 +253,14 @@ namespace BudgetBuddy._Repositories
                             //If the data isn't null return log convert the data using newtonsoft JObject Parse class method on the data.
                             if (data != null)
                             {
-                                var result = JsonConvert.DeserializeObject<IEnumerable<Users>>(data);
+                                var result = JsonConvert.DeserializeObject<IEnumerable<UserModel>>(data);
 
                                 return result.Where(c => c.owner_name != "Timy Villarmia");
                             }
                             else
                             {
                                 MessageBox.Show("NO Data----------");
-                                throw new ArgumentNullException(nameof(Users));
+                                throw new ArgumentNullException(nameof(UserModel));
                             }
 
                         }

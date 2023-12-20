@@ -6,8 +6,7 @@
       <Column Name="quest_description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="quest_reward" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="quest_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
-      <Column Name="status_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="quest_status_quest" Member="quest_status" ThisKey="status_id" OtherKey="status_id" Type="quest_status" IsForeignKey="true" />
+      <Association Name="quest_user_quest" Member="user_quests" ThisKey="quest_id" OtherKey="quest_id" Type="user_quest" />
     </Type>
   </Table>
   <Table Name="dbo.vouchers" Member="vouchers">
@@ -24,7 +23,7 @@
     <Type Name="quest_status">
       <Column Name="status_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="status_name" Type="System.String" DbType="VarChar(55) NOT NULL" CanBeNull="false" />
-      <Association Name="quest_status_quest" Member="quests" ThisKey="status_id" OtherKey="status_id" Type="quest" />
+      <Association Name="quest_status_user_quest" Member="user_quests" ThisKey="status_id" OtherKey="status_id" Type="user_quest" />
     </Type>
   </Table>
   <Table Name="dbo.transactions" Member="transactions">
@@ -51,6 +50,18 @@
       <Association Name="user_user_detail" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.user_quests" Member="user_quests">
+    <Type Name="user_quest">
+      <Column Name="user_quest_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="user_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="quest_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date_completed" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="status_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="quest_user_quest" Member="quest" ThisKey="quest_id" OtherKey="quest_id" Type="quest" IsForeignKey="true" />
+      <Association Name="quest_status_user_quest" Member="quest_status" ThisKey="status_id" OtherKey="status_id" Type="quest_status" IsForeignKey="true" />
+      <Association Name="user_user_quest" Member="user" ThisKey="user_id" OtherKey="user_id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.user_voucher" Member="user_vouchers">
     <Type Name="user_voucher">
       <Column Name="user_voucher_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -67,6 +78,7 @@
       <Column Name="password_hash" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
       <Column Name="password_salt" Type="System.String" DbType="Char(64) NOT NULL" CanBeNull="false" />
       <Association Name="user_user_detail" Member="user_details" ThisKey="user_id" OtherKey="user_id" Type="user_detail" />
+      <Association Name="user_user_quest" Member="user_quests" ThisKey="user_id" OtherKey="user_id" Type="user_quest" />
       <Association Name="user_user_voucher" Member="user_vouchers" ThisKey="user_id" OtherKey="user_id" Type="user_voucher" />
       <Association Name="user_users_bank_account" Member="users_bank_accounts" ThisKey="user_id" OtherKey="user_id" Type="users_bank_account" />
     </Type>

@@ -44,7 +44,7 @@ namespace BudgetBuddy.Presenters
 
         private void LoadPoints(object sender, EventArgs e)
         {
-            _view.user_points = $"My Points: {_accountRepository.GetPoints()}";
+            _view.user_points = $"{_accountRepository.GetPoints()}";
         }
 
         private void LoadVoucherPage(object sender, EventArgs e)

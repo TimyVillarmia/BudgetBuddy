@@ -26,13 +26,12 @@ namespace BudgetBuddy.Presenters
         private readonly IOverviewView _view;
         private readonly IAddCardView _view1;
 
-        private IEnumerable<Users> accountList;
+        private IEnumerable<UserModel> accountList;
         private IEnumerable<TransactionModel> transactionList;
 
 
         private BindingSource bankBindingSource;
         private BindingSource transactionBindingSource;
-        private BindingSource todoBindingSource;
         public GunaDoughnutDataset dataset = new GunaDoughnutDataset();
 
         // constructor
@@ -40,7 +39,6 @@ namespace BudgetBuddy.Presenters
         {
             this.bankBindingSource = new BindingSource();
             this.transactionBindingSource = new BindingSource();
-            this.todoBindingSource = new BindingSource();
 
 
             _accountRepository = accountRepository;
@@ -84,8 +82,7 @@ namespace BudgetBuddy.Presenters
 
                 foreach (var quest in quests)
                 {
-                    _view.QuestLayoutPanel.Controls.Add(new QuestComponent(quest.quest_description, quest.quest_reward, quest.quest_date, quest.status_name));
-
+                    _view.QuestLayoutPanel.Controls.Add(new QuestComponent(quest.quest_description, quest.quest_reward, quest.quest_date));
 
                 }
 
@@ -102,6 +99,8 @@ namespace BudgetBuddy.Presenters
         private void EarnPoints(object sender, EventArgs e)
         {
             transactionList = _accountRepository.GetTransactionsList();
+            var quests = _accountRepository.GetQuests();
+
 
             var today = DateTime.Today.ToString("yyyy-MM-dd");
 
@@ -111,11 +110,14 @@ namespace BudgetBuddy.Presenters
                                     .Select(amount => amount.amount)
                                     .Sum();
 
+            
 
 
             if (todayTotalAmount >= 200)
             {
+      
                 _accountRepository.UpdatePoints(100);
+
                 _view.hasCompletedQuest = true;
                 _view.user_points = $"{_accountRepository.GetPoints() ?? 0}";
             }

@@ -14,6 +14,7 @@ using BudgetBuddy.Presenters.UserControls;
 using BudgetBuddy.Repositories;
 using BudgetBuddy.Views;
 using BudgetBuddy.Views.UserControls;
+using Guna.UI2.WinForms;
 
 namespace BudgetBuddy
 {
@@ -35,6 +36,12 @@ namespace BudgetBuddy
         public Recovery1 Recovery1 { get; set; }
         public Recovery2 Recovery2 { get; set; }
         public Confirmation Confirmation { get; set; }
+
+        public Guna2Panel MainPanel
+        {
+            get { return MainFormRightPanel; }
+            set { MainFormRightPanel = value; }
+        }
         public enum states
         {
             Login, // 0
@@ -98,10 +105,10 @@ namespace BudgetBuddy
             // inserting usercontrols in the panel
             MainFormLeftPanel.Controls.Add(pagination); //left
             MainFormRightPanel.Controls.Add(SignIn); //right
-            MainFormRightPanel.Controls.Add(SignUp);
-            MainFormRightPanel.Controls.Add(Recovery1);
-            MainFormRightPanel.Controls.Add(Recovery2);
-            MainFormRightPanel.Controls.Add(Confirmation);
+            //MainFormRightPanel.Controls.Add(SignUp);
+            //MainFormRightPanel.Controls.Add(Recovery1);
+            //MainFormRightPanel.Controls.Add(Recovery2);
+            //MainFormRightPanel.Controls.Add(Confirmation);
 
 
 

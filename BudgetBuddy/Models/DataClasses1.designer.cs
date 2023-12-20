@@ -45,6 +45,9 @@ namespace BudgetBuddy.Models
     partial void Insertuser_detail(user_detail instance);
     partial void Updateuser_detail(user_detail instance);
     partial void Deleteuser_detail(user_detail instance);
+    partial void Insertuser_quest(user_quest instance);
+    partial void Updateuser_quest(user_quest instance);
+    partial void Deleteuser_quest(user_quest instance);
     partial void Insertuser_voucher(user_voucher instance);
     partial void Updateuser_voucher(user_voucher instance);
     partial void Deleteuser_voucher(user_voucher instance);
@@ -126,6 +129,14 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<user_quest> user_quests
+		{
+			get
+			{
+				return this.GetTable<user_quest>();
+			}
+		}
+		
 		public System.Data.Linq.Table<user_voucher> user_vouchers
 		{
 			get
@@ -165,9 +176,7 @@ namespace BudgetBuddy.Models
 		
 		private System.DateTime _quest_date;
 		
-		private int _status_id;
-		
-		private EntityRef<quest_status> _quest_status;
+		private EntitySet<user_quest> _user_quests;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -181,13 +190,11 @@ namespace BudgetBuddy.Models
     partial void Onquest_rewardChanged();
     partial void Onquest_dateChanging(System.DateTime value);
     partial void Onquest_dateChanged();
-    partial void Onstatus_idChanging(int value);
-    partial void Onstatus_idChanged();
     #endregion
 		
 		public quest()
 		{
-			this._quest_status = default(EntityRef<quest_status>);
+			this._user_quests = new EntitySet<user_quest>(new Action<user_quest>(this.attach_user_quests), new Action<user_quest>(this.detach_user_quests));
 			OnCreated();
 		}
 		
@@ -271,61 +278,16 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status_id", DbType="Int NOT NULL")]
-		public int status_id
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_user_quest", Storage="_user_quests", ThisKey="quest_id", OtherKey="quest_id")]
+		public EntitySet<user_quest> user_quests
 		{
 			get
 			{
-				return this._status_id;
+				return this._user_quests;
 			}
 			set
 			{
-				if ((this._status_id != value))
-				{
-					if (this._quest_status.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.Onstatus_idChanging(value);
-					this.SendPropertyChanging();
-					this._status_id = value;
-					this.SendPropertyChanged("status_id");
-					this.Onstatus_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_status_quest", Storage="_quest_status", ThisKey="status_id", OtherKey="status_id", IsForeignKey=true)]
-		public quest_status quest_status
-		{
-			get
-			{
-				return this._quest_status.Entity;
-			}
-			set
-			{
-				quest_status previousValue = this._quest_status.Entity;
-				if (((previousValue != value) 
-							|| (this._quest_status.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._quest_status.Entity = null;
-						previousValue.quests.Remove(this);
-					}
-					this._quest_status.Entity = value;
-					if ((value != null))
-					{
-						value.quests.Add(this);
-						this._status_id = value.status_id;
-					}
-					else
-					{
-						this._status_id = default(int);
-					}
-					this.SendPropertyChanged("quest_status");
-				}
+				this._user_quests.Assign(value);
 			}
 		}
 		
@@ -347,6 +309,18 @@ namespace BudgetBuddy.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_user_quests(user_quest entity)
+		{
+			this.SendPropertyChanging();
+			entity.quest = this;
+		}
+		
+		private void detach_user_quests(user_quest entity)
+		{
+			this.SendPropertyChanging();
+			entity.quest = null;
 		}
 	}
 	
@@ -546,7 +520,7 @@ namespace BudgetBuddy.Models
 		
 		private string _status_name;
 		
-		private EntitySet<quest> _quests;
+		private EntitySet<user_quest> _user_quests;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -560,7 +534,7 @@ namespace BudgetBuddy.Models
 		
 		public quest_status()
 		{
-			this._quests = new EntitySet<quest>(new Action<quest>(this.attach_quests), new Action<quest>(this.detach_quests));
+			this._user_quests = new EntitySet<user_quest>(new Action<user_quest>(this.attach_user_quests), new Action<user_quest>(this.detach_user_quests));
 			OnCreated();
 		}
 		
@@ -604,16 +578,16 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_status_quest", Storage="_quests", ThisKey="status_id", OtherKey="status_id")]
-		public EntitySet<quest> quests
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_status_user_quest", Storage="_user_quests", ThisKey="status_id", OtherKey="status_id")]
+		public EntitySet<user_quest> user_quests
 		{
 			get
 			{
-				return this._quests;
+				return this._user_quests;
 			}
 			set
 			{
-				this._quests.Assign(value);
+				this._user_quests.Assign(value);
 			}
 		}
 		
@@ -637,13 +611,13 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
-		private void attach_quests(quest entity)
+		private void attach_user_quests(user_quest entity)
 		{
 			this.SendPropertyChanging();
 			entity.quest_status = this;
 		}
 		
-		private void detach_quests(quest entity)
+		private void detach_user_quests(user_quest entity)
 		{
 			this.SendPropertyChanging();
 			entity.quest_status = null;
@@ -1144,6 +1118,287 @@ namespace BudgetBuddy.Models
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_quests")]
+	public partial class user_quest : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _user_quest_id;
+		
+		private System.Nullable<int> _user_id;
+		
+		private System.Nullable<int> _quest_id;
+		
+		private System.Nullable<System.DateTime> _date_completed;
+		
+		private System.Nullable<int> _status_id;
+		
+		private EntityRef<quest> _quest;
+		
+		private EntityRef<quest_status> _quest_status;
+		
+		private EntityRef<user> _user;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onuser_quest_idChanging(int value);
+    partial void Onuser_quest_idChanged();
+    partial void Onuser_idChanging(System.Nullable<int> value);
+    partial void Onuser_idChanged();
+    partial void Onquest_idChanging(System.Nullable<int> value);
+    partial void Onquest_idChanged();
+    partial void Ondate_completedChanging(System.Nullable<System.DateTime> value);
+    partial void Ondate_completedChanged();
+    partial void Onstatus_idChanging(System.Nullable<int> value);
+    partial void Onstatus_idChanged();
+    #endregion
+		
+		public user_quest()
+		{
+			this._quest = default(EntityRef<quest>);
+			this._quest_status = default(EntityRef<quest_status>);
+			this._user = default(EntityRef<user>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_quest_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int user_quest_id
+		{
+			get
+			{
+				return this._user_quest_id;
+			}
+			set
+			{
+				if ((this._user_quest_id != value))
+				{
+					this.Onuser_quest_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_quest_id = value;
+					this.SendPropertyChanged("user_quest_id");
+					this.Onuser_quest_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_user_id", DbType="Int")]
+		public System.Nullable<int> user_id
+		{
+			get
+			{
+				return this._user_id;
+			}
+			set
+			{
+				if ((this._user_id != value))
+				{
+					if (this._user.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onuser_idChanging(value);
+					this.SendPropertyChanging();
+					this._user_id = value;
+					this.SendPropertyChanged("user_id");
+					this.Onuser_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quest_id", DbType="Int")]
+		public System.Nullable<int> quest_id
+		{
+			get
+			{
+				return this._quest_id;
+			}
+			set
+			{
+				if ((this._quest_id != value))
+				{
+					if (this._quest.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onquest_idChanging(value);
+					this.SendPropertyChanging();
+					this._quest_id = value;
+					this.SendPropertyChanged("quest_id");
+					this.Onquest_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_date_completed", DbType="Date")]
+		public System.Nullable<System.DateTime> date_completed
+		{
+			get
+			{
+				return this._date_completed;
+			}
+			set
+			{
+				if ((this._date_completed != value))
+				{
+					this.Ondate_completedChanging(value);
+					this.SendPropertyChanging();
+					this._date_completed = value;
+					this.SendPropertyChanged("date_completed");
+					this.Ondate_completedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status_id", DbType="Int")]
+		public System.Nullable<int> status_id
+		{
+			get
+			{
+				return this._status_id;
+			}
+			set
+			{
+				if ((this._status_id != value))
+				{
+					if (this._quest_status.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onstatus_idChanging(value);
+					this.SendPropertyChanging();
+					this._status_id = value;
+					this.SendPropertyChanged("status_id");
+					this.Onstatus_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_user_quest", Storage="_quest", ThisKey="quest_id", OtherKey="quest_id", IsForeignKey=true)]
+		public quest quest
+		{
+			get
+			{
+				return this._quest.Entity;
+			}
+			set
+			{
+				quest previousValue = this._quest.Entity;
+				if (((previousValue != value) 
+							|| (this._quest.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._quest.Entity = null;
+						previousValue.user_quests.Remove(this);
+					}
+					this._quest.Entity = value;
+					if ((value != null))
+					{
+						value.user_quests.Add(this);
+						this._quest_id = value.quest_id;
+					}
+					else
+					{
+						this._quest_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("quest");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_status_user_quest", Storage="_quest_status", ThisKey="status_id", OtherKey="status_id", IsForeignKey=true)]
+		public quest_status quest_status
+		{
+			get
+			{
+				return this._quest_status.Entity;
+			}
+			set
+			{
+				quest_status previousValue = this._quest_status.Entity;
+				if (((previousValue != value) 
+							|| (this._quest_status.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._quest_status.Entity = null;
+						previousValue.user_quests.Remove(this);
+					}
+					this._quest_status.Entity = value;
+					if ((value != null))
+					{
+						value.user_quests.Add(this);
+						this._status_id = value.status_id;
+					}
+					else
+					{
+						this._status_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("quest_status");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_quest", Storage="_user", ThisKey="user_id", OtherKey="user_id", IsForeignKey=true)]
+		public user user
+		{
+			get
+			{
+				return this._user.Entity;
+			}
+			set
+			{
+				user previousValue = this._user.Entity;
+				if (((previousValue != value) 
+							|| (this._user.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._user.Entity = null;
+						previousValue.user_quests.Remove(this);
+					}
+					this._user.Entity = value;
+					if ((value != null))
+					{
+						value.user_quests.Add(this);
+						this._user_id = value.user_id;
+					}
+					else
+					{
+						this._user_id = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("user");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.user_voucher")]
 	public partial class user_voucher : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1352,6 +1607,8 @@ namespace BudgetBuddy.Models
 		
 		private EntitySet<user_detail> _user_details;
 		
+		private EntitySet<user_quest> _user_quests;
+		
 		private EntitySet<user_voucher> _user_vouchers;
 		
 		private EntitySet<users_bank_account> _users_bank_accounts;
@@ -1373,6 +1630,7 @@ namespace BudgetBuddy.Models
 		public user()
 		{
 			this._user_details = new EntitySet<user_detail>(new Action<user_detail>(this.attach_user_details), new Action<user_detail>(this.detach_user_details));
+			this._user_quests = new EntitySet<user_quest>(new Action<user_quest>(this.attach_user_quests), new Action<user_quest>(this.detach_user_quests));
 			this._user_vouchers = new EntitySet<user_voucher>(new Action<user_voucher>(this.attach_user_vouchers), new Action<user_voucher>(this.detach_user_vouchers));
 			this._users_bank_accounts = new EntitySet<users_bank_account>(new Action<users_bank_account>(this.attach_users_bank_accounts), new Action<users_bank_account>(this.detach_users_bank_accounts));
 			OnCreated();
@@ -1471,6 +1729,19 @@ namespace BudgetBuddy.Models
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_quest", Storage="_user_quests", ThisKey="user_id", OtherKey="user_id")]
+		public EntitySet<user_quest> user_quests
+		{
+			get
+			{
+				return this._user_quests;
+			}
+			set
+			{
+				this._user_quests.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="user_user_voucher", Storage="_user_vouchers", ThisKey="user_id", OtherKey="user_id")]
 		public EntitySet<user_voucher> user_vouchers
 		{
@@ -1524,6 +1795,18 @@ namespace BudgetBuddy.Models
 		}
 		
 		private void detach_user_details(user_detail entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = null;
+		}
+		
+		private void attach_user_quests(user_quest entity)
+		{
+			this.SendPropertyChanging();
+			entity.user = this;
+		}
+		
+		private void detach_user_quests(user_quest entity)
 		{
 			this.SendPropertyChanging();
 			entity.user = null;

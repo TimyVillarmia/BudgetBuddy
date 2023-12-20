@@ -43,9 +43,14 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void AssociateAndRaiseViewEvents()
         {
+            this.Load += delegate
+            {
+                isSuccessful = false;
+            };
+
             // subscribing events using lambda expression and delagate
             // subscibe SignInBtn.Click event to delagate LoginAccountEvent
-            SignInBtn.Click += async delegate
+            SignInBtn.Click += delegate
             {
                 // invoking the event
                 LoginAccountEvent?.Invoke(this, EventArgs.Empty);
@@ -53,11 +58,12 @@ namespace BudgetBuddy.Presenters.UserControls
                 //after the LoginAccountEvent += LoginAccount from the SignInPresenter
                 if (isSuccessful)
                 {
-                    
-                    await Session.SendOTP(EmailTxtBox.Text);
                     Session.CurrentUser = EmailTxtBox.Text.Trim().ToLower();
                     MainForm.States = MainForm.states.Login;
-                    MainForm.Confirmation.BringToFront();
+
+                    MainForm.MainPanel.Controls.Clear();
+                    MainForm.MainPanel.Controls.Add(MainForm.Confirmation);
+
                     MainForm.Confirmation.Focus();
                     EmailTxtBox.Clear();
                     PasswordTxtBox.Clear();
@@ -99,7 +105,8 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void RecoveryLbl_Click(object sender, EventArgs e)
         {
-            MainForm.Recovery1.BringToFront();
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(MainForm.Recovery1);
         }
 
         private void EmailTxtBox_TextChanged(object sender, EventArgs e)
@@ -109,9 +116,9 @@ namespace BudgetBuddy.Presenters.UserControls
 
         private void SignupLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MainForm.SignUp.BringToFront();
-            
 
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(MainForm.SignUp);
         }
 
         private void PasswordTxtBox_TextChanged(object sender, EventArgs e)

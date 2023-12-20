@@ -42,6 +42,8 @@
             this.LastNameTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.FirstNameTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.voucherPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.label4 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProfilePicture)).BeginInit();
             this.SuspendLayout();
@@ -51,10 +53,10 @@
             this.EditProfilePic.BackColor = System.Drawing.Color.White;
             this.EditProfilePic.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditProfilePic.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
-            this.EditProfilePic.Location = new System.Drawing.Point(58, 312);
-            this.EditProfilePic.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.EditProfilePic.Location = new System.Drawing.Point(58, 294);
+            this.EditProfilePic.Margin = new System.Windows.Forms.Padding(2);
             this.EditProfilePic.Name = "EditProfilePic";
-            this.EditProfilePic.Size = new System.Drawing.Size(92, 25);
+            this.EditProfilePic.Size = new System.Drawing.Size(92, 26);
             this.EditProfilePic.TabIndex = 1;
             this.EditProfilePic.Text = "Edit Profile";
             // 
@@ -83,6 +85,8 @@
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.White;
+            this.guna2Panel1.Controls.Add(this.label4);
+            this.guna2Panel1.Controls.Add(this.voucherPanel);
             this.guna2Panel1.Controls.Add(this.ConfirmBtn);
             this.guna2Panel1.Controls.Add(this.EditProfilePic);
             this.guna2Panel1.Controls.Add(this.CancelBtn);
@@ -100,7 +104,7 @@
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
             this.guna2Panel1.ForeColor = System.Drawing.Color.White;
             this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(2);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(1440, 954);
             this.guna2Panel1.TabIndex = 14;
@@ -144,7 +148,7 @@
             this.ProfilePicture.BackColor = System.Drawing.Color.Black;
             this.ProfilePicture.ImageRotate = 0F;
             this.ProfilePicture.Location = new System.Drawing.Point(58, 87);
-            this.ProfilePicture.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ProfilePicture.Margin = new System.Windows.Forms.Padding(2);
             this.ProfilePicture.Name = "ProfilePicture";
             this.ProfilePicture.Size = new System.Drawing.Size(188, 203);
             this.ProfilePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -163,7 +167,7 @@
             this.ConfirmPassTxtbox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ConfirmPassTxtbox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.ConfirmPassTxtbox.Location = new System.Drawing.Point(994, 167);
-            this.ConfirmPassTxtbox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ConfirmPassTxtbox.Margin = new System.Windows.Forms.Padding(2);
             this.ConfirmPassTxtbox.Name = "ConfirmPassTxtbox";
             this.ConfirmPassTxtbox.PasswordChar = '\0';
             this.ConfirmPassTxtbox.PlaceholderText = "";
@@ -194,7 +198,7 @@
             this.ChangePassTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.ChangePassTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.ChangePassTxtBox.Location = new System.Drawing.Point(994, 87);
-            this.ChangePassTxtBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ChangePassTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.ChangePassTxtBox.Name = "ChangePassTxtBox";
             this.ChangePassTxtBox.PasswordChar = '\0';
             this.ChangePassTxtBox.PlaceholderText = "";
@@ -225,7 +229,7 @@
             this.LastNameTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.LastNameTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.LastNameTxtBox.Location = new System.Drawing.Point(421, 167);
-            this.LastNameTxtBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LastNameTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.LastNameTxtBox.Name = "LastNameTxtBox";
             this.LastNameTxtBox.PasswordChar = '\0';
             this.LastNameTxtBox.PlaceholderText = "";
@@ -256,7 +260,7 @@
             this.FirstNameTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.FirstNameTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.FirstNameTxtBox.Location = new System.Drawing.Point(421, 87);
-            this.FirstNameTxtBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.FirstNameTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.FirstNameTxtBox.Name = "FirstNameTxtBox";
             this.FirstNameTxtBox.PasswordChar = '\0';
             this.FirstNameTxtBox.PlaceholderText = "";
@@ -264,13 +268,34 @@
             this.FirstNameTxtBox.Size = new System.Drawing.Size(276, 29);
             this.FirstNameTxtBox.TabIndex = 14;
             // 
+            // voucherPanel
+            // 
+            this.voucherPanel.BackColor = System.Drawing.Color.White;
+            this.voucherPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.voucherPanel.ForeColor = System.Drawing.Color.Black;
+            this.voucherPanel.Location = new System.Drawing.Point(58, 455);
+            this.voucherPanel.Name = "voucherPanel";
+            this.voucherPanel.Size = new System.Drawing.Size(1322, 401);
+            this.voucherPanel.TabIndex = 32;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
+            this.label4.Location = new System.Drawing.Point(55, 413);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(162, 29);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "My Vouchers";
+            // 
             // Profile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(38)))), ((int)(((byte)(41)))));
             this.Controls.Add(this.guna2Panel1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Profile";
             this.Size = new System.Drawing.Size(1440, 954);
             this.guna2Panel1.ResumeLayout(false);
@@ -296,5 +321,7 @@
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Button ConfirmBtn;
         private Guna.UI2.WinForms.Guna2Button CancelBtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.FlowLayoutPanel voucherPanel;
     }
 }

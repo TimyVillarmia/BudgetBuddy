@@ -57,8 +57,11 @@ namespace BudgetBuddy.Views.UserControls
                     await Session.SendOTP(EmailTxtBox.Text);
                     Session.CurrentUser = EmailTxtBox.Text;
                     MainForm.States = MainForm.states.Recovery;
-                    MainForm.Confirmation.BringToFront();
+
+                    MainForm.MainPanel.Controls.Clear();
+                    MainForm.MainPanel.Controls.Add(MainForm.Confirmation);
                     MainForm.Confirmation.Focus();
+
                     EmailTxtBox.Clear();
                     }
                 else
@@ -88,7 +91,8 @@ namespace BudgetBuddy.Views.UserControls
 
         private void SignupLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MainForm.SignUp.BringToFront();
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(MainForm.SignUp);
         }
     }
 }

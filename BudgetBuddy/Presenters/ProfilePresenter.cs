@@ -1,5 +1,6 @@
 ﻿using BudgetBuddy.Models;
 using BudgetBuddy.Repositories;
+using BudgetBuddy.Resources.Components;
 using BudgetBuddy.Views;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,33 @@ namespace BudgetBuddy.Presenters
             _view.UploadImageEvent += UploadImage;
             _view.UpdateProfileEvent += UpdateProfile;
             _view.LoadProfileEvent += LoadProfile;
+            _view.LoadProfileEvent += LoadUserVoucher;
+        }
+
+        private void LoadUserVoucher(object sender, EventArgs e)
+        {
+            try
+            {
+                var user_vouchers = _accountRepository.GetUser_Vouchers();
+
+
+                foreach (var item in user_vouchers)
+                {
+                    _view.VoucherPanel.Controls.Add(new VoucherComponent(_view, item.voucher_id,
+                                                                        item.voucher_name,
+                                                                        item.required_points,
+                                                                        item.voucher_type,
+                                                                        item.voucher_reward,
+                                                                        _accountRepository, false));
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void LoadProfile(object sender, EventArgs e)

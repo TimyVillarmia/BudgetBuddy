@@ -32,13 +32,16 @@ namespace BudgetBuddy.Views.UserControls
             {
 
 
-                if (newPasswordTxtBox.Text == RnewPasswordTxtBox.Text)
+                if (newPasswordTxtBox.Text == RnewPasswordTxtBox.Text && newPasswordTxtBox.Text.Length >= 8)
                 {
                     UpdatePasswordEvent?.Invoke(this, EventArgs.Empty);
 
                     if (isSuccessful)
                     {
-                        MainForm.SignIn.BringToFront();
+                        MessageBox.Show("Password changed successfully");
+                        MainForm.MainPanel.Controls.Clear();
+                        MainForm.MainPanel.Controls.Add(MainForm.SignIn);
+
                         MainForm.SignIn.Focus();
                         newPasswordTxtBox.Clear();
                         RnewPasswordTxtBox.Clear();
@@ -52,7 +55,7 @@ namespace BudgetBuddy.Views.UserControls
                 }
                 else
                 {
-                    MessageBox.Show("Password is not Matched");
+                    MessageBox.Show("Make sure you completed the form correctly");
                 }
 
 
@@ -73,12 +76,13 @@ namespace BudgetBuddy.Views.UserControls
 
         private void SignupLbl_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MainForm.SignUp.BringToFront();
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(MainForm.SignUp);
         }
 
         private void newPasswordTxtBox_TextChanged(object sender, EventArgs e)
         {
-            if(newPasswordTxtBox.Text == RnewPasswordTxtBox.Text)
+            if(newPasswordTxtBox.Text.Length >= 8)
             {
                 newPasswordTxtBox.BorderColor = Color.Green;
                 RnewPasswordTxtBox.BorderColor = Color.Green;
@@ -92,8 +96,8 @@ namespace BudgetBuddy.Views.UserControls
                 RnewPasswordTxtBox.BorderColor = Color.Red;
                 ErrorLbl.Visible = true;
                 Error1Lbl.Visible = true;
-                ErrorLbl.Text = "The password you entered does not match";
-                Error1Lbl.Text = "The password you entered does not match";
+                ErrorLbl.Text = "The password must be greater than or equal 8 characters";
+
 
             }
         }

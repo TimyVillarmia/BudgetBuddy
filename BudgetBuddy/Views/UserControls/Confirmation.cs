@@ -1,5 +1,7 @@
 ﻿using BudgetBuddy.Models;
 using System;
+using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
 namespace BudgetBuddy.Views.UserControls
@@ -15,16 +17,23 @@ namespace BudgetBuddy.Views.UserControls
 
             InitializeComponent();
             MainForm = form;
-            ResendLbl.Click += AssociateAndRaiseViewEvents;
+            AssociateAndRaiseViewEvents();
 
         }
 
-        private void AssociateAndRaiseViewEvents(object sender, EventArgs e)
+
+
+        private void AssociateAndRaiseViewEvents()
         {
             ResendLbl.Click += async delegate
             {
                 await Session.SendOTP(Session.CurrentUser);
 
+            };
+
+            this.Load += async delegate
+            {
+                await Session.SendOTP(Session.CurrentUser);
             };
         }
 
@@ -67,7 +76,10 @@ namespace BudgetBuddy.Views.UserControls
                             fourthDigitOTP.Clear();
                             fifthDigitOTP.Clear();
                             sixthDigitOTP.Clear();
-                            MainForm.SignIn.BringToFront();
+
+                            MainForm.MainPanel.Controls.Clear();
+                            MainForm.MainPanel.Controls.Add(MainForm.SignIn);
+
                             MainForm.SignIn.Focus();
                             break;
 
@@ -79,8 +91,11 @@ namespace BudgetBuddy.Views.UserControls
                             fourthDigitOTP.Clear();
                             fifthDigitOTP.Clear();
                             sixthDigitOTP.Clear();
-                            MainForm.Recovery2.BringToFront();
+                            MainForm.MainPanel.Controls.Clear();
+                            MainForm.MainPanel.Controls.Add(MainForm.Recovery2);
+
                             MainForm.Recovery2.Focus();
+
                             break;
                     }
 
@@ -98,7 +113,9 @@ namespace BudgetBuddy.Views.UserControls
 
         private void CancelBtn_Click(object sender, EventArgs e)
         {
-            MainForm.SignIn.BringToFront();
+            MainForm.MainPanel.Controls.Clear();
+            MainForm.MainPanel.Controls.Add(MainForm.SignIn);
+            MainForm.SignIn.isSuccessful = false;
         }
 
 

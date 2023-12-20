@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BudgetBuddy.Models
 {
-    public class Users
+    public class UserModel
     {
         public string owner_name { get; set; }
         public string account_number { get; set; }

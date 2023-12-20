@@ -24,8 +24,9 @@ namespace BudgetBuddy.Models
         bool UpdatePoints(int points);
         int? GetPoints();
         IEnumerable<voucher> GetVouchers();
-        IEnumerable<Quest> GetQuests();
+        IEnumerable<quest> GetQuests();
 
+        IEnumerable<VoucherModel> GetUser_Vouchers();
         void RedeemVoucher(int voucher_id);
 
 
