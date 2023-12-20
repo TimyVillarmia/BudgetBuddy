@@ -1,5 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BudgetBuddy" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-CCUR4CG;Initial Catalog=BudgetBuddy;Integrated Security=True" SettingsObjectName="BudgetBuddy.Properties.Settings" SettingsPropertyName="BudgetBuddyConnectionString3" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.quest" Member="quests">
+    <Type Name="quest">
+      <Column Name="quest_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="quest_description" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="quest_reward" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="quest_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="status_id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="quest_status_quest" Member="quest_status" ThisKey="status_id" OtherKey="status_id" Type="quest_status" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vouchers" Member="vouchers">
+    <Type Name="voucher">
+      <Column Name="voucher_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="voucher_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="required_points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="voucher_type" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="voucher_reward" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="voucher_user_voucher" Member="user_vouchers" ThisKey="voucher_id" OtherKey="voucher_id" Type="user_voucher" />
+    </Type>
+  </Table>
+  <Table Name="dbo.quest_status" Member="quest_status">
+    <Type Name="quest_status">
+      <Column Name="status_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="status_name" Type="System.String" DbType="VarChar(55) NOT NULL" CanBeNull="false" />
+      <Association Name="quest_status_quest" Member="quests" ThisKey="status_id" OtherKey="status_id" Type="quest" />
+    </Type>
+  </Table>
   <Table Name="dbo.transactions" Member="transactions">
     <Type Name="transaction">
       <Column Name="transaction_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -11,16 +38,6 @@
       <Column Name="transaction_date" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
       <Column Name="users_bank_account_id" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="users_bank_account_transaction" Member="users_bank_account" ThisKey="users_bank_account_id" OtherKey="users_bank_account_id" Type="users_bank_account" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.vouchers" Member="vouchers">
-    <Type Name="voucher">
-      <Column Name="voucher_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="voucher_name" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
-      <Column Name="required_points" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="voucher_type" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="voucher_reward" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="voucher_user_voucher" Member="user_vouchers" ThisKey="voucher_id" OtherKey="voucher_id" Type="user_voucher" />
     </Type>
   </Table>
   <Table Name="dbo.user_details" Member="user_details">

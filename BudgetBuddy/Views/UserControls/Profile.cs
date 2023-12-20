@@ -77,7 +77,7 @@ namespace BudgetBuddy.Views.UserControls
                 ChangePassTxtBox.Text != string.Empty &&
                 ConfirmPassTxtbox.Text != string.Empty &&
                 ChangePassTxtBox.Text == ConfirmPassTxtbox.Text &&
-                ChangePassTxtBox.Text.Length > 8)
+                ChangePassTxtBox.Text.Length >= 8)
                 {
                     UpdateProfileEvent?.Invoke(this, EventArgs.Empty);
 

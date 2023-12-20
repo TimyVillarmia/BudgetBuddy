@@ -19,11 +19,13 @@ namespace BudgetBuddy.Views
         event EventHandler RequestEvent;
         event EventHandler SearchAccountEvent;
         event EventHandler EarnPointsEvent;
+        event EventHandler LoadQuestEvent;
         bool HasChecking { get; set; }
         bool HasSavings { get; set; }
         bool isSuccessful { get; set; }
         string SearchName { get; set; }
         string user_points { get; set; }
+        bool hasCompletedQuest { get; set; }
         //Checking & Savings Account Fields
         string account_number { get; set; }
         string account_type { get; set; }
@@ -41,6 +43,7 @@ namespace BudgetBuddy.Views
         Guna2DataGridView ContactDataGrid { get; set; }
         Guna2ProgressIndicator Loader { get; set; }
         GunaChart Doughnut { get; set; }
+        FlowLayoutPanel QuestLayoutPanel { get; set; }
         void SetBankListBindingSource(BindingSource bank, BindingSource transaction);
 
     }

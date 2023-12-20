@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Linq.Mapping;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -50,8 +51,12 @@ namespace BudgetBuddy.Presenters
 
             // subscribe the view's event to the presenter's event
             _view.LoadOverviewData += LoadOverview;
+            _view.LoadOverviewData += EarnPoints;
+            _view.LoadQuestEvent += LoadQuest;
+
             _view.SearchAccountEvent += SearchAccount;
             _view.SendEvent += SendMoneyTo;
+            _view.SendEvent += EarnPoints;
             _view.RequestEvent += RequestMoneyFrom;
             _view.EarnPointsEvent += EarnPoints;
 
@@ -68,6 +73,32 @@ namespace BudgetBuddy.Presenters
 
         }
 
+        private void LoadQuest(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                var quests = _accountRepository.GetQuests();
+
+
+                foreach (var quest in quests)
+                {
+                    _view.QuestLayoutPanel.Controls.Add(new QuestComponent(quest.quest_description, quest.quest_reward, quest.quest_date, quest.status_name));
+
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+
+
+        }
+
         private void EarnPoints(object sender, EventArgs e)
         {
             transactionList = _accountRepository.GetTransactionsList();
@@ -75,17 +106,24 @@ namespace BudgetBuddy.Presenters
             var today = DateTime.Today.ToString("yyyy-MM-dd");
 
 
-            var subscriptionDataSet = transactionList
+            var todayTotalAmount = transactionList
                                     .Where(type => type.date == DateTime.Parse(today))
                                     .Select(amount => amount.amount)
                                     .Sum();
 
 
-            if (subscriptionDataSet >= 200)
+
+            if (todayTotalAmount >= 200)
             {
                 _accountRepository.UpdatePoints(100);
-                _view.user_points = $"{_accountRepository.GetPoints()}";
+                _view.hasCompletedQuest = true;
+                _view.user_points = $"{_accountRepository.GetPoints() ?? 0}";
             }
+            else
+            {
+                _view.hasCompletedQuest = false;
+            }
+
 
 
         }
@@ -275,6 +313,8 @@ namespace BudgetBuddy.Presenters
 
         }
 
+ 
+
         private void LoadOverview(object sender, EventArgs e)
         {
 
@@ -288,6 +328,7 @@ namespace BudgetBuddy.Presenters
                 transactionList = _accountRepository.GetTransactionsList();
                 transactionBindingSource.DataSource = transactionList; //Set data source.
 
+                _view.user_points = $"{_accountRepository.GetPoints() ?? 0}";
 
                 if (external_ID != null) 
                 {

@@ -16,6 +16,13 @@ namespace BudgetBuddy.Views.UserControls
     {
         public Dashboard1 Dashboard;
 
+        public string user_points { get; set; }
+        FlowLayoutPanel IVouchersView.VoucherPanel
+        {
+            get { return voucherPanel; }
+            set { voucherPanel = value; }
+        }
+
         public Vouchers(Dashboard1 dashboard1)
         {
             InitializeComponent();
@@ -28,13 +35,14 @@ namespace BudgetBuddy.Views.UserControls
         {
             this.Load += delegate
             {
-                LoadTransactions?.Invoke(this, EventArgs.Empty);
+                voucherPanel.Controls.Clear();
+                LoadPointsEvent?.Invoke(this, EventArgs.Empty);
+                LoadVouchersEvent?.Invoke(this, EventArgs.Empty);
+                MyPoints.Text = "My points: " + user_points;
+
             };
 
-            this.Enter += delegate
-            {
-                LoadTransactions?.Invoke(this, EventArgs.Empty);
-            };
+
 
 
         }
@@ -42,11 +50,9 @@ namespace BudgetBuddy.Views.UserControls
      
 
 
-        public event EventHandler LoadTransactions;
+        public event EventHandler LoadVouchersEvent;
+        public event EventHandler LoadPointsEvent;
 
-        public void SetTransactionListBindingSource(BindingSource transaction)
-        {
-        }
 
     }
 }

@@ -30,12 +30,18 @@ namespace BudgetBuddy.Models
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void Inserttransaction(transaction instance);
-    partial void Updatetransaction(transaction instance);
-    partial void Deletetransaction(transaction instance);
+    partial void Insertquest(quest instance);
+    partial void Updatequest(quest instance);
+    partial void Deletequest(quest instance);
     partial void Insertvoucher(voucher instance);
     partial void Updatevoucher(voucher instance);
     partial void Deletevoucher(voucher instance);
+    partial void Insertquest_status(quest_status instance);
+    partial void Updatequest_status(quest_status instance);
+    partial void Deletequest_status(quest_status instance);
+    partial void Inserttransaction(transaction instance);
+    partial void Updatetransaction(transaction instance);
+    partial void Deletetransaction(transaction instance);
     partial void Insertuser_detail(user_detail instance);
     partial void Updateuser_detail(user_detail instance);
     partial void Deleteuser_detail(user_detail instance);
@@ -80,11 +86,11 @@ namespace BudgetBuddy.Models
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<transaction> transactions
+		public System.Data.Linq.Table<quest> quests
 		{
 			get
 			{
-				return this.GetTable<transaction>();
+				return this.GetTable<quest>();
 			}
 		}
 		
@@ -93,6 +99,22 @@ namespace BudgetBuddy.Models
 			get
 			{
 				return this.GetTable<voucher>();
+			}
+		}
+		
+		public System.Data.Linq.Table<quest_status> quest_status
+		{
+			get
+			{
+				return this.GetTable<quest_status>();
+			}
+		}
+		
+		public System.Data.Linq.Table<transaction> transactions
+		{
+			get
+			{
+				return this.GetTable<transaction>();
 			}
 		}
 		
@@ -126,6 +148,505 @@ namespace BudgetBuddy.Models
 			{
 				return this.GetTable<users_bank_account>();
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.quest")]
+	public partial class quest : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _quest_id;
+		
+		private string _quest_description;
+		
+		private int _quest_reward;
+		
+		private System.DateTime _quest_date;
+		
+		private int _status_id;
+		
+		private EntityRef<quest_status> _quest_status;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onquest_idChanging(int value);
+    partial void Onquest_idChanged();
+    partial void Onquest_descriptionChanging(string value);
+    partial void Onquest_descriptionChanged();
+    partial void Onquest_rewardChanging(int value);
+    partial void Onquest_rewardChanged();
+    partial void Onquest_dateChanging(System.DateTime value);
+    partial void Onquest_dateChanged();
+    partial void Onstatus_idChanging(int value);
+    partial void Onstatus_idChanged();
+    #endregion
+		
+		public quest()
+		{
+			this._quest_status = default(EntityRef<quest_status>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quest_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int quest_id
+		{
+			get
+			{
+				return this._quest_id;
+			}
+			set
+			{
+				if ((this._quest_id != value))
+				{
+					this.Onquest_idChanging(value);
+					this.SendPropertyChanging();
+					this._quest_id = value;
+					this.SendPropertyChanged("quest_id");
+					this.Onquest_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quest_description", DbType="VarChar(255) NOT NULL", CanBeNull=false)]
+		public string quest_description
+		{
+			get
+			{
+				return this._quest_description;
+			}
+			set
+			{
+				if ((this._quest_description != value))
+				{
+					this.Onquest_descriptionChanging(value);
+					this.SendPropertyChanging();
+					this._quest_description = value;
+					this.SendPropertyChanged("quest_description");
+					this.Onquest_descriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quest_reward", DbType="Int NOT NULL")]
+		public int quest_reward
+		{
+			get
+			{
+				return this._quest_reward;
+			}
+			set
+			{
+				if ((this._quest_reward != value))
+				{
+					this.Onquest_rewardChanging(value);
+					this.SendPropertyChanging();
+					this._quest_reward = value;
+					this.SendPropertyChanged("quest_reward");
+					this.Onquest_rewardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_quest_date", DbType="Date NOT NULL")]
+		public System.DateTime quest_date
+		{
+			get
+			{
+				return this._quest_date;
+			}
+			set
+			{
+				if ((this._quest_date != value))
+				{
+					this.Onquest_dateChanging(value);
+					this.SendPropertyChanging();
+					this._quest_date = value;
+					this.SendPropertyChanged("quest_date");
+					this.Onquest_dateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status_id", DbType="Int NOT NULL")]
+		public int status_id
+		{
+			get
+			{
+				return this._status_id;
+			}
+			set
+			{
+				if ((this._status_id != value))
+				{
+					if (this._quest_status.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onstatus_idChanging(value);
+					this.SendPropertyChanging();
+					this._status_id = value;
+					this.SendPropertyChanged("status_id");
+					this.Onstatus_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_status_quest", Storage="_quest_status", ThisKey="status_id", OtherKey="status_id", IsForeignKey=true)]
+		public quest_status quest_status
+		{
+			get
+			{
+				return this._quest_status.Entity;
+			}
+			set
+			{
+				quest_status previousValue = this._quest_status.Entity;
+				if (((previousValue != value) 
+							|| (this._quest_status.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._quest_status.Entity = null;
+						previousValue.quests.Remove(this);
+					}
+					this._quest_status.Entity = value;
+					if ((value != null))
+					{
+						value.quests.Add(this);
+						this._status_id = value.status_id;
+					}
+					else
+					{
+						this._status_id = default(int);
+					}
+					this.SendPropertyChanged("quest_status");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vouchers")]
+	public partial class voucher : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _voucher_id;
+		
+		private string _voucher_name;
+		
+		private int _required_points;
+		
+		private string _voucher_type;
+		
+		private int _voucher_reward;
+		
+		private EntitySet<user_voucher> _user_vouchers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onvoucher_idChanging(int value);
+    partial void Onvoucher_idChanged();
+    partial void Onvoucher_nameChanging(string value);
+    partial void Onvoucher_nameChanged();
+    partial void Onrequired_pointsChanging(int value);
+    partial void Onrequired_pointsChanged();
+    partial void Onvoucher_typeChanging(string value);
+    partial void Onvoucher_typeChanged();
+    partial void Onvoucher_rewardChanging(int value);
+    partial void Onvoucher_rewardChanged();
+    #endregion
+		
+		public voucher()
+		{
+			this._user_vouchers = new EntitySet<user_voucher>(new Action<user_voucher>(this.attach_user_vouchers), new Action<user_voucher>(this.detach_user_vouchers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int voucher_id
+		{
+			get
+			{
+				return this._voucher_id;
+			}
+			set
+			{
+				if ((this._voucher_id != value))
+				{
+					this.Onvoucher_idChanging(value);
+					this.SendPropertyChanging();
+					this._voucher_id = value;
+					this.SendPropertyChanged("voucher_id");
+					this.Onvoucher_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
+		public string voucher_name
+		{
+			get
+			{
+				return this._voucher_name;
+			}
+			set
+			{
+				if ((this._voucher_name != value))
+				{
+					this.Onvoucher_nameChanging(value);
+					this.SendPropertyChanging();
+					this._voucher_name = value;
+					this.SendPropertyChanged("voucher_name");
+					this.Onvoucher_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_required_points", DbType="Int NOT NULL")]
+		public int required_points
+		{
+			get
+			{
+				return this._required_points;
+			}
+			set
+			{
+				if ((this._required_points != value))
+				{
+					this.Onrequired_pointsChanging(value);
+					this.SendPropertyChanging();
+					this._required_points = value;
+					this.SendPropertyChanged("required_points");
+					this.Onrequired_pointsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_type", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string voucher_type
+		{
+			get
+			{
+				return this._voucher_type;
+			}
+			set
+			{
+				if ((this._voucher_type != value))
+				{
+					this.Onvoucher_typeChanging(value);
+					this.SendPropertyChanging();
+					this._voucher_type = value;
+					this.SendPropertyChanged("voucher_type");
+					this.Onvoucher_typeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_reward", DbType="Int NOT NULL")]
+		public int voucher_reward
+		{
+			get
+			{
+				return this._voucher_reward;
+			}
+			set
+			{
+				if ((this._voucher_reward != value))
+				{
+					this.Onvoucher_rewardChanging(value);
+					this.SendPropertyChanging();
+					this._voucher_reward = value;
+					this.SendPropertyChanged("voucher_reward");
+					this.Onvoucher_rewardChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="voucher_user_voucher", Storage="_user_vouchers", ThisKey="voucher_id", OtherKey="voucher_id")]
+		public EntitySet<user_voucher> user_vouchers
+		{
+			get
+			{
+				return this._user_vouchers;
+			}
+			set
+			{
+				this._user_vouchers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_user_vouchers(user_voucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.voucher = this;
+		}
+		
+		private void detach_user_vouchers(user_voucher entity)
+		{
+			this.SendPropertyChanging();
+			entity.voucher = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.quest_status")]
+	public partial class quest_status : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _status_id;
+		
+		private string _status_name;
+		
+		private EntitySet<quest> _quests;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onstatus_idChanging(int value);
+    partial void Onstatus_idChanged();
+    partial void Onstatus_nameChanging(string value);
+    partial void Onstatus_nameChanged();
+    #endregion
+		
+		public quest_status()
+		{
+			this._quests = new EntitySet<quest>(new Action<quest>(this.attach_quests), new Action<quest>(this.detach_quests));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int status_id
+		{
+			get
+			{
+				return this._status_id;
+			}
+			set
+			{
+				if ((this._status_id != value))
+				{
+					this.Onstatus_idChanging(value);
+					this.SendPropertyChanging();
+					this._status_id = value;
+					this.SendPropertyChanged("status_id");
+					this.Onstatus_idChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status_name", DbType="VarChar(55) NOT NULL", CanBeNull=false)]
+		public string status_name
+		{
+			get
+			{
+				return this._status_name;
+			}
+			set
+			{
+				if ((this._status_name != value))
+				{
+					this.Onstatus_nameChanging(value);
+					this.SendPropertyChanging();
+					this._status_name = value;
+					this.SendPropertyChanged("status_name");
+					this.Onstatus_nameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="quest_status_quest", Storage="_quests", ThisKey="status_id", OtherKey="status_id")]
+		public EntitySet<quest> quests
+		{
+			get
+			{
+				return this._quests;
+			}
+			set
+			{
+				this._quests.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_quests(quest entity)
+		{
+			this.SendPropertyChanging();
+			entity.quest_status = this;
+		}
+		
+		private void detach_quests(quest entity)
+		{
+			this.SendPropertyChanging();
+			entity.quest_status = null;
 		}
 	}
 	
@@ -397,192 +918,6 @@ namespace BudgetBuddy.Models
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vouchers")]
-	public partial class voucher : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _voucher_id;
-		
-		private string _voucher_name;
-		
-		private int _required_points;
-		
-		private string _voucher_type;
-		
-		private int _voucher_reward;
-		
-		private EntitySet<user_voucher> _user_vouchers;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void Onvoucher_idChanging(int value);
-    partial void Onvoucher_idChanged();
-    partial void Onvoucher_nameChanging(string value);
-    partial void Onvoucher_nameChanged();
-    partial void Onrequired_pointsChanging(int value);
-    partial void Onrequired_pointsChanged();
-    partial void Onvoucher_typeChanging(string value);
-    partial void Onvoucher_typeChanged();
-    partial void Onvoucher_rewardChanging(int value);
-    partial void Onvoucher_rewardChanged();
-    #endregion
-		
-		public voucher()
-		{
-			this._user_vouchers = new EntitySet<user_voucher>(new Action<user_voucher>(this.attach_user_vouchers), new Action<user_voucher>(this.detach_user_vouchers));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int voucher_id
-		{
-			get
-			{
-				return this._voucher_id;
-			}
-			set
-			{
-				if ((this._voucher_id != value))
-				{
-					this.Onvoucher_idChanging(value);
-					this.SendPropertyChanging();
-					this._voucher_id = value;
-					this.SendPropertyChanged("voucher_id");
-					this.Onvoucher_idChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_name", DbType="VarChar(100) NOT NULL", CanBeNull=false)]
-		public string voucher_name
-		{
-			get
-			{
-				return this._voucher_name;
-			}
-			set
-			{
-				if ((this._voucher_name != value))
-				{
-					this.Onvoucher_nameChanging(value);
-					this.SendPropertyChanging();
-					this._voucher_name = value;
-					this.SendPropertyChanged("voucher_name");
-					this.Onvoucher_nameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_required_points", DbType="Int NOT NULL")]
-		public int required_points
-		{
-			get
-			{
-				return this._required_points;
-			}
-			set
-			{
-				if ((this._required_points != value))
-				{
-					this.Onrequired_pointsChanging(value);
-					this.SendPropertyChanging();
-					this._required_points = value;
-					this.SendPropertyChanged("required_points");
-					this.Onrequired_pointsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_type", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string voucher_type
-		{
-			get
-			{
-				return this._voucher_type;
-			}
-			set
-			{
-				if ((this._voucher_type != value))
-				{
-					this.Onvoucher_typeChanging(value);
-					this.SendPropertyChanging();
-					this._voucher_type = value;
-					this.SendPropertyChanged("voucher_type");
-					this.Onvoucher_typeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_voucher_reward", DbType="Int NOT NULL")]
-		public int voucher_reward
-		{
-			get
-			{
-				return this._voucher_reward;
-			}
-			set
-			{
-				if ((this._voucher_reward != value))
-				{
-					this.Onvoucher_rewardChanging(value);
-					this.SendPropertyChanging();
-					this._voucher_reward = value;
-					this.SendPropertyChanged("voucher_reward");
-					this.Onvoucher_rewardChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="voucher_user_voucher", Storage="_user_vouchers", ThisKey="voucher_id", OtherKey="voucher_id")]
-		public EntitySet<user_voucher> user_vouchers
-		{
-			get
-			{
-				return this._user_vouchers;
-			}
-			set
-			{
-				this._user_vouchers.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_user_vouchers(user_voucher entity)
-		{
-			this.SendPropertyChanging();
-			entity.voucher = this;
-		}
-		
-		private void detach_user_vouchers(user_voucher entity)
-		{
-			this.SendPropertyChanging();
-			entity.voucher = null;
 		}
 	}
 	

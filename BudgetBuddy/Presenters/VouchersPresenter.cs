@@ -1,5 +1,6 @@
 ﻿using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
+using BudgetBuddy.Resources.Components;
 using BudgetBuddy.Views;
 using Guna.Charts.WinForms;
 using System;
@@ -30,27 +31,38 @@ namespace BudgetBuddy.Presenters
 
 
             // subscribe the view's event to the presenter's event
-            _view.LoadTransactions += LoadAllDataGridList;
+            _view.LoadVouchersEvent += LoadVoucherPage;
+            _view.LoadPointsEvent += LoadPoints;
 
 
 
-            LoadAllDataGridList();
 
 
 
 
         }
 
-        private void LoadAllDataGridList()
+        private void LoadPoints(object sender, EventArgs e)
         {
-
-
-   
+            _view.user_points = $"My Points: {_accountRepository.GetPoints()}";
         }
 
-        private void LoadAllDataGridList(object sender, EventArgs e)
+        private void LoadVoucherPage(object sender, EventArgs e)
         {
 
+
+            var vouchers = _accountRepository.GetVouchers();
+
+
+            foreach (var item in vouchers)
+            {
+                _view.VoucherPanel.Controls.Add(new VoucherComponent(_view, item.voucher_id,
+                                                                    item.voucher_name,
+                                                                    item.required_points,
+                                                                    item.voucher_type,
+                                                                    item.voucher_reward,
+                                                                    _accountRepository));
+            }
 
 
 

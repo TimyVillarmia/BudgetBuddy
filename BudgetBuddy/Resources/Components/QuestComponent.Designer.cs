@@ -1,6 +1,6 @@
 ﻿namespace BudgetBuddy.Views.UserControls
 {
-    partial class MissionComponent
+    partial class QuestComponent
     {
         /// <summary> 
         /// Required designer variable.
@@ -81,16 +81,17 @@
             this.PointsLbl.Text = "100 pts.";
             this.PointsLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // MissionComponent
+            // QuestComponent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.Controls.Add(this.PointsLbl);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MissionName);
             this.Controls.Add(this.guna2CirclePictureBox1);
-            this.Name = "MissionComponent";
+            this.Name = "QuestComponent";
             this.Size = new System.Drawing.Size(470, 96);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);

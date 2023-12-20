@@ -23,5 +23,12 @@ namespace BudgetBuddy.Models
         void CreateTransactions(transaction NewTransaction);
         bool UpdatePoints(int points);
         int? GetPoints();
+        IEnumerable<voucher> GetVouchers();
+        IEnumerable<Quest> GetQuests();
+
+        void RedeemVoucher(int voucher_id);
+
+
+
     }
 }

@@ -10,9 +10,11 @@ namespace BudgetBuddy.Views
 {
     public interface IVouchersView
     {
-        event EventHandler LoadTransactions;
+        event EventHandler LoadVouchersEvent;
+        event EventHandler LoadPointsEvent;
 
-
+        FlowLayoutPanel VoucherPanel { get; set; }
+        string user_points { get; set; }
 
     }
 }

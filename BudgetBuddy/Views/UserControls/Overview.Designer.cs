@@ -43,6 +43,7 @@
             Guna.Charts.WinForms.ChartFont chartFont7 = new Guna.Charts.WinForms.ChartFont();
             Guna.Charts.WinForms.Tick tick3 = new Guna.Charts.WinForms.Tick();
             Guna.Charts.WinForms.ChartFont chartFont8 = new Guna.Charts.WinForms.ChartFont();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Overview));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -50,10 +51,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Overview));
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.RightPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.questLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.PointsLbl = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label1 = new System.Windows.Forms.Label();
@@ -63,29 +65,30 @@
             this.PercentSavings = new System.Windows.Forms.Label();
             this.SavingsCardLbl = new System.Windows.Forms.Label();
             this.SavingsLbl = new System.Windows.Forms.Label();
+            this.guna2PictureBox10 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2CustomGradientPanel2 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.PercentBalance = new System.Windows.Forms.Label();
             this.BalanceCardLbl = new System.Windows.Forms.Label();
             this.BalanceLbl = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.TransactionDataGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.LoaderObj = new Guna.UI2.WinForms.Guna2ProgressIndicator();
             this.AddCardBtn = new Guna.UI2.WinForms.Guna2Button();
             this.BankAccountDataGrid = new Guna.UI2.WinForms.Guna2DataGridView();
             this.NoCardLbl = new System.Windows.Forms.Label();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.MoneyTransferAmountTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.SelectAccountNumberLbl = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.SearchTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.RequestMoneyBtn = new Guna.UI2.WinForms.Guna2Button();
             this.SendMoneyBtn = new Guna.UI2.WinForms.Guna2Button();
             this.label21 = new System.Windows.Forms.Label();
             this.guna2ProgressBar1 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.label19 = new System.Windows.Forms.Label();
-            this.MissionLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.MoneyTransferAmountTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.SearchTxtBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.CardObject = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.CardNumberLbl = new System.Windows.Forms.Label();
@@ -96,16 +99,15 @@
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.guna2PictureBox10 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.PointsLbl = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             this.RightPanel.SuspendLayout();
             this.guna2Panel4.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.ChartPanel.SuspendLayout();
             this.guna2CustomGradientPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox10)).BeginInit();
             this.guna2CustomGradientPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGrid)).BeginInit();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BankAccountDataGrid)).BeginInit();
@@ -114,8 +116,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
@@ -130,7 +130,7 @@
             // 
             // RightPanel
             // 
-            this.RightPanel.Controls.Add(this.MissionLayout);
+            this.RightPanel.Controls.Add(this.questLayoutPanel);
             this.RightPanel.Controls.Add(this.guna2Panel4);
             this.RightPanel.Controls.Add(this.guna2Panel3);
             this.RightPanel.Controls.Add(this.ChartPanel);
@@ -145,6 +145,15 @@
             this.RightPanel.TabIndex = 0;
             this.RightPanel.Enter += new System.EventHandler(this.RightPanel_Enter);
             // 
+            // questLayoutPanel
+            // 
+            this.questLayoutPanel.BackColor = System.Drawing.Color.White;
+            this.questLayoutPanel.Location = new System.Drawing.Point(544, 80);
+            this.questLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.questLayoutPanel.Name = "questLayoutPanel";
+            this.questLayoutPanel.Size = new System.Drawing.Size(498, 428);
+            this.questLayoutPanel.TabIndex = 20;
+            // 
             // guna2Panel4
             // 
             this.guna2Panel4.Controls.Add(this.PointsLbl);
@@ -155,6 +164,18 @@
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(498, 50);
             this.guna2Panel4.TabIndex = 19;
+            // 
+            // PointsLbl
+            // 
+            this.PointsLbl.AutoSize = true;
+            this.PointsLbl.BackColor = System.Drawing.Color.Transparent;
+            this.PointsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PointsLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
+            this.PointsLbl.Location = new System.Drawing.Point(259, 10);
+            this.PointsLbl.Name = "PointsLbl";
+            this.PointsLbl.Size = new System.Drawing.Size(161, 33);
+            this.PointsLbl.TabIndex = 18;
+            this.PointsLbl.Text = "My Points:";
             // 
             // label3
             // 
@@ -285,6 +306,19 @@
             this.SavingsLbl.TabIndex = 1;
             this.SavingsLbl.Text = "₱ 0";
             // 
+            // guna2PictureBox10
+            // 
+            this.guna2PictureBox10.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.guna2PictureBox10.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox10.Image = global::BudgetBuddy.Properties.Resources.Income;
+            this.guna2PictureBox10.ImageRotate = 0F;
+            this.guna2PictureBox10.Location = new System.Drawing.Point(22, 19);
+            this.guna2PictureBox10.Name = "guna2PictureBox10";
+            this.guna2PictureBox10.Size = new System.Drawing.Size(50, 50);
+            this.guna2PictureBox10.TabIndex = 0;
+            this.guna2PictureBox10.TabStop = false;
+            // 
             // guna2CustomGradientPanel2
             // 
             this.guna2CustomGradientPanel2.BorderRadius = 18;
@@ -332,6 +366,19 @@
             this.BalanceLbl.Size = new System.Drawing.Size(120, 26);
             this.BalanceLbl.TabIndex = 1;
             this.BalanceLbl.Text = "₱3,274.88";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(22, 19);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(50, 50);
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // TransactionDataGrid
             // 
@@ -432,7 +479,7 @@
             // 
             this.LoaderObj.AutoStart = true;
             this.LoaderObj.Location = new System.Drawing.Point(187, 369);
-            this.LoaderObj.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.LoaderObj.Margin = new System.Windows.Forms.Padding(2);
             this.LoaderObj.Name = "LoaderObj";
             this.LoaderObj.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
             this.LoaderObj.Size = new System.Drawing.Size(68, 73);
@@ -521,6 +568,19 @@
             this.NoCardLbl.TabIndex = 27;
             this.NoCardLbl.Text = "No Card Available";
             // 
+            // guna2PictureBox3
+            // 
+            this.guna2PictureBox3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2PictureBox3.Image = global::BudgetBuddy.Properties.Resources.visa_logo;
+            this.guna2PictureBox3.ImageRotate = 0F;
+            this.guna2PictureBox3.Location = new System.Drawing.Point(275, 730);
+            this.guna2PictureBox3.Name = "guna2PictureBox3";
+            this.guna2PictureBox3.Size = new System.Drawing.Size(80, 27);
+            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.guna2PictureBox3.TabIndex = 26;
+            this.guna2PictureBox3.TabStop = false;
+            this.guna2PictureBox3.UseTransparentBackground = true;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -531,6 +591,30 @@
             this.label8.Size = new System.Drawing.Size(71, 20);
             this.label8.TabIndex = 25;
             this.label8.Text = "Amount";
+            // 
+            // MoneyTransferAmountTxtBox
+            // 
+            this.MoneyTransferAmountTxtBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
+            this.MoneyTransferAmountTxtBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.MoneyTransferAmountTxtBox.DefaultText = "";
+            this.MoneyTransferAmountTxtBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.MoneyTransferAmountTxtBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.MoneyTransferAmountTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.MoneyTransferAmountTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.MoneyTransferAmountTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.MoneyTransferAmountTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.MoneyTransferAmountTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.MoneyTransferAmountTxtBox.IconLeft = global::BudgetBuddy.Properties.Resources.Peso_Symbol;
+            this.MoneyTransferAmountTxtBox.IconLeftOffset = new System.Drawing.Point(5, 0);
+            this.MoneyTransferAmountTxtBox.Location = new System.Drawing.Point(15, 815);
+            this.MoneyTransferAmountTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MoneyTransferAmountTxtBox.Name = "MoneyTransferAmountTxtBox";
+            this.MoneyTransferAmountTxtBox.PasswordChar = '\0';
+            this.MoneyTransferAmountTxtBox.PlaceholderText = "";
+            this.MoneyTransferAmountTxtBox.SelectedText = "";
+            this.MoneyTransferAmountTxtBox.Size = new System.Drawing.Size(340, 36);
+            this.MoneyTransferAmountTxtBox.TabIndex = 24;
+            this.MoneyTransferAmountTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MoneyTransferAmountTxtBox_KeyPress);
             // 
             // SelectAccountNumberLbl
             // 
@@ -553,6 +637,29 @@
             this.label6.Size = new System.Drawing.Size(114, 20);
             this.label6.TabIndex = 22;
             this.label6.Text = "Card Number";
+            // 
+            // SearchTxtBox
+            // 
+            this.SearchTxtBox.BorderRadius = 8;
+            this.SearchTxtBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.SearchTxtBox.DefaultText = "";
+            this.SearchTxtBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.SearchTxtBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.SearchTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.SearchTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchTxtBox.IconLeft = global::BudgetBuddy.Properties.Resources.Search;
+            this.SearchTxtBox.IconLeftOffset = new System.Drawing.Point(5, 0);
+            this.SearchTxtBox.Location = new System.Drawing.Point(15, 454);
+            this.SearchTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SearchTxtBox.Name = "SearchTxtBox";
+            this.SearchTxtBox.PasswordChar = '\0';
+            this.SearchTxtBox.PlaceholderText = "";
+            this.SearchTxtBox.SelectedText = "";
+            this.SearchTxtBox.Size = new System.Drawing.Size(340, 36);
+            this.SearchTxtBox.TabIndex = 19;
             // 
             // label5
             // 
@@ -628,77 +735,6 @@
             this.label19.Size = new System.Drawing.Size(91, 20);
             this.label19.TabIndex = 11;
             this.label19.Text = "Daily Limit";
-            // 
-            // MissionLayout
-            // 
-            this.MissionLayout.AutoScroll = true;
-            this.MissionLayout.BackColor = System.Drawing.Color.White;
-            this.MissionLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.MissionLayout.Location = new System.Drawing.Point(544, 80);
-            this.MissionLayout.Margin = new System.Windows.Forms.Padding(0);
-            this.MissionLayout.Name = "MissionLayout";
-            this.MissionLayout.Size = new System.Drawing.Size(498, 428);
-            this.MissionLayout.TabIndex = 20;
-            // 
-            // guna2PictureBox3
-            // 
-            this.guna2PictureBox3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox3.Image = global::BudgetBuddy.Properties.Resources.visa_logo;
-            this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(275, 730);
-            this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(80, 27);
-            this.guna2PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.guna2PictureBox3.TabIndex = 26;
-            this.guna2PictureBox3.TabStop = false;
-            this.guna2PictureBox3.UseTransparentBackground = true;
-            // 
-            // MoneyTransferAmountTxtBox
-            // 
-            this.MoneyTransferAmountTxtBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(137)))), ((int)(((byte)(6)))));
-            this.MoneyTransferAmountTxtBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.MoneyTransferAmountTxtBox.DefaultText = "";
-            this.MoneyTransferAmountTxtBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.MoneyTransferAmountTxtBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.MoneyTransferAmountTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.MoneyTransferAmountTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.MoneyTransferAmountTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.MoneyTransferAmountTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.MoneyTransferAmountTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.MoneyTransferAmountTxtBox.IconLeft = global::BudgetBuddy.Properties.Resources.Peso_Symbol;
-            this.MoneyTransferAmountTxtBox.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.MoneyTransferAmountTxtBox.Location = new System.Drawing.Point(15, 815);
-            this.MoneyTransferAmountTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MoneyTransferAmountTxtBox.Name = "MoneyTransferAmountTxtBox";
-            this.MoneyTransferAmountTxtBox.PasswordChar = '\0';
-            this.MoneyTransferAmountTxtBox.PlaceholderText = "";
-            this.MoneyTransferAmountTxtBox.SelectedText = "";
-            this.MoneyTransferAmountTxtBox.Size = new System.Drawing.Size(340, 36);
-            this.MoneyTransferAmountTxtBox.TabIndex = 24;
-            this.MoneyTransferAmountTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.MoneyTransferAmountTxtBox_KeyPress);
-            // 
-            // SearchTxtBox
-            // 
-            this.SearchTxtBox.BorderRadius = 8;
-            this.SearchTxtBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SearchTxtBox.DefaultText = "";
-            this.SearchTxtBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.SearchTxtBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.SearchTxtBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.SearchTxtBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.SearchTxtBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.SearchTxtBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.SearchTxtBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.SearchTxtBox.IconLeft = global::BudgetBuddy.Properties.Resources.Search;
-            this.SearchTxtBox.IconLeftOffset = new System.Drawing.Point(5, 0);
-            this.SearchTxtBox.Location = new System.Drawing.Point(15, 454);
-            this.SearchTxtBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.SearchTxtBox.Name = "SearchTxtBox";
-            this.SearchTxtBox.PasswordChar = '\0';
-            this.SearchTxtBox.PlaceholderText = "";
-            this.SearchTxtBox.SelectedText = "";
-            this.SearchTxtBox.Size = new System.Drawing.Size(340, 36);
-            this.SearchTxtBox.TabIndex = 19;
             // 
             // CardObject
             // 
@@ -833,44 +869,6 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "Budget";
             // 
-            // guna2PictureBox10
-            // 
-            this.guna2PictureBox10.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.guna2PictureBox10.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox10.Image = global::BudgetBuddy.Properties.Resources.Income;
-            this.guna2PictureBox10.ImageRotate = 0F;
-            this.guna2PictureBox10.Location = new System.Drawing.Point(22, 19);
-            this.guna2PictureBox10.Name = "guna2PictureBox10";
-            this.guna2PictureBox10.Size = new System.Drawing.Size(50, 50);
-            this.guna2PictureBox10.TabIndex = 0;
-            this.guna2PictureBox10.TabStop = false;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.guna2PictureBox1.FillColor = System.Drawing.Color.Transparent;
-            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(22, 19);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(50, 50);
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
-            // 
-            // PointsLbl
-            // 
-            this.PointsLbl.AutoSize = true;
-            this.PointsLbl.BackColor = System.Drawing.Color.Transparent;
-            this.PointsLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PointsLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(14)))), ((int)(((byte)(23)))));
-            this.PointsLbl.Location = new System.Drawing.Point(259, 10);
-            this.PointsLbl.Name = "PointsLbl";
-            this.PointsLbl.Size = new System.Drawing.Size(161, 33);
-            this.PointsLbl.TabIndex = 18;
-            this.PointsLbl.Text = "My Points:";
-            // 
             // Overview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -889,8 +887,10 @@
             this.ChartPanel.ResumeLayout(false);
             this.guna2CustomGradientPanel6.ResumeLayout(false);
             this.guna2CustomGradientPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox10)).EndInit();
             this.guna2CustomGradientPanel2.ResumeLayout(false);
             this.guna2CustomGradientPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransactionDataGrid)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
@@ -901,8 +901,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -955,7 +953,7 @@
         private Guna.Charts.WinForms.GunaChart gunaChart1;
         private Guna.UI2.WinForms.Guna2Button AddCardBtn;
         private Guna.UI2.WinForms.Guna2ProgressIndicator LoaderObj;
-        private System.Windows.Forms.FlowLayoutPanel MissionLayout;
         private System.Windows.Forms.Label PointsLbl;
+        private System.Windows.Forms.FlowLayoutPanel questLayoutPanel;
     }
 }

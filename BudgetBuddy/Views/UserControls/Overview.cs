@@ -5,6 +5,7 @@ using Guna.UI2.WinForms;
 using Guna.Charts.WinForms;
 using System.Collections.Generic;
 using System.Collections;
+using System.Web.UI.WebControls;
 
 namespace BudgetBuddy.Views.UserControls
 {
@@ -21,16 +22,23 @@ namespace BudgetBuddy.Views.UserControls
         public event EventHandler RequestEvent;
         public event EventHandler SearchAccountEvent;
         public event EventHandler EarnPointsEvent;
+        public event EventHandler LoadQuestEvent;
 
-        
+        public Overview()
+        {
+
+
+        }
+
+
         public Overview(Dashboard1 form)
         {
             InitializeComponent();
             Dashboard = form;
             AssociateAndRaiseViewEvents();
-            MissionLayout.FlowDirection = FlowDirection.TopDown;
-            MissionLayout.WrapContents = false;
-            MissionLayout.AutoScroll = true;
+            questLayoutPanel.FlowDirection = FlowDirection.TopDown;
+            questLayoutPanel.WrapContents = false;
+            questLayoutPanel.AutoScroll = true;
 
             LoaderObj.Visible = false;
             NoCardLbl.Visible = true;
@@ -64,11 +72,8 @@ namespace BudgetBuddy.Views.UserControls
         public string owner_name { get; set; }
         public string expiry_date { get; set; }
 
-        public string user_points
-        {
-            get { return PointsLbl.Text; }
-            set {  PointsLbl.Text = value; }
-        }
+        public string user_points { get; set; }
+        public bool hasCompletedQuest { get; set; }
 
         public string SendMoneyToAccountNumber { get; set; }      
         public string SendMoneyToAccountName { get; set; }
@@ -82,8 +87,11 @@ namespace BudgetBuddy.Views.UserControls
         }
 
  
-
-
+        public FlowLayoutPanel QuestLayoutPanel
+        {
+            get { return questLayoutPanel; }
+            set { questLayoutPanel = value; }
+        }
 
         public Guna2ProgressIndicator Loader
         {
@@ -108,12 +116,14 @@ namespace BudgetBuddy.Views.UserControls
 
             this.Load += delegate
             {
-                
-                LoadAllMisson();
+
                 LoadOverviewData?.Invoke(this, EventArgs.Empty);
+                LoadQuestEvent?.Invoke(this, EventArgs.Empty);
                 EarnPointsEvent?.Invoke(this, EventArgs.Empty);
                 ReloadFormChecking();
                 ReloadFormSavings();
+
+                PointsLbl.Text = "My points: " + user_points;
 
 
 
@@ -152,10 +162,18 @@ namespace BudgetBuddy.Views.UserControls
 
             SendMoneyBtn.Click += delegate
             {
+                if (string.IsNullOrEmpty(MoneyTransferAmountTxtBox.Text))
+                {
+                    MessageBox.Show("Amount must be greater than or equal to 5");
+                    return;
+                }
+
 
                 if (int.Parse(MoneyTransferAmountTxtBox.Text) <= 5)
                 {
                     MessageBox.Show("Amount must be greater than or equal to 5");
+                    return;
+
                 }
                 else
                 {
@@ -166,6 +184,16 @@ namespace BudgetBuddy.Views.UserControls
                         MoneyTransferAmount = Decimal.Parse(MoneyTransferAmountTxtBox.Text);
                         SendEvent?.Invoke(this, EventArgs.Empty);
                         EarnPointsEvent?.Invoke(this, EventArgs.Empty);
+
+
+                        if (hasCompletedQuest)
+                        {
+                            MessageBox.Show("Congratulations you have earned 100 points");
+                            PointsLbl.Text = "My points: " + user_points;
+                        }
+
+                        PointsLbl.Text = "My points: " + user_points;
+
 
                         this.Focus();
 
@@ -218,25 +246,7 @@ namespace BudgetBuddy.Views.UserControls
 
 
 
-        private void LoadAllMisson()
-        {
-            Dictionary<string, string> mission_list = new Dictionary<string,string>
-            {
-                { "Make a qualifying transaction of P200 or more in a single day.", "100" },
-                { "Successfully transfer $100 or more to your savings account for 7 consecutive days.", "100" },
-                {"Stick to your budget for the entire month, logging all expenses and staying within budget limits.", "100" },
-                { "Invest $500 or more in a diversified portfolio within the app's investment platform.", "100" },
-                { "Complete three educational modules or articles on personal finance within the app.", "100" },
-            };
 
-
-            foreach (KeyValuePair<string, string> entry in mission_list)
-            {
-                MissionLayout.Controls.Add(new MissionComponent(entry.Key, entry.Value));
-            }
-    
-
-        }
 
         private void ReloadFormSavings()
         {
@@ -302,12 +312,6 @@ namespace BudgetBuddy.Views.UserControls
         }
 
  
-
-        public Overview()
-        {
-
-
-        }
 
  
 

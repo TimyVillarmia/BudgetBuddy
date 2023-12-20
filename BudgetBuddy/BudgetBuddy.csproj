@@ -255,6 +255,7 @@
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </Compile>
     <Compile Include="Models\IAccountRepository.cs" />
+    <Compile Include="Models\Quest.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\TodoModel.cs" />
     <Compile Include="Models\TransactionModel.cs" />
@@ -268,6 +269,12 @@
     <Compile Include="Presenters\SignInPresenter.cs" />
     <Compile Include="Presenters\SignUpPresenter.cs" />
     <Compile Include="Presenters\VouchersPresenter.cs" />
+    <Compile Include="Resources\Components\VoucherComponent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Resources\Components\VoucherComponent.Designer.cs">
+      <DependentUpon>VoucherComponent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Page1.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -319,11 +326,11 @@
       <DependentUpon>Confirmation.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\IVouchersView.cs" />
-    <Compile Include="Views\UserControls\MissionComponent.cs">
+    <Compile Include="Resources\Components\QuestComponent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\UserControls\MissionComponent.Designer.cs">
-      <DependentUpon>MissionComponent.cs</DependentUpon>
+    <Compile Include="Resources\Components\QuestComponent.Designer.cs">
+      <DependentUpon>QuestComponent.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\UserControls\Overview.cs">
       <SubType>UserControl</SubType>
@@ -393,6 +400,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="_Repositories\Encryption.cs" />
     <Compile Include="_Repositories\MetrobankRepository.cs" />
+    <EmbeddedResource Include="Resources\Components\VoucherComponent.resx">
+      <DependentUpon>VoucherComponent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Page1.resx">
       <DependentUpon>Page1.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,8 +424,8 @@
     <EmbeddedResource Include="Views\UserControls\Confirmation.resx">
       <DependentUpon>Confirmation.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\UserControls\MissionComponent.resx">
-      <DependentUpon>MissionComponent.cs</DependentUpon>
+    <EmbeddedResource Include="Resources\Components\QuestComponent.resx">
+      <DependentUpon>QuestComponent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\UserControls\Overview.resx">
       <DependentUpon>Overview.cs</DependentUpon>

@@ -1,5 +1,6 @@
 ﻿using BudgetBuddy._Repositories;
 using BudgetBuddy.Models;
+using Org.BouncyCastle.Asn1.Ocsp;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -87,13 +88,78 @@ namespace BudgetBuddy.Repositories
             catch(Exception e)
             {
                 Debug.WriteLine(e.Message);
-                return null;
+                return 0;
 
 
             }
 
 
         }
+        public IEnumerable<Quest> GetQuests()
+        {
+            try
+            {
+                var quest = (from q in _db.quests
+                             join s in _db.quest_status on q.status_id equals s.status_id
+                             select new Quest
+                             {
+                                 quest_description = q.quest_description,
+                                 quest_reward = q.quest_reward,
+                                 quest_date = q.quest_date,
+                                 status_name = s.status_name
+                             });
+
+
+
+                return quest;
+
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+                return null;
+
+            }
+
+        }
+
+
+        public void RedeemVoucher(int voucher_id)
+        {
+            try
+            {
+                var get_user = (from u in _db.users
+                                where u.email == Session.CurrentUser
+                                select u).FirstOrDefault();
+
+                var redeem = new user_voucher
+                {
+                    user_id = get_user.user_id,
+                    voucher_id = voucher_id
+                };
+
+                _db.user_vouchers.InsertOnSubmit(redeem);
+                _db.SubmitChanges();
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
+
+        }
+
+        
+
+        public IEnumerable<voucher> GetVouchers()
+        {
+
+            var vouchers = (from v in _db.vouchers
+                            select v);
+
+
+            return vouchers;
+        }
+
 
 
         public bool UpdatePoints(int points)
@@ -107,7 +173,7 @@ namespace BudgetBuddy.Repositories
                                       select ud).FirstOrDefault();
 
 
-                update_details.user_points += points;
+                update_details.user_points = 0 +  points;
 
                 _db.SubmitChanges();
 
