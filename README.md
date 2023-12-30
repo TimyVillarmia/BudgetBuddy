@@ -62,7 +62,7 @@ Follow these steps to set up and run BudgetBuddy locally:
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/YourUsername/budgetbuddy.git
+   git clone https://github.com/TimyVillarmia/BudgetBuddy
    ```
 
 2. **Database Setup:**
